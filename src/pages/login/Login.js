@@ -4,6 +4,7 @@ import bg from "../../assets/image.png";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
+import { Button } from "@mui/material";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function Login() {
     <div className="container">
       <div>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 col-6">
             <div
               className="d-flex justify-content-center align-items-center"
               style={{
@@ -20,18 +21,22 @@ export default function Login() {
               }}
             >
               <div>
-                <img src={bg} alt="hospital logo" />
+                <img
+                  src={bg}
+                  className="img-responsive border-0"
+                  alt="hospital logo"
+                />
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 col-6">
             <div
               style={{
                 height: "100vh",
               }}
               className="d-flex flex-column justify-content-center"
             >
-              <h4>Login Here</h4>
+              <h5 className="text-primary text-uppercase">Sign in to your account</h5>
               <Formik
                 initialValues={getSchema({})}
                 validationSchema={validator}
@@ -50,8 +55,10 @@ export default function Login() {
               >
                 {(props) => (
                   <form onSubmit={props.handleSubmit}>
+                    <label className="mt-2">Enter username </label>
                     <input
-                      className="form-control mt-3"
+                      placeholder="Enter username"
+                      className="form-control mt-1"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -59,12 +66,14 @@ export default function Login() {
                       name="username"
                     />
                     {props.errors.username && (
-                      <p className="mt-1 text-danger">
+                      <small className="mt-1 text-danger d-block">
                         {props.errors.username}
-                      </p>
+                      </small>
                     )}
+                    <label className="mt-3">Enter your password </label>
                     <input
-                      className="form-control mt-3"
+                      placeholder="Enter password"
+                      className="form-control mt-1"
                       type="text"
                       onChange={props.handleChange}
                       onBlur={props.handleBlur}
@@ -72,11 +81,13 @@ export default function Login() {
                       name="password"
                     />
                     {props.errors.password && (
-                      <p className="m-1 text-danger">{props.errors.password}</p>
+                      <small className="m-1 text-danger d-block">
+                        {props.errors.password}
+                      </small>
                     )}
-                    <button className="btn btn-primary mt-3" type="submit">
+                    <Button variant="contained" className="mt-3" type="submit">
                       Login
-                    </button>
+                    </Button>
                   </form>
                 )}
               </Formik>
