@@ -1,0 +1,93 @@
+import { Form } from '@themesberg/react-bootstrap';
+import { useField } from "formik/dist/index";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { callApi, selectApi } from "../../reducers/apiSlice";
+
+
+const InputSelectApi = ({label, operationId, storeName, value, text, onChange, ...props}) => {
+
+	const [field, meta] = useField(props);
+
+	const {[storeName]:items = {data: {}}} = useSelector(selectApi);
+	const {details} = useSelector(selectApi);
+
+	const dispatch = useDispatch();
+	
+	useEffect(() => {
+		if (operationId) {
+			dispatch(callApi({
+				operationId: operationId,
+				output: storeName,
+				storeName: storeName || 'select'
+			}))
+		}
+	}, [dispatch, operationId]);
+
+
+
+	if (onChange !== undefined) {
+		const itemData = []
+		
+		// for(let i=0; i< items.data.length; i++) {
+		// 	console.log(value, 'value')
+		// 	if(value=='id') {
+		// 		console.log('aschiii')
+		// 		itemData.push(items.data[i])
+
+		// 	} else {
+		// 		console.log('as111111')
+		// 		console.log(items.data, 'data')
+		// 		if(items.data[i].country.id == parseInt(value)) {
+		// 			itemData.push(items.data[i])
+		// 		} 
+
+		// 	}
+			
+		// }
+		// console.log(itemData, 'fffff')
+		
+		return (
+			<>
+				<Form.Group>
+					{label !== undefined &&
+					<Form.Label>{label}</Form.Label>
+					}
+					<Form.Select {...field} onChange={onChange} className={`form-control ${meta.touched && meta.error ? 'is-invalid' : ''}`}>
+						<option defaultValue key="">Select {label}</option>
+						{items.data !== undefined && items.data.length > 0 &&
+						items.data.map((item, key) => (
+							<option value={item[value]} key={key}>{item[text]}</option>
+						))
+						}
+					</Form.Select>
+					<div className="invalid-feedback">{meta.error}</div>
+				</Form.Group>
+			</>
+		);
+
+	}
+
+
+	return (
+		<>
+			<Form.Group>
+				{label !== undefined &&
+				<Form.Label>{label}</Form.Label>
+				}
+				<Form.Select {...field} className={`form-control ${meta.touched && meta.error ? 'is-invalid' : ''}`}>
+					<option defaultValue key="">Select {label}</option>
+					{items.data !== undefined && items.data.length > 0 &&
+						items.data.map((item, key) => (
+							<option value={item[value]} key={key}>{item[text]}</option>
+						))
+					}
+				</Form.Select>
+				<div className="invalid-feedback">{meta.error}</div>
+			</Form.Group>
+		</>
+	);
+
+};
+
+export default InputSelectApi;
