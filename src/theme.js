@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material/styles';
-import { green, grey, orange, red,indigo } from '@mui/material/colors';
+import { createTheme } from "@mui/material/styles";
+import { green, grey, red } from "@mui/material/colors";
 
 const rawTheme = createTheme({
   palette: {
@@ -9,13 +9,13 @@ const rawTheme = createTheme({
       dark: "#eb4255",
     },
     secondary: {
-      light: '#f5d6eb',
-      main: '#741e58',
-      dark: '#741e58',
+      light: "#f5d6eb",
+      main: "#741e58",
+      dark: "#741e58",
     },
     warning: {
-      main: '#ffc071',
-      dark: '#ffb25e',
+      main: "#ffc071",
+      dark: "#ffb25e",
     },
     error: {
       light: red[50],
@@ -26,6 +26,13 @@ const rawTheme = createTheme({
       light: green[50],
       main: "#f6991e",
       dark: green[700],
+    },
+  },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
     },
   },
   typography: {
@@ -41,7 +48,7 @@ const rawTheme = createTheme({
 const fontHeader = {
   color: rawTheme.palette.text.primary,
   fontWeight: rawTheme.typography.fontWeightMedium,
-  fontFamily: "'Bebas Neue', sans-serif",
+  fontFamily: "'Roboto', sans-serif",
 };
 
 const theme = {
@@ -104,4 +111,4 @@ const theme = {
   },
 };
 
-export default theme;     
+export default theme;
