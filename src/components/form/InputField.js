@@ -1,5 +1,4 @@
 import { useField } from "formik/dist/index";
-import React from "react";
 
 const InputField = ({ label, ...props }) => {
   const [field, meta, onChangeEvent] = useField(props);
@@ -26,11 +25,10 @@ const InputField = ({ label, ...props }) => {
         }}
         {...props}
         {...field}
-        className={`form-control  ${
-          meta.touched && meta.error ? "is-invalid" : ""
-        } `}
+        className={`form-control  ${meta.touched && meta.error ? "is-invalid" : ""
+          } `}
         onWheel={(event) => {
-          props.type == "number" ? event.currentTarget.blur() : "";
+          return props.type === "number" ? event.currentTarget.blur() : "";
         }}
       />
       <div className="invalid-feedback">{meta.error}</div>
