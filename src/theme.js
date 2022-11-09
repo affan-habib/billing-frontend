@@ -3,30 +3,7 @@ import { green, grey, red } from "@mui/material/colors";
 
 const rawTheme = createTheme({
   palette: {
-    primary: {
-      light: "#f8bac1",
-      main: "#11337a",
-      dark: "#eb4255",
-    },
-    secondary: {
-      light: "#f5d6eb",
-      main: "#741e58",
-      dark: "#741e58",
-    },
-    warning: {
-      main: "#ffc071",
-      dark: "#ffb25e",
-    },
-    error: {
-      light: red[50],
-      main: red[500],
-      dark: red[700],
-    },
-    success: {
-      light: green[50],
-      main: "#f6991e",
-      dark: green[700],
-    },
+    
   },
   components: {
     MuiButtonBase: {
@@ -34,9 +11,63 @@ const rawTheme = createTheme({
         disableRipple: true,
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-root": {
+            padding: "3px 9px",
+          },
+        },
+        popupIndicator: {
+          width: "auto",
+          height: "auto",
+        },
+        clearIndicator: {
+          width: "auto",
+          height: "auto",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          padding: "10px 12px 10px 12px",
+          borderRadious: 0,
+        },
+        notchedOutline: {
+          "& fieldset": {
+            borderRadius: `0 0 0 0`,
+          },
+        },
+        inputSizeSmall: {
+          padding: "7.5px 8px 7.5px 12px",
+        },
+        inputMultiline: {
+          padding: 0,
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: "0.9rem",
+        },
+        outlined: {
+          lineHeight: "0.8em",
+          "&.MuiInputLabel-sizeSmall": {
+            lineHeight: "1em",
+          },
+          "&.MuiInputLabel-shrink": {
+            padding: "0 8px",
+            marginLeft: -6,
+            lineHeight: "1.4375em",
+          },
+        },
+      },
+    },
   },
   typography: {
-    fontFamily: "'open sans', sans-serif",
+    fontFamily: "'Roboto', sans-serif",
     fontSize: 14,
     fontWeightLight: 300, // Work Sans
     fontWeightRegular: 400, // Work Sans

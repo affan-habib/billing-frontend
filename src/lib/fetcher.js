@@ -15,7 +15,7 @@ const fetcher = async (route, options = {}) => {
 
   const response = await fetch(url, {
     headers: {
-      //'Authorization': `Bearer ${auth.getToken()}`,
+      'Authorization': `Bearer `,
       'Content-Type': 'application/json; charset=utf-8',
     },
     ...options
