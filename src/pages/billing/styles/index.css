@@ -1,0 +1,33 @@
+.top-header-1 {
+    background-color: #029889;
+    color: white;
+    font-size: 0.9rem;
+}
+.top-header-2 {
+    background-color: #cceeec;
+    color: black;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.top-header-3 {
+    background-color: #ffdbcf;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 0.9rem;
+}
+.top-header-3-customized {
+    background-color: #256D85;
+    color: white;
+    font-size: 0.9rem;
+}
+.top-header-2-customized {
+    background-color: #256D85;
+    color: white;
+    font-size: 0.9rem;
+}
+.top-header-4 {
+    background-color: #ffdbcf;
+    color: #0f0f0f;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
