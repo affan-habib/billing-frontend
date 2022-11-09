@@ -3,6 +3,7 @@ import { green, grey, red } from "@mui/material/colors";
 
 const rawTheme = createTheme({
   palette: {},
+  shape: { borderRadius: 0 },
   components: {
     MuiButtonBase: {
       defaultProps: {

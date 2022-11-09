@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { FastField } from "formik";
+import { FastField, Field } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
@@ -80,7 +80,7 @@ const Header = ({
                   >
                     Bill From
                   </InputLabel>
-                  <FastField
+                  <Field
                     name="billFrom"
                     disabled
                     component={Select}
@@ -89,7 +89,7 @@ const Header = ({
                   >
                     <MenuItem value="OPD">OPD</MenuItem>
                     <MenuItem value="IPD">IPD</MenuItem>
-                  </FastField>
+                  </Field>
                   {touched.billFrom && errors.billFrom && (
                     <FormHelperText error>{errors.billFrom}</FormHelperText>
                   )}
