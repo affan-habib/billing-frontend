@@ -2,9 +2,7 @@ import { createTheme } from "@mui/material/styles";
 import { green, grey, red } from "@mui/material/colors";
 
 const rawTheme = createTheme({
-  palette: {
-    
-  },
+  palette: {},
   components: {
     MuiButtonBase: {
       defaultProps: {
@@ -30,6 +28,7 @@ const rawTheme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
+        root: { borderRadius: "2px" },
         input: {
           padding: "10px 12px 10px 12px",
           borderRadious: 0,
