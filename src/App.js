@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Cookies from 'js-cookie';
 import { useRoutes } from "react-router-dom";
 import './App.css';
-import Home from './pages/Home';
+import Billing from './pages/billing/Billing';
 import authRouter from './routes';
 
 
@@ -23,7 +23,7 @@ function App() {
     <>
       {/* {routing}
        */}
-       <Home/>
+       <Billing/>
     </>
   );
 }
