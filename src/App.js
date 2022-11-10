@@ -20,7 +20,7 @@ function App() {
 
   const routing = useRoutes(authRouter(isLoggedIn));
 
-  return <Home />;
+  return <Billing />;
 }
 
 export default App;

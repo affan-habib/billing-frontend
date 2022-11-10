@@ -4,12 +4,6 @@ import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import "./styles/index.css";
 export default function Final({ values }) {
   const [discountAmount, setDiscountAmount] = React.useState(0);
-  const [advanceAmount, setAdvanceAmount] = React.useState(0);
-  const [finalCal, setFinalCal] = React.useState({
-    discountAmount: 0,
-    advanceAmount: 0,
-  });
-  console.log(discountAmount);
   const columns = [
     {
       headerClassName: "top-header-3",
@@ -31,7 +25,7 @@ export default function Final({ values }) {
     {
       headerClassName: "top-header-2",
       cellClassName: "top-header-4",
-      field: "discountAmount",
+      field: "value",
       headerClassName: "top-header-1",
       headerName: "DISCOUNT",
       editable: true,
@@ -41,36 +35,6 @@ export default function Final({ values }) {
       align: "center",
       sortable: false,
       valueGetter: (params) => discountAmount,
-    },
-    {
-      field: "advance",
-      headerClassName: "top-header-3",
-      cellClassName: "top-header-4",
-      headerClassName: "top-header-1",
-      headerName: "ADVANCE",
-      // editable: true,
-      type: "number",
-      flex: 1,
-      headerAlign: "center",
-      align: "center",
-      sortable: false,
-      valueGetter: (params) => finalCal.advanceAmount,
-    },
-    {
-      field: "due",
-    
-      cellClassName: "top-header-4",
-      headerClassName: "top-header-1",
-      valueGetter: (params) =>
-        values.orderDetailList.reduce((a, b) => a + b.tariffBaseAmount, 0) -
-          discountAmount || 0,
-
-      headerName: "DUE BY (AMOUNT)",
-      type: "number",
-      flex: 1,
-      headerAlign: "center",
-      align: "center",
-      sortable: false,
     },
   ];
   const items = [
@@ -89,7 +53,7 @@ export default function Final({ values }) {
 
   console.log("hoye ja", values.orderDetailList);
   return (
-    <Box sx={{ height: 80, Width: "100%" }}>
+    <Box sx={{ height: 220, mt: 2, Width: "100%" }}>
       <DataGrid
         sx={{
           [`& .${gridClasses.row}`]: {
