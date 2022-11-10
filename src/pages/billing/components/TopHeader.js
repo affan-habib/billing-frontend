@@ -6,7 +6,7 @@ const TopHeader = (props) => {
   return (
     <div>
       <Stack
-        sx={{ backgroundColor: "#029889", padding: 1}}
+        sx={{ backgroundColor: "primary.main", padding: 1}}
         direction="row"
         justifyContent="space-between"
         alignItems="center"

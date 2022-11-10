@@ -19,15 +19,7 @@ function App() {
 
   const routing = useRoutes(authRouter(isLoggedIn));
 
-  return (
-    <>
-      <Box m={2}>
-        <Billing />
-      </Box>
-      {/* {routing}
-       */}
-    </>
-  );
+  return <Billing />;
 }
 
 export default App;

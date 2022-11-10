@@ -44,7 +44,7 @@ const LoginPage = () => {
         onSubmit={(values, { resetForm }) => {
           dispatch(
             callApi({
-              operationId: UrlBuilder.authApi("login"),
+              operationId: 'login',
               output: "authData",
               parameters: {
                 method: "POST",
