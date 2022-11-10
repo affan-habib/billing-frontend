@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useRoutes } from "react-router-dom";
 import "./App.css";
 import Billing from "./pages/billing/Billing";
+import Home from "./pages/Home";
 import authRouter from "./routes";
 
 // const PrivateRoutes = () => {
@@ -19,15 +20,7 @@ function App() {
 
   const routing = useRoutes(authRouter(isLoggedIn));
 
-  return (
-    <>
-      <Box m={2}>
-        <Billing />
-      </Box>
-      {/* {routing}
-       */}
-    </>
-  );
+  return <Home />;
 }
 
 export default App;
