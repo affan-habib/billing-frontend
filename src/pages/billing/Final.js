@@ -53,7 +53,7 @@ export default function Final({ values }) {
 
   console.log("hoye ja", values.orderDetailList);
   return (
-    <Box sx={{ height: 220, mt: 2, Width: "100%" }}>
+    <Box sx={{ height: 220, Width: "100%" }}>
       <DataGrid
         sx={{
           [`& .${gridClasses.row}`]: {

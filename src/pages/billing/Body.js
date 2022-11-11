@@ -101,7 +101,7 @@ export default function Body({ values }) {
     console.log(error);
   }, []);
   return (
-    <Box sx={{ height: 220, Width: "100%", mt: 2 }}>
+    <Box sx={{ height: 220, Width: "100%"}}>
       <DataGrid
         sx={{
           [`& .${gridClasses.row}`]: {

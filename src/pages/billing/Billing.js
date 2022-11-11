@@ -44,37 +44,18 @@ const Billing = () => {
       >
         {(props) => {
           return (
-            <Box>
-              <TopHeader />
+            <Paper elevation={1} sx={{ background: "rgba(243, 241, 189, 0.24)", p: 2 }} square>
               <Header {...props} />
-              <Paper
-                elevation={1}
-                sx={{ p: 2, pt: 0.5, background: "#FFFDF8" }}
-                square
-              >
-                <Grid container spacing={2}>
-                  <Grid item md={8}>
-                    <Body {...props} />
-                  </Grid>
-                  <Grid item md={4}>
-                    <Final {...props} />
-                  </Grid>
+              <Grid container columnSpacing={2} mt={2}>
+                <Grid item md={8}>
+                  <Body {...props} />
                 </Grid>
-                {/* <AddItem {...props} /> */}
-              </Paper>
-              <Paper
-                elevation={1}
-                sx={{ p: 2, mt: 2, background: "#F5FFFA" }}
-                square
-              >
-                <Grid container spacing={2}>
-                  <Grid item md={8}></Grid>
-                  <Grid item md={4}>
-                    <Remarks {...props} />
-                  </Grid>
+                <Grid item md={4}>
+                  <Final {...props} />
                 </Grid>
-              </Paper>
-            </Box>
+              </Grid>
+              {/* <AddItem {...props} /> */}
+            </Paper>
           );
         }}
       </Formik>
