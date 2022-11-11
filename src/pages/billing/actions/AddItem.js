@@ -18,17 +18,13 @@ import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 const AddItem = ({ values }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const {
-    items = {
-      data: [],
-    },
-  } = useSelector(selectApi);
+  const { items = [] } = useSelector(selectApi);
   useEffect(() => {
     setTimeout(
       () =>
         dispatch(
           callApi({
-            operationId: `api/v1/service-master/items`,
+            operationId: `api/courses`,
             output: "items",
           })
         ),
@@ -37,7 +33,7 @@ const AddItem = ({ values }) => {
   }, [dispatch]);
 
   let alreadySelectedOptions = values.orderDetailList.map((el) => el.id);
-  let filterSelectedOptions = items.data.filter(
+  let filterSelectedOptions = items.filter(
     (el) => alreadySelectedOptions.indexOf(el.id) == -1
   );
   const filterOptions = createFilterOptions({
@@ -90,23 +86,6 @@ const AddItem = ({ values }) => {
             />
           )}
         />
-
-        <Tooltip title="Click to see Service Details" arrow>
-          <Button
-            sx={{ ml: 2, height: 35, mt: 0.5 }}
-            variant="contained"
-            color="success"
-            size="small"
-            type="button"
-            onClick={() => setOpen(!open)}
-            startIcon={<InfoCircleOutlined style={{ fontSize: "16px" }} />}
-          >
-            INFO
-          </Button>
-        </Tooltip>
-        <Dialog open={open} onClose={() => setOpen(!open)}>
-          <ServiceDetails />
-        </Dialog>
       </Stack>
     </Box>
   );

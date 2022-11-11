@@ -2,7 +2,10 @@ import * as Yup from "yup";
 const getSchema = (model = {}) => {
   const {
     date = "10-10-10",
-    billFrom = "OPD",
+    gender = "Male",
+    age = 28,
+    patientAge = "Male",
+    patientContactNo = "01798984444",
     term = 1,
     payer = "Affan Habib",
     billNo = "452154785",
@@ -14,14 +17,16 @@ const getSchema = (model = {}) => {
     advance = 0,
     customerId = 162,
     facilityId = 164,
-    patientId =82,
+    patientId = 82,
   } = model;
 
   return {
     date,
     customerId,
     facilityId,
-    billFrom,
+    gender,
+    age,
+    patientContactNo,
     term,
     payer,
     billNo,
@@ -31,7 +36,7 @@ const getSchema = (model = {}) => {
     finalPrice,
     finalDiscount,
     advance,
-    patientId
+    patientId,
   };
 };
 
