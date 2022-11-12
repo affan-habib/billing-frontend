@@ -70,7 +70,7 @@ const Header = ({
         <form onSubmit={handleSubmit}>
           <Paper elevation={1} sx={{ p: 2, background: "#F5FFFA" }} square>
             <Grid container spacing={2}>
-              <Grid item xs={3} md={2.25}>
+              <Grid item xs={3} md={2}>
                 <Stack spacing={0.5}>
                   <InputLabel
                     sx={{ fontWeight: 500, textTransform: "uppercase" }}
@@ -196,12 +196,11 @@ const Header = ({
                 spacing={1}
                 direction="row"
                 justifyContent="right"
-                alignItems="center"
+                alignItems="flex-end"
               >
                 <Button
                   size="sm"
                   color="warning"
-                  sx={{ height: 30 }}
                   variant="contained"
                   startIcon={
                     <PlusCircleFilled
@@ -214,7 +213,7 @@ const Header = ({
                 </Button>
                 <Button
                   size="sm"
-                  sx={{ height: 30 }}
+                  elevation={1}
                   variant="contained"
                   color="success"
                   type="submit"
@@ -227,7 +226,7 @@ const Header = ({
                     />
                   }
                 >
-                  SAVE AND PRINT
+                  SAVE
                 </Button>
               </Stack>
             </Grid>
