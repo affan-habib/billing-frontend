@@ -1,12 +1,44 @@
 import { createTheme } from "@mui/material/styles";
-import { green, grey, red } from "@mui/material/colors";
+import { grey, green, deepOrange, red,teal, orange, yellow, blue, deepPurple, cyan } from '@mui/material/colors';
 
 const rawTheme = createTheme({
-  palette: {},
+  palette: {
+    primary: {
+      light: deepOrange[400],
+      main: deepOrange[500],
+      dark: deepOrange[700],
+    },
+    secondary: {
+      light: orange[200],
+      main: orange[300],
+      dark: orange[400],
+    },
+    warning: {
+      light: blue[100],
+      main: blue[500],
+      dark: blue[700],
+    },
+    error: {
+      light: deepOrange[300],
+      main: deepOrange[300],
+      dark: deepOrange[400],
+    },
+    success: {
+      light: deepOrange[400],
+      main: deepOrange[500],
+      dark: deepOrange[700],
+    },
+  },
   components: {
-    MuiButtonBase: {
+    MuiButton: {
       defaultProps: {
         disableRipple: true,
+        disableElevation: true,
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: 1,
+        },
       },
     },
     MuiAutocomplete: {

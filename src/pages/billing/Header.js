@@ -1,5 +1,6 @@
 import {
   PlusCircleFilled,
+  PlusCircleOutlined,
   PrinterOutlined,
   SearchOutlined,
   UnorderedListOutlined,
@@ -158,7 +159,7 @@ const Header = ({
                 </Stack>
               </Grid>
 
-              <Grid item xs={12} md={1}>
+              <Grid item xs={12} md={1} minWidth={150}>
                 <Stack spacing={0.5}>
                   <InputLabel
                     sx={{ fontWeight: 500, textTransform: "uppercase" }}
@@ -202,8 +203,9 @@ const Header = ({
                   size="sm"
                   color="warning"
                   variant="contained"
+                  disableElevation
                   startIcon={
-                    <PlusCircleFilled
+                    <PlusCircleOutlined
                       color="#205081"
                       style={{ fontSize: "16px" }}
                     />
