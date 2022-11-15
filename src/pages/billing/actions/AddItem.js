@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
 import ServiceDetails from "../components/service-details/ServiceDetails";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
+import { addToCart } from "../../../reducers/addToCart";
 const AddItem = ({ values }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -77,11 +78,14 @@ const AddItem = ({ values }) => {
               )}
               onChange={(e, value) =>
                 value?.id &&
-                arrayHelpers.push({
-                  ...value,
-                  ...{ quantity: 1 },
-                  ...{ discountAmount: 0 },
-                })
+                dispatch(
+                  addToCart({
+                    itemId: value.id,
+                    ...value,
+                    ...{ quantity: 1 },
+                    ...{ discountAmount: 0 },
+                  })
+                )
               }
             />
           )}
