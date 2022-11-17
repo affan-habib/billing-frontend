@@ -1,33 +1,45 @@
 .top-header-1 {
-    background-color: rgba(214, 71, 15, 0.6);
+    background-color: #029889;
     color: white;
     font-size: 0.9rem;
-}
-.top-header-2 {
+  }
+  .top-header-2 {
     background-color: #cceeec;
     color: black;
     text-align: center;
     font-size: 0.9rem;
-}
-.top-header-3 {
-    background-color: #FDE0D9;
+  }
+  .top-header-3 {
+    background-color: #ffdbcf;
     color: rgb(0, 0, 0);
     text-align: center;
     font-size: 0.9rem;
-}
-.top-header-3-customized {
-    background-color: #256D85;
+  }
+  .top-header-3-customized {
+    background-color: #256d85;
     color: white;
     font-size: 0.9rem;
-}
-.top-header-2-customized {
-    background-color: #256D85;
+  }
+  .top-header-2-customized {
+    background-color: #256d85;
     color: white;
     font-size: 0.9rem;
-}
-.top-header-4 {
+  }
+  .top-header-4 {
     background-color: #ffdbcf;
     color: #0f0f0f;
     font-size: 0.9rem;
     font-weight: 500;
-}
+  }
+  .top-header-5 {
+    background-color: #757575;
+    color: white;
+    font-size: 0.9rem;
+  }
+  .top-header-6 {
+    background-color: #f7f7f7;
+    color: black;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
