@@ -13,19 +13,24 @@ import { FieldArray } from "formik";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
-import ServiceDetails from "../components/service-details/ServiceDetails";
+import ServiceList from "../components/service-list/ServiceList";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-import { addToCart } from "../../../reducers/addToCart";
-const AddItem = ({ values }) => {
+import { addToCart } from "../../../reducers/cartSlice";
+const AddItem = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const { items = [] } = useSelector(selectApi);
+  const {
+    items = {
+      data: [],
+    },
+  } = useSelector(selectApi);
+  const orderDetailList = useSelector((state) => state.cart.orderDetailList);
   useEffect(() => {
     setTimeout(
       () =>
         dispatch(
           callApi({
-            operationId: `api/courses`,
+            operationId: `api/v1/service-master/items`,
             output: "items",
           })
         ),
@@ -33,14 +38,14 @@ const AddItem = ({ values }) => {
     );
   }, [dispatch]);
 
-  let alreadySelectedOptions = values.orderDetailList.map((el) => el.id);
-  let filterSelectedOptions = items.filter(
+  let alreadySelectedOptions = orderDetailList.map((el) => el.id);
+  let filterSelectedOptions = items.data.filter(
     (el) => alreadySelectedOptions.indexOf(el.id) == -1
   );
   const filterOptions = createFilterOptions({
     stringify: ({ masterServiceName, id }) => `${masterServiceName} ${id}`,
   });
-  console.log(filterSelectedOptions, alreadySelectedOptions);
+  console.log({ filterSelectedOptions }, { alreadySelectedOptions });
   return (
     <Box>
       <Stack direction="row">
@@ -80,17 +85,50 @@ const AddItem = ({ values }) => {
                 value?.id &&
                 dispatch(
                   addToCart({
-                    itemId: value.id,
-                    ...value,
-                    ...{ quantity: 1 },
-                    ...{ discountAmount: 0 },
+                    id: value.id,
+                    tariffBaseAmount: value.tariffBaseAmount,
+                    masterServiceName: value.masterServiceName,
+                    ...{
+                      discountAmount: 0,
+                      expiryDate: 0,
+                      vatPerUnit: 0,
+                      discountPerUnit: 0,
+                      quantityOrdered: 1,
+                      quantityReturned: 0,
+                      discountTotal: 0,
+                      discountReturned: 0,
+                      vatTotal: 0,
+                      vatReturned: 0,
+                      subtotalOrdered: 0,
+                      subtotalReturned: 0,
+                      rowTotal: 0,
+                      returnedBy: "string",
+                      returnDate: "2022-11-13T11:35:33.765Z",
+                    },
                   })
                 )
               }
             />
           )}
         />
+
+        <Tooltip title="Click to see Service Details" arrow>
+          <Button
+            sx={{ ml: 2, height: 35, mt: 0.5, width: 200 }}
+            variant="outlined"
+            color="error"
+            size="small"
+            type="button"
+            onClick={() => setOpen(!open)}
+            startIcon={<InfoCircleOutlined style={{ fontSize: "16px" }} />}
+          >
+            SERVICE LIST
+          </Button>
+        </Tooltip>
       </Stack>
+      <Dialog open={open} onClose={() => setOpen(!open)} fullWidth>
+        <ServiceList />
+      </Dialog>
     </Box>
   );
 };

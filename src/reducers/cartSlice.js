@@ -24,35 +24,35 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const itemInCart = state.orderDetailList.find(
-        (item) => item.itemId === action.payload.itemId
+        (item) => item.id === action.payload.id
       );
       if (itemInCart) {
-        itemInCart.quantity++;
+        itemInCart.quantityOrdered++;
       } else {
-        state.orderDetailList.push({ ...action.payload, quantity: 1 });
+        state.orderDetailList.push({ ...action.payload, quantityOrdered: 1 });
       }
     },
     incrementQuantity: (state, action) => {
       const item = state.orderDetailList.find(
-        (item) => item.itemId === action.payload
+        (item) => item.id === action.payload
       );
-      item.quantity++;
+      item.quantityOrdered++;
     },
     decrementQuantity: (state, action) => {
       const item = state.orderDetailList.find(
-        (item) => item.itemId === action.payload
+        (item) => item.id === action.payload
       );
-      if (item.quantity === 1) {
-        item.quantity = 1;
+      if (item.quantityOrdered === 1) {
+        item.quantityOrdered = 1;
       } else {
-        item.quantity--;
+        item.quantityOrdered--;
       }
     },
     removeItem: (state, action) => {
       const removeItem = state.orderDetailList.filter(
-        (item) => item.itemId !== action.payload
+        (item) => item.id !== action.payload
       );
-      state.cart = removeItem;
+      state.orderDetailList = removeItem;
     },
   },
 });
