@@ -1,32 +1,43 @@
 import { createTheme } from "@mui/material/styles";
-import { grey, green, deepOrange, red,teal, orange, yellow, blue, deepPurple, cyan } from '@mui/material/colors';
+import {
+  grey,
+  green,
+  deepOrange,
+  red,
+  teal,
+  orange,
+  yellow,
+  blue,
+  deepPurple,
+  cyan,
+} from "@mui/material/colors";
 
 const rawTheme = createTheme({
   palette: {
     primary: {
-      light: deepOrange[400],
-      main: deepOrange[500],
-      dark: deepOrange[700],
+      light: teal[400],
+      main: teal[500],
+      dark: teal[700],
     },
     secondary: {
-      light: orange[200],
-      main: orange[300],
-      dark: orange[400],
+      light: teal[200],
+      main: teal[300],
+      dark: teal[400],
     },
     warning: {
-      light: blue[100],
-      main: blue[500],
-      dark: blue[700],
+      light: deepPurple[100],
+      main: deepPurple[500],
+      dark: deepPurple[700],
     },
     error: {
-      light: deepOrange[300],
-      main: deepOrange[300],
-      dark: deepOrange[400],
+      light: teal[300],
+      main: teal[300],
+      dark: teal[400],
     },
     success: {
-      light: deepOrange[400],
-      main: deepOrange[500],
-      dark: deepOrange[700],
+      light: green[400],
+      main: green[600],
+      dark: green[700],
     },
   },
   components: {
@@ -38,6 +49,7 @@ const rawTheme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 1,
+          boxShadow: 0,
         },
       },
     },
