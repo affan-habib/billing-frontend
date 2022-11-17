@@ -21,9 +21,9 @@ function App() {
 
   return (
     <>
-      {/* {routing}
-       */}
-       <Billing/>
+      {routing}
+      
+       {/* <Billing/> */}
     </>
   );
 }

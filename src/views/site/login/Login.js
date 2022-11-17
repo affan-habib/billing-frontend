@@ -6,7 +6,7 @@ class LoginModel {
      * Model properties
      */
     constructor() {
-        this.username = '';
+        this.email = '';
         this.password = '';
     }
 
@@ -18,7 +18,7 @@ class LoginModel {
         if (data.id !== undefined && data.id) {
             obj.id = data.id;
         }
-        obj.username = data.username ?? '';
+        obj.email = data.email ?? '';
         obj.password = data.password ?? '';
         return obj;
     }
@@ -37,7 +37,7 @@ class LoginModel {
      */
     validator() {
         return Yup.object().shape({
-            username: Yup.string()
+            email: Yup.string()
                 .required('Required'),
             password: Yup.string()
                 .required('Required'),

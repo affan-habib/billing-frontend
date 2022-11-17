@@ -1,4 +1,4 @@
-const baseUrl = "192.168.1.135";
+const baseUrl = "localhost:6000/api/v1";
 // const baseUrl = process.env.REACT_APP_BASE_API_URL;
 const protocol = process.env.REACT_APP_API_PROTOCOL || 'http';
 
