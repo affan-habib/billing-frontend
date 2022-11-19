@@ -142,12 +142,12 @@ const Customers = () => {
         </Button>
         <Button
           sx={{ mb: 2, ml: 2, width: 200 }}
-          disabled={selectedOptions.length == 0}
+          disabled={selectedOptions.length !== 1}
           variant="contained"
           color="warning"
           onClick={() => handleadd()}
         >
-          {selectedOptions.length ? "Add to New bill" : "Select services"}
+          {selectedOptions.length ? "Bill to customer" : "Select Customer"}
         </Button>
         <Dialog open={open} onClose={() => setOpen(!open)}>
           <AddProduct setOpen={setOpen} />
