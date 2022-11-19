@@ -76,7 +76,7 @@ class AuthUserHelper {
 
   isLoggedIn() {
     return (
-      Cookies.get("access_token") && Cookies.get("access_token").length > 0
+      Cookies.get("token") && Cookies.get("token").length > 0
     );
   }
 
@@ -95,8 +95,8 @@ class AuthUserHelper {
 
   saveLoginData(authData) {
     // save token
-    let token = authData.accessToken || "";
-    Cookies.set("access_token", token, {
+    let token = authData.token || "";
+    Cookies.set("token", token, {
       expires: 15,
       //sameSite: "None",
       //secure: true,
@@ -138,7 +138,7 @@ class AuthUserHelper {
   }
 
   removeLoginData() {
-    Cookies.set("access_token", "");
+    Cookies.set("token", "");
     localStorage.setItem("auth_user", "");
     localStorage.setItem("auth_roles", "");
     localStorage.setItem("auth_role_id", "");

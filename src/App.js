@@ -6,15 +6,15 @@ import authRouter from './routes';
 
 
 // const PrivateRoutes = () => {
-//   let accessToken = Cookies.get("access_token");
+//   let token = Cookies.get("token");
 //   return (
-//     accessToken != null && accessToken.length ? <Outlet /> : <Navigate to='/login' />
+//     token != null && token.length ? <Outlet /> : <Navigate to='/login' />
 //   )
 // }
 
 function App() {
-  let accessToken = Cookies.get("access_token");
-  const isLoggedIn = accessToken != null && accessToken.length ? true : false;
+  let token = Cookies.get("token");
+  const isLoggedIn = token != null && token.length ? true : false;
 
   const routing = useRoutes(authRouter(isLoggedIn));
 

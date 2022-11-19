@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { Contact } from './views/site/home/Contact';
-import LangdingPage from './views/site/home/LangdingPage';
+import Billing from './pages/';
 import LoginPage from './views/site/login/LoginPage';
 
 const authRouter = (isLoggedIn) => [
@@ -8,7 +8,7 @@ const authRouter = (isLoggedIn) => [
     path: '/app',
     element: isLoggedIn ? <Outlet /> : <Navigate to="/login" />,
     children: [
-      { path: 'dashboard', element: <LangdingPage /> },
+      { path: 'dashboard', element: <Billing /> },
       { path: 'contact', element: <Contact /> },
     ],
   },
