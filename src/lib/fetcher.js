@@ -15,7 +15,7 @@ const fetcher = async (route, options = {}) => {
 
   const response = await fetch(url, {
     headers: {
-      'Authorization': `Bearer `,
+      'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzg3Yzk5MDhiMTYzNzRiYzI1NWRjYSIsImlhdCI6MTY2ODg0NDQzOCwiZXhwIjoxNjcxNDM2NDM4fQ.oADm3vr11rce0TkOcgRZ4DEQpTJys8J8Ce_7U5cD0To`,
       'Content-Type': 'application/json; charset=utf-8',
     },
     ...options

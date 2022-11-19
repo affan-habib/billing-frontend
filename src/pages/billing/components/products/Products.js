@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import { Box, Button, Typography, Stack } from "@mui/material";
+import { Box, Button, Typography, Stack, Dialog } from "@mui/material";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../reducers/apiSlice";
+import { callApi, selectApi } from "../../../../reducers/apiSlice";
 import CustomNoRowsOverlay from "../CustomNoRowsOverlay";
-import { addToCart } from "../../reducers/cartSlice";
+import { addToCart } from "../../../../reducers/cartSlice";
+import RemoveItem from "../../actions/RemoveItem";
+import AddProduct from "./AddProduct";
+import DeleteProduct from "./DeleteProduct";
 
-const ServiceList = ({ setOpen }) => {
+const Products = () => {
   const dispatch = useDispatch();
   const {
     items = {
@@ -57,8 +60,19 @@ const ServiceList = ({ setOpen }) => {
       sortable: false,
       align: "center",
     },
+    {
+      minWidth: 120,
+      align: "center",
+      field: "actions",
+      headerName: "ACTION",
+      type: "actions",
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      renderCell: (params) => <DeleteProduct shouldDelete={params.id} />,
+    },
   ];
   const [selectedOptions, setSelectedOptions] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
   const handleadd = () => {
     let SelectedOptions = items.data.filter(
       (el) => selectedOptions.indexOf(el.id) + 1
@@ -90,17 +104,28 @@ const ServiceList = ({ setOpen }) => {
 
   return (
     <Box sx={{ height: 400, mt: 2, width: "100%" }}>
-      <Stack justifyContent="space-between" alignItems="flex-start">
+      <Stack direction="row">
         <Button
-          sx={{ mb: 2, ml: 2, bgcolor: "#029889" }}
+          sx={{ mb: 2, ml: 2, width: 200 }}
+          variant="contained"
+          onClick={() => setOpen(true)}
+        >
+          Add New service
+        </Button>
+        <Button
+          sx={{ mb: 2, ml: 2, width: 200 }}
           disabled={selectedOptions.length == 0}
           variant="contained"
           onClick={() => handleadd()}
         >
           {selectedOptions.length ? "Add services" : "Select services"}
         </Button>
+        <Dialog open={open} onClose={() => setOpen(!open)}>
+          <AddProduct setOpen={setOpen} />
+        </Dialog>
       </Stack>
       <DataGrid
+        getRowId={(row) => row._id}
         sx={{
           [`& .${gridClasses.row}`]: {
             bgcolor: (theme) =>
@@ -131,4 +156,4 @@ const ServiceList = ({ setOpen }) => {
   );
 };
 
-export default ServiceList;
+export default Products;

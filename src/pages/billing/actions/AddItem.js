@@ -61,7 +61,7 @@ const AddItem = () => {
               sx={{ width: 300 }}
               options={filterSelectedOptions}
               autoHighlight
-              blurOnSelect
+              // blurOnSelect
               clearOnBlur={true}
               // filterSelectedOptions
               // autoSelect

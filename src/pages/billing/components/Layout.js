@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Billing from "../Billing";
 import { Purchage } from "./purchage/Purchage";
+import Products from "./products/Products";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,7 +75,7 @@ export default function BasicTabs() {
           <Purchage />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Purchage />
+          <Products />
         </TabPanel>
       </Box>
     </Box>
