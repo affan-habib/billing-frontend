@@ -4,7 +4,7 @@ const getSchema = (model = {}) => {
     id = 0,
     name = "Service Name",
     age = 61,
-    contactNumber = 0,
+    contactNumber = "01798984444",
     gender = "Male",
    
   } = model;

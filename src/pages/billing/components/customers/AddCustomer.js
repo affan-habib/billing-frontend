@@ -123,7 +123,7 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={8} sm={6}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Product/service name</InputLabel>
+                  <InputLabel>Customer name</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="name"
@@ -141,6 +141,30 @@ const AddProduct = ({ setOpen }) => {
                       id="standard-weight-helper-text-password-login"
                     >
                       {errors.name}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={8} sm={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Gender</InputLabel>
+                  <TextField
+                    autoFocus={true}
+                    id="gender"
+                    name="gender"
+                    placeholder="Enter gender"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.gender}
+                    fullWidth
+                    autoComplete="first-name"
+                  />
+                  {touched.gender && errors.gender && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.gender}
                     </FormHelperText>
                   )}
                 </Stack>
