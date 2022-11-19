@@ -94,6 +94,8 @@ const rawTheme = createTheme({
       styleOverrides: {
         root: {
           fontSize: "0.9rem",
+          textTransform: "uppercase",
+          fontWeight: 500
         },
         outlined: {
           lineHeight: "0.8em",

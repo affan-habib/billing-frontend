@@ -65,7 +65,7 @@ export default function BasicTabs() {
           >
             <Tab label="NEW BILL" {...a11yProps(0)} />
             <Tab label="SALES" {...a11yProps(1)} />
-            <Tab label="PURCHAGE" {...a11yProps(2)} />
+            <Tab label="OUR PRODUCTS/SERVICES" {...a11yProps(2)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>

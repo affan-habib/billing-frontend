@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { Box, Button, Typography, Stack, Dialog } from "@mui/material";
+import { Box, Button, Stack, Dialog } from "@mui/material";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../../reducers/apiSlice";
 import CustomNoRowsOverlay from "../CustomNoRowsOverlay";
 import { addToCart } from "../../../../reducers/cartSlice";
-import RemoveItem from "../../actions/RemoveItem";
 import AddProduct from "./AddProduct";
 import DeleteProduct from "./DeleteProduct";
 
@@ -15,6 +14,10 @@ const Products = () => {
     items = {
       data: [],
     },
+    itemDeleted = {
+      id: null,
+    },
+    itemSaved,
   } = useSelector(selectApi);
   useEffect(() => {
     setTimeout(
@@ -27,7 +30,7 @@ const Products = () => {
         ),
       1000
     );
-  }, []);
+  }, [itemDeleted.id, itemSaved]);
   const columns = [
     {
       field: "id",
@@ -54,6 +57,42 @@ const Products = () => {
       field: "tariffBaseAmount",
       headerClassName: "top-header-1",
       headerName: "PRICE",
+      type: "number",
+      minWidth: 120,
+      headerAlign: "center",
+      sortable: false,
+      align: "center",
+    },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      field: "discountAmount",
+      headerClassName: "top-header-1",
+      headerName: "DISCOUNT",
+      type: "number",
+      minWidth: 120,
+      headerAlign: "center",
+      sortable: false,
+      align: "center",
+    },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      field: "vatPerUnit",
+      headerClassName: "top-header-1",
+      headerName: "VAT PER UNIT",
+      type: "number",
+      minWidth: 120,
+      headerAlign: "center",
+      sortable: false,
+      align: "center",
+    },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      field: "expiryDate",
+      headerClassName: "top-header-1",
+      headerName: "EXPIRY DATE",
       type: "number",
       minWidth: 120,
       headerAlign: "center",

@@ -97,7 +97,7 @@ const AddProduct = ({ setOpen }) => {
                   Add New Product
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={2} sm={2}>
                 <Stack spacing={0.5}>
                   <InputLabel>Id</InputLabel>
                   <TextField
@@ -121,9 +121,9 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={8} sm={6}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Full Name</InputLabel>
+                  <InputLabel>Product/service name</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="masterServiceName"
@@ -145,10 +145,9 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-
-              <Grid item xs={6} md={6}>
+              <Grid item xs={4} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Age</InputLabel>
+                  <InputLabel>BASE PRICE</InputLabel>
                   <TextField
                     id="tariffBaseAmount"
                     name="tariffBaseAmount"
@@ -170,54 +169,79 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-              {/* <Grid item xs={6} md={6}>
+
+              <Grid item xs={4} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel htmlFor="gender">Gender</InputLabel>
-                  <Field
-                    name="gender"
-                    component={Select}
-                    value={values.gender}
-                    onChange={(e) => {
-                      setFieldValue("gender", e.target.value);
-                    }}
-                  >
-                    <MenuItem value="">Select Gender</MenuItem>
-                    {gender?.data?.map((el) => (
-                      <MenuItem key={el.codeId} value={el.name}>
-                        {el.name}
-                      </MenuItem>
-                    ))}
-                  </Field>
-                  {touched.gender && errors.gender && (
-                    <FormHelperText error>{errors.gender}</FormHelperText>
-                  )}
-                </Stack>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <Stack spacing={0.5}>
-                  <InputLabel htmlFor="patientContactNo">
-                    Contact Number
-                  </InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    type="text"
-                    name="patientContactNo"
-                    placeholder="Enter Contact Number"
+                  <InputLabel>Discount</InputLabel>
+                  <TextField
+                    id="discountAmount"
+                    name="discountAmount"
+                    placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.patientContactNo}
+                    value={values.discountAmount}
+                    fullWidth
+                    type="number"
+                    autoComplete="age"
                   />
-
-                  {touched.patientContactNo && errors.patientContactNo && (
+                  {touched.discountAmount && errors.discountAmount && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.patientContactNo}
+                      {errors.discountAmount}
                     </FormHelperText>
                   )}
                 </Stack>
-              </Grid> */}
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Expiry Date</InputLabel>
+                  <TextField
+                    id="expiryDate"
+                    name="expiryDate"
+                    placeholder="Enter Age"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.expiryDate}
+                    fullWidth
+                    type="number"
+                    autoComplete="age"
+                  />
+                  {touched.expiryDate && errors.expiryDate && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.expiryDate}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Vat Per Unit</InputLabel>
+                  <TextField
+                    id="vatPerUnit"
+                    name="vatPerUnit"
+                    placeholder="Enter Age"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.vatPerUnit}
+                    fullWidth
+                    type="number"
+                    autoComplete="age"
+                  />
+                  {touched.vatPerUnit && errors.vatPerUnit && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.vatPerUnit}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
               <Grid item xs={12}>
                 <Button
                   variant="contained"

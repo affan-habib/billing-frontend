@@ -4,12 +4,20 @@ const getSchema = (model = {}) => {
     id = 0,
     masterServiceName = "Service Name",
     tariffBaseAmount = 61,
+    discountAmount = 0,
+    expiryDate = 0,
+    vatPerUnit = 0,
+    discountPerUnit = 0,
   } = model;
 
   return {
     id,
     masterServiceName,
     tariffBaseAmount,
+    discountAmount,
+    expiryDate,
+    vatPerUnit,
+    discountPerUnit,
   };
 };
 
