@@ -138,7 +138,7 @@ const Customers = () => {
           variant="contained"
           onClick={() => setOpen(true)}
         >
-          Add New service
+          Add New Customer
         </Button>
         <Button
           sx={{ mb: 2, ml: 2, width: 200 }}

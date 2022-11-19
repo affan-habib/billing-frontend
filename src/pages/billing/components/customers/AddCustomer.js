@@ -203,7 +203,7 @@ const AddProduct = ({ setOpen }) => {
                     placeholder="Enter contactNumber"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.name}
+                    value={values.contactNumber}
                     fullWidth
                     autoComplete="first-name"
                   />
