@@ -1,12 +1,56 @@
 import { createTheme } from "@mui/material/styles";
-import { green, grey, red } from "@mui/material/colors";
+import {
+  grey,
+  green,
+  deepOrange,
+  red,
+  teal,
+  orange,
+  yellow,
+  blue,
+  deepPurple,
+  cyan,
+} from "@mui/material/colors";
 
 const rawTheme = createTheme({
-  palette: {},
+  palette: {
+    primary: {
+      light: teal[400],
+      main: teal[500],
+      dark: teal[700],
+    },
+    secondary: {
+      light: teal[200],
+      main: teal[300],
+      dark: teal[400],
+    },
+    warning: {
+      light: deepPurple[100],
+      main: deepPurple[500],
+      dark: deepPurple[700],
+    },
+    error: {
+      light: teal[300],
+      main: teal[300],
+      dark: teal[400],
+    },
+    success: {
+      light: green[400],
+      main: green[600],
+      dark: green[700],
+    },
+  },
   components: {
-    MuiButtonBase: {
+    MuiButton: {
       defaultProps: {
         disableRipple: true,
+        disableElevation: true,
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: 1,
+          boxShadow: 0,
+        },
       },
     },
     MuiAutocomplete: {
@@ -50,6 +94,8 @@ const rawTheme = createTheme({
       styleOverrides: {
         root: {
           fontSize: "0.9rem",
+          textTransform: "uppercase",
+          fontWeight: 500
         },
         outlined: {
           lineHeight: "0.8em",

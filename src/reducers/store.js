@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import ApiReducer from "./apiSlice";
-import { cartReducer } from "./addToCart";
+import { cartReducer } from "./cartSlice";
 import confirmReducer from "./confirmSlice";
 import toastReducer from "./toastSlice";
 import sidebarShowReducer from "./sidebarSlice";

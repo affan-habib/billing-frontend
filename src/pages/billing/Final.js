@@ -2,8 +2,16 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import "./styles/index.css";
-export default function Final({ values }) {
+import { useSelector } from "react-redux";
+export default function Final() {
+  const orderDetailList = useSelector((state) => state.cart.orderDetailList);
+  let finalAmount = orderDetailList.reduce(
+    (a, b) => a + b.tariffBaseAmount * b.quantityOrdered,
+    0
+  );
+
   const [discountAmount, setDiscountAmount] = React.useState(0);
+
   const columns = [
     {
       headerClassName: "top-header-3",
@@ -14,10 +22,7 @@ export default function Final({ values }) {
       description: "This column has a value getter and is not sortable.",
       sortable: false,
       flex: 1,
-      valueGetter: (params) =>
-        values.orderDetailList.length !== 0
-          ? values.orderDetailList.reduce((a, b) => a + b.tariffBaseAmount, 0)
-          : 0,
+      valueGetter: (params) => finalAmount,
       headerAlign: "center",
       align: "center",
       type: "number",
@@ -25,7 +30,7 @@ export default function Final({ values }) {
     {
       headerClassName: "top-header-2",
       cellClassName: "top-header-4",
-      field: "value",
+      field: "discountAmount",
       headerClassName: "top-header-1",
       headerName: "DISCOUNT",
       editable: true,
@@ -35,6 +40,33 @@ export default function Final({ values }) {
       align: "center",
       sortable: false,
       valueGetter: (params) => discountAmount,
+    },
+    {
+      field: "advance",
+      headerClassName: "top-header-3",
+      cellClassName: "top-header-4",
+      headerClassName: "top-header-1",
+      headerName: "ADVANCE",
+      // editable: true,
+      type: "number",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+      sortable: false,
+    },
+    {
+      field: "due",
+
+      cellClassName: "top-header-4",
+      headerClassName: "top-header-1",
+      valueGetter: (params) => finalAmount - discountAmount || 0,
+
+      headerName: "DUE BY (AMOUNT)",
+      type: "number",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+      sortable: false,
     },
   ];
   const items = [
@@ -51,9 +83,8 @@ export default function Final({ values }) {
     },
   ];
 
-  console.log("hoye ja", values.orderDetailList);
   return (
-    <Box sx={{ height: 220, mt: 2, Width: "100%" }}>
+    <Box sx={{ height: 80, Width: "100%" }}>
       <DataGrid
         sx={{
           [`& .${gridClasses.row}`]: {
@@ -61,13 +92,10 @@ export default function Final({ values }) {
               theme.palette.mode === "light" ? "EEFFEB" : "yellow",
           },
         }}
-        // checkboxSelection={true}
         rows={items}
         columns={columns}
-        // pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
-        // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
         hideFooterPagination
         disableColumnMenu

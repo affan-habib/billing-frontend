@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { callApi, clearState, selectApi } from "../../../../reducers/apiSlice";
 import { CloseCircleFilled } from "@ant-design/icons";
 
-const QuickRegistration = ({ setOpen }) => {
+const AddProduct = ({ setOpen }) => {
   const dispatch = useDispatch();
   const {
     gender = {
@@ -61,22 +61,13 @@ const QuickRegistration = ({ setOpen }) => {
         enableReinitialize
         validationSchema={validator}
         onSubmit={(values) => {
-          let request = new FormData();
-          request.append("patientId", values.patientId);
-          request.append("customerId", values.customerId);
-          request.append("facilityId", values.facilityId);
-          request.append("firstName", values.firstName);
-          request.append("patientAge", values.patientAge);
-          request.append("patientContactNo", values.patientContactNo);
-
           dispatch(
             callApi({
-              operationId: "api/v1/patient/save",
-              output: "quick_registration",
+              operationId: "api/v1/service-master/items",
+              output: "itemSaved",
               parameters: {
                 method: "POST",
-                body: request,
-                hasFile: true,
+                body: JSON.stringify(getSchema(values)),
               },
             })
           );
@@ -103,102 +94,150 @@ const QuickRegistration = ({ setOpen }) => {
                   sx={{ display: "block" }}
                   color="#029889"
                 >
-                  Quick Registration
+                  Add New Product
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={2} sm={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Full Name</InputLabel>
+                  <InputLabel>Id</InputLabel>
                   <TextField
                     autoFocus={true}
-                    id="firstName"
-                    name="firstName"
+                    id="id"
+                    name="id"
                     placeholder="Enter name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.firstName}
+                    value={values.id}
                     fullWidth
                     autoComplete="first-name"
                   />
-                  {touched.firstName && errors.firstName && (
+                  {touched.id && errors.id && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.firstName}
+                      {errors.id}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
-
-              <Grid item xs={6} md={6}>
+              <Grid item xs={8} sm={6}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Age</InputLabel>
+                  <InputLabel>Product/service name</InputLabel>
                   <TextField
-                    id="patientAge"
-                    name="patientAge"
+                    autoFocus={true}
+                    id="masterServiceName"
+                    name="masterServiceName"
+                    placeholder="Enter name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.masterServiceName}
+                    fullWidth
+                    autoComplete="first-name"
+                  />
+                  {touched.masterServiceName && errors.masterServiceName && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.masterServiceName}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>BASE PRICE</InputLabel>
+                  <TextField
+                    id="tariffBaseAmount"
+                    name="tariffBaseAmount"
                     placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.patientAge}
+                    value={values.tariffBaseAmount}
                     fullWidth
                     type="number"
                     autoComplete="age"
                   />
-                  {touched.patientAge && errors.patientAge && (
+                  {touched.tariffBaseAmount && errors.tariffBaseAmount && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.patientAge}
+                      {errors.tariffBaseAmount}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={6} md={6}>
+
+              <Grid item xs={4} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel htmlFor="gender">Gender</InputLabel>
-                  <Field
-                    name="gender"
-                    component={Select}
-                    value={values.gender}
-                    onChange={(e) => {
-                      setFieldValue("gender", e.target.value);
-                    }}
-                  >
-                    <MenuItem value="">Select Gender</MenuItem>
-                    {gender?.data?.map((el) => (
-                      <MenuItem key={el.codeId} value={el.name}>
-                        {el.name}
-                      </MenuItem>
-                    ))}
-                  </Field>
-                  {touched.gender && errors.gender && (
-                    <FormHelperText error>{errors.gender}</FormHelperText>
-                  )}
-                </Stack>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <Stack spacing={0.5}>
-                  <InputLabel htmlFor="patientContactNo">
-                    Contact Number
-                  </InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    type="text"
-                    name="patientContactNo"
-                    placeholder="Enter Contact Number"
+                  <InputLabel>Discount</InputLabel>
+                  <TextField
+                    id="discountAmount"
+                    name="discountAmount"
+                    placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.patientContactNo}
+                    value={values.discountAmount}
+                    fullWidth
+                    type="number"
+                    autoComplete="age"
                   />
-
-                  {touched.patientContactNo && errors.patientContactNo && (
+                  {touched.discountAmount && errors.discountAmount && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.patientContactNo}
+                      {errors.discountAmount}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Expiry Date</InputLabel>
+                  <TextField
+                    id="expiryDate"
+                    name="expiryDate"
+                    placeholder="Enter Age"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.expiryDate}
+                    fullWidth
+                    type="number"
+                    autoComplete="age"
+                  />
+                  {touched.expiryDate && errors.expiryDate && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.expiryDate}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Vat Per Unit</InputLabel>
+                  <TextField
+                    id="vatPerUnit"
+                    name="vatPerUnit"
+                    placeholder="Enter Age"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.vatPerUnit}
+                    fullWidth
+                    type="number"
+                    autoComplete="age"
+                  />
+                  {touched.vatPerUnit && errors.vatPerUnit && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.vatPerUnit}
                     </FormHelperText>
                   )}
                 </Stack>
@@ -222,4 +261,4 @@ const QuickRegistration = ({ setOpen }) => {
   );
 };
 
-export default QuickRegistration;
+export default AddProduct;

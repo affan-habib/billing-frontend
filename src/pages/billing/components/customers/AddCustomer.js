@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { callApi, clearState, selectApi } from "../../../../reducers/apiSlice";
 import { CloseCircleFilled } from "@ant-design/icons";
 
-const QuickRegistration = ({ setOpen }) => {
+const AddProduct = ({ setOpen }) => {
   const dispatch = useDispatch();
   const {
     gender = {
@@ -61,22 +61,13 @@ const QuickRegistration = ({ setOpen }) => {
         enableReinitialize
         validationSchema={validator}
         onSubmit={(values) => {
-          let request = new FormData();
-          request.append("patientId", values.patientId);
-          request.append("customerId", values.customerId);
-          request.append("facilityId", values.facilityId);
-          request.append("firstName", values.firstName);
-          request.append("patientAge", values.patientAge);
-          request.append("patientContactNo", values.patientContactNo);
-
           dispatch(
             callApi({
-              operationId: "api/v1/patient/save",
-              output: "quick_registration",
+              operationId: "api/customers",
+              output: "customerSaved",
               parameters: {
                 method: "POST",
-                body: request,
-                hasFile: true,
+                body: JSON.stringify(getSchema(values)),
               },
             })
           );
@@ -103,106 +94,130 @@ const QuickRegistration = ({ setOpen }) => {
                   sx={{ display: "block" }}
                   color="#029889"
                 >
-                  Quick Registration
+                  Add New Customer
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={2} sm={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Full Name</InputLabel>
+                  <InputLabel>Id</InputLabel>
                   <TextField
                     autoFocus={true}
-                    id="firstName"
-                    name="firstName"
+                    id="id"
+                    name="id"
                     placeholder="Enter name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.firstName}
+                    value={values.id}
                     fullWidth
                     autoComplete="first-name"
                   />
-                  {touched.firstName && errors.firstName && (
+                  {touched.id && errors.id && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.firstName}
+                      {errors.id}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
-
-              <Grid item xs={6} md={6}>
+              <Grid item xs={8} sm={6}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Age</InputLabel>
+                  <InputLabel>Customer name</InputLabel>
                   <TextField
-                    id="patientAge"
-                    name="patientAge"
+                    autoFocus={true}
+                    id="name"
+                    name="name"
+                    placeholder="Enter name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.name}
+                    fullWidth
+                    autoComplete="first-name"
+                  />
+                  {touched.name && errors.name && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.name}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={8} sm={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Gender</InputLabel>
+                  <TextField
+                    autoFocus={true}
+                    id="gender"
+                    name="gender"
+                    placeholder="Enter gender"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.gender}
+                    fullWidth
+                    autoComplete="first-name"
+                  />
+                  {touched.gender && errors.gender && (
+                    <FormHelperText
+                      error
+                      id="standard-weight-helper-text-password-login"
+                    >
+                      {errors.gender}
+                    </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>AGe</InputLabel>
+                  <TextField
+                    id="age"
+                    name="age"
                     placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.patientAge}
+                    value={values.age}
                     fullWidth
                     type="number"
                     autoComplete="age"
                   />
-                  {touched.patientAge && errors.patientAge && (
+                  {touched.age && errors.age && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.patientAge}
+                      {errors.age}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={6} md={6}>
+              <Grid item xs={8} sm={6}>
                 <Stack spacing={0.5}>
-                  <InputLabel htmlFor="gender">Gender</InputLabel>
-                  <Field
-                    name="gender"
-                    component={Select}
-                    value={values.gender}
-                    onChange={(e) => {
-                      setFieldValue("gender", e.target.value);
-                    }}
-                  >
-                    <MenuItem value="">Select Gender</MenuItem>
-                    {gender?.data?.map((el) => (
-                      <MenuItem key={el.codeId} value={el.name}>
-                        {el.name}
-                      </MenuItem>
-                    ))}
-                  </Field>
-                  {touched.gender && errors.gender && (
-                    <FormHelperText error>{errors.gender}</FormHelperText>
-                  )}
-                </Stack>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <Stack spacing={0.5}>
-                  <InputLabel htmlFor="patientContactNo">
-                    Contact Number
-                  </InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    type="text"
-                    name="patientContactNo"
-                    placeholder="Enter Contact Number"
+                  <InputLabel>Contact Number</InputLabel>
+                  <TextField
+                    autoFocus={true}
+                    id="contactNumber"
+                    name="contactNumber"
+                    placeholder="Enter contactNumber"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.patientContactNo}
+                    value={values.contactNumber}
+                    fullWidth
+                    autoComplete="first-name"
                   />
-
-                  {touched.patientContactNo && errors.patientContactNo && (
+                  {touched.contactNumber && errors.contactNumber && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.patientContactNo}
+                      {errors.contactNumber}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
+              
               <Grid item xs={12}>
                 <Button
                   variant="contained"
@@ -222,4 +237,4 @@ const QuickRegistration = ({ setOpen }) => {
   );
 };
 
-export default QuickRegistration;
+export default AddProduct;

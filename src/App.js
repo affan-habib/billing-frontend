@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useRoutes } from "react-router-dom";
 import "./App.css";
 import Billing from "./pages/billing/Billing";
+import Layout from "./pages/billing/components/Layout";
 import Home from "./pages/Home";
 import authRouter from "./routes";
 
@@ -20,7 +21,7 @@ function App() {
 
   const routing = useRoutes(authRouter(isLoggedIn));
 
-  return <Billing />;
+  return <Layout />;
 }
 
 export default App;

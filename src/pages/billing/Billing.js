@@ -1,66 +1,55 @@
-import { Box, Grid, Paper } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Dialog, Grid, Paper } from "@mui/material";
 import { Formik } from "formik";
-import { useDispatch } from "react-redux";
-import { callApi } from "../../reducers/apiSlice";
-import AddItem from "./actions/AddItem";
+import { useDispatch, useSelector } from "react-redux";
+import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
 import Header from "./Header";
 import Final from "./Final";
-import Remarks from "./actions/remarks/Remarks";
+import BottomSubmit from "./actions/bottomSubmit/BottomSubmit";
 import { getSchema, validator } from "./Schema";
 import "./styles/index.css";
 import TopHeader from "./components/TopHeader";
 import Body from "./Body";
+import Report from "./report/Report";
 const Billing = () => {
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  const [open, setOpen] = useState(false);
 
-  const handleSubmit = (values) =>
-    dispatch(
-      callApi({
-        operationId: "api/v1/order-details/save",
-        output: "orderDetails",
-        parameters: {
-          method: "POST",
-          body: JSON.stringify(values),
-        },
-      })
-    );
   return (
     <>
+      <Dialog open={open} onClose={() => setOpen(!open)}>
+        <Report setOpen={setOpen} />
+      </Dialog>
+
       <Formik
         initialValues={getSchema({})}
         validationSchema={validator}
         onSubmit={(values, { setSubmitting }) => {
           dispatch(
             callApi({
-              operationId: "api/v1/order-details/save",
+              operationId: "api/v1/order-detail/save",
               output: "orderDetails",
               parameters: {
                 method: "POST",
-                body: JSON.stringify(getSchema(values)),
+                body: JSON.stringify({ ...values, ...cart }),
               },
             })
           );
+          setOpen(!open);
         }}
       >
         {(props) => {
           return (
             <Box>
-              <TopHeader />
+              <TopHeader {...props} />
               <Header {...props} />
               <Paper
                 elevation={1}
-                sx={{ p: 2, pt: 0.5, background: "#FFFDF8" }}
+                sx={{ p: 2, mt: 2, pt: 0.5, background: "#FFFDF8" }}
                 square
               >
-                <Grid container spacing={2}>
-                  <Grid item md={8}>
-                    <Body {...props} />
-                  </Grid>
-                  <Grid item md={4}>
-                    <Final {...props} />
-                  </Grid>
-                </Grid>
-                {/* <AddItem {...props} /> */}
+                <Body />
               </Paper>
               <Paper
                 elevation={1}
@@ -68,9 +57,11 @@ const Billing = () => {
                 square
               >
                 <Grid container spacing={2}>
-                  <Grid item md={8}></Grid>
-                  <Grid item md={4}>
-                    <Remarks {...props} />
+                  <Grid item md={9}>
+                    <Final />
+                  </Grid>
+                  <Grid item md={3}>
+                    <BottomSubmit {...props} />
                   </Grid>
                 </Grid>
               </Paper>
