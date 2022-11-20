@@ -49,69 +49,37 @@ const AddItem = () => {
   return (
     <Box>
       <Stack direction="row">
-        <FieldArray
-          name="orderDetailList"
-          render={(arrayHelpers) => (
-            <Autocomplete
-              size="medium"
-              disablePortal
-              noOptionsText="No Match Found"
-              filterOptions={filterOptions}
-              id="id"
-              sx={{ width: 300 }}
-              options={filterSelectedOptions}
-              autoHighlight
-              // blurOnSelect
-              clearOnBlur={true}
-              // filterSelectedOptions
-              // autoSelect
-              getOptionLabel={(option) => option.masterServiceName}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  // label="Select an item"
-                  inputProps={{
-                    ...params.inputProps,
-                  }}
-                  placeholder="Add Service by Id/Name"
-                />
-              )}
-              renderOption={(props, option) => (
-                <Box component="li" {...props}>
-                  {option.masterServiceName} ({option.id})
-                </Box>
-              )}
-              onChange={(e, value) =>
-                value?.id &&
-                dispatch(
-                  addToCart({
-                    id: value.id,
-                    tariffBaseAmount: value.tariffBaseAmount,
-                    masterServiceName: value.masterServiceName,
-                    ...{
-                      discountAmount: 0,
-                      expiryDate: 0,
-                      vatPerUnit: 0,
-                      discountPerUnit: 0,
-                      quantityOrdered: 1,
-                      quantityReturned: 0,
-                      discountTotal: 0,
-                      discountReturned: 0,
-                      vatTotal: 0,
-                      vatReturned: 0,
-                      subtotalOrdered: 0,
-                      subtotalReturned: 0,
-                      rowTotal: 0,
-                      returnedBy: "string",
-                      returnDate: "2022-11-13T11:35:33.765Z",
-                    },
-                  })
-                )
-              }
+        <Autocomplete
+          size="medium"
+          disablePortal
+          noOptionsText="No Match Found"
+          filterOptions={filterOptions}
+          id="id"
+          sx={{ width: 300 }}
+          options={filterSelectedOptions}
+          autoHighlight
+          // blurOnSelect
+          clearOnBlur={true}
+          // filterSelectedOptions
+          // autoSelect
+          getOptionLabel={(option) => option.masterServiceName}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              // label="Select an item"
+              inputProps={{
+                ...params.inputProps,
+              }}
+              placeholder="Add Service by Id/Name"
             />
           )}
+          renderOption={(props, option) => (
+            <Box component="li" {...props}>
+              {option.masterServiceName} ({option.id})
+            </Box>
+          )}
+          onChange={(e, value) => value?.id && dispatch(addToCart(value))}
         />
-
         <Tooltip title="Click to see Service Details" arrow>
           <Button
             sx={{ ml: 2, height: 35, mt: 0.5, width: 200 }}

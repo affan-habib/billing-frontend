@@ -304,8 +304,7 @@ const Header = ({
                     sx={{ fontWeight: 500, textTransform: "uppercase" }}
                     htmlFor="referredBy"
                   >
-                    Patient/Payer Name
-                  </InputLabel>
+                    CUSTOMER NAME                  </InputLabel>
                   <TextField
                     fullWidth
                     type="text"
