@@ -2,14 +2,16 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import "./styles/index.css";
-export default function Final({ values }) {
+import { useSelector } from "react-redux";
+export default function Final() {
+  const orderDetailList = useSelector((state) => state.cart.orderDetailList);
+  let finalAmount = orderDetailList.reduce(
+    (a, b) => a + b.tariffBaseAmount * b.quantityOrdered,
+    0
+  );
+
   const [discountAmount, setDiscountAmount] = React.useState(0);
-  const [advanceAmount, setAdvanceAmount] = React.useState(0);
-  const [finalCal, setFinalCal] = React.useState({
-    discountAmount: 0,
-    advanceAmount: 0,
-  });
-  console.log(discountAmount);
+
   const columns = [
     {
       headerClassName: "top-header-3",
@@ -20,10 +22,7 @@ export default function Final({ values }) {
       description: "This column has a value getter and is not sortable.",
       sortable: false,
       flex: 1,
-      valueGetter: (params) =>
-        values.orderDetailList.length !== 0
-          ? values.orderDetailList.reduce((a, b) => a + b.tariffBaseAmount, 0)
-          : 0,
+      valueGetter: (params) => finalAmount,
       headerAlign: "center",
       align: "center",
       type: "number",
@@ -54,16 +53,13 @@ export default function Final({ values }) {
       headerAlign: "center",
       align: "center",
       sortable: false,
-      valueGetter: (params) => finalCal.advanceAmount,
     },
     {
       field: "due",
-    
+
       cellClassName: "top-header-4",
       headerClassName: "top-header-1",
-      valueGetter: (params) =>
-        values.orderDetailList.reduce((a, b) => a + b.tariffBaseAmount, 0) -
-          discountAmount || 0,
+      valueGetter: (params) => finalAmount - discountAmount || 0,
 
       headerName: "DUE BY (AMOUNT)",
       type: "number",
@@ -87,7 +83,6 @@ export default function Final({ values }) {
     },
   ];
 
-  console.log("hoye ja", values.orderDetailList);
   return (
     <Box sx={{ height: 80, Width: "100%" }}>
       <DataGrid
@@ -97,13 +92,10 @@ export default function Final({ values }) {
               theme.palette.mode === "light" ? "EEFFEB" : "yellow",
           },
         }}
-        // checkboxSelection={true}
         rows={items}
         columns={columns}
-        // pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
-        // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
         hideFooterPagination
         disableColumnMenu

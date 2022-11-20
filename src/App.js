@@ -1,10 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import Cookies from 'js-cookie';
+import { Box } from "@mui/material";
+import "bootstrap/dist/css/bootstrap.css";
+import Cookies from "js-cookie";
 import { useRoutes } from "react-router-dom";
-import './App.css';
-import Billing from './pages/billing/Billing';
-import authRouter from './routes';
-
+import "./App.css";
+import Billing from "./pages/billing/Billing";
+import Layout from "./pages/billing/components/Layout";
+import Home from "./pages/Home";
+import authRouter from "./routes";
 
 // const PrivateRoutes = () => {
 //   let accessToken = Cookies.get("access_token");
@@ -19,13 +21,7 @@ function App() {
 
   const routing = useRoutes(authRouter(isLoggedIn));
 
-  return (
-    <>
-      {routing}
-      
-       {/* <Billing/> */}
-    </>
-  );
+  return <Layout />;
 }
 
 export default App;

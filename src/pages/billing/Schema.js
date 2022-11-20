@@ -12,13 +12,13 @@ const getSchema = (model = {}) => {
     finalPrice = 0,
     finalDiscount = 0,
     advance = 0,
-    customerId = 162,
-    facilityId = 164,
-    patientId =82,
+    customerId = 62,
+    facilityId = 76,
+    patientId = 82,
+    sponsorBy = "string",
   } = model;
 
   return {
-    date,
     customerId,
     facilityId,
     billFrom,
@@ -31,7 +31,8 @@ const getSchema = (model = {}) => {
     finalPrice,
     finalDiscount,
     advance,
-    patientId
+    patientId,
+    sponsorBy,
   };
 };
 

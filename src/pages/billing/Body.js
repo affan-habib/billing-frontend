@@ -4,8 +4,9 @@ import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import "./styles/index.css";
 import RemoveItem from "./actions/RemoveItem";
 import CustomNoRowsOverlay from "./components/CustomNoRowsOverlay";
-
-export default function Body({ values }) {
+import { useSelector } from "react-redux";
+export default function Body() {
+  const rows = useSelector((state) => state.cart.orderDetailList);
   const columns = [
     {
       field: "id",
@@ -39,7 +40,7 @@ export default function Body({ values }) {
       align: "center",
     },
     {
-      field: "quantity",
+      field: "quantityOrdered",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       headerClassName: "top-header-1",
@@ -50,7 +51,6 @@ export default function Body({ values }) {
       headerAlign: "center",
       sortable: false,
       align: "center",
-      // renderEditCell: (params) => <CustomEditComponent {...params} />,
     },
     {
       field: "discountAmount",
@@ -75,7 +75,7 @@ export default function Body({ values }) {
       align: "center",
       minWidth: 120,
       valueGetter: (params) =>
-        params.row.quantity * params.row.tariffBaseAmount,
+        params.row.quantityOrdered * params.row.tariffBaseAmount,
       headerAlign: "center",
       type: "number",
     },
@@ -87,9 +87,7 @@ export default function Body({ values }) {
       type: "actions",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      renderCell: (params) => (
-        <RemoveItem values={values.orderDetailList} shouldDelete={params.id} />
-      ),
+      renderCell: (params) => <RemoveItem shouldDelete={params.id} />,
     },
   ];
   const [rowId, setRowId] = React.useState(null);
@@ -109,16 +107,13 @@ export default function Body({ values }) {
               theme.palette.mode === "light" ? "EEFFEB" : "yellow",
           },
         }}
-        // checkboxSelection={true}
-        rows={values?.orderDetailList}
+        rows={rows}
         columns={columns}
-        // pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
         components={{
           NoRowsOverlay: CustomNoRowsOverlay,
         }}
-        // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
         hideFooterPagination
         disableColumnMenu
@@ -130,7 +125,6 @@ export default function Body({ values }) {
         onProcessRowUpdateError={handleProcessRowUpdateError}
         onCellEditCommit={(params) => setRowId(params.id)}
       />
-      {/* <button onClick={handleClickButton}>click</button> */}
     </Box>
   );
 }

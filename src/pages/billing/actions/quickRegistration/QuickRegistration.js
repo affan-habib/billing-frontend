@@ -11,17 +11,20 @@ import {
   MenuItem,
   Button,
   Typography,
+  IconButton,
 } from "@mui/material";
-import { getSchema } from "./Schema";
+import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../../../reducers/apiSlice";
+import { callApi, clearState, selectApi } from "../../../../reducers/apiSlice";
+import { CloseCircleFilled } from "@ant-design/icons";
 
-const QuickRegistration = () => {
+const QuickRegistration = ({ setOpen }) => {
   const dispatch = useDispatch();
   const {
     gender = {
       data: [],
     },
+    quick_registration,
   } = useSelector(selectApi);
   useEffect(() => {
     dispatch(
@@ -31,19 +34,48 @@ const QuickRegistration = () => {
       })
     );
   }, []);
+  useEffect(() => {
+    if (quick_registration?.status == "success") {
+      setOpen(false);
+      dispatch(
+        clearState({
+          output: "quick_registration",
+        })
+      );
+    }
+  }, [quick_registration]);
+  const CloseButton = () => {
+    return (
+      <IconButton
+        onClick={() => setOpen(false)}
+        sx={{ position: "absolute", right: 15, top: 15, color: "#029889" }}
+      >
+        <CloseCircleFilled style={{ fontSize: "20px" }} />
+      </IconButton>
+    );
+  };
   return (
     <div>
       <Formik
         initialValues={getSchema({})}
         enableReinitialize
+        validationSchema={validator}
         onSubmit={(values) => {
+          let request = new FormData();
+          request.append("patientId", values.patientId);
+          request.append("customerId", values.customerId);
+          request.append("facilityId", values.facilityId);
+          request.append("firstName", values.firstName);
+          request.append("patientAge", values.patientAge);
+          request.append("patientContactNo", values.patientContactNo);
+
           dispatch(
             callApi({
               operationId: "api/v1/patient/save",
-              output: "patient_save",
+              output: "quick_registration",
               parameters: {
                 method: "POST",
-                body: JSON.stringify(getSchema(values)),
+                body: request,
                 hasFile: true,
               },
             })
@@ -63,12 +95,13 @@ const QuickRegistration = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ maxWidth: 450, p: 2 }}>
+              <CloseButton />
               <Grid item xs={12} sm={12}>
                 <Typography
                   variant="h4"
                   align="center"
                   sx={{ display: "block" }}
-                  color="info.main"
+                  color="#029889"
                 >
                   Quick Registration
                 </Typography>
@@ -77,6 +110,7 @@ const QuickRegistration = () => {
                 <Stack spacing={0.5}>
                   <InputLabel>Full Name</InputLabel>
                   <TextField
+                    autoFocus={true}
                     id="firstName"
                     name="firstName"
                     placeholder="Enter name"
@@ -173,6 +207,7 @@ const QuickRegistration = () => {
                 <Button
                   variant="contained"
                   color="info"
+                  sx={{ bgcolor: "#029889" }}
                   fullWidth
                   type="submit"
                 >

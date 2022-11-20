@@ -40,7 +40,7 @@ const LoginPage = () => {
         onSubmit={(values, { resetForm }) => {
           dispatch(
             callApi({
-              operationId: "auth/login",
+              operationId: 'login',
               output: "authData",
               parameters: {
                 method: "POST",

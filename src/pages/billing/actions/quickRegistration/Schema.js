@@ -7,10 +7,10 @@ const getSchema = (model = {}) => {
     firstName = "",
     middleName = "",
     lastName = "",
-    patientAge = 0,
+    patientAge,
     dateOfBirth = 10,
     maritalStatus = "", //constant value MARRIED, UNMARRIED
-    gender = "", //constant value MALE, FEMALE
+    gender = "MALE", //constant value MALE, FEMALE
     patientContactNo = "",
     patientFatherName = "",
     patientMotherName = "",
@@ -27,9 +27,8 @@ const getSchema = (model = {}) => {
     emergencyContactName = "",
     emergencyContactNo = "",
     emergencyContactAddress = "",
-    patientImage = "",
+    patientImage = null,
     patientPhotographId = 1,
-
   } = model;
 
   return {
@@ -59,13 +58,16 @@ const getSchema = (model = {}) => {
     emergencyContactName,
     emergencyContactNo,
     emergencyContactAddress,
-    //patientImage,
-    //patientPhotographId,
+    patientImage,
+    patientPhotographId,
   };
 };
 
 const validator = Yup.object().shape({
-  firstName: Yup.string().required('First Name is required'),
+  firstName: Yup.string().required("First Name is required"),
+  patientAge: Yup.number().required("Age is required"),
+  patientContactNo: Yup.number().required("Mobile Number is required"),
+  gender: Yup.string().required("Gender is required"),
   //middleName: Yup.string().required('Middle Name is required'),
   //lastName: Yup.string().required('Last Name is required'),
   //patientAge: Yup.string().required('Age is required'),
@@ -104,4 +106,3 @@ const validator = Yup.object().shape({
 });
 
 export { getSchema, validator };
-

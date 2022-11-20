@@ -1,16 +1,15 @@
 import { PlusCircleFilled, PrinterOutlined } from "@ant-design/icons";
-import { Stack, Typography, Button, } from "@mui/material";
+import { Stack, Typography, Button } from "@mui/material";
 import React from "react";
 
-const TopHeader = (props) => {
+const TopHeader = ({ handleSubmit }) => {
   return (
     <div>
       <Stack
-        sx={{ backgroundColor: "#029889", padding: 1}}
+        sx={{ backgroundColor: "#029889", padding: 1 }}
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        // sx ={{bgcolor : 'secondary'}}
       >
         <Typography
           fontWeight="bold"
@@ -44,7 +43,8 @@ const TopHeader = (props) => {
             variant="contained"
             color="success"
             type="submit"
-            onSubmit={() => props.handleSubmit()}
+            onClick={handleSubmit}
+            onSubmit={handleSubmit}
             // onClick={() => handleSubmit(props.values)}
             startIcon={
               <PrinterOutlined color="#205081" style={{ fontSize: "16px" }} />

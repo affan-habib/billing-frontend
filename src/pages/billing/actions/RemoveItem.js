@@ -1,24 +1,17 @@
-import { DeleteFilled, DeleteOutlined } from "@ant-design/icons";
-import { Box, IconButton } from "@mui/material";
-import { useEffect, useState } from "react";
-import { FieldArray } from "formik";
+import { DeleteOutlined } from "@ant-design/icons";
+import { IconButton } from "@mui/material";
+import { removeItem } from "../../../reducers/cartSlice";
+import { useDispatch } from "react-redux";
 
-const RemoveItem = ({ values, shouldDelete }) => {
-  console.log(values, shouldDelete);
+const RemoveItem = ({ shouldDelete }) => {
+  const dispatch = useDispatch();
   return (
-    <FieldArray
-      name="orderDetailList"
-      render={(arrayHelpers) => (
-        <IconButton
-        color="error"
-          onClick={() =>
-            arrayHelpers.remove(values.findIndex((el)=> el.id == shouldDelete))
-          }
-        >
-          <DeleteOutlined />
-        </IconButton>
-      )}
-    />
+    <IconButton
+      color="error"
+      onClick={() => dispatch(removeItem(shouldDelete))}
+    >
+      <DeleteOutlined />
+    </IconButton>
   );
 };
 
