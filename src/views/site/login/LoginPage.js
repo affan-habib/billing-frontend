@@ -16,11 +16,7 @@ const LoginPage = () => {
       data: {},
     },
   } = useSelector(selectApi);
-
-  if (authData.accessToken !== undefined) {
-    AuthUser.saveLoginData(authData);
-    return <Navigate to="/" />;
-  }
+  console.log(authData);
 
   return (
     <main>
@@ -44,7 +40,7 @@ const LoginPage = () => {
         onSubmit={(values, { resetForm }) => {
           dispatch(
             callApi({
-              operationId: "login",
+              operationId: "auth/login",
               output: "authData",
               parameters: {
                 method: "POST",
