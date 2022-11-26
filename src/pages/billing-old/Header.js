@@ -1,31 +1,46 @@
-import { PlusCircleOutlined, SearchOutlined } from "@ant-design/icons";
 import {
-  Autocomplete,
-  Button,
-  ButtonGroup,
-  createFilterOptions,
-  Dialog,
+  PlusCircleFilled,
+  PlusCircleOutlined,
+  SearchOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
+import {
   FormHelperText,
   Grid,
   InputLabel,
   MenuItem,
-  Paper,
+  TextField,
   Select,
   Stack,
-  TextField,
+  Paper,
+  Autocomplete,
+  IconButton,
+  Dialog,
   Tooltip,
+  createFilterOptions,
+  Button,
+  ButtonGroup,
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { FastField } from "formik";
-
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import AddItem from "./actions/AddItem";
-import QuickRegistration from "./components/quickRegistration/QuickRegistration";
-
-const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
+import QuickRegistration from "./actions/quickRegistration/QuickRegistration";
+console.log("billing form");
+const Header = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  isSubmitting,
+  setFieldValue,
+  viewMode,
+}) => {
   const dispatch = useDispatch();
 
   const {
@@ -40,7 +55,7 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
   useEffect(() => {
     dispatch(
       callApi({
-        operationId: ("patient/all"),
+        operationId: `api/v1/patient/all`,
         output: "patient",
       })
     );
@@ -51,22 +66,17 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
   });
   const [open, setOpen] = useState(false);
   const inputRef = useRef(null);
-  const addItemRef = useRef(null);
   const handleSearchById = () =>
     dispatch(
       callApi({
-        operationId: (
-          `patient/search?patientId=${inputRef.current.value}`
-        ),
+        operationId: `api/v1/patient/search?patientId=${inputRef.current.value}`,
         output: "patientInfo",
       })
     );
   const handleSearchByMobile = () =>
     dispatch(
       callApi({
-        operationId: (
-          `patient/search?patientContactNo=${inputRef.current.value}`
-        ),
+        operationId: `api/v1/patient/search?patientContactNo=${inputRef.current.value}`,
         output: "patientInfo",
       })
     );
@@ -74,10 +84,12 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
   useEffect(() => {
     !!patientInfo.data.length &&
       setFieldValue("patientId", patientInfo.data[0]?.patientId);
+    // !!patientInfo.data.length || setFieldValue("patientId", null )
   }, [patientInfo.data]);
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
+        {/* <fieldset disabled={viewMode} style={{ border: 0 }}> */}
         <form onSubmit={handleSubmit}>
           <Paper
             elevation={1}
@@ -154,6 +166,30 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                 </Stack>
               </Grid>
 
+              <Grid item xs={3} md={2}>
+                <Stack spacing={0.5}>
+                  <InputLabel
+                    sx={{ fontWeight: 500, textTransform: "uppercase" }}
+                    htmlFor="billNo"
+                  >
+                    Bill No
+                  </InputLabel>
+                  <TextField
+                    fullWidth
+                    type="text"
+                    name="billNo"
+                    placeholder="Enter Name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.billNo}
+                  />
+
+                  {touched.billNo && errors.billNo && (
+                    <FormHelperText error>{errors.billNo}</FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+
               <Grid item xs={3} md={2.5}>
                 <Stack spacing={0.5}>
                   <InputLabel
@@ -176,38 +212,6 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                       <TextField
                         size="small"
                         {...params}
-                        inputProps={{
-                          ...params.inputProps,
-                        }}
-                        placeholder="Enter id/name"
-                      />
-                    )}
-                    onChange={(e, value) => setAddedItem(value)}
-                  />
-                </Stack>
-              </Grid>
-              <Grid item xs={3} md={2}>
-                <Stack spacing={0.5}>
-                  <InputLabel
-                    sx={{ fontWeight: 500, textTransform: "uppercase" }}
-                    htmlFor="referredBy"
-                  >
-                    Referred By
-                  </InputLabel>
-                  <Autocomplete
-                    id="id"
-                    noOptionsText="No Match Found"
-                    sx={{ width: "100%" }}
-                    options={patient?.data}
-                    filterOptions={filterOptions}
-                    autoHighlight
-                    // filterSelectedOptions
-                    autoSelect
-                    getOptionLabel={(option) => option.firstName}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        // label="Select an item"
                         inputProps={{
                           ...params.inputProps,
                         }}
@@ -241,13 +245,6 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                     type="search"
                     inputRef={inputRef}
                     placeholder="Enter id"
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        handleSearchById();
-                        addItemRef.current.focus();
-                        e.preventDefault();
-                      }
-                    }}
                   />
                 </Stack>
               </Grid>
@@ -317,7 +314,7 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                   />
                 </Stack>
               </Grid>
-              <Grid item xs={3} md={2} lg={1.75}>
+              <Grid item xs={3} md={1.75}>
                 <Stack spacing={0.5}>
                   <InputLabel
                     sx={{ fontWeight: 500, textTransform: "uppercase" }}
@@ -333,39 +330,71 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                   />
                 </Stack>
               </Grid>
-              <Grid item xs={3} md={1.5} lg={1}>
+              <Grid item xs={3} md={2}>
                 <Stack spacing={0.5}>
                   <InputLabel
                     sx={{ fontWeight: 500, textTransform: "uppercase" }}
                     htmlFor="referredBy"
                   >
-                    Age
+                    Referred By
                   </InputLabel>
-                  <TextField
-                    fullWidth
-                    type="text"
-                    placeholder="Enter Name"
-                    value={patientInfo.data[0]?.patientAge}
+                  <Autocomplete
+                    id="id"
+                    noOptionsText="No Match Found"
+                    sx={{ width: "100%" }}
+                    options={patient?.data}
+                    filterOptions={filterOptions}
+                    autoHighlight
+                    // filterSelectedOptions
+                    autoSelect
+                    getOptionLabel={(option) => option.firstName}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        // label="Select an item"
+                        inputProps={{
+                          ...params.inputProps,
+                        }}
+                        placeholder="Enter id/name"
+                      />
+                    )}
+                    onChange={(e, value) => setAddedItem(value)}
                   />
                 </Stack>
               </Grid>
-              <Grid item xs={3} md={1.75}>
+              <Grid item xs={3} md={2}>
                 <Stack spacing={0.5}>
                   <InputLabel
                     sx={{ fontWeight: 500, textTransform: "uppercase" }}
-                    htmlFor="referredBy"
+                    htmlFor="agent"
                   >
-                    Gender
+                    Agent
                   </InputLabel>
-                  <TextField
-                    fullWidth
-                    type="text"
-                    placeholder="Enter Name"
-                    value={patientInfo.data[0]?.gender}
+                  <Autocomplete
+                    id="id"
+                    noOptionsText="No Match Found"
+                    sx={{ width: "100%", height: 25, p: 0 }}
+                    options={patient?.data}
+                    filterOptions={filterOptions}
+                    autoHighlight
+                    // filterSelectedOptions
+                    autoSelect
+                    getOptionLabel={(option) => option.firstName}
+                    renderInput={(params) => (
+                      <TextField
+                        size="small"
+                        {...params}
+                        // label="Select an item"
+                        inputProps={{
+                          ...params.inputProps,
+                        }}
+                        placeholder="Enter id/name"
+                      />
+                    )}
+                    onChange={(e, value) => setAddedItem(value)}
                   />
                 </Stack>
               </Grid>
-
               <Grid item xs={3} md={5}>
                 <Stack spacing={0.5}>
                   <InputLabel
@@ -374,12 +403,13 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                   >
                     Add Service
                   </InputLabel>
-                  <AddItem addItemRef={addItemRef} values={values} />
+                  <AddItem values={values} />
                 </Stack>
               </Grid>
             </Grid>
           </Paper>
         </form>
+        {/* </fieldset> */}
       </LocalizationProvider>
     </>
   );
