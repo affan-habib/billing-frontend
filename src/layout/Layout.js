@@ -55,7 +55,7 @@ export default function Layout() {
           sx={{
             borderBottom: 1,
             borderColor: "divider",
-            background: "#FDE0D9",
+            background: "#dfebf7",
           }}
         >
           <Tabs

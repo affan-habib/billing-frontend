@@ -108,7 +108,7 @@ const ServiceList = ({ setOpen }) => {
         <GridToolbarQuickFilter sx={{ py: 1, px: 1, mr: 2 }} />
         <Stack justifyContent="space-between" alignItems="flex-start">
           <Button
-            sx={{ mb: 2, mr: 2, bgcolor: "#029889" }}
+            sx={{ mb: 2, mr: 2, bgcolor: "#216b8b" }}
             disabled={selectedOptions.length == 0}
             variant="contained"
             onClick={() => handleAddToCart()}

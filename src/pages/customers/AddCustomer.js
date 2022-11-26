@@ -48,7 +48,7 @@ const AddProduct = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#029889" }}
+        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -92,7 +92,7 @@ const AddProduct = ({ setOpen }) => {
                   variant="h4"
                   align="center"
                   sx={{ display: "block" }}
-                  color="#029889"
+                  color="#216b8b"
                 >
                   Add New Customer
                 </Typography>
@@ -222,7 +222,7 @@ const AddProduct = ({ setOpen }) => {
                 <Button
                   variant="contained"
                   color="info"
-                  sx={{ bgcolor: "#029889" }}
+                  sx={{ bgcolor: "#216b8b" }}
                   fullWidth
                   type="submit"
                 >

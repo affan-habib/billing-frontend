@@ -61,7 +61,7 @@ const Report = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => window.print()}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#029889" }}
+        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
       >
         <PrinterFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -71,7 +71,7 @@ const Report = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 45, top: 15, color: "#029889" }}
+        sx={{ position: "absolute", right: 45, top: 15, color: "#216b8b" }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -82,14 +82,14 @@ const Report = ({ setOpen }) => {
       <Paper variant="outlined" square>
         <PrinterButton />
         <CloseButton />
-        <Typography align="center" variant="h3" m={2} color="#029889">
+        <Typography align="center" variant="h3" m={2} color="#216b8b">
           ABC GENERAL HOSPITAL
         </Typography>
         <Box m={2}>
           <Stack direction="row" justifyContent="space-between">
             <Stack sx={{ flex: 1 }}>
               <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                <Typography variant="subtitle1" color="#029889">
+                <Typography variant="subtitle1" color="#216b8b">
                   Bill From :
                 </Typography>
 
@@ -98,7 +98,7 @@ const Report = ({ setOpen }) => {
             </Stack>
             <Stack sx={{ flex: 1 }}>
               <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                <Typography variant="subtitle1" color="#029889">
+                <Typography variant="subtitle1" color="#216b8b">
                   Order Id :
                 </Typography>
 
@@ -107,7 +107,7 @@ const Report = ({ setOpen }) => {
             </Stack>
             <Stack sx={{ flex: 1 }}>
               <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                <Typography variant="subtitle1" color="#029889">
+                <Typography variant="subtitle1" color="#216b8b">
                   Date :
                 </Typography>
                 <Typography>16 Nov 2022</Typography>
@@ -117,7 +117,7 @@ const Report = ({ setOpen }) => {
           <Stack direction="row" justifyContent="space-between">
             <Stack sx={{ flex: 1 }}>
               <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                <Typography variant="subtitle1" color="#029889">
+                <Typography variant="subtitle1" color="#216b8b">
                   Patient Name :{" "}
                 </Typography>
 
@@ -128,7 +128,7 @@ const Report = ({ setOpen }) => {
             </Stack>
             <Stack sx={{ flex: 1 }}>
               <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                <Typography variant="subtitle1" color="#029889">
+                <Typography variant="subtitle1" color="#216b8b">
                   Age :
                 </Typography>
 
@@ -139,7 +139,7 @@ const Report = ({ setOpen }) => {
             </Stack>
             <Stack sx={{ flex: 1 }}>
               <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                <Typography variant="subtitle1" color="#029889">
+                <Typography variant="subtitle1" color="#216b8b">
                   Mobile Number :
                 </Typography>
 
@@ -177,7 +177,7 @@ const Report = ({ setOpen }) => {
               justifyContent: "space-between",
             }}
           >
-            <Typography variant="subtitle1" color="#029889">
+            <Typography variant="subtitle1" color="#216b8b">
               Billing manager :
               <span
                 style={{ fontWeight: 400, color: "black", marginLeft: "20px" }}
@@ -186,7 +186,7 @@ const Report = ({ setOpen }) => {
               </span>
             </Typography>
 
-            <Typography variant="subtitle1" color="#029889">
+            <Typography variant="subtitle1" color="#216b8b">
               Bill Status :
               <span
                 style={{ fontWeight: 300, color: "black", marginLeft: "20px" }}
