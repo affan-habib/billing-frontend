@@ -5,8 +5,8 @@ import { useRoutes } from "react-router-dom";
 import "./App.css";
 import Billing from "./pages/billing/Billing";
 // import Layout from "./pages/billing/components/Layout";
-import Home from "./pages/Home";
-import authRouter from "./routes";
+// import Home from "./pages/Home";
+// import authRouter from "./routes";
 
 // const PrivateRoutes = () => {
 //   let accessToken = Cookies.get("access_token");
@@ -16,10 +16,10 @@ import authRouter from "./routes";
 // }
 
 function App() {
-  let accessToken = Cookies.get("access_token");
-  const isLoggedIn = accessToken != null && accessToken.length ? true : false;
+  // let accessToken = Cookies.get("access_token");
+  // const isLoggedIn = accessToken != null && accessToken.length ? true : false;
 
-  const routing = useRoutes(authRouter(isLoggedIn));
+  // const routing = useRoutes(authRouter(isLoggedIn));
 
   return <Billing />;
 }

@@ -23,7 +23,7 @@ const AddItem = ({ addItemRef }) => {
   useEffect(() => {
     dispatch(
       callApi({
-        operationId: ("service-master/items"),
+        operationId: ("api/v1/service-master/items"),
         output: "items",
       })
     );
