@@ -1,7 +1,7 @@
 import { Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 
-export const Purchage = () => {
+const Purchage = () => {
   return (
     <Paper
       p={2}
@@ -18,3 +18,6 @@ export const Purchage = () => {
     </Paper>
   );
 };
+
+
+export default Purchage;

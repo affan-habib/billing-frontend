@@ -2,35 +2,35 @@ import React, { useEffect } from "react";
 import { Box, Button, Stack, Dialog } from "@mui/material";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../../../reducers/apiSlice";
-import CustomNoRowsOverlay from "../CustomNoRowsOverlay";
-import { addToCart } from "../../../../reducers/cartSlice";
-import AddProduct from "./AddCustomer";
-import DeleteCustomer from "./DeleteCustomer";
+import { callApi, selectApi } from "../../reducers/apiSlice";
+import { addToCart } from "../../reducers/cartSlice";
+import AddProduct from "./AddProduct";
+import DeleteProduct from "./DeleteProduct";
+import NoRowIcon from "../../components/NoRowIcon";
 
-const Customers = () => {
+const Products = () => {
   const dispatch = useDispatch();
   const {
-    customers = {
+    items = {
       data: [],
     },
-    customerDeleted = {
+    itemDeleted = {
       id: null,
     },
-    customerSaved,
+    itemSaved,
   } = useSelector(selectApi);
   useEffect(() => {
     setTimeout(
       () =>
         dispatch(
           callApi({
-            operationId: `api/customers`,
-            output: "customers",
+            operationId: `api/v1/service-master/items`,
+            output: "items",
           })
         ),
       1000
     );
-  }, [customerDeleted.id, customerSaved]);
+  }, [itemDeleted.id, itemSaved]);
   const columns = [
     {
       field: "id",
@@ -43,10 +43,10 @@ const Customers = () => {
       headerAlign: "center",
     },
     {
-      field: "name",
+      field: "masterServiceName",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      headerName: "CUSTOMER NAME",
+      headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
       sortable: false,
@@ -54,9 +54,9 @@ const Customers = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "age",
+      field: "tariffBaseAmount",
       headerClassName: "top-header-1",
-      headerName: "AGE",
+      headerName: "PRICE",
       type: "number",
       minWidth: 120,
       headerAlign: "center",
@@ -66,10 +66,10 @@ const Customers = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "contactNumber",
+      field: "discountAmount",
       headerClassName: "top-header-1",
-      headerName: "CONTACT",
-      type: "text",
+      headerName: "DISCOUNT",
+      type: "number",
       minWidth: 120,
       headerAlign: "center",
       sortable: false,
@@ -78,16 +78,27 @@ const Customers = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "gender",
+      field: "vatPerUnit",
       headerClassName: "top-header-1",
-      headerName: "GENDER",
-      type: "text",
+      headerName: "VAT PER UNIT",
+      type: "number",
       minWidth: 120,
       headerAlign: "center",
       sortable: false,
       align: "center",
     },
-    
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      field: "expiryDate",
+      headerClassName: "top-header-1",
+      headerName: "EXPIRY DATE",
+      type: "number",
+      minWidth: 120,
+      headerAlign: "center",
+      sortable: false,
+      align: "center",
+    },
     {
       minWidth: 120,
       align: "center",
@@ -96,13 +107,13 @@ const Customers = () => {
       type: "actions",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
+      renderCell: (params) => <DeleteProduct shouldDelete={params.id} />,
     },
   ];
   const [selectedOptions, setSelectedOptions] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const handleadd = () => {
-    let SelectedOptions = customers.data.filter(
+    let SelectedOptions = items.data.filter(
       (el) => selectedOptions.indexOf(el.id) + 1
     );
 
@@ -110,7 +121,7 @@ const Customers = () => {
       dispatch(
         addToCart({
           ...el,
-          contactNumber: 0,
+          discountAmount: 0,
           expiryDate: 0,
           vatPerUnit: 0,
           discountPerUnit: 0,
@@ -138,16 +149,16 @@ const Customers = () => {
           variant="contained"
           onClick={() => setOpen(true)}
         >
-          Add New Customer
+          Add New service
         </Button>
         <Button
           sx={{ mb: 2, ml: 2, width: 200 }}
-          disabled={selectedOptions.length !== 1}
+          disabled={selectedOptions.length == 0}
           variant="contained"
           color="warning"
           onClick={() => handleadd()}
         >
-          {selectedOptions.length ? "Bill to customer" : "Select Customer"}
+          {selectedOptions.length ? "Add to New bill" : "Select services"}
         </Button>
         <Dialog open={open} onClose={() => setOpen(!open)}>
           <AddProduct setOpen={setOpen} />
@@ -162,13 +173,13 @@ const Customers = () => {
           },
         }}
         checkboxSelection={true}
-        rows={customers.data}
+        rows={items.data}
         columns={columns}
         // pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
         components={{
-          NoRowsOverlay: CustomNoRowsOverlay,
+          NoRowsOverlay: NoRowIcon,
         }}
         // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
@@ -185,4 +196,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Products;

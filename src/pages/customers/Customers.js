@@ -1,30 +1,36 @@
 import React, { useEffect } from "react";
-import { Box, Button, Typography, Stack } from "@mui/material";
+import { Box, Button, Stack, Dialog } from "@mui/material";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../../../reducers/apiSlice";
-import CustomNoRowsOverlay from "../CustomNoRowsOverlay";
-import { addToCart } from "../../../../reducers/cartSlice";
+import { callApi, selectApi } from "../../reducers/apiSlice";
+import { addToCart } from "../../reducers/cartSlice";
+import AddProduct from "./AddCustomer";
+import DeleteCustomer from "./DeleteCustomer";
+import NoRowIcon from "../../components/NoRowIcon";
 
-const ServiceList = ({ setOpen }) => {
+const Customers = () => {
   const dispatch = useDispatch();
   const {
-    items = {
+    customers = {
       data: [],
     },
+    customerDeleted = {
+      id: null,
+    },
+    customerSaved,
   } = useSelector(selectApi);
   useEffect(() => {
     setTimeout(
       () =>
         dispatch(
           callApi({
-            operationId: `api/v1/service-master/items`,
-            output: "items",
+            operationId: `api/customers`,
+            output: "customers",
           })
         ),
       1000
     );
-  }, []);
+  }, [customerDeleted.id, customerSaved]);
   const columns = [
     {
       field: "id",
@@ -37,10 +43,10 @@ const ServiceList = ({ setOpen }) => {
       headerAlign: "center",
     },
     {
-      field: "masterServiceName",
+      field: "name",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      headerName: "SERVICE NAME",
+      headerName: "CUSTOMER NAME",
       flex: 1,
       headerAlign: "left",
       sortable: false,
@@ -48,19 +54,55 @@ const ServiceList = ({ setOpen }) => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "tariffBaseAmount",
+      field: "age",
       headerClassName: "top-header-1",
-      headerName: "PRICE",
+      headerName: "AGE",
       type: "number",
       minWidth: 120,
       headerAlign: "center",
       sortable: false,
       align: "center",
     },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      field: "contactNumber",
+      headerClassName: "top-header-1",
+      headerName: "CONTACT",
+      type: "text",
+      minWidth: 120,
+      headerAlign: "center",
+      sortable: false,
+      align: "center",
+    },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      field: "gender",
+      headerClassName: "top-header-1",
+      headerName: "GENDER",
+      type: "text",
+      minWidth: 120,
+      headerAlign: "center",
+      sortable: false,
+      align: "center",
+    },
+    
+    {
+      minWidth: 120,
+      align: "center",
+      field: "actions",
+      headerName: "ACTION",
+      type: "actions",
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
+    },
   ];
   const [selectedOptions, setSelectedOptions] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
   const handleadd = () => {
-    let SelectedOptions = items.data.filter(
+    let SelectedOptions = customers.data.filter(
       (el) => selectedOptions.indexOf(el.id) + 1
     );
 
@@ -68,7 +110,7 @@ const ServiceList = ({ setOpen }) => {
       dispatch(
         addToCart({
           ...el,
-          discountAmount: 0,
+          contactNumber: 0,
           expiryDate: 0,
           vatPerUnit: 0,
           discountPerUnit: 0,
@@ -90,17 +132,29 @@ const ServiceList = ({ setOpen }) => {
 
   return (
     <Box sx={{ height: 400, mt: 2, width: "100%" }}>
-      <Stack justifyContent="space-between" alignItems="flex-start">
+      <Stack direction="row">
         <Button
-          sx={{ mb: 2, ml: 2, bgcolor: "#029889" }}
-          disabled={selectedOptions.length == 0}
+          sx={{ mb: 2, ml: 2, width: 200 }}
           variant="contained"
+          onClick={() => setOpen(true)}
+        >
+          Add New Customer
+        </Button>
+        <Button
+          sx={{ mb: 2, ml: 2, width: 200 }}
+          disabled={selectedOptions.length !== 1}
+          variant="contained"
+          color="warning"
           onClick={() => handleadd()}
         >
-          {selectedOptions.length ? "Add services" : "Select services"}
+          {selectedOptions.length ? "Bill to customer" : "Select Customer"}
         </Button>
+        <Dialog open={open} onClose={() => setOpen(!open)}>
+          <AddProduct setOpen={setOpen} />
+        </Dialog>
       </Stack>
       <DataGrid
+        getRowId={(row) => row._id}
         sx={{
           [`& .${gridClasses.row}`]: {
             bgcolor: (theme) =>
@@ -108,13 +162,13 @@ const ServiceList = ({ setOpen }) => {
           },
         }}
         checkboxSelection={true}
-        rows={items.data}
+        rows={customers.data}
         columns={columns}
         // pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
         components={{
-          NoRowsOverlay: CustomNoRowsOverlay,
+          NoRowsOverlay: NoRowIcon,
         }}
         // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
@@ -131,4 +185,4 @@ const ServiceList = ({ setOpen }) => {
   );
 };
 
-export default ServiceList;
+export default Customers;

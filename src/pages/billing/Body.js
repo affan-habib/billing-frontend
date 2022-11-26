@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import RemoveItem from "./actions/RemoveItem";
-import NoRowIcon from "./components/NoRowIcon";
+import NoRowIcon from "../../components/NoRowIcon";
 import { useSelector } from "react-redux";
 export default function Body() {
   const rows = useSelector((state) => state.cart.orderDetailList);

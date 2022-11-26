@@ -1,7 +1,7 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { IconButton } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { callApi } from "../../../../reducers/apiSlice";
+import { callApi } from "../../reducers/apiSlice";
 
 const DeleteProduct = ({ shouldDelete }) => {
   const dispatch = useDispatch();
@@ -11,8 +11,8 @@ const DeleteProduct = ({ shouldDelete }) => {
       onClick={() =>
         dispatch(
           callApi({
-            operationId: `api/customers/${shouldDelete}`,
-            output: "customerDeleted",
+            operationId: `api/v1/service-master/items/${shouldDelete}`,
+            output: "itemDeleted",
             parameters: {
               method: "DELETE",
             },

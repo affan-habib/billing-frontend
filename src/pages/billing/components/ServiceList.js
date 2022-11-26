@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
 import { addToCart } from "../../../reducers/cartSlice";
-import NoRowIcon from "./NoRowIcon";
+import NoRowIcon from "../../../components/NoRowIcon";
 
 const ServiceList = ({ setOpen }) => {
   const dispatch = useDispatch();

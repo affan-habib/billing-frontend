@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectApi } from "../../../../reducers/apiSlice";
-import NoRowIcon from "../NoRowIcon";
+import NoRowIcon from "../../../../components/NoRowIcon";
 import Final from "./Final";
 
 const Report = ({ setOpen }) => {

@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Cookies from "js-cookie";
 import { useRoutes } from "react-router-dom";
 import "./App.css";
+import Layout from "./layout/Layout";
 import Billing from "./pages/billing/Billing";
 // import Layout from "./pages/billing/components/Layout";
 // import Home from "./pages/Home";
@@ -21,7 +22,7 @@ function App() {
 
   // const routing = useRoutes(authRouter(isLoggedIn));
 
-  return <Billing />;
+  return <Layout />;
 }
 
 export default App;

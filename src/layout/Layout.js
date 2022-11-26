@@ -4,10 +4,9 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Billing from "../Billing";
-import { Purchage } from "./purchage/Purchage";
-import Products from "./products/Products";
-import Customers from "./customers/Customers";
+import Billing from "../pages/billing/Billing";
+import Products from "../pages/products/Products";
+import Customers from "../pages/customers/Customers";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,7 +41,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function Layout() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
