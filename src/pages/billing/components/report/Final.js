@@ -10,7 +10,7 @@ export default function Final() {
   const columns = [
     {
       cellClassName: "top-header-6",
-      field: "totalAmount",
+      field: "total",
       headerClassName: "top-header-1",
       headerName: "TOTAL",
       description: "This column has a value getter and is not sortable.",
@@ -37,7 +37,7 @@ export default function Final() {
       field: "advance",
       headerClassName: "top-header-1",
       cellClassName: "top-header-6",
-      headerName: "ADVANCE",
+      headerName: "Advance",
       type: "number",
       flex: 1,
       headerAlign: "center",

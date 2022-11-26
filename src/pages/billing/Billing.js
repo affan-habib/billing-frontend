@@ -30,7 +30,7 @@ const Billing = () => {
         onSubmit={(values, { setSubmitting }) => {
           dispatch(
             callApi({
-              operationId: ("order-detail/save"),
+              operationId: ("api/orders"),
               output: "orderSaved",
               parameters: {
                 method: "POST",
