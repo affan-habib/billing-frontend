@@ -100,7 +100,6 @@ const AddItem = ({ addItemRef }) => {
             focusAgain();
           }}
         />
-
         <Tooltip title="Click to see Service Details" arrow>
           <Button
             sx={{ ml: 2, height: 35, mt: 0.5, width: 200 }}
