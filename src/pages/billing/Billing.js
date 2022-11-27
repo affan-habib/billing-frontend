@@ -49,18 +49,14 @@ const Billing = () => {
               <Header {...props} />
               <Paper
                 elevation={1}
-                sx={{ p: 2, mt: 2, pt: 0.5, background: "#FFFDF8" }}
-                square
-              >
-                <Body />
-              </Paper>
-              <Paper
-                elevation={1}
                 sx={{ p: 2, mt: 2, background: "#F5FFFA" }}
                 square
               >
                 <Grid container spacing={2}>
                   <Grid item md={9}>
+                    <Body />
+                  </Grid>
+                  <Grid item md={3}>
                     <Final {...props} />
                   </Grid>
                 </Grid>

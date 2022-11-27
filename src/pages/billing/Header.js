@@ -113,7 +113,7 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                   sx={{ height: "100%" }}
                 >
                   <Button
-                    sx={{ flex: 1 , borderRadius: 10}}
+                    sx={{ flex: 1, borderRadius: 10 }}
                     variant="outlined"
                     color="primary"
                     onClick={handleSearchById}
@@ -186,18 +186,6 @@ const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
                     placeholder="Gender"
                     value={patientInfo.data[0]?.gender}
                   />
-                </Stack>
-              </Grid>
-
-              <Grid item xs={3} md={5}>
-                <Stack spacing={0.5}>
-                  <InputLabel
-                    sx={{ fontWeight: 500, textTransform: "uppercase" }}
-                    htmlFor="agent"
-                  >
-                    Add Service
-                  </InputLabel>
-                  <AddItem addItemRef={addItemRef} values={values} />
                 </Stack>
               </Grid>
             </Grid>
