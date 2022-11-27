@@ -13,6 +13,7 @@ import Report from "./components/report/Report";
 import { getSchema, validator } from "./Schema";
 import "./style.css";
 import { callApi } from "../../reducers/apiSlice";
+import AddCustomer from "../customers/AddCustomer";
 const Billing = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -30,7 +31,7 @@ const Billing = () => {
         onSubmit={(values, { setSubmitting }) => {
           dispatch(
             callApi({
-              operationId: ("api/orders"),
+              operationId: "api/orders",
               output: "orderSaved",
               parameters: {
                 method: "POST",
@@ -44,7 +45,7 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <TopHeader {...props} />
+              {/* <TopHeader {...props} /> */}
               <Header {...props} />
               <Paper
                 elevation={1}
@@ -61,9 +62,6 @@ const Billing = () => {
                 <Grid container spacing={2}>
                   <Grid item md={9}>
                     <Final {...props} />
-                  </Grid>
-                  <Grid item md={3}>
-                    <BottomSubmit {...props} />
                   </Grid>
                 </Grid>
               </Paper>

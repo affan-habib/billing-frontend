@@ -2,10 +2,10 @@ import * as Yup from "yup";
 const getSchema = (model = {}) => {
   const {
     id = 0,
-    name = "Service Name",
-    age = 61,
-    contactNumber = "01798984444",
-    gender = "Male",
+    name = "",
+    age = 21,
+    contactNumber = "",
+    gender = "MALE",
    
   } = model;
 
