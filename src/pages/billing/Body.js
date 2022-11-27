@@ -1,9 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
-import "./styles/index.css";
+import { DataGrid } from "@mui/x-data-grid";
 import RemoveItem from "./actions/RemoveItem";
-import CustomNoRowsOverlay from "./components/CustomNoRowsOverlay";
+import NoRowIcon from "../../components/NoRowIcon";
 import { useSelector } from "react-redux";
 export default function Body() {
   const rows = useSelector((state) => state.cart.orderDetailList);
@@ -31,7 +30,6 @@ export default function Body() {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "tariffBaseAmount",
-      headerClassName: "top-header-1",
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
@@ -43,9 +41,7 @@ export default function Body() {
       field: "quantityOrdered",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      headerClassName: "top-header-1",
       headerName: "UNIT",
-      editable: true,
       type: "number",
       minWidth: 120,
       headerAlign: "center",
@@ -56,7 +52,6 @@ export default function Body() {
       field: "discountAmount",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      headerClassName: "top-header-1",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
@@ -68,9 +63,7 @@ export default function Body() {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       field: "finalPrice",
-      headerClassName: "top-header-1",
       headerName: "AMOUNT",
-      description: "This column has a value getter and is not sortable.",
       sortable: false,
       align: "center",
       minWidth: 120,
@@ -80,39 +73,27 @@ export default function Body() {
       type: "number",
     },
     {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
       minWidth: 120,
       align: "center",
       field: "actions",
       headerName: "ACTION",
       type: "actions",
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
       renderCell: (params) => <RemoveItem shouldDelete={params.id} />,
     },
   ];
-  const [rowId, setRowId] = React.useState(null);
-  const processRowUpdate = React.useCallback(async (newRow) => {
-    console.log(newRow);
-  }, []);
 
-  const handleProcessRowUpdateError = React.useCallback((error) => {
-    console.log(error);
-  }, []);
   return (
     <Box sx={{ height: 220, Width: "100%", mt: 2 }}>
       <DataGrid
-        sx={{
-          [`& .${gridClasses.row}`]: {
-            bgcolor: (theme) =>
-              theme.palette.mode === "light" ? "EEFFEB" : "yellow",
-          },
-        }}
+        
         rows={rows}
         columns={columns}
         disableSelectionOnClick
         disableColumnSelector
         components={{
-          NoRowsOverlay: CustomNoRowsOverlay,
+          NoRowsOverlay: NoRowIcon,
         }}
         headerHeight={55}
         hideFooterPagination
@@ -121,9 +102,6 @@ export default function Body() {
         showCellRightBorder={true}
         showColumnRightBorder={true}
         hideFooter
-        processRowUpdate={processRowUpdate}
-        onProcessRowUpdateError={handleProcessRowUpdateError}
-        onCellEditCommit={(params) => setRowId(params.id)}
       />
     </Box>
   );

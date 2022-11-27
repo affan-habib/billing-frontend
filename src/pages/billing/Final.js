@@ -1,20 +1,31 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
-import "./styles/index.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+// import { calculateTotal } from "store/reducers/cartSlice";
+import { useEffect } from "react";
+import { calculateTotal } from "../../reducers/cartSlice";
 export default function Final() {
-  const orderDetailList = useSelector((state) => state.cart.orderDetailList);
+  const { orderDetailList, discount, advance } = useSelector(
+    (state) => state.cart
+  );
   let finalAmount = orderDetailList.reduce(
     (a, b) => a + b.tariffBaseAmount * b.quantityOrdered,
     0
   );
 
-  const [discountAmount, setDiscountAmount] = React.useState(0);
+  useEffect(() => {
+    dispatch(
+      calculateTotal({
+        field: "total",
+        value: finalAmount - discount - advance,
+      })
+    );
+  }, [finalAmount, discount, advance]);
 
+  const dispatch = useDispatch();
   const columns = [
     {
-      headerClassName: "top-header-3",
       cellClassName: "top-header-4",
       field: "totalAmount",
       headerClassName: "top-header-1",
@@ -28,39 +39,37 @@ export default function Final() {
       type: "number",
     },
     {
-      headerClassName: "top-header-2",
-      cellClassName: "top-header-4",
-      field: "discountAmount",
+      field: "discount",
       headerClassName: "top-header-1",
+      cellClassName: "top-header-5",
+      field: "discount",
       headerName: "DISCOUNT",
       editable: true,
       type: "number",
       flex: 1,
       headerAlign: "center",
       align: "center",
+      valueGetter: (params) => discount,
       sortable: false,
-      valueGetter: (params) => discountAmount,
     },
     {
       field: "advance",
-      headerClassName: "top-header-3",
-      cellClassName: "top-header-4",
       headerClassName: "top-header-1",
+      cellClassName: "top-header-4",
       headerName: "ADVANCE",
-      // editable: true,
+      editable: true,
       type: "number",
       flex: 1,
       headerAlign: "center",
       align: "center",
       sortable: false,
+      valueGetter: (params) => advance,
     },
     {
       field: "due",
-
-      cellClassName: "top-header-4",
+      cellClassName: "top-header-5",
       headerClassName: "top-header-1",
-      valueGetter: (params) => finalAmount - discountAmount || 0,
-
+      valueGetter: (params) => finalAmount - discount - advance || 0,
       headerName: "DUE BY (AMOUNT)",
       type: "number",
       flex: 1,
@@ -71,13 +80,9 @@ export default function Final() {
   ];
   const items = [
     {
-      id: 85,
-      masterServiceName: "Lipid Profile",
-      tariffBaseAmount: 1400,
-      customerId: 121,
-      facilityId: 166,
+      id: "affan",
       quantity: 1,
-      discountAmount: 0,
+      discount: 0,
       advance: 0,
       due: 0,
     },
@@ -86,12 +91,6 @@ export default function Final() {
   return (
     <Box sx={{ height: 80, Width: "100%" }}>
       <DataGrid
-        sx={{
-          [`& .${gridClasses.row}`]: {
-            bgcolor: (theme) =>
-              theme.palette.mode === "light" ? "EEFFEB" : "yellow",
-          },
-        }}
         rows={items}
         columns={columns}
         disableSelectionOnClick
@@ -103,7 +102,7 @@ export default function Final() {
         showCellRightBorder={true}
         showColumnRightBorder={true}
         hideFooter
-        onCellEditCommit={(params) => setDiscountAmount(params.value)}
+        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
       />
     </Box>
   );

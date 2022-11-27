@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
 import { Box, Dialog, Grid, Paper } from "@mui/material";
 import { Formik } from "formik";
+
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
-import Header from "./Header";
-import Final from "./Final";
-import BottomSubmit from "./actions/bottomSubmit/BottomSubmit";
-import { getSchema, validator } from "./Schema";
-import "./styles/index.css";
-import TopHeader from "./components/TopHeader";
+// import { callApi } from "../../reducers/apiSlice";
+import BottomSubmit from "./actions/BottomSubmit";
 import Body from "./Body";
-import Report from "./report/Report";
+import TopHeader from "./actions/TopHeader";
+import Final from "./Final";
+import Header from "./Header";
+import Report from "./components/report/Report";
+import { getSchema, validator } from "./Schema";
+import "./style.css";
+import { callApi } from "../../reducers/apiSlice";
 const Billing = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -28,11 +30,11 @@ const Billing = () => {
         onSubmit={(values, { setSubmitting }) => {
           dispatch(
             callApi({
-              operationId: "api/v1/order-detail/save",
-              output: "orderDetails",
+              operationId: ("api/orders"),
+              output: "orderSaved",
               parameters: {
                 method: "POST",
-                body: JSON.stringify({ ...values, ...cart }),
+                body: JSON.stringify(getSchema({ ...values, ...cart })),
               },
             })
           );
@@ -58,7 +60,7 @@ const Billing = () => {
               >
                 <Grid container spacing={2}>
                   <Grid item md={9}>
-                    <Final />
+                    <Final {...props} />
                   </Grid>
                   <Grid item md={3}>
                     <BottomSubmit {...props} />

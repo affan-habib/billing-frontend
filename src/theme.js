@@ -10,13 +10,14 @@ import {
   blue,
   deepPurple,
   cyan,
+  purple,
 } from "@mui/material/colors";
 
 const rawTheme = createTheme({
   palette: {
     primary: {
       light: teal[400],
-      main: teal[500],
+      main: "#216b8b",
       dark: teal[700],
     },
     secondary: {
@@ -30,14 +31,14 @@ const rawTheme = createTheme({
       dark: deepPurple[700],
     },
     error: {
-      light: teal[300],
-      main: teal[300],
-      dark: teal[400],
+      light: orange[300],
+      main: orange[300],
+      dark: orange[400],
     },
     success: {
-      light: green[400],
-      main: green[600],
-      dark: green[700],
+      light: purple[400],
+      main: purple[600],
+      dark: purple[700],
     },
   },
   components: {
