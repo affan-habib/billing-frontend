@@ -43,3 +43,7 @@
   text-align: center;
   font-size: 0.9rem;
 }
+.imgStyle {
+  height: auto;
+  width: 80px;
+}
