@@ -1,55 +1,31 @@
-import { PlusCircleOutlined, SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import {
-  Autocomplete,
   Button,
-  ButtonGroup,
   createFilterOptions,
-  Dialog,
-  FormHelperText,
   Grid,
   InputLabel,
-  MenuItem,
   Paper,
-  Select,
   Stack,
   TextField,
-  Tooltip,
 } from "@mui/material";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { FastField } from "formik";
 
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
-import AddItem from "./actions/AddItem";
-import QuickRegistration from "./components/quickRegistration/QuickRegistration";
 
 const Header = ({ values, errors, touched, handleSubmit, setFieldValue }) => {
   const dispatch = useDispatch();
 
   const {
-    patient = {
-      data: [],
-    },
     patientInfo = {
       data: [],
     },
   } = useSelector(selectApi);
-  const [addedItem, setAddedItem] = useState({});
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: "patient/all",
-        output: "patient",
-      })
-    );
-  }, [dispatch]);
+
   //dialog
-  const filterOptions = createFilterOptions({
-    stringify: ({ patientId, firstName }) => `${patientId} ${firstName}`,
-  });
-  const [open, setOpen] = useState(false);
+
   const inputRef = useRef(null);
   const addItemRef = useRef(null);
   const handleSearchById = () =>

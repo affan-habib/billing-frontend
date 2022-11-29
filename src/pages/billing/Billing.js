@@ -45,7 +45,7 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              {/* <TopHeader {...props} /> */}
+              <TopHeader {...props} />
               <Header {...props} />
               <Paper
                 elevation={1}
