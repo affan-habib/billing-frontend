@@ -24,7 +24,7 @@ export default function Final() {
   }, [finalAmount, discount, advance]);
 
   const dispatch = useDispatch();
-  const columns = [
+  const finalAmountColumn = [
     {
       cellClassName: "top-header-4",
       field: "totalAmount",
@@ -38,6 +38,8 @@ export default function Final() {
       align: "center",
       type: "number",
     },
+  ];
+  const discountAmountColumn = [
     {
       field: "discount",
       headerClassName: "top-header-1",
@@ -52,6 +54,8 @@ export default function Final() {
       valueGetter: (params) => discount,
       sortable: false,
     },
+  ];
+  const advanceAmountColumn = [
     {
       field: "advance",
       headerClassName: "top-header-1",
@@ -65,6 +69,8 @@ export default function Final() {
       sortable: false,
       valueGetter: (params) => advance,
     },
+  ];
+  const dueAmountColumn = [
     {
       field: "due",
       cellClassName: "top-header-5",
@@ -78,10 +84,10 @@ export default function Final() {
       sortable: false,
     },
   ];
+
   const items = [
     {
       id: "affan",
-      quantity: 1,
       discount: 0,
       advance: 0,
       due: 0,
@@ -89,10 +95,52 @@ export default function Final() {
   ];
 
   return (
-    <Box sx={{ height: 80, Width: "100%" }}>
+    <Box sx={{ height: 78, Width: "100%" }}>
       <DataGrid
         rows={items}
-        columns={columns}
+        columns={finalAmountColumn}
+        disableSelectionOnClick
+        disableColumnSelector
+        headerHeight={55}
+        hideFooterPagination
+        disableColumnMenu
+        density="compact"
+        showCellRightBorder={true}
+        showColumnRightBorder={true}
+        hideFooter
+        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
+      />
+      <DataGrid
+        rows={items}
+        columns={discountAmountColumn}
+        disableSelectionOnClick
+        disableColumnSelector
+        headerHeight={55}
+        hideFooterPagination
+        disableColumnMenu
+        density="compact"
+        showCellRightBorder={true}
+        showColumnRightBorder={true}
+        hideFooter
+        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
+      />
+      <DataGrid
+        rows={items}
+        columns={advanceAmountColumn}
+        disableSelectionOnClick
+        disableColumnSelector
+        headerHeight={55}
+        hideFooterPagination
+        disableColumnMenu
+        density="compact"
+        showCellRightBorder={true}
+        showColumnRightBorder={true}
+        hideFooter
+        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
+      />
+      <DataGrid
+        rows={items}
+        columns={dueAmountColumn}
         disableSelectionOnClick
         disableColumnSelector
         headerHeight={55}

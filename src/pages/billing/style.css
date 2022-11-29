@@ -1,6 +1,6 @@
 .top-header-1 {
-  background-color: #216b8b;
-  color: white;
+  background-color: #f0f0f199;
+  color: 'green';
   font-size: 0.9rem;
 }
 .top-header-2 {
@@ -42,4 +42,8 @@
   color: black;
   text-align: center;
   font-size: 0.9rem;
+}
+.imgStyle {
+  height: auto;
+  width: 80px;
 }

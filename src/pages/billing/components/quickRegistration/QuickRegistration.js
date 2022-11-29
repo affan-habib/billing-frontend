@@ -49,7 +49,7 @@ const QuickRegistration = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
+        sx={{ position: "absolute", right: 15, top: 15, color: "#dfebf7" }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -101,7 +101,7 @@ const QuickRegistration = ({ setOpen }) => {
                   variant="h4"
                   align="center"
                   sx={{ display: "block" }}
-                  color="#216b8b"
+                  color="#dfebf7"
                 >
                   Quick Registration
                 </Typography>
@@ -207,7 +207,7 @@ const QuickRegistration = ({ setOpen }) => {
                 <Button
                   variant="contained"
                   color="info"
-                  sx={{ bgcolor: "#216b8b" }}
+                  sx={{ bgcolor: "#dfebf7" }}
                   fullWidth
                   type="submit"
                 >

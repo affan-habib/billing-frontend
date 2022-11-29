@@ -4,7 +4,7 @@ import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import { addToCart } from "../../reducers/cartSlice";
-import AddProduct from "./AddCustomer";
+import AddCustomer from "./AddCustomer";
 import DeleteCustomer from "./DeleteCustomer";
 import NoRowIcon from "../../components/NoRowIcon";
 
@@ -150,7 +150,7 @@ const Customers = () => {
           {selectedOptions.length ? "Bill to customer" : "Select Customer"}
         </Button>
         <Dialog open={open} onClose={() => setOpen(!open)}>
-          <AddProduct setOpen={setOpen} />
+          <AddCustomer setOpen={setOpen} />
         </Dialog>
       </Stack>
       <DataGrid

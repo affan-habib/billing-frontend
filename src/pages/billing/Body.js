@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import RemoveItem from "./actions/RemoveItem";
 import NoRowIcon from "../../components/NoRowIcon";
 import { useSelector } from "react-redux";
+import AddItem from "./actions/AddItem";
 export default function Body() {
   const rows = useSelector((state) => state.cart.orderDetailList);
   const columns = [
@@ -85,9 +86,10 @@ export default function Body() {
   ];
 
   return (
-    <Box sx={{ height: 220, Width: "100%", mt: 2 }}>
+    <Box>
+      <AddItem />
       <DataGrid
-        
+        sx={{ height: 250, Width: "100%", mt: 2 }}
         rows={rows}
         columns={columns}
         disableSelectionOnClick

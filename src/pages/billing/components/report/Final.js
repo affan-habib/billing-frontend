@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import { selectApi } from "../../../../reducers/apiSlice";
+// import { selectApi } from "../../../../reducers/apiSlice";
 
 export default function Final() {
   const { orderSaved = { data: {} } } = useSelector(selectApi);
@@ -10,7 +11,7 @@ export default function Final() {
   const columns = [
     {
       cellClassName: "top-header-6",
-      field: "total",
+      field: "totalAmount",
       headerClassName: "top-header-1",
       headerName: "TOTAL",
       description: "This column has a value getter and is not sortable.",
@@ -37,7 +38,7 @@ export default function Final() {
       field: "advance",
       headerClassName: "top-header-1",
       cellClassName: "top-header-6",
-      headerName: "Advance",
+      headerName: "ADVANCE",
       type: "number",
       flex: 1,
       headerAlign: "center",
