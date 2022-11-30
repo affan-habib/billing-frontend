@@ -1,26 +1,16 @@
-import { SearchOutlined } from "@ant-design/icons";
-import {
-  Button,
-  createFilterOptions,
-  Grid,
-  InputLabel,
-  Paper,
-  Stack,
-  TextField,
-} from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { Paper } from "@mui/material";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../reducers/apiSlice";
-import AddCustomer from "../customers/AddCustomer";
+import { selectApi } from "../../reducers/apiSlice";
+import AddCustomer from "./components/quickRegistration/AddCustomer";
 
-const Header = ({ handleSubmit, setFieldValue }) => {
+const Header = (props) => {
+  console.log(props)
   const dispatch = useDispatch();
 
   const {
-    patientInfo = {
+    customerSaved = {
       data: [],
     },
   } = useSelector(selectApi);
@@ -28,37 +18,16 @@ const Header = ({ handleSubmit, setFieldValue }) => {
   //dialog
 
   const inputRef = useRef(null);
-  const addItemRef = useRef(null);
-  const handleSearchById = () =>
-    dispatch(
-      callApi({
-        operationId: `patient/search?patientId=${inputRef.current.value}`,
-        output: "patientInfo",
-      })
-    );
-  const handleSearchByMobile = () =>
-    dispatch(
-      callApi({
-        operationId: `patient/search?patientContactNo=${inputRef.current.value}`,
-        output: "patientInfo",
-      })
-    );
 
-  useEffect(() => {
-    !!patientInfo.data.length &&
-      setFieldValue("patientId", patientInfo.data[0]?.patientId);
-  }, [patientInfo.data]);
+  // useEffect(() => {
+  //   !!customerSaved.data &&
+  //     props.setFieldValue("patientId", customerSaved.data[0]?._id);
+  // }, [customerSaved.data]);
   return (
     <>
- 
-        <Paper
-          elevation={1}
-          sx={{ background: "#F5FFFA", pt: 0, mt: 4 }}
-          square
-        >
-          <AddCustomer />
-        </Paper>
-  
+      <Paper elevation={1} sx={{ background: "#F5FFFA", pt: 0, mt: 4 }} square>
+        <AddCustomer />
+      </Paper>
     </>
   );
 };
