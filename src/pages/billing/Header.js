@@ -1,23 +1,35 @@
-import { Paper } from "@mui/material";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Grid,
+  InputLabel,
+  Paper,
+  Stack,
+  TextField,
+} from "@mui/material";
 
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectApi } from "../../reducers/apiSlice";
 import AddCustomer from "./components/quickRegistration/AddCustomer";
 
-const Header = (props) => {
-  console.log(props)
+const Header = ({ handleChange, handleBlur, values, setFieldValue }) => {
+  // console.log(props);
   const dispatch = useDispatch();
 
   const {
     customerSaved = {
       data: [],
     },
+    customers = {
+      data: [],
+    },
   } = useSelector(selectApi);
 
   //dialog
 
-  const inputRef = useRef(null);
+  const addItemRef = useRef(null);
 
   // useEffect(() => {
   //   !!customerSaved.data &&
@@ -26,7 +38,39 @@ const Header = (props) => {
   return (
     <>
       <Paper elevation={1} sx={{ background: "#F5FFFA", pt: 0, mt: 4 }} square>
-        <AddCustomer />
+        <Stack direction="row">
+          <Autocomplete
+            autoFocus
+            size="medium"
+            disablePortal
+            noOptionsText="No Match Found"
+            clearOnEscape
+            id="id"
+            sx={{ width: 300 }}
+            options={customers.data}
+            autoHighlight
+            getOptionLabel={(option) => option.name}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                inputProps={{
+                  ...params.inputProps,
+                }}
+                placeholder="Add Service by Id/Name"
+                inputRef={addItemRef}
+              />
+            )}
+            renderOption={(props, option) => (
+              <Box component="li" {...props}>
+                {option.name} ({option._id})
+              </Box>
+            )}
+            onChange={(e, value) => {
+              setFieldValue("patientId", value._id)
+            }}
+          />
+        </Stack>
+        {/* <AddCustomer /> */}
       </Paper>
     </>
   );

@@ -81,7 +81,7 @@ const Report = ({ setOpen }) => {
                     Patient Name :
                   </Typography>
                   <Typography>
-                    {orderSaved.data?.patientName || "Not found"}
+                    {orderSaved.customer?.name || "Not found"}
                   </Typography>
                 </Paper>
               </Stack>
@@ -91,7 +91,7 @@ const Report = ({ setOpen }) => {
                     Age :
                   </Typography>
                   <Typography>
-                    {orderSaved.data?.patientAge || "Not found"}
+                    {orderSaved.customer?.age || "Not found"}
                   </Typography>
                 </Paper>
               </Stack>
@@ -101,7 +101,7 @@ const Report = ({ setOpen }) => {
                     Mobile Number :
                   </Typography>
                   <Typography>
-                    {orderSaved.data?.patientContactNo || "Not found"}
+                    {orderSaved.customer?.contactNumber || "Not found"}
                   </Typography>
                 </Paper>
               </Stack>
