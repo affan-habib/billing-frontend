@@ -13,8 +13,8 @@ const Header = ({ setFieldValue, values }) => {
   return (
     <>
       <Paper elevation={1} sx={{ background: "#F5FFFA", pt: 0, mt: 4 }} square>
-        <Grid container spacing={2} m={1}>
-          <Grid item md={2}>
+        <Grid container spacing={2}>
+          <Grid item md={2} m={2}>
             <Stack spacing={0.5}>
               <InputLabel>Customer Id</InputLabel>
               <TextField
@@ -27,8 +27,10 @@ const Header = ({ setFieldValue, values }) => {
               />
             </Stack>
           </Grid>
+          <Grid item md={9}>
+            <AddCustomer />
+          </Grid>
         </Grid>
-        <AddCustomer />
       </Paper>
     </>
   );
