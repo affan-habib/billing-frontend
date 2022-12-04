@@ -15,35 +15,7 @@ import { CloseCircleFilled } from "@ant-design/icons";
 
 const AddCustomer = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const { quick_registration } = useSelector(selectApi);
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: `api/v1/p-code/all?codeType=Gender`,
-        output: "gender",
-      })
-    );
-  }, []);
-  useEffect(() => {
-    if (quick_registration?.status == "success") {
-      setOpen(false);
-      dispatch(
-        clearState({
-          output: "quick_registration",
-        })
-      );
-    }
-  }, [quick_registration]);
-  const CloseButton = () => {
-    return (
-      <IconButton
-        onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
-      >
-        <CloseCircleFilled style={{ fontSize: "20px" }} />
-      </IconButton>
-    );
-  };
+
   return (
     <div>
       <Formik
@@ -76,7 +48,6 @@ const AddCustomer = ({ setOpen }) => {
         }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2 }}>
-              <CloseButton />
               <Grid item lg={2}>
                 <Stack spacing={0.5}>
                   <InputLabel>Id</InputLabel>
