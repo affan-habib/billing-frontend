@@ -126,21 +126,21 @@ const AddProduct = ({ setOpen }) => {
                   <InputLabel>Product/service name</InputLabel>
                   <TextField
                     autoFocus={true}
-                    id="masterServiceName"
-                    name="masterServiceName"
+                    id="serviceName"
+                    name="serviceName"
                     placeholder="Enter name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.masterServiceName}
+                    value={values.serviceName}
                     fullWidth
                     autoComplete="first-name"
                   />
-                  {touched.masterServiceName && errors.masterServiceName && (
+                  {touched.serviceName && errors.serviceName && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.masterServiceName}
+                      {errors.serviceName}
                     </FormHelperText>
                   )}
                 </Stack>
@@ -149,22 +149,22 @@ const AddProduct = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>BASE PRICE</InputLabel>
                   <TextField
-                    id="tariffBaseAmount"
-                    name="tariffBaseAmount"
+                    id="basePrice"
+                    name="basePrice"
                     placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.tariffBaseAmount}
+                    value={values.basePrice}
                     fullWidth
                     type="number"
                     autoComplete="age"
                   />
-                  {touched.tariffBaseAmount && errors.tariffBaseAmount && (
+                  {touched.basePrice && errors.basePrice && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.tariffBaseAmount}
+                      {errors.basePrice}
                     </FormHelperText>
                   )}
                 </Stack>

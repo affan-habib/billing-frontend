@@ -10,7 +10,7 @@ export default function Final() {
     (state) => state.cart
   );
   let finalAmount = orderDetailList.reduce(
-    (a, b) => a + b.tariffBaseAmount * b.quantityOrdered,
+    (a, b) => a + b.basePrice * b.quantityOrdered,
     0
   );
 

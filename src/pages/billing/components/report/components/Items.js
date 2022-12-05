@@ -63,9 +63,9 @@ export default function Items() {
             {orderSaved.data.orderDetailList.map((row) => (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row">
-                  {row.masterServiceName}
+                  {row.serviceName}
                 </TableCell>
-                <TableCell align="right">{row.tariffBaseAmount}</TableCell>
+                <TableCell align="right">{row.basePrice}</TableCell>
                 <TableCell align="right">{row.quantityOrdered}</TableCell>
                 <TableCell align="right">0</TableCell>
                 <TableCell align="right">0</TableCell>

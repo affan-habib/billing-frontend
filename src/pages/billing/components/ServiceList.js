@@ -42,7 +42,7 @@ const ServiceList = ({ setOpen }) => {
       headerAlign: "center",
     },
     {
-      field: "masterServiceName",
+      field: "serviceName",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       headerName: "SERVICE NAME",
@@ -53,7 +53,7 @@ const ServiceList = ({ setOpen }) => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "tariffBaseAmount",
+      field: "basePrice",
       headerClassName: "top-header-1",
       headerName: "PRICE",
       type: "number",
