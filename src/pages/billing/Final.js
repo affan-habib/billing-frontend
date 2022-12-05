@@ -60,7 +60,7 @@ export default function Final() {
     {
       field: "advance",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-4",
+      cellClassName: "top-header-5",
       headerName: "ADVANCE",
       editable: true,
       type: "number",
@@ -74,7 +74,7 @@ export default function Final() {
   const dueAmountColumn = [
     {
       field: "due",
-      cellClassName: "top-header-5",
+      cellClassName: "top-header-4",
       headerClassName: "top-header-1",
       valueGetter: (params) => finalAmount - discount - advance || 0,
       headerName: "DUE BY (AMOUNT)",
@@ -96,12 +96,12 @@ export default function Final() {
   ];
 
   return (
-    <Box sx={{ height: 78, Width: "100%" }}>
-      <Grid container spacing={0}>
-        <Grid item md={6}>
+    <Box sx={{ Width: "100%" }}>
+      <Grid container spacing={1}>
+        <Grid item md={6} sx={{ width: "100%", height: 85 }}>
           <DataGrid
             rows={items}
-            columns={finalAmountColumn}
+            columns={discountAmountColumn}
             disableSelectionOnClick
             disableColumnSelector
             headerHeight={55}
@@ -114,10 +114,10 @@ export default function Final() {
             onCellEditCommit={(params) => dispatch(calculateTotal(params))}
           />
         </Grid>
-        <Grid item md={6} sx={{ width: "100%", height: 80 }}>
+        <Grid item md={6}>
           <DataGrid
             rows={items}
-            columns={discountAmountColumn}
+            columns={finalAmountColumn}
             disableSelectionOnClick
             disableColumnSelector
             headerHeight={55}
@@ -146,7 +146,7 @@ export default function Final() {
             onCellEditCommit={(params) => dispatch(calculateTotal(params))}
           />
         </Grid>
-        <Grid item md={6}>
+        <Grid item md={6} sx={{ width: "100%", height: 84 }}>
           <DataGrid
             rows={items}
             columns={dueAmountColumn}

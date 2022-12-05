@@ -1,4 +1,4 @@
-import { Box, Dialog, Grid, Paper } from "@mui/material";
+import { Box, Button, Dialog, Grid, Paper } from "@mui/material";
 import { Formik } from "formik";
 
 import { useState } from "react";
@@ -52,12 +52,20 @@ const Billing = () => {
                 sx={{ p: 2, mt: 2, background: "#F5FFFA" }}
                 square
               >
-                <Grid container spacing={2}>
+                <Grid container spacing={2} alignItems="center">
                   <Grid item md={9}>
                     <Body />
                   </Grid>
-                  <Grid item md={3}>
+                  <Grid item md={3} sx={{ mt: 2 }}>
                     <Final {...props} />
+                    <Button
+                      variant="contained"
+                      onClick={() => props.handleSubmit()}
+                      type="submit"
+                      sx={{ mt: 2 }}
+                    >
+                      SAVE AND PRINT
+                    </Button>
                   </Grid>
                 </Grid>
               </Paper>
