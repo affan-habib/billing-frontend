@@ -77,7 +77,7 @@ const ServiceList = ({ setOpen }) => {
             dispatch(
               addToCart({
                 ...params.row,
-                discountAmount: 0,
+                discountPerUnit: 0,
                 expiryDate: 0,
                 vatPerUnit: 0,
                 discountPerUnit: 0,
@@ -129,7 +129,7 @@ const ServiceList = ({ setOpen }) => {
       dispatch(
         addToCart({
           ...el,
-          discountAmount: 0,
+          discountPerUnit: 0,
           expiryDate: 0,
           vatPerUnit: 0,
           discountPerUnit: 0,

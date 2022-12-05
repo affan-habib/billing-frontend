@@ -174,22 +174,22 @@ const AddProduct = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Discount</InputLabel>
                   <TextField
-                    id="discountAmount"
-                    name="discountAmount"
+                    id="discountPerUnit"
+                    name="discountPerUnit"
                     placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.discountAmount}
+                    value={values.discountPerUnit}
                     fullWidth
                     type="number"
                     autoComplete="age"
                   />
-                  {touched.discountAmount && errors.discountAmount && (
+                  {touched.discountPerUnit && errors.discountPerUnit && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.discountAmount}
+                      {errors.discountPerUnit}
                     </FormHelperText>
                   )}
                 </Stack>

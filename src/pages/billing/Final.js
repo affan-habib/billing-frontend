@@ -39,7 +39,7 @@ export default function Final() {
       type: "number",
     },
   ];
-  const discountAmountColumn = [
+  const discountPerUnitColumn = [
     {
       field: "discount",
       headerClassName: "top-header-1",
@@ -100,7 +100,7 @@ export default function Final() {
         <Grid item md={6} sx={{ width: "100%", height: 85 }}>
           <DataGrid
             rows={items}
-            columns={discountAmountColumn}
+            columns={discountPerUnitColumn}
             disableSelectionOnClick
             disableColumnSelector
             headerHeight={55}

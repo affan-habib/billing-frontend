@@ -4,7 +4,7 @@ const getSchema = (model = {}) => {
     id = 0,
     serviceName = "Service Name",
     basePrice = 61,
-    discountAmount = 0,
+
     expiryDate = 0,
     vatPerUnit = 0,
     discountPerUnit = 0,
@@ -14,10 +14,9 @@ const getSchema = (model = {}) => {
     id,
     serviceName,
     basePrice,
-    discountAmount,
+    discountPerUnit,
     expiryDate,
     vatPerUnit,
-    discountPerUnit,
   };
 };
 

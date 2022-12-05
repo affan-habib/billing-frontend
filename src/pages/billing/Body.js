@@ -50,7 +50,7 @@ export default function Body() {
       align: "center",
     },
     {
-      field: "discountAmount",
+      field: "discountPerUnit",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       headerName: "DISCOUNT",
