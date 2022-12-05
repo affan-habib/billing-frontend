@@ -20,20 +20,8 @@ import { CloseCircleFilled } from "@ant-design/icons";
 
 const AddProduct = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const {
-    gender = {
-      data: [],
-    },
-    quick_registration,
-  } = useSelector(selectApi);
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: `api/v1/p-code/all?codeType=Gender`,
-        output: "gender",
-      })
-    );
-  }, []);
+  const { quick_registration } = useSelector(selectApi);
+
   useEffect(() => {
     if (quick_registration?.status == "success") {
       setOpen(false);
@@ -48,7 +36,7 @@ const AddProduct = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
+        sx={{ position: "absolute", right: 15, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -91,8 +79,8 @@ const AddProduct = ({ setOpen }) => {
                 <Typography
                   variant="h4"
                   align="center"
+                  color="primary"
                   sx={{ display: "block" }}
-                  color="#216b8b"
                 >
                   Add New Product
                 </Typography>
@@ -246,7 +234,6 @@ const AddProduct = ({ setOpen }) => {
                 <Button
                   variant="contained"
                   color="info"
-                  sx={{ bgcolor: "#216b8b" }}
                   fullWidth
                   type="submit"
                 >

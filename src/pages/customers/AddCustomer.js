@@ -38,7 +38,7 @@ const AddCustomer = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
+        sx={{ position: "absolute", right: 15, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -159,12 +159,7 @@ const AddCustomer = ({ setOpen }) => {
                   alignItems="flex-end"
                   sx={{ height: "100%" }}
                 >
-                  <Button
-                    variant="contained"
-                    color="info"
-                    sx={{ bgcolor: "#216b8b" }}
-                    type="submit"
-                  >
+                  <Button variant="contained" color="info" type="submit">
                     SAVE
                   </Button>
                 </Stack>
