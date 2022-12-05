@@ -46,7 +46,7 @@ const Billing = () => {
               <Header {...props} />
               <Paper
                 elevation={1}
-                sx={{ p: 2, mt: 2, background: "#F5FFFA" }}
+                sx={{ p: 2, mt: 2, background: "##f5f9f0" }}
                 square
               >
                 <Grid container spacing={2} alignItems="center">
