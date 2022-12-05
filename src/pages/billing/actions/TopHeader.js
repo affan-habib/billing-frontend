@@ -43,9 +43,7 @@ const TopHeader = ({ handleSubmit, values }) => {
             variant="contained"
             color="success"
             type="submit"
-            onClick={handleSubmit}
-            onSubmit={handleSubmit}
-            // onClick={() => handleSubmit(props.values)}
+            onClick={() => handleSubmit()}
             startIcon={
               <PrinterOutlined color="#205081" style={{ fontSize: "16px" }} />
             }
