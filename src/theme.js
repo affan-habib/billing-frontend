@@ -31,9 +31,9 @@ const rawTheme = createTheme({
       dark: deepPurple[700],
     },
     error: {
-      light: orange[300],
-      main: orange[300],
-      dark: orange[400],
+      light: red[300],
+      main: red[300],
+      dark: red[400],
     },
     success: {
       light: purple[400],
