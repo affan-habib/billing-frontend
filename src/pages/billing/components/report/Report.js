@@ -50,19 +50,19 @@ const Report = ({ setOpen }) => {
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
                   <Typography variant="subtitle1" color="#029889">
-                    Bill From :
+                    Bill No :
                   </Typography>
 
-                  <Typography>{orderSaved.data?.billFrom}</Typography>
+                  <Typography>1234</Typography>
                 </Paper>
               </Stack>
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
                   <Typography variant="subtitle1" color="#029889">
-                    Order Id :
+                    Payment Method :
                   </Typography>
 
-                  <Typography>{orderSaved.data?.orderMasterId}</Typography>
+                  <Typography>Cash</Typography>
                 </Paper>
               </Stack>
               <Stack sx={{ flex: 1 }}>
@@ -70,7 +70,9 @@ const Report = ({ setOpen }) => {
                   <Typography variant="subtitle1" color="#029889">
                     Date :
                   </Typography>
-                  <Typography>{moment(new Date()).format("DD/MM/YYYY")}</Typography>
+                  <Typography>
+                    {moment(new Date()).format("DD/MM/YYYY")}
+                  </Typography>
                 </Paper>
               </Stack>
             </Stack>
@@ -81,7 +83,7 @@ const Report = ({ setOpen }) => {
                     Patient Name :
                   </Typography>
                   <Typography>
-                    {orderSaved.data?.patientName || "Not found"}
+                    {orderSaved.customer.name || "Not found"}
                   </Typography>
                 </Paper>
               </Stack>
@@ -91,7 +93,7 @@ const Report = ({ setOpen }) => {
                     Age :
                   </Typography>
                   <Typography>
-                    {orderSaved.data?.patientAge || "Not found"}
+                    {orderSaved.customer.age || "Not found"}
                   </Typography>
                 </Paper>
               </Stack>
@@ -101,7 +103,7 @@ const Report = ({ setOpen }) => {
                     Mobile Number :
                   </Typography>
                   <Typography>
-                    {orderSaved.data?.patientContactNo || "Not found"}
+                    {orderSaved.customer.contactNumber || "Not found"}
                   </Typography>
                 </Paper>
               </Stack>

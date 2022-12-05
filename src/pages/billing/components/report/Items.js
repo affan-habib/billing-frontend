@@ -23,33 +23,36 @@ export default function Items() {
         <Table sx={{ Width: 550 }} size="small">
           <TableHead>
             <TableRow>
-              <TableCell size="small" sx={{ p: 0, bgcolor: "#029889" }}>
+              <TableCell
+                size="small"
+                sx={{ bgcolor: "#029889", color: "white" }}
+              >
                 SERVICE NAME
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ p: 0, bgcolor: "#029889" }}
+                sx={{ bgcolor: "#029889", color: "white" }}
                 align="right"
               >
                 BASE PRICE
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ p: 0, bgcolor: "#029889" }}
+                sx={{ bgcolor: "#029889", color: "white" }}
                 align="right"
               >
                 UNIT
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ p: 0, bgcolor: "#029889" }}
+                sx={{ bgcolor: "#029889", color: "white" }}
                 align="right"
               >
                 VAT
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ p: 0, bgcolor: "#029889" }}
+                sx={{ bgcolor: "#029889", color: "white" }}
                 align="right"
               >
                 PRICE
@@ -59,13 +62,13 @@ export default function Items() {
           <TableBody>
             {orderSaved.data.orderDetailList.map((row) => (
               <TableRow key={row.id}>
-                <TableCell component="th" scope="row" sx={{ p: 0 }}>
+                <TableCell component="th" scope="row">
                   {row.masterServiceName}
                 </TableCell>
-                <TableCell align="right" sx={{ p: .4}}>{row.tariffBaseAmount}</TableCell>
-                <TableCell align="right" sx={{ p: .4}}>{row.quantityOrdered}</TableCell>
-                <TableCell align="right" sx={{ p: .4}}>0</TableCell>
-                <TableCell align="right" sx={{ p: .4}}>0</TableCell>
+                <TableCell align="right">{row.tariffBaseAmount}</TableCell>
+                <TableCell align="right">{row.quantityOrdered}</TableCell>
+                <TableCell align="right">0</TableCell>
+                <TableCell align="right">0</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -76,32 +79,44 @@ export default function Items() {
         <Table sx={{ Width: 550 }} size="small">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ bgcolor: "#029889", p: 0 }} align="center">
+              <TableCell
+                sx={{ bgcolor: "#029889", color: "white" }}
+                align="center"
+              >
                 TOTAL AMOUNT
               </TableCell>
-              <TableCell sx={{ bgcolor: "#029889", p: 0 }} align="center">
+              <TableCell
+                sx={{ bgcolor: "#029889", color: "white" }}
+                align="center"
+              >
                 DISCOUNT
               </TableCell>
-              <TableCell sx={{ bgcolor: "#029889" , p: 0}} align="center">
+              <TableCell
+                sx={{ bgcolor: "#029889", color: "white" }}
+                align="center"
+              >
                 ADVANCE
               </TableCell>
-              <TableCell sx={{ bgcolor: "#029889" , p: 0}} align="center">
+              <TableCell
+                sx={{ bgcolor: "#029889", color: "white" }}
+                align="center"
+              >
                 DUE
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell align="center" sx={{ p: .4}}>
+              <TableCell align="center">
                 {orderSaved?.data?.total || 0}
               </TableCell>
-              <TableCell align="center" sx={{ p: .4}}>
-                {orderSaved?.data?.disount || 0}
+              <TableCell align="center">
+                {orderSaved?.data?.discount || 0}
               </TableCell>
-              <TableCell align="center" sx={{ p: .4}}>
+              <TableCell align="center">
                 {orderSaved?.data?.advance || 0}
               </TableCell>
-              <TableCell align="center" sx={{ p: .4}}>{orderSaved?.data?.due || 0}</TableCell>
+              <TableCell align="center">{orderSaved?.data?.due || 0}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

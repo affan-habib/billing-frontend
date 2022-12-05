@@ -2,15 +2,16 @@ import { InfoCircleOutlined } from "@ant-design/icons";
 import { Box, Button, Dialog, Stack, TextField, Tooltip } from "@mui/material";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
 import { addToCart } from "../../../reducers/cartSlice";
 // import { addToCart } from "store/reducers/cartSlice";
 import ServiceList from "../components/ServiceList";
 
-const AddItem = ({ addItemRef }) => {
+const AddItem = () => {
   const dispatch = useDispatch();
+  const addItemRef = useRef();
   const [open, setOpen] = useState(false);
   const [state, setState] = useState(true);
 
@@ -23,7 +24,7 @@ const AddItem = ({ addItemRef }) => {
   useEffect(() => {
     dispatch(
       callApi({
-        operationId: ("api/v1/service-master/items"),
+        operationId: "api/v1/service-master/items",
         output: "items",
       })
     );
