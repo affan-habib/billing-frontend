@@ -17,7 +17,7 @@ const Report = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 45, top: 15, color: "#029889" }}
+        sx={{ position: "absolute", right: 45, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -30,11 +30,11 @@ const Report = ({ setOpen }) => {
         <ReactToPrint
           trigger={() => (
             <IconButton
+              color="primary"
               sx={{
                 position: "absolute",
                 right: 15,
                 top: 15,
-                color: "#029889",
               }}
             >
               <PrinterFilled style={{ fontSize: "20px" }} />
@@ -49,7 +49,7 @@ const Report = ({ setOpen }) => {
             <Stack direction="row" justifyContent="space-between">
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
+                  <Typography variant="subtitle1" color="primary">
                     Bill No :
                   </Typography>
 
@@ -58,7 +58,7 @@ const Report = ({ setOpen }) => {
               </Stack>
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
+                  <Typography variant="subtitle1" color="primary">
                     Payment Method :
                   </Typography>
 
@@ -67,7 +67,7 @@ const Report = ({ setOpen }) => {
               </Stack>
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
+                  <Typography variant="subtitle1" color="primary">
                     Date :
                   </Typography>
                   <Typography>
@@ -79,7 +79,7 @@ const Report = ({ setOpen }) => {
             <Stack direction="row" justifyContent="space-between">
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
+                  <Typography variant="subtitle1" color="primary">
                     Patient Name :
                   </Typography>
                   <Typography>
@@ -89,7 +89,7 @@ const Report = ({ setOpen }) => {
               </Stack>
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
+                  <Typography variant="subtitle1" color="primary">
                     Age :
                   </Typography>
                   <Typography>
@@ -99,7 +99,7 @@ const Report = ({ setOpen }) => {
               </Stack>
               <Stack sx={{ flex: 1 }}>
                 <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
+                  <Typography variant="subtitle1" color="primary">
                     Mobile Number :
                   </Typography>
                   <Typography>
@@ -120,7 +120,7 @@ const Report = ({ setOpen }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="subtitle1" color="#029889">
+              <Typography variant="subtitle1" color="primary">
                 Billing manager :
                 <span
                   style={{
@@ -133,7 +133,7 @@ const Report = ({ setOpen }) => {
                 </span>
               </Typography>
 
-              <Typography variant="subtitle1" color="#029889">
+              <Typography variant="subtitle1" color="primary">
                 Bill Status :
                 <span
                   style={{
