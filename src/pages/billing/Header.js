@@ -31,7 +31,7 @@ const Header = ({ setFieldValue, values }) => {
     <>
       <Paper elevation={1} sx={{ background: "##f5f9f0", pt: 0, mt: 4 }} square>
         <Grid container spacing={2} alignItems="flex-end">
-          <Grid item md={2} m={2}>
+          <Grid item lg={1.5} md={3} m={2}>
             <Stack spacing={0.5}>
               <InputLabel>Customer Id</InputLabel>
               <TextField
