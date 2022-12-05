@@ -1,38 +1,19 @@
 import * as Yup from "yup";
 const getSchema = (model = {}) => {
   const {
-    date = "10-10-10",
-    billFrom = "OPD",
-    term = 1,
-    payer = "Affan Habib",
-    billNo = "452154785",
-    referredBy = "Dr. Kabir hossain",
-    agent = "Popular hospital",
     orderDetailList = [],
-    finalPrice = 0,
-    finalDiscount = 0,
+    total = 0,
+    discount = 0,
     advance = 0,
-    customerId = 62,
-    facilityId = 76,
-    patientId = 82,
-    sponsorBy = "string",
+    patientId = "6379aa33a1dee234eb1831b7",
   } = model;
 
   return {
-    customerId,
-    facilityId,
-    billFrom,
-    term,
-    payer,
-    billNo,
-    referredBy,
-    agent,
     orderDetailList,
-    finalPrice,
-    finalDiscount,
+    total,
+    discount,
     advance,
     patientId,
-    sponsorBy,
   };
 };
 

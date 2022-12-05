@@ -4,20 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    date: "10-10-10",
-    billFrom: "OPD",
-    term: 1,
-    payer: "Affan Habib",
-    billNo: "452154785",
-    referredBy: "Dr. Kabir hossain",
-    agent: "Popular hospital",
-    finalPrice: 0,
-    finalDiscount: 0,
+    discount: 0,
     advance: 0,
-    customerId: 62,
-    facilityId: 76,
-    patientId: 82,
-    sponsorBy: "string",
     orderDetailList: [],
   },
 
@@ -54,9 +42,21 @@ const cartSlice = createSlice({
       );
       state.orderDetailList = removeItem;
     },
+    calculateTotal: (state, action) => {
+      state[`${action.payload.field}`] = action.payload.value;
+    },
+    clearCart: (state) => {
+      state.orderDetailList = [];
+    },
   },
 });
 
 export const cartReducer = cartSlice.reducer;
-export const { addToCart, incrementQuantity, decrementQuantity, removeItem } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  incrementQuantity,
+  decrementQuantity,
+  removeItem,
+  calculateTotal,
+  clearCart,
+} = cartSlice.actions;

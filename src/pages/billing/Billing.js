@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import { Box, Dialog, Grid, Paper } from "@mui/material";
+import { Box, Button, Dialog, Grid, Paper } from "@mui/material";
 import { Formik } from "formik";
+
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
-import Header from "./Header";
-import Final from "./Final";
-import BottomSubmit from "./actions/bottomSubmit/BottomSubmit";
-import { getSchema, validator } from "./Schema";
-import "./styles/index.css";
-import TopHeader from "./components/TopHeader";
 import Body from "./Body";
-import Report from "./report/Report";
+
+import Final from "./Final";
+import Header from "./Header";
+import Report from "./components/report/Report";
+import { getSchema, validator } from "./Schema";
+import "./style.css";
+import { callApi } from "../../reducers/apiSlice";
+
 const Billing = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -28,11 +29,11 @@ const Billing = () => {
         onSubmit={(values, { setSubmitting }) => {
           dispatch(
             callApi({
-              operationId: "api/v1/order-detail/save",
-              output: "orderDetails",
+              operationId: "api/orders",
+              output: "orderSaved",
               parameters: {
                 method: "POST",
-                body: JSON.stringify({ ...values, ...cart }),
+                body: JSON.stringify(getSchema({ ...values, ...cart })),
               },
             })
           );
@@ -42,26 +43,26 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <TopHeader {...props} />
               <Header {...props} />
               <Paper
                 elevation={1}
-                sx={{ p: 2, mt: 2, pt: 0.5, background: "#FFFDF8" }}
+                sx={{ p: 2, mt: 2, background: "##f5f9f0" }}
                 square
               >
-                <Body />
-              </Paper>
-              <Paper
-                elevation={1}
-                sx={{ p: 2, mt: 2, background: "#F5FFFA" }}
-                square
-              >
-                <Grid container spacing={2}>
+                <Grid container spacing={2} alignItems="center">
                   <Grid item md={9}>
-                    <Final />
+                    <Body />
                   </Grid>
-                  <Grid item md={3}>
-                    <BottomSubmit {...props} />
+                  <Grid item md={3} sx={{ mt: 2 }}>
+                    <Final {...props} />
+                    <Button
+                      variant="contained"
+                      onClick={() => props.handleSubmit()}
+                      type="submit"
+                      sx={{ mt: 2 }}
+                    >
+                      SAVE AND PRINT
+                    </Button>
                   </Grid>
                 </Grid>
               </Paper>
