@@ -99,7 +99,7 @@ const Customers = () => {
     },
   ];
   return (
-    <Box sx={{ height: 400, mt: 2, width: "100%" }}>
+    <Box sx={{ height: 475, mt: 2, width: "100%" }}>
       <DataGrid
         getRowId={(row) => row._id}
         sx={{
@@ -111,7 +111,7 @@ const Customers = () => {
         checkboxSelection={true}
         rows={orders.data}
         columns={columns}
-        // pageSize={5}
+        pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
         components={{
@@ -119,7 +119,7 @@ const Customers = () => {
         }}
         // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
-        hideFooterPagination
+        // hideFooterPagination
         disableColumnMenu
         density="compact"
         showCellRightBorder={true}

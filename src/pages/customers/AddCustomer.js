@@ -81,7 +81,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Id</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="id"
                     name="id"
                     placeholder="ID"
@@ -111,7 +110,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Gender</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="gender"
                     name="gender"
                     placeholder="GENDER"
@@ -141,7 +139,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Contact Number</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="contactNumber"
                     name="contactNumber"
                     placeholder="MOBILE NUMBER"

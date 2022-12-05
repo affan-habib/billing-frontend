@@ -16,9 +16,9 @@ import {
 const rawTheme = createTheme({
   palette: {
     primary: {
-      light: teal[400],
-      main: teal[600],
-      dark: teal[700],
+      light: red[400],
+      main: red[600],
+      dark: red[700],
     },
     secondary: {
       light: teal[200],
