@@ -17,7 +17,7 @@ const Header = ({ setFieldValue, values }) => {
   const inputRef = useRef();
   const dispatch = useDispatch();
   useEffect(() => {
-    setFieldValue("patientId", customerSaved?._id);
+    setFieldValue("customerId", customerSaved?._id);
   }, [customerSaved]);
   const handleSearch = () => {
     dispatch(
@@ -39,7 +39,7 @@ const Header = ({ setFieldValue, values }) => {
                 id="id"
                 name="id"
                 placeholder="ID"
-                value={values.patientId}
+                value={values.customerId}
                 fullWidth
                 inputRef={inputRef}
               />
