@@ -3,8 +3,8 @@ import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectApi } from "../../../../reducers/apiSlice";
-import Header from "./Header";
-import Items from "./Items";
+import Header from "./components/Header";
+import Items from "./components/Items";
 import ReactToPrint from "react-to-print";
 import moment from "moment";
 

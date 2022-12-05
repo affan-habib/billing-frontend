@@ -3,17 +3,15 @@ import { Formik } from "formik";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { callApi } from "../../reducers/apiSlice";
-import BottomSubmit from "./actions/BottomSubmit";
 import Body from "./Body";
-import TopHeader from "./actions/TopHeader";
+
 import Final from "./Final";
 import Header from "./Header";
 import Report from "./components/report/Report";
 import { getSchema, validator } from "./Schema";
 import "./style.css";
 import { callApi } from "../../reducers/apiSlice";
-import AddCustomer from "../customers/AddCustomer";
+
 const Billing = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -45,7 +43,6 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <TopHeader {...props} />
               <Header {...props} />
               <Paper
                 elevation={1}

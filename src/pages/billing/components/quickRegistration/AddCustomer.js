@@ -1,19 +1,11 @@
-import React, { useEffect } from "react";
-import { Formik, Field } from "formik";
-import {
-  Grid,
-  InputLabel,
-  Stack,
-  TextField,
-  Button,
-  IconButton,
-} from "@mui/material";
+import React from "react";
+import { Formik } from "formik";
+import { Grid, InputLabel, Stack, TextField, Button } from "@mui/material";
 import { getSchema, validator } from "./Schema";
-import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../../../reducers/apiSlice";
-import { CloseCircleFilled } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { callApi } from "../../../../reducers/apiSlice";
 
-const AddCustomer = ({ setOpen }) => {
+const AddCustomer = () => {
   const dispatch = useDispatch();
 
   return (
@@ -35,19 +27,9 @@ const AddCustomer = ({ setOpen }) => {
           );
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          setFieldValue,
-          /* and other goodies */
-        }) => (
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2} sx={{ p: 2 }}>
+            <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
               <Grid item lg={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Customer name</InputLabel>
@@ -95,7 +77,7 @@ const AddCustomer = ({ setOpen }) => {
               </Grid>
               <Grid item lg={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Contact Number</InputLabel>
+                  <InputLabel>Mobile Number</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="contactNumber"

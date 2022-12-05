@@ -1,8 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
-// import { calculateTotal } from "store/reducers/cartSlice";
 import { useEffect } from "react";
 import { calculateTotal } from "../../reducers/cartSlice";
 import { Grid } from "@mui/material";
