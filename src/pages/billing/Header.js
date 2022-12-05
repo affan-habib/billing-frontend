@@ -1,4 +1,11 @@
-import { Grid, InputLabel, Paper, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  Grid,
+  InputLabel,
+  Paper,
+  Stack,
+  TextField,
+} from "@mui/material";
 
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +30,7 @@ const Header = ({ setFieldValue, values }) => {
   return (
     <>
       <Paper elevation={1} sx={{ background: "#F5FFFA", pt: 0, mt: 4 }} square>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} alignItems="flex-end">
           <Grid item md={2} m={2}>
             <Stack spacing={0.5}>
               <InputLabel>Customer Id</InputLabel>
@@ -38,7 +45,13 @@ const Header = ({ setFieldValue, values }) => {
               />
             </Stack>
           </Grid>
-          <button onClick={() => handleSearch()}>Search</button>
+          <Button
+            sx={{ mb: 2, borderRadius: 20 }}
+            variant="contained"
+            onClick={handleSearch}
+          >
+            Search
+          </Button>
           <Grid item md={9}>
             <AddCustomer />
           </Grid>
