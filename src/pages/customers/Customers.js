@@ -65,7 +65,7 @@ const Customers = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       field: "contactNumber",
       headerClassName: "top-header-1",
       headerName: "CONTACT",
@@ -95,7 +95,7 @@ const Customers = () => {
       headerName: "ACTION",
       type: "actions",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
   ];

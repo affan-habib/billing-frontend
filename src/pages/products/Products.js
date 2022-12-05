@@ -65,7 +65,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       field: "discountAmount",
       headerClassName: "top-header-1",
       headerName: "DISCOUNT",
@@ -89,7 +89,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       field: "expiryDate",
       headerClassName: "top-header-1",
       headerName: "EXPIRY DATE",

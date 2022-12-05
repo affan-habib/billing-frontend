@@ -4,6 +4,7 @@ import { Grid, InputLabel, Stack, TextField, Button } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch } from "react-redux";
 import { callApi } from "../../../../reducers/apiSlice";
+import { SaveOutlined } from "@ant-design/icons";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
@@ -49,7 +50,6 @@ const AddCustomer = () => {
                 <Stack spacing={0.5}>
                   <InputLabel>Gender</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="gender"
                     name="gender"
                     placeholder="GENDER"
@@ -79,7 +79,6 @@ const AddCustomer = () => {
                 <Stack spacing={0.5}>
                   <InputLabel>Mobile Number</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="contactNumber"
                     name="contactNumber"
                     placeholder="MOBILE NUMBER"
@@ -100,10 +99,10 @@ const AddCustomer = () => {
                   <Button
                     variant="contained"
                     color="info"
-                    sx={{ bgcolor: "#216b8b" }}
+                    sx={{ borderRadius: 20 }}
                     type="submit"
                   >
-                    SAVE
+                    SAVE CUSTOMER
                   </Button>
                 </Stack>
               </Grid>
