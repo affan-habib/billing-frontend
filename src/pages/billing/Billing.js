@@ -11,7 +11,11 @@ import Report from "./components/report/Report";
 import { getSchema, validator } from "./Schema";
 import "./style.css";
 import { callApi } from "../../reducers/apiSlice";
-import { PrinterOutlined } from "@ant-design/icons";
+import {
+  PrinterOutlined,
+  ReloadOutlined,
+  SaveOutlined,
+} from "@ant-design/icons";
 
 const Billing = () => {
   const dispatch = useDispatch();
@@ -65,12 +69,7 @@ const Billing = () => {
                       <Button
                         color="warning"
                         variant="contained"
-                        startIcon={
-                          <PrinterOutlined
-                            color="#205081"
-                            style={{ fontSize: "16px" }}
-                          />
-                        }
+                        startIcon={<PrinterOutlined />}
                         onClick={() => props.handleSubmit()}
                         type="submit"
                         sx={{ mt: 2 }}
@@ -78,15 +77,15 @@ const Billing = () => {
                         SAVE + PRINT
                       </Button>
                       <Button
+                        startIcon={<ReloadOutlined />}
                         color="primary"
                         variant="outlined"
-                        onClick={() => props.handleSubmit()}
-                        type="submit"
                         sx={{ mt: 2 }}
                       >
                         CANCEL
                       </Button>
                       <Button
+                        startIcon={<SaveOutlined />}
                         color="success"
                         onClick={() => props.handleSubmit()}
                         type="submit"
