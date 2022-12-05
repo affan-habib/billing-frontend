@@ -11,10 +11,10 @@ import NoRowIcon from "../../components/NoRowIcon";
 const Customers = () => {
   const dispatch = useDispatch();
   const {
-    customers = {
+    orders = {
       data: [],
     },
-    customerDeleted = {
+    orderDeleted = {
       id: null,
     },
     customerSaved,
@@ -25,12 +25,12 @@ const Customers = () => {
         dispatch(
           callApi({
             operationId: `api/orders`,
-            output: "customers",
+            output: "orders",
           })
         ),
       1000
     );
-  }, [customerDeleted.id, customerSaved]);
+  }, [orderDeleted.id, customerSaved]);
   const columns = [
     {
       field: "id",
@@ -87,8 +87,6 @@ const Customers = () => {
       sortable: false,
       align: "center",
     },
- 
-    
     {
       minWidth: 120,
       align: "center",
@@ -100,60 +98,8 @@ const Customers = () => {
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
   ];
-  const [selectedOptions, setSelectedOptions] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
-  const handleadd = () => {
-    let SelectedOptions = customers.data.filter(
-      (el) => selectedOptions.indexOf(el.id) + 1
-    );
-
-    return SelectedOptions.forEach((el) =>
-      dispatch(
-        addToCart({
-          ...el,
-          contactNumber: 0,
-          expiryDate: 0,
-          vatPerUnit: 0,
-          discountPerUnit: 0,
-          quantityOrdered: 1,
-          quantityReturned: 0,
-          discountTotal: 0,
-          discountReturned: 0,
-          vatTotal: 0,
-          vatReturned: 0,
-          subtotalOrdered: 0,
-          subtotalReturned: 0,
-          rowTotal: 0,
-          returnedBy: "string",
-          returnDate: "2022-11-13T11:35:33.765Z",
-        })
-      )
-    );
-  };
-
   return (
-    <Box sx={{ height: 400, mt: 2, width: "100%" }}>
-      <Stack direction="row">
-        <Button
-          sx={{ mb: 2, ml: 2, width: 200 }}
-          variant="contained"
-          onClick={() => setOpen(true)}
-        >
-          Add New Customer
-        </Button>
-        <Button
-          sx={{ mb: 2, ml: 2, width: 200 }}
-          disabled={selectedOptions.length !== 1}
-          variant="contained"
-          color="warning"
-          onClick={() => handleadd()}
-        >
-          {selectedOptions.length ? "Bill to customer" : "Select Customer"}
-        </Button>
-        <Dialog open={open} onClose={() => setOpen(!open)}>
-          <AddCustomer setOpen={setOpen} />
-        </Dialog>
-      </Stack>
+    <Box sx={{ height: 475, mt: 2, width: "100%" }}>
       <DataGrid
         getRowId={(row) => row._id}
         sx={{
@@ -163,9 +109,9 @@ const Customers = () => {
           },
         }}
         checkboxSelection={true}
-        rows={customers.data}
+        rows={orders.data}
         columns={columns}
-        // pageSize={5}
+        pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
         components={{
@@ -173,14 +119,11 @@ const Customers = () => {
         }}
         // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
-        hideFooterPagination
+        // hideFooterPagination
         disableColumnMenu
         density="compact"
         showCellRightBorder={true}
         showColumnRightBorder={true}
-        onSelectionModelChange={(newSelectionModel) => {
-          setSelectedOptions(newSelectionModel);
-        }}
       />
     </Box>
   );

@@ -42,7 +42,7 @@ const ServiceList = ({ setOpen }) => {
       headerAlign: "center",
     },
     {
-      field: "masterServiceName",
+      field: "serviceName",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       headerName: "SERVICE NAME",
@@ -53,7 +53,7 @@ const ServiceList = ({ setOpen }) => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "tariffBaseAmount",
+      field: "basePrice",
       headerClassName: "top-header-1",
       headerName: "PRICE",
       type: "number",
@@ -77,7 +77,7 @@ const ServiceList = ({ setOpen }) => {
             dispatch(
               addToCart({
                 ...params.row,
-                discountAmount: 0,
+                discountPerUnit: 0,
                 expiryDate: 0,
                 vatPerUnit: 0,
                 discountPerUnit: 0,
@@ -129,7 +129,7 @@ const ServiceList = ({ setOpen }) => {
       dispatch(
         addToCart({
           ...el,
-          discountAmount: 0,
+          discountPerUnit: 0,
           expiryDate: 0,
           vatPerUnit: 0,
           discountPerUnit: 0,

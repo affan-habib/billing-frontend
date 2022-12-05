@@ -67,7 +67,7 @@ export default function Layout() {
             <Tab label="NEW BILL" {...a11yProps(0)} />
             <Tab label="SALES" {...a11yProps(1)} />
             <Tab label="CUSTOMERS" {...a11yProps(2)} />
-            <Tab label="OUR PRODUCTS/SERVICES" {...a11yProps(3)} />
+            <Tab label="PRODUCTS/SERVICES" {...a11yProps(3)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>

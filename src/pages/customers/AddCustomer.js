@@ -38,7 +38,7 @@ const AddCustomer = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
+        sx={{ position: "absolute", right: 15, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -81,7 +81,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Id</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="id"
                     name="id"
                     placeholder="ID"
@@ -111,7 +110,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Gender</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="gender"
                     name="gender"
                     placeholder="GENDER"
@@ -141,7 +139,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Contact Number</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="contactNumber"
                     name="contactNumber"
                     placeholder="MOBILE NUMBER"
@@ -159,12 +156,7 @@ const AddCustomer = ({ setOpen }) => {
                   alignItems="flex-end"
                   sx={{ height: "100%" }}
                 >
-                  <Button
-                    variant="contained"
-                    color="info"
-                    sx={{ bgcolor: "#216b8b" }}
-                    type="submit"
-                  >
+                  <Button variant="contained" color="info" type="submit">
                     SAVE
                   </Button>
                 </Stack>

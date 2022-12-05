@@ -43,7 +43,7 @@ const Products = () => {
       headerAlign: "center",
     },
     {
-      field: "masterServiceName",
+      field: "serviceName",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       headerName: "SERVICE NAME",
@@ -54,7 +54,7 @@ const Products = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "tariffBaseAmount",
+      field: "basePrice",
       headerClassName: "top-header-1",
       headerName: "PRICE",
       type: "number",
@@ -66,7 +66,7 @@ const Products = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      field: "discountAmount",
+      field: "discountPerUnit",
       headerClassName: "top-header-1",
       headerName: "DISCOUNT",
       type: "number",
@@ -121,7 +121,7 @@ const Products = () => {
       dispatch(
         addToCart({
           ...el,
-          discountAmount: 0,
+          discountPerUnit: 0,
           expiryDate: 0,
           vatPerUnit: 0,
           discountPerUnit: 0,

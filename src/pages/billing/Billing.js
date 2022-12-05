@@ -1,4 +1,4 @@
-import { Box, Button, Dialog, Grid, Paper } from "@mui/material";
+import { Box, Button, ButtonGroup, Dialog, Grid, Paper } from "@mui/material";
 import { Formik } from "formik";
 
 import { useState } from "react";
@@ -11,6 +11,11 @@ import Report from "./components/report/Report";
 import { getSchema, validator } from "./Schema";
 import "./style.css";
 import { callApi } from "../../reducers/apiSlice";
+import {
+  PrinterOutlined,
+  ReloadOutlined,
+  SaveOutlined,
+} from "@ant-design/icons";
 
 const Billing = () => {
   const dispatch = useDispatch();
@@ -55,14 +60,40 @@ const Billing = () => {
                   </Grid>
                   <Grid item md={3} sx={{ mt: 2 }}>
                     <Final {...props} />
-                    <Button
-                      variant="contained"
-                      onClick={() => props.handleSubmit()}
-                      type="submit"
-                      sx={{ mt: 2 }}
+
+                    <ButtonGroup
+                      variant="outlined"
+                      aria-label="outlined button group"
+                      disableElevation
                     >
-                      SAVE AND PRINT
-                    </Button>
+                      <Button
+                        color="warning"
+                        variant="contained"
+                        startIcon={<PrinterOutlined />}
+                        onClick={() => props.handleSubmit()}
+                        type="submit"
+                        sx={{ mt: 2 }}
+                      >
+                        SAVE + PRINT
+                      </Button>
+                      <Button
+                        startIcon={<ReloadOutlined />}
+                        color="primary"
+                        variant="outlined"
+                        sx={{ mt: 2 }}
+                      >
+                        CANCEL
+                      </Button>
+                      <Button
+                        startIcon={<SaveOutlined />}
+                        color="success"
+                        onClick={() => props.handleSubmit()}
+                        type="submit"
+                        sx={{ mt: 2 }}
+                      >
+                        SAVE AS DRAFT
+                      </Button>
+                    </ButtonGroup>
                   </Grid>
                 </Grid>
               </Paper>

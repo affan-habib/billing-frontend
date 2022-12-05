@@ -19,7 +19,7 @@ export default function Body() {
       headerAlign: "center",
     },
     {
-      field: "masterServiceName",
+      field: "serviceName",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       headerName: "SERVICE NAME",
@@ -30,7 +30,7 @@ export default function Body() {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "tariffBaseAmount",
+      field: "basePrice",
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
@@ -50,7 +50,7 @@ export default function Body() {
       align: "center",
     },
     {
-      field: "discountAmount",
+      field: "discountPerUnit",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       headerName: "DISCOUNT",
@@ -69,7 +69,7 @@ export default function Body() {
       align: "center",
       minWidth: 120,
       valueGetter: (params) =>
-        params.row.quantityOrdered * params.row.tariffBaseAmount,
+        params.row.quantityOrdered * params.row.basePrice,
       headerAlign: "center",
       type: "number",
     },

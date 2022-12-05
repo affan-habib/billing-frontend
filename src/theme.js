@@ -16,9 +16,9 @@ import {
 const rawTheme = createTheme({
   palette: {
     primary: {
-      light: teal[400],
-      main: teal[600],
-      dark: teal[700],
+      light: red[400],
+      main: red[600],
+      dark: red[700],
     },
     secondary: {
       light: teal[200],
@@ -31,9 +31,9 @@ const rawTheme = createTheme({
       dark: deepPurple[700],
     },
     error: {
-      light: orange[300],
-      main: orange[300],
-      dark: orange[400],
+      light: red[300],
+      main: red[300],
+      dark: red[400],
     },
     success: {
       light: purple[400],

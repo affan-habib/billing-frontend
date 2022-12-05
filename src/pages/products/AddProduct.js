@@ -20,20 +20,8 @@ import { CloseCircleFilled } from "@ant-design/icons";
 
 const AddProduct = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const {
-    gender = {
-      data: [],
-    },
-    quick_registration,
-  } = useSelector(selectApi);
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: `api/v1/p-code/all?codeType=Gender`,
-        output: "gender",
-      })
-    );
-  }, []);
+  const { quick_registration } = useSelector(selectApi);
+
   useEffect(() => {
     if (quick_registration?.status == "success") {
       setOpen(false);
@@ -48,7 +36,7 @@ const AddProduct = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
+        sx={{ position: "absolute", right: 15, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -91,8 +79,8 @@ const AddProduct = ({ setOpen }) => {
                 <Typography
                   variant="h4"
                   align="center"
+                  color="primary"
                   sx={{ display: "block" }}
-                  color="#216b8b"
                 >
                   Add New Product
                 </Typography>
@@ -126,21 +114,21 @@ const AddProduct = ({ setOpen }) => {
                   <InputLabel>Product/service name</InputLabel>
                   <TextField
                     autoFocus={true}
-                    id="masterServiceName"
-                    name="masterServiceName"
+                    id="serviceName"
+                    name="serviceName"
                     placeholder="Enter name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.masterServiceName}
+                    value={values.serviceName}
                     fullWidth
                     autoComplete="first-name"
                   />
-                  {touched.masterServiceName && errors.masterServiceName && (
+                  {touched.serviceName && errors.serviceName && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.masterServiceName}
+                      {errors.serviceName}
                     </FormHelperText>
                   )}
                 </Stack>
@@ -149,22 +137,22 @@ const AddProduct = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>BASE PRICE</InputLabel>
                   <TextField
-                    id="tariffBaseAmount"
-                    name="tariffBaseAmount"
+                    id="basePrice"
+                    name="basePrice"
                     placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.tariffBaseAmount}
+                    value={values.basePrice}
                     fullWidth
                     type="number"
                     autoComplete="age"
                   />
-                  {touched.tariffBaseAmount && errors.tariffBaseAmount && (
+                  {touched.basePrice && errors.basePrice && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.tariffBaseAmount}
+                      {errors.basePrice}
                     </FormHelperText>
                   )}
                 </Stack>
@@ -174,22 +162,22 @@ const AddProduct = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Discount</InputLabel>
                   <TextField
-                    id="discountAmount"
-                    name="discountAmount"
+                    id="discountPerUnit"
+                    name="discountPerUnit"
                     placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.discountAmount}
+                    value={values.discountPerUnit}
                     fullWidth
                     type="number"
                     autoComplete="age"
                   />
-                  {touched.discountAmount && errors.discountAmount && (
+                  {touched.discountPerUnit && errors.discountPerUnit && (
                     <FormHelperText
                       error
                       id="standard-weight-helper-text-password-login"
                     >
-                      {errors.discountAmount}
+                      {errors.discountPerUnit}
                     </FormHelperText>
                   )}
                 </Stack>
@@ -246,7 +234,6 @@ const AddProduct = ({ setOpen }) => {
                 <Button
                   variant="contained"
                   color="info"
-                  sx={{ bgcolor: "#216b8b" }}
                   fullWidth
                   type="submit"
                 >

@@ -2,9 +2,9 @@ import * as Yup from "yup";
 const getSchema = (model = {}) => {
   const {
     id = 0,
-    masterServiceName = "Service Name",
-    tariffBaseAmount = 61,
-    discountAmount = 0,
+    serviceName = "Service Name",
+    basePrice = 61,
+
     expiryDate = 0,
     vatPerUnit = 0,
     discountPerUnit = 0,
@@ -12,12 +12,11 @@ const getSchema = (model = {}) => {
 
   return {
     id,
-    masterServiceName,
-    tariffBaseAmount,
-    discountAmount,
+    serviceName,
+    basePrice,
+    discountPerUnit,
     expiryDate,
     vatPerUnit,
-    discountPerUnit,
   };
 };
 

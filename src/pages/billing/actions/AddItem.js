@@ -35,7 +35,7 @@ const AddItem = () => {
     (el) => alreadySelectedOptions.indexOf(el.id) == -1
   );
   const filterOptions = createFilterOptions({
-    stringify: ({ masterServiceName, id }) => `${masterServiceName} ${id}`,
+    stringify: ({ serviceName, id }) => `${serviceName} ${id}`,
   });
   // console.log({ filterSelectedOptions }, { alreadySelectedOptions });
   const focusAgain = () => {
@@ -56,7 +56,7 @@ const AddItem = () => {
           sx={{ width: 300 }}
           options={filterSelectedOptions}
           autoHighlight
-          getOptionLabel={(option) => option.masterServiceName}
+          getOptionLabel={(option) => option.serviceName}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -69,17 +69,17 @@ const AddItem = () => {
           )}
           renderOption={(props, option) => (
             <Box component="li" {...props}>
-              {option.masterServiceName} ({option.id})
+              {option.serviceName} ({option.id})
             </Box>
           )}
           onChange={(e, value) => {
             dispatch(
               addToCart({
                 id: value.id,
-                tariffBaseAmount: value.tariffBaseAmount,
-                masterServiceName: value.masterServiceName,
+                basePrice: value.basePrice,
+                serviceName: value.serviceName,
                 ...{
-                  discountAmount: 0,
+                  discountPerUnit: 0,
                   expiryDate: 0,
                   vatPerUnit: 0,
                   discountPerUnit: 0,
