@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { calculateTotal } from "store/reducers/cartSlice";
 import { useEffect } from "react";
 import { calculateTotal } from "../../reducers/cartSlice";
+import { Grid } from "@mui/material";
 export default function Final() {
   const { orderDetailList, discount, advance } = useSelector(
     (state) => state.cart
@@ -96,62 +97,72 @@ export default function Final() {
 
   return (
     <Box sx={{ height: 78, Width: "100%" }}>
-      <DataGrid
-        rows={items}
-        columns={finalAmountColumn}
-        disableSelectionOnClick
-        disableColumnSelector
-        headerHeight={55}
-        hideFooterPagination
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
-        hideFooter
-        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
-      />
-      <DataGrid
-        rows={items}
-        columns={discountAmountColumn}
-        disableSelectionOnClick
-        disableColumnSelector
-        headerHeight={55}
-        hideFooterPagination
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
-        hideFooter
-        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
-      />
-      <DataGrid
-        rows={items}
-        columns={advanceAmountColumn}
-        disableSelectionOnClick
-        disableColumnSelector
-        headerHeight={55}
-        hideFooterPagination
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
-        hideFooter
-        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
-      />
-      <DataGrid
-        rows={items}
-        columns={dueAmountColumn}
-        disableSelectionOnClick
-        disableColumnSelector
-        headerHeight={55}
-        hideFooterPagination
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
-        hideFooter
-        onCellEditCommit={(params) => dispatch(calculateTotal(params))}
-      />
+      <Grid container spacing={0}>
+        <Grid item md={6}>
+          <DataGrid
+            rows={items}
+            columns={finalAmountColumn}
+            disableSelectionOnClick
+            disableColumnSelector
+            headerHeight={55}
+            hideFooterPagination
+            disableColumnMenu
+            density="compact"
+            showCellRightBorder={true}
+            showColumnRightBorder={true}
+            hideFooter
+            onCellEditCommit={(params) => dispatch(calculateTotal(params))}
+          />
+        </Grid>
+        <Grid item md={6} sx={{ width: "100%", height: 80 }}>
+          <DataGrid
+            rows={items}
+            columns={discountAmountColumn}
+            disableSelectionOnClick
+            disableColumnSelector
+            headerHeight={55}
+            hideFooterPagination
+            disableColumnMenu
+            density="compact"
+            showCellRightBorder={true}
+            showColumnRightBorder={true}
+            hideFooter
+            onCellEditCommit={(params) => dispatch(calculateTotal(params))}
+          />
+        </Grid>
+        <Grid item md={6}>
+          <DataGrid
+            rows={items}
+            columns={advanceAmountColumn}
+            disableSelectionOnClick
+            disableColumnSelector
+            headerHeight={55}
+            hideFooterPagination
+            disableColumnMenu
+            density="compact"
+            showCellRightBorder={true}
+            showColumnRightBorder={true}
+            hideFooter
+            onCellEditCommit={(params) => dispatch(calculateTotal(params))}
+          />
+        </Grid>
+        <Grid item md={6}>
+          <DataGrid
+            rows={items}
+            columns={dueAmountColumn}
+            disableSelectionOnClick
+            disableColumnSelector
+            headerHeight={55}
+            hideFooterPagination
+            disableColumnMenu
+            density="compact"
+            showCellRightBorder={true}
+            showColumnRightBorder={true}
+            hideFooter
+            onCellEditCommit={(params) => dispatch(calculateTotal(params))}
+          />
+        </Grid>
+      </Grid>
     </Box>
   );
 }
