@@ -9,7 +9,6 @@ import Final from "./Final";
 import Header from "./Header";
 import Report from "./components/report/Report";
 import { getSchema, validator } from "./Schema";
-import "./style.css";
 import { callApi } from "../../reducers/apiSlice";
 import {
   PrinterOutlined,

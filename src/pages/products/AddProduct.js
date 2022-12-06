@@ -4,11 +4,8 @@ import {
   FormHelperText,
   Grid,
   InputLabel,
-  OutlinedInput,
   Stack,
-  Select,
   TextField,
-  MenuItem,
   Button,
   Typography,
   IconButton,
@@ -68,9 +65,6 @@ const AddProduct = ({ setOpen }) => {
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting,
-          setFieldValue,
-          /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ maxWidth: 450, p: 2 }}>
