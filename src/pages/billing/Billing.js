@@ -67,16 +67,18 @@ const Billing = () => {
                     >
                       <Button
                         color="info"
+                        size="small"
                         variant="contained"
                         startIcon={<PrinterOutlined />}
                         onClick={() => props.handleSubmit()}
                         type="submit"
                         sx={{ mt: 2, borderRadius: 10 }}
                       >
-                        SAVE + PRINT
+                        SAVE
                       </Button>
                       <Button
                         startIcon={<ReloadOutlined />}
+                        size="small"
                         color="primary"
                         variant="outlined"
                         sx={{ mt: 2 }}
@@ -86,11 +88,12 @@ const Billing = () => {
                       <Button
                         startIcon={<SaveOutlined />}
                         color="info"
+                        size="small"
                         onClick={() => props.handleSubmit()}
                         type="submit"
                         sx={{ mt: 2, borderRadius: 10 }}
                       >
-                        SAVE AS DRAFT
+                        DRAFT
                       </Button>
                     </ButtonGroup>
                   </Grid>
