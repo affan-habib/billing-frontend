@@ -66,12 +66,12 @@ const Billing = () => {
                       disableElevation
                     >
                       <Button
-                        color="warning"
+                        color="info"
                         variant="contained"
                         startIcon={<PrinterOutlined />}
                         onClick={() => props.handleSubmit()}
                         type="submit"
-                        sx={{ mt: 2 }}
+                        sx={{ mt: 2, borderRadius: 10 }}
                       >
                         SAVE + PRINT
                       </Button>
@@ -85,10 +85,10 @@ const Billing = () => {
                       </Button>
                       <Button
                         startIcon={<SaveOutlined />}
-                        color="success"
+                        color="info"
                         onClick={() => props.handleSubmit()}
                         type="submit"
-                        sx={{ mt: 2 }}
+                        sx={{ mt: 2, borderRadius: 10 }}
                       >
                         SAVE AS DRAFT
                       </Button>

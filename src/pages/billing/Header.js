@@ -1,3 +1,4 @@
+import { SearchOutlined } from "@ant-design/icons";
 import {
   Button,
   Grid,
@@ -47,10 +48,11 @@ const Header = ({ setFieldValue, values }) => {
           </Grid>
           <Button
             sx={{ mb: 2, borderRadius: 20 }}
-            variant="contained"
+            startIcon={<SearchOutlined/>}
+            variant="outlined"
             onClick={handleSearch}
           >
-            Search
+            SEARCH
           </Button>
           <Grid item md={9}>
             <AddCustomer />

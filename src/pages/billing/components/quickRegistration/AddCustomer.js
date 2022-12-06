@@ -4,7 +4,8 @@ import { Grid, InputLabel, Stack, TextField, Button } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch } from "react-redux";
 import { callApi } from "../../../../reducers/apiSlice";
-import { SaveOutlined } from "@ant-design/icons";
+import { SaveOutlined, SendOutlined } from "@ant-design/icons";
+import { SaveAsOutlined } from "@mui/icons-material";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
@@ -98,6 +99,7 @@ const AddCustomer = () => {
                 >
                   <Button
                     variant="contained"
+                    endIcon={<SendOutlined />}
                     color="info"
                     sx={{ borderRadius: 20 }}
                     type="submit"
