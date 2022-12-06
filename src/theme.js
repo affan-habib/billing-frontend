@@ -1,13 +1,8 @@
 import { createTheme } from "@mui/material/styles";
 import {
   grey,
-  green,
-  deepOrange,
   red,
   teal,
-  orange,
-  yellow,
-  blue,
   deepPurple,
   cyan,
   purple,
@@ -16,9 +11,9 @@ import {
 const rawTheme = createTheme({
   palette: {
     primary: {
-      light: red[400],
-      main: red[600],
-      dark: red[700],
+      light: cyan[400],
+      main: cyan[800],
+      dark: cyan[700],
     },
     secondary: {
       light: teal[200],
@@ -96,7 +91,7 @@ const rawTheme = createTheme({
         root: {
           fontSize: "0.9rem",
           textTransform: "uppercase",
-          fontWeight: 500
+          fontWeight: 500,
         },
         outlined: {
           lineHeight: "0.8em",

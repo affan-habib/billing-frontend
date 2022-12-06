@@ -170,6 +170,7 @@ const ServiceList = () => {
         disableColumnSelector
         headerHeight={55}
         hideFooterPagination
+        hideFooter
         disableColumnMenu
         density="compact"
         showCellRightBorder={true}
