@@ -105,7 +105,7 @@ const AddItem = () => {
           <Button
             sx={{ ml: 2, height: 35, mt: 0.5, width: 200 }}
             variant="outlined"
-            color="warning"
+            color="info"
             size="small"
             type="button"
             onClick={() => setOpen(!open)}

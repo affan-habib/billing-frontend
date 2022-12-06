@@ -73,7 +73,7 @@ const ServiceList = () => {
           variant="outlined"
           sx={{ m: 1 }}
           size="small"
-          color="success"
+          color="info"
           onClick={() =>
             dispatch(
               addToCart({
@@ -118,6 +118,7 @@ const ServiceList = () => {
           </Button>
           <Button
             sx={{ mb: 2, mr: 2 }}
+            color="info"
             variant="contained"
             onClick={() => setOpen(!open)}
           >
