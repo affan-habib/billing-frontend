@@ -1,14 +1,16 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Box, Button, IconButton, Stack } from "@mui/material";
+import { Box, Button, Dialog, IconButton, Stack } from "@mui/material";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
 import { addToCart } from "../../../reducers/cartSlice";
 import NoRowIcon from "../../../components/NoRowIcon";
+import AddProduct from "../../products/AddProduct";
 
-const ServiceList = ({ setOpen }) => {
+const ServiceList = () => {
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
   const {
     items = {
       data: [],
@@ -59,14 +61,18 @@ const ServiceList = ({ setOpen }) => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       minWidth: 120,
       align: "center",
       field: "actions",
       headerName: "ACTION",
       type: "actions",
       renderCell: (params) => (
-        <IconButton
+        <Button
+          startIcon={<PlusOutlined />}
+          variant="outlined"
+          sx={{ m: 1 }}
+          size="small"
           color="success"
           onClick={() =>
             dispatch(
@@ -91,8 +97,8 @@ const ServiceList = ({ setOpen }) => {
             )
           }
         >
-          <PlusOutlined />
-        </IconButton>
+          Add
+        </Button>
       ),
     },
   ];
@@ -110,7 +116,11 @@ const ServiceList = ({ setOpen }) => {
           >
             {selectedOptions.length ? "Add services" : "Select services"}
           </Button>
-          <Button sx={{ mb: 2, mr: 2 }} variant="contained">
+          <Button
+            sx={{ mb: 2, mr: 2 }}
+            variant="contained"
+            onClick={() => setOpen(!open)}
+          >
             Add New Service
           </Button>
         </Stack>
@@ -149,6 +159,9 @@ const ServiceList = ({ setOpen }) => {
 
   return (
     <Box sx={{ height: 400, p: 2, mt: 2, width: "100%" }}>
+      <Dialog open={open} onClose={() => setOpen(!open)}>
+        <AddProduct setOpen={setOpen} />
+      </Dialog>
       <DataGrid
         // checkboxSelection={true}
         rows={items.data}
