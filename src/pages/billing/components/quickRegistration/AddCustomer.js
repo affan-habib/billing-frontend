@@ -1,6 +1,13 @@
 import React from "react";
 import { Formik } from "formik";
-import { Grid, InputLabel, Stack, TextField, Button } from "@mui/material";
+import {
+  Grid,
+  InputLabel,
+  Stack,
+  TextField,
+  Button,
+  Tooltip,
+} from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch } from "react-redux";
 import { callApi } from "../../../../reducers/apiSlice";
@@ -97,15 +104,17 @@ const AddCustomer = () => {
                   alignItems="flex-end"
                   sx={{ height: "100%" }}
                 >
-                  <Button
-                    variant="contained"
-                    endIcon={<SendOutlined />}
-                    color="info"
-                    sx={{ borderRadius: 20 }}
-                    type="submit"
-                  >
-                    SAVE CUSTOMER
-                  </Button>
+                  <Tooltip title="Save as new customer">
+                    <Button
+                      variant="contained"
+                      endIcon={<SendOutlined />}
+                      color="info"
+                      sx={{ borderRadius: 20 }}
+                      type="submit"
+                    >
+                      SAVE CUSTOMER
+                    </Button>
+                  </Tooltip>
                 </Stack>
               </Grid>
             </Grid>

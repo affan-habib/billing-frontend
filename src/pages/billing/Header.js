@@ -6,6 +6,7 @@ import {
   Paper,
   Stack,
   TextField,
+  Tooltip,
 } from "@mui/material";
 
 import { useEffect, useRef } from "react";
@@ -46,14 +47,16 @@ const Header = ({ setFieldValue, values }) => {
               />
             </Stack>
           </Grid>
-          <Button
-            sx={{ mb: 2, borderRadius: 20 }}
-            startIcon={<SearchOutlined/>}
-            variant="outlined"
-            onClick={handleSearch}
-          >
-            SEARCH
-          </Button>
+          <Tooltip title="Search Customer by id/Mobile">
+            <Button
+              sx={{ mb: 2, borderRadius: 20 }}
+              startIcon={<SearchOutlined />}
+              variant="outlined"
+              onClick={handleSearch}
+            >
+              SEARCH
+            </Button>
+          </Tooltip>
           <Grid item md={9}>
             <AddCustomer />
           </Grid>
