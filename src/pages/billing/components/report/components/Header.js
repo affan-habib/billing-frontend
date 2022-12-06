@@ -12,10 +12,7 @@ const Header = () => {
           />
         </Grid>
         <Grid item md={9}>
-          <Typography
-            variant="h5"
-            sx={{ fontWeight: 600, color: "#029889", mt: 2 }}
-          >
+          <Typography variant="caption" sx={{ fontWeight: 600, mt: 2 }}>
             ABC GENERAL HOSPITAL
           </Typography>
           <Stack

@@ -16,14 +16,7 @@ import { CloseCircleFilled } from "@ant-design/icons";
 const AddCustomer = ({ setOpen }) => {
   const dispatch = useDispatch();
   const { quick_registration } = useSelector(selectApi);
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: `api/v1/p-code/all?codeType=Gender`,
-        output: "gender",
-      })
-    );
-  }, []);
+
   useEffect(() => {
     if (quick_registration?.status == "success") {
       setOpen(false);
