@@ -23,36 +23,33 @@ export default function Items() {
         <Table sx={{ Width: 550 }} size="small">
           <TableHead>
             <TableRow>
-              <TableCell
-                size="small"
-                sx={{ bgcolor: "#029889", color: "white" }}
-              >
+              <TableCell size="small" sx={{ bgcolor: "#f0f0f199" }}>
                 SERVICE NAME
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ bgcolor: "#029889", color: "white" }}
+                sx={{ bgcolor: "#f0f0f199" }}
                 align="right"
               >
                 BASE PRICE
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ bgcolor: "#029889", color: "white" }}
+                sx={{ bgcolor: "#f0f0f199" }}
                 align="right"
               >
                 UNIT
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ bgcolor: "#029889", color: "white" }}
+                sx={{ bgcolor: "#f0f0f199" }}
                 align="right"
               >
                 VAT
               </TableCell>
               <TableCell
                 size="small"
-                sx={{ bgcolor: "#029889", color: "white" }}
+                sx={{ bgcolor: "#f0f0f199" }}
                 align="right"
               >
                 PRICE
@@ -62,13 +59,21 @@ export default function Items() {
           <TableBody>
             {orderSaved.data.orderDetailList.map((row) => (
               <TableRow key={row.id}>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" className="top-header-2">
                   {row.serviceName}
                 </TableCell>
-                <TableCell align="right">{row.basePrice}</TableCell>
-                <TableCell align="right">{row.quantityOrdered}</TableCell>
-                <TableCell align="right">0</TableCell>
-                <TableCell align="right">0</TableCell>
+                <TableCell align="right" className="top-header-3">
+                  {row.basePrice}
+                </TableCell>
+                <TableCell align="right" className="top-header-2">
+                  {row.quantityOrdered}
+                </TableCell>
+                <TableCell align="right" className="top-header-3">
+                  0
+                </TableCell>
+                <TableCell align="right" className="top-header-2">
+                  0
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -79,28 +84,16 @@ export default function Items() {
         <Table sx={{ Width: 550 }} size="small">
           <TableHead>
             <TableRow>
-              <TableCell
-                sx={{ bgcolor: "#029889", color: "white" }}
-                align="center"
-              >
+              <TableCell sx={{ bgcolor: "#f0f0f199" }} align="center">
                 TOTAL AMOUNT
               </TableCell>
-              <TableCell
-                sx={{ bgcolor: "#029889", color: "white" }}
-                align="center"
-              >
+              <TableCell sx={{ bgcolor: "#f0f0f199" }} align="center">
                 DISCOUNT
               </TableCell>
-              <TableCell
-                sx={{ bgcolor: "#029889", color: "white" }}
-                align="center"
-              >
+              <TableCell sx={{ bgcolor: "#f0f0f199" }} align="center">
                 ADVANCE
               </TableCell>
-              <TableCell
-                sx={{ bgcolor: "#029889", color: "white" }}
-                align="center"
-              >
+              <TableCell sx={{ bgcolor: "#f0f0f199" }} align="center">
                 DUE
               </TableCell>
             </TableRow>
