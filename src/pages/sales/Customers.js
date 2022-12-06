@@ -102,12 +102,7 @@ const Customers = () => {
     <Box sx={{ height: 475, mt: 2, width: "100%" }}>
       <DataGrid
         getRowId={(row) => row._id}
-        sx={{
-          [`& .${gridClasses.row}`]: {
-            bgcolor: (theme) =>
-              theme.palette.mode === "light" ? "EEFFEB" : "yellow",
-          },
-        }}
+        
         checkboxSelection={true}
         rows={orders.data}
         columns={columns}
@@ -117,7 +112,7 @@ const Customers = () => {
         components={{
           NoRowsOverlay: NoRowIcon,
         }}
-        // experimentalFeatures={{ newEditingApi: true }}
+       
         headerHeight={55}
         // hideFooterPagination
         disableColumnMenu

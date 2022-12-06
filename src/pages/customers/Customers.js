@@ -87,7 +87,7 @@ const Customers = () => {
       sortable: false,
       align: "center",
     },
-    
+
     {
       minWidth: 120,
       align: "center",
@@ -155,12 +155,6 @@ const Customers = () => {
       </Stack>
       <DataGrid
         getRowId={(row) => row._id}
-        sx={{
-          [`& .${gridClasses.row}`]: {
-            bgcolor: (theme) =>
-              theme.palette.mode === "light" ? "EEFFEB" : "yellow",
-          },
-        }}
         checkboxSelection={true}
         rows={customers.data}
         columns={columns}
@@ -170,7 +164,6 @@ const Customers = () => {
         components={{
           NoRowsOverlay: NoRowIcon,
         }}
-        // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
         disableColumnMenu
         density="compact"

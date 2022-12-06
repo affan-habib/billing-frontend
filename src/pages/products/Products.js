@@ -166,12 +166,6 @@ const Products = () => {
       </Stack>
       <DataGrid
         getRowId={(row) => row._id}
-        sx={{
-          [`& .${gridClasses.row}`]: {
-            bgcolor: (theme) =>
-              theme.palette.mode === "light" ? "EEFFEB" : "yellow",
-          },
-        }}
         checkboxSelection={true}
         rows={items.data}
         columns={columns}
@@ -181,7 +175,6 @@ const Products = () => {
         components={{
           NoRowsOverlay: NoRowIcon,
         }}
-        // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
         hideFooterPagination
         disableColumnMenu
