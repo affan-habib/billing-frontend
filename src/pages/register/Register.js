@@ -13,7 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 
-export default function Login() {
+export default function Register() {
   const dispatch = useDispatch();
   const { loading, authData = { token: null } } = useSelector(selectApi);
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Login() {
       onSubmit={(values, actions) => {
         dispatch(
           callApi({
-            operationId: "api/users/login",
+            operationId: "api/users",
             parameters: {
               method: "POST",
               body: JSON.stringify(getSchema(values)),
@@ -62,6 +62,22 @@ export default function Login() {
                 />
               </Box>
               <Stack>
+                <InputLabel sx={{ mb: 0.5 }}>ENTER NAME</InputLabel>
+                <TextField
+                  autoFocus={true}
+                  name="name"
+                  placeholder="EMAIL NAME"
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur}
+                  value={props.values.name}
+                  fullWidth
+                  autoComplete="first-name"
+                />
+                {props.touched.name && props.errors.name && (
+                  <FormHelperText error>{props.errors.name}</FormHelperText>
+                )}
+              </Stack>
+              <Stack>
                 <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
                 <TextField
                   autoFocus={true}
@@ -74,12 +90,7 @@ export default function Login() {
                   autoComplete="first-name"
                 />
                 {props.touched.email && props.errors.email && (
-                  <FormHelperText
-                    error
-                    email="standard-weight-helper-text-password-login"
-                  >
-                    {props.errors.email}
-                  </FormHelperText>
+                  <FormHelperText error>{props.errors.email}</FormHelperText>
                 )}
               </Stack>
               <Stack>
@@ -95,17 +106,17 @@ export default function Login() {
                   fullWidth
                 />
                 {props.touched.password && props.errors.password && (
-                  <FormHelperText
-                    error
-                    password="standard-weight-helper-text-password-login"
-                  >
-                    {props.errors.password}
-                  </FormHelperText>
+                  <FormHelperText error>{props.errors.password}</FormHelperText>
                 )}
               </Stack>
-              <Button variant="contained" type="submit">
-                Login
-              </Button>
+              <Stack direction="row" spacing={2}>
+                <Button variant="contained" type="submit">
+                  REGISTER
+                </Button>
+                <Button variant="outlined" type="submit">
+                  LOGIN
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         </form>

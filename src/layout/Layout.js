@@ -8,6 +8,8 @@ import Billing from "../pages/billing/Billing";
 import Products from "../pages/products/Products";
 import Customers from "../pages/customers/Customers";
 import Sales from "../pages/sales/Customers";
+import Register from "../pages/register/Register";
+import Login from "../pages/login/Login";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,6 +70,8 @@ export default function Layout() {
             <Tab label="SALES" {...a11yProps(1)} />
             <Tab label="CUSTOMERS" {...a11yProps(2)} />
             <Tab label="PRODUCTS/SERVICES" {...a11yProps(3)} />
+            <Tab label="LOGIN" {...a11yProps(3)} />
+            <Tab label="REGISTER" {...a11yProps(3)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -81,6 +85,12 @@ export default function Layout() {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <Products />
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <Login />
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+          <Register />
         </TabPanel>
       </Box>
     </Box>
