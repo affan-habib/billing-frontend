@@ -158,7 +158,7 @@ const ServiceList = () => {
   };
 
   return (
-    <Box sx={{ height: 400, p: 2, mt: 2, width: "100%" }}>
+    <Box sx={{ height: 400, p: 2, width: "100%" }}>
       <Dialog open={open} onClose={() => setOpen(!open)}>
         <AddProduct setOpen={setOpen} />
       </Dialog>
