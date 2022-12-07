@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik } from "formik";
 import {
   Grid,
@@ -9,13 +9,13 @@ import {
   Tooltip,
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
-import { useDispatch } from "react-redux";
-import { callApi } from "../../../../reducers/apiSlice";
-import { SaveOutlined, SendOutlined } from "@ant-design/icons";
-import { SaveAsOutlined } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { callApi, selectApi } from "../../../../reducers/apiSlice";
+import { SendOutlined } from "@ant-design/icons";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
+  const { customerSaved } = useSelector(selectApi);
 
   return (
     <div>
@@ -50,6 +50,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
+                    disabled={!!customerSaved}
                     fullWidth
                   />
                 </Stack>
@@ -64,6 +65,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.gender}
+                    disabled={!!customerSaved}
                     fullWidth
                   />
                 </Stack>
@@ -78,6 +80,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.age}
+                    disabled={!!customerSaved}
                     fullWidth
                     type="number"
                   />
@@ -94,6 +97,7 @@ const AddCustomer = () => {
                     onBlur={handleBlur}
                     value={values.contactNumber}
                     fullWidth
+                    disabled={!!customerSaved}
                   />
                 </Stack>
               </Grid>
@@ -106,13 +110,14 @@ const AddCustomer = () => {
                 >
                   <Tooltip title="Save as new customer">
                     <Button
+                      disabled={!!customerSaved}
                       variant="contained"
                       endIcon={<SendOutlined />}
                       color="info"
-                      sx={{ borderRadius: 20 }}
+                      sx={{ borderRadius: 20, height: 35 }}
                       type="submit"
                     >
-                      SAVE CUSTOMER
+                      {!!customerSaved ? "SAVED" : "SAVE CUSTOMER"}
                     </Button>
                   </Tooltip>
                 </Stack>

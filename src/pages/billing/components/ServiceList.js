@@ -105,7 +105,7 @@ const ServiceList = () => {
 
   function Toolbar() {
     return (
-      <Stack direction="row" sx={{ justifyContent: "space-between", pt: 2 }}>
+      <Stack direction="row" sx={{ justifyContent: "space-between", pt: 2, bgcolor: "#e2ffff" }}>
         <GridToolbarQuickFilter sx={{ py: 1, px: 1, mr: 2 }} />
         <Stack justifyContent="space-between" direction="row">
           <Button
@@ -159,7 +159,7 @@ const ServiceList = () => {
   };
 
   return (
-    <Box sx={{ height: 400, p: 2, mt: 2, width: "100%" }}>
+    <Box sx={{ height: 400, p: 2, width: "100%" }}>
       <Dialog open={open} onClose={() => setOpen(!open)}>
         <AddProduct setOpen={setOpen} />
       </Dialog>

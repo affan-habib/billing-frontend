@@ -6,7 +6,6 @@ import {
   Paper,
   Stack,
   TextField,
-  Tooltip,
 } from "@mui/material";
 
 import { useEffect, useRef } from "react";
@@ -31,8 +30,8 @@ const Header = ({ setFieldValue, values }) => {
   };
   return (
     <>
-      <Paper elevation={1} sx={{ background: "##f5f9f0", pt: 0, mt: 4 }} square>
-        <Grid container spacing={2} alignItems="flex-end">
+      <Paper elevation={2} sx={{ background: "##f5f9f0", pt: 0, mt: 4 }} square>
+        <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
           <Grid item lg={1.5} md={3} m={2}>
             <Stack spacing={0.5}>
               <InputLabel>Customer Id</InputLabel>
@@ -47,16 +46,14 @@ const Header = ({ setFieldValue, values }) => {
               />
             </Stack>
           </Grid>
-          <Tooltip title="Search Customer by id/Mobile">
-            <Button
-              sx={{ mb: 2, borderRadius: 20 }}
-              startIcon={<SearchOutlined />}
-              variant="outlined"
-              onClick={handleSearch}
-            >
-              SEARCH
-            </Button>
-          </Tooltip>
+          <Button
+            sx={{ mb: 2, borderRadius: 20 }}
+            startIcon={<SearchOutlined />}
+            variant="outlined"
+            onClick={handleSearch}
+          >
+            SEARCH
+          </Button>
           <Grid item md={9}>
             <AddCustomer />
           </Grid>

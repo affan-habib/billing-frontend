@@ -59,19 +59,19 @@ export default function Items() {
           <TableBody>
             {orderSaved.data.orderDetailList.map((row) => (
               <TableRow key={row.id}>
-                <TableCell component="th" scope="row" className="top-header-2">
+                <TableCell component="th" scope="row" className="print-2">
                   {row.serviceName}
                 </TableCell>
-                <TableCell align="right" className="top-header-3">
+                <TableCell align="right" className="print-3">
                   {row.basePrice}
                 </TableCell>
-                <TableCell align="right" className="top-header-2">
+                <TableCell align="right" className="print-2">
                   {row.quantityOrdered}
                 </TableCell>
-                <TableCell align="right" className="top-header-3">
+                <TableCell align="right" className="print-3">
                   0
                 </TableCell>
-                <TableCell align="right" className="top-header-2">
+                <TableCell align="right" className="print-2">
                   0
                 </TableCell>
               </TableRow>
@@ -100,16 +100,16 @@ export default function Items() {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell align="center">
+              <TableCell align="center" className="print-2">
                 {orderSaved?.data?.total || 0}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" className="print-3 ">
                 {orderSaved?.data?.discount || 0}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" className="print-2">
                 {orderSaved?.data?.advance || 0}
               </TableCell>
-              <TableCell align="center">{orderSaved?.data?.due || 0}</TableCell>
+              <TableCell align="center" className="print-3">{orderSaved?.data?.due || 0}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

@@ -8,7 +8,7 @@ const Header = () => {
         <Grid item md={2.2}>
           <img
             className="imgStyle"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQItEZqYrF2jOoRe9RySqykHndE2xpGDwaIsA&usqp=CAU"
+            src="https://img.icons8.com/officel/512/withdrawal.png"
           />
         </Grid>
         <Grid item md={9}>

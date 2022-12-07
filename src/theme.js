@@ -39,7 +39,7 @@ const rawTheme = createTheme({
   components: {
     MuiButton: {
       defaultProps: {
-        disableRipple: true,
+        // disableRipple: true,
         disableElevation: true,
       },
       styleOverrides: {

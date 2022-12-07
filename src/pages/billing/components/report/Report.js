@@ -24,6 +24,10 @@ const Report = ({ setOpen }) => {
     );
   };
 
+  const Text = ({ children }) => {
+    return <Typography sx={{ ml: 1, fontWeight: 500 }}>{children}</Typography>;
+  };
+
   return (
     <Box>
       <Paper variant="outlined" sx={{ width: "595px" }} square>
@@ -43,76 +47,82 @@ const Report = ({ setOpen }) => {
           content={() => componentRef}
         />
         <CloseButton />
-        <Box sx={{ m: 4 }} ref={(el) => (componentRef = el)}>
+        <Box sx={{ m: 2 }} ref={(el) => (componentRef = el)}>
           <Header />
           <Box m={2}>
-            <Stack direction="row" justifyContent="space-between">
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="info.main">
-                    Bill No :
-                  </Typography>
-
-                  <Typography>1234</Typography>
-                </Paper>
+            <Stack direction="row">
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Bill No :</Typography>
+                <Text>1234</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="info.main">
-                    Payment Method :
-                  </Typography>
-
-                  <Typography>Cash</Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Term : </Typography>
+                <Text>Cash</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="info.main">
-                    Date :
-                  </Typography>
-                  <Typography>
-                    {moment(new Date()).format("DD/MM/YYYY")}
-                  </Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Date :</Typography>
+                <Text>{moment(new Date()).format("DD/MM/YYYY")}</Text>
               </Stack>
             </Stack>
-            <Stack direction="row" justifyContent="space-between">
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="info.main">
-                    Patient Name :
-                  </Typography>
-                  <Typography>
-                    {orderSaved?.customer?.name || "Not found"}
-                  </Typography>
-                </Paper>
+            <Stack direction="row">
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Name :</Typography>
+                <Text>{orderSaved?.customer?.name || "Not found"}</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="info.main">
-                    Age :
-                  </Typography>
-                  <Typography>
-                    {orderSaved?.customer?.age || "Not found"}
-                  </Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Age :</Typography>
+                <Text>{orderSaved?.customer?.age || "Not found"}</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="info.main">
-                    Mobile Number :
-                  </Typography>
-                  <Typography>
-                    {orderSaved?.customer?.contactNumber || "Not found"}
-                  </Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+                p={1}
+                pb={0}
+              >
+                <Typography>Contact :</Typography>
+                <Text>
+                  {orderSaved?.customer?.contactNumber || "Not found"}
+                </Text>
               </Stack>
             </Stack>
           </Box>
           <Box sx={{ p: 2, pt: 0 }}>
             <Items />
           </Box>
-          <Box p={2}>
+          <Box p={2} pt={0}>
             <Stack
               sx={{
                 flex: 1,
@@ -120,7 +130,7 @@ const Report = ({ setOpen }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="subtitle1" color="info">
+              <Typography color="info">
                 Billing manager :
                 <span
                   style={{
@@ -133,7 +143,7 @@ const Report = ({ setOpen }) => {
                 </span>
               </Typography>
 
-              <Typography variant="subtitle1" color="info">
+              <Typography color="info">
                 Bill Status :
                 <span
                   style={{
