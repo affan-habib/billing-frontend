@@ -4,10 +4,11 @@ import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import {
+  Box,
   Button,
   FormHelperText,
-  Grid,
   InputLabel,
+  Paper,
   Stack,
   TextField,
 } from "@mui/material";
@@ -40,14 +41,33 @@ export default function Login() {
     >
       {(props) => (
         <form onSubmit={props.handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={2} sm={6}>
-              <Stack spacing={0.5}>
-                <InputLabel>User Name</InputLabel>
+          <Stack
+            height="100vh"
+            width="100vw"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Stack
+              spacing={2}
+              width={600}
+              p={2}
+              pb={6}
+              sx={{ bgcolor: "white", elevation: 4 }}
+              component={Paper}
+              variant="outlined"
+            >
+              <Box sx={{ alignSelf: "center" }} elevation={4}>
+                <img
+                  className="imgStyle"
+                  src="https://img.icons8.com/officel/512/expensive.png"
+                />
+              </Box>
+              <Stack>
+                <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
                 <TextField
                   autoFocus={true}
                   name="email"
-                  placeholder="Enter name"
+                  placeholder="EMAIL ADDRESS"
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                   value={props.values.email}
@@ -63,14 +83,13 @@ export default function Login() {
                   </FormHelperText>
                 )}
               </Stack>
-            </Grid>
-            <Grid item xs={2} sm={2} md={6}>
-              <Stack spacing={0.5}>
-                <InputLabel>Password</InputLabel>
+              <Stack>
+                <InputLabel sx={{ mb: 0.5 }}>PASSWORD</InputLabel>
                 <TextField
                   autoFocus={true}
                   name="password"
-                  placeholder="Enter password"
+                  type="password"
+                  placeholder="ENTER PASSWORD"
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                   value={props.values.password}
@@ -85,11 +104,11 @@ export default function Login() {
                   </FormHelperText>
                 )}
               </Stack>
-            </Grid>
-          </Grid>
-          <Button variant="contained" className="mt-3" type="submit">
-            Login
-          </Button>
+              <Button variant="contained" type="submit">
+                Login
+              </Button>
+            </Stack>
+          </Stack>
         </form>
       )}
     </Formik>
