@@ -7,6 +7,7 @@ import { addToCart } from "../../reducers/cartSlice";
 import AddCustomer from "./AddCustomer";
 import DeleteCustomer from "./DeleteCustomer";
 import NoRowIcon from "../../components/NoRowIcon";
+import moment from "moment/moment";
 
 const Customers = () => {
   const dispatch = useDispatch();
@@ -52,8 +53,35 @@ const Customers = () => {
       sortable: false,
     },
     {
+      field: "gender",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
+      headerName: "GENDER",
+      flex: 1,
+      headerAlign: "left",
+      sortable: false,
+    },
+    {
+      field: "age",
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-3",
+      headerName: "CUSTOMER AGE",
+      flex: 1,
+      headerAlign: "left",
+      sortable: false,
+    },
+    {
+      field: "contactNumber",
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      headerName: "CONTACT",
+      flex: 1,
+      headerAlign: "left",
+      sortable: false,
+    },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-3",
       field: "total",
       headerClassName: "top-header-1",
       headerName: "TOTAL",
@@ -77,7 +105,7 @@ const Customers = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       field: "due",
       headerClassName: "top-header-1",
       headerName: "DUE",
@@ -86,6 +114,35 @@ const Customers = () => {
       headerAlign: "center",
       sortable: false,
       align: "center",
+    },
+
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-2",
+      field: "createdAt",
+      headerClassName: "top-header-1",
+      headerName: "ORDER CREATED",
+      type: "text",
+      flex: 1,
+      headerAlign: "left",
+      sortable: false,
+      align: "left",
+      renderCell: (params) =>
+        moment(params.value).format("DD-MM-YYYYY HH:mm:ss"),
+    },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-3",
+      field: "updatedAt",
+      headerClassName: "top-header-1",
+      headerName: "ORDER UPDATED",
+      type: "text",
+      flex: 1,
+      headerAlign: "left",
+      sortable: false,
+      align: "left",
+      renderCell: (params) =>
+        moment(params.value).format("DD-MM-YYYYY HH:mm:ss"),
     },
     {
       minWidth: 120,
@@ -102,17 +159,14 @@ const Customers = () => {
     <Box sx={{ height: 475, mt: 2, width: "100%" }}>
       <DataGrid
         getRowId={(row) => row._id}
-        
         checkboxSelection={true}
         rows={orders.data}
         columns={columns}
-        pageSize={5}
         disableSelectionOnClick
         disableColumnSelector
         components={{
           NoRowsOverlay: NoRowIcon,
         }}
-       
         headerHeight={55}
         // hideFooterPagination
         disableColumnMenu
