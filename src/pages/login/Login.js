@@ -1,9 +1,8 @@
 import { Formik } from "formik";
-import React from "react";
-import bg from "../../assets/image.png";
+import React, { useEffect } from "react";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi } from "../../reducers/apiSlice";
+import { callApi, selectApi } from "../../reducers/apiSlice";
 import {
   Button,
   FormHelperText,
@@ -15,6 +14,13 @@ import {
 
 export default function Login() {
   const dispatch = useDispatch();
+  const { loading, authData = { token: null } } = useSelector(selectApi);
+  useEffect(() => {
+    authData.token && localStorage.setItem("token", authData.token);
+    authData._id && localStorage.setItem("id", authData._id);
+    authData.name && localStorage.setItem("name", authData.name);
+    authData.email && localStorage.setItem("name", authData.email);
+  }, [authData]);
   return (
     <Formik
       initialValues={getSchema({})}
@@ -22,12 +28,12 @@ export default function Login() {
       onSubmit={(values, actions) => {
         dispatch(
           callApi({
-            operationId: "auth/login",
+            operationId: "api/users/login",
             parameters: {
               method: "POST",
               body: JSON.stringify(getSchema(values)),
             },
-            output: "details",
+            output: "authData",
           })
         );
       }}
@@ -40,20 +46,20 @@ export default function Login() {
                 <InputLabel>User Name</InputLabel>
                 <TextField
                   autoFocus={true}
-                  name="username"
+                  name="email"
                   placeholder="Enter name"
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
-                  value={props.values.username}
+                  value={props.values.email}
                   fullWidth
                   autoComplete="first-name"
                 />
-                {props.touched.username && props.errors.username && (
+                {props.touched.email && props.errors.email && (
                   <FormHelperText
                     error
-                    username="standard-weight-helper-text-password-login"
+                    email="standard-weight-helper-text-password-login"
                   >
-                    {props.errors.username}
+                    {props.errors.email}
                   </FormHelperText>
                 )}
               </Stack>
