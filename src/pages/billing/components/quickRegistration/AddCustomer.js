@@ -112,10 +112,9 @@ const AddCustomer = () => {
                     <Button
                       disabled={!!customerSaved}
                       variant="contained"
-                      size="small"
                       endIcon={<SendOutlined />}
                       color="info"
-                      sx={{ borderRadius: 20 }}
+                      sx={{ borderRadius: 20, height: 35 }}
                       type="submit"
                     >
                       {!!customerSaved ? "SAVED" : "SAVE CUSTOMER"}

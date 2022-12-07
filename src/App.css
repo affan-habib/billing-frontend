@@ -1,6 +1,6 @@
 .top-header-1 {
   background-color: #f0f0f199;
-  color: 'green';
+  color: "green";
   font-size: 0.9rem;
 }
 .top-header-2 {
@@ -10,7 +10,7 @@
   font-size: 0.9rem;
 }
 .top-header-3 {
-  background-color: #fdffff;
+  background-color: rgba(243, 241, 189, 0.24);
   color: rgb(0, 0, 0);
   text-align: center;
   font-size: 0.9rem;
@@ -38,10 +38,16 @@
   font-weight: 500;
 }
 .top-header-6 {
-  background-color: #f7f7f7;
-  color: black;
+  color: #f61717;
   text-align: center;
   font-size: 0.9rem;
+  font-weight: 500;
+}
+.top-header-7 {
+  background-color: #fdffff;
+  color: #2ec038;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 .imgStyle {
   height: auto;

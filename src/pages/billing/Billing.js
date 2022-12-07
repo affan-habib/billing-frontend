@@ -48,18 +48,13 @@ const Billing = () => {
           return (
             <Box>
               <Header {...props} />
-              <Paper
-                elevation={1}
-                sx={{ p: 2, mt: 2, background: "##f5f9f0" }}
-                square
-              >
+              <Paper elevation={2} sx={{ p: 2, mt: 2 }} square>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item md={9}>
                     <Body />
                   </Grid>
                   <Grid item md={3} sx={{ mt: 2 }}>
                     <Final {...props} />
-
                     <ButtonGroup
                       variant="outlined"
                       aria-label="outlined button group"
@@ -67,7 +62,6 @@ const Billing = () => {
                     >
                       <Button
                         color="info"
-                        size="small"
                         variant="contained"
                         startIcon={<PrinterOutlined />}
                         onClick={() => props.handleSubmit()}
@@ -78,7 +72,6 @@ const Billing = () => {
                       </Button>
                       <Button
                         startIcon={<ReloadOutlined />}
-                        size="small"
                         color="primary"
                         variant="outlined"
                         sx={{ mt: 2 }}
@@ -88,7 +81,6 @@ const Billing = () => {
                       <Button
                         startIcon={<SaveOutlined />}
                         color="info"
-                        size="small"
                         onClick={() => props.handleSubmit()}
                         type="submit"
                         sx={{ mt: 2, borderRadius: 10 }}
