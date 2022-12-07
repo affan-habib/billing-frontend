@@ -103,9 +103,14 @@ export default function Login() {
                   </FormHelperText>
                 )}
               </Stack>
-              <Button variant="contained" type="submit">
-                Login
-              </Button>
+              <Stack direction="row" spacing={2}>
+                <Button variant="contained" type="submit">
+                  LOGIN
+                </Button>
+                <Button variant="outlined" type="submit">
+                  REGISTER
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         </form>
