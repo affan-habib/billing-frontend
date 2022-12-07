@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-import { Box, Button, Stack, Dialog } from "@mui/material";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { Box } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
-import { addToCart } from "../../reducers/cartSlice";
-import AddCustomer from "./AddCustomer";
 import DeleteCustomer from "./DeleteCustomer";
 import NoRowIcon from "../../components/NoRowIcon";
 import moment from "moment/moment";
@@ -83,7 +81,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       field: "total",
-      headerClassName: "top-header-1",
       headerName: "TOTAL",
       type: "text",
       minWidth: 120,
@@ -95,7 +92,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "discount",
-      headerClassName: "top-header-1",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
@@ -107,7 +103,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       field: "due",
-      headerClassName: "top-header-1",
       headerName: "DUE",
       type: "text",
       minWidth: 120,
@@ -120,7 +115,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "createdAt",
-      headerClassName: "top-header-1",
       headerName: "ORDER CREATED",
       type: "text",
       flex: 1,
@@ -134,7 +128,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       field: "updatedAt",
-      headerClassName: "top-header-1",
       headerName: "ORDER UPDATED",
       type: "text",
       flex: 1,

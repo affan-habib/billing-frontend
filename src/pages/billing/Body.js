@@ -77,7 +77,7 @@ export default function Body() {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      minWidth: 120,
+      minWidth: 70,
       align: "center",
       field: "actions",
       headerName: "ACTION",

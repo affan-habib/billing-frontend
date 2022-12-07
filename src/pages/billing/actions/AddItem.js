@@ -79,7 +79,6 @@ const AddItem = () => {
                 basePrice: value.basePrice,
                 serviceName: value.serviceName,
                 ...{
-                  discountPerUnit: 0,
                   expiryDate: 0,
                   vatPerUnit: 0,
                   discountPerUnit: 0,

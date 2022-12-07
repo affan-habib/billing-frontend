@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Box, Button, Stack, Dialog } from "@mui/material";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import { addToCart } from "../../reducers/cartSlice";
@@ -55,7 +55,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "age",
-      headerClassName: "top-header-1",
       headerName: "AGE",
       type: "number",
       minWidth: 120,
@@ -67,7 +66,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       field: "contactNumber",
-      headerClassName: "top-header-1",
       headerName: "CONTACT",
       type: "text",
       minWidth: 120,
@@ -79,7 +77,6 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "gender",
-      headerClassName: "top-header-1",
       headerName: "GENDER",
       type: "text",
       minWidth: 120,

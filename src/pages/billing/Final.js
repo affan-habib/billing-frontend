@@ -29,9 +29,7 @@ export default function Final() {
       field: "totalAmount",
       headerClassName: "top-header-1",
       cellClassName: (params) =>
-        params.value > 0
-          ? "top-header-7"
-          : "top-header-5",
+        params.value > 0 ? "top-header-7" : "top-header-5",
       headerName: "TOTAL AMOUNT",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
@@ -80,7 +78,6 @@ export default function Final() {
   const dueAmountColumn = [
     {
       field: "due",
-      cellClassName: "top-header-4",
       cellClassName: (params) =>
         params.value < 0 ? "top-header-6" : "top-header-5",
       headerClassName: "top-header-1",

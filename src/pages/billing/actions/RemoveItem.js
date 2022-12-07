@@ -8,6 +8,7 @@ const RemoveItem = ({ shouldDelete }) => {
   return (
     <IconButton
       color="error"
+      size="small"
       onClick={() => dispatch(removeItem(shouldDelete))}
     >
       <DeleteOutlined />

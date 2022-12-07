@@ -39,7 +39,7 @@ const AddCustomer = () => {
         {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
-              <Grid item lg={3}>
+              <Grid item lg={2.5}>
                 <Stack spacing={0.5}>
                   <InputLabel>Customer name</InputLabel>
                   <TextField

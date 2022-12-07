@@ -51,7 +51,6 @@ const ServiceList = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "basePrice",
-      headerClassName: "top-header-1",
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
