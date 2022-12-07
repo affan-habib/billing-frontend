@@ -53,3 +53,15 @@
   height: auto;
   width: 60px;
 }
+.print-2 {
+  background-color: #f1fbfb;
+  color: black;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.print-3 {
+  background-color: rgb(255, 254, 253);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 0.9rem;
+}

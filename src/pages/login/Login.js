@@ -58,7 +58,7 @@ export default function Login() {
               <Box sx={{ alignSelf: "center" }} elevation={4}>
                 <img
                   className="imgStyle"
-                  src="https://img.icons8.com/officel/512/expensive.png"
+                  src="https://img.icons8.com/officel/512/withdrawal.png"
                 />
               </Box>
               <Stack>
