@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import {
   Grid,
   InputLabel,
@@ -15,18 +15,6 @@ import { CloseCircleFilled } from "@ant-design/icons";
 
 const AddCustomer = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const { quick_registration } = useSelector(selectApi);
-
-  useEffect(() => {
-    if (quick_registration?.status == "success") {
-      setOpen(false);
-      dispatch(
-        clearState({
-          output: "quick_registration",
-        })
-      );
-    }
-  }, [quick_registration]);
   const CloseButton = () => {
     return (
       <IconButton
@@ -56,17 +44,7 @@ const AddCustomer = ({ setOpen }) => {
           );
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          setFieldValue,
-          /* and other goodies */
-        }) => (
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2 }}>
               <CloseButton />

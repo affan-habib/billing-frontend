@@ -15,7 +15,7 @@ import { SendOutlined } from "@ant-design/icons";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
-  const { customerSaved } = useSelector(selectApi);
+  const { customerSaved = { name: "" } } = useSelector(selectApi);
 
   return (
     <div>
@@ -39,7 +39,7 @@ const AddCustomer = () => {
         {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
-              <Grid item lg={2.5}>
+              <Grid item lg={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Customer name</InputLabel>
                   <TextField
@@ -50,7 +50,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
-                    disabled={!!customerSaved}
+                    disabled={!!customerSaved.name}
                     fullWidth
                   />
                 </Stack>
@@ -65,7 +65,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.gender}
-                    disabled={!!customerSaved}
+                    disabled={!!customerSaved.name}
                     fullWidth
                   />
                 </Stack>
@@ -80,7 +80,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.age}
-                    disabled={!!customerSaved}
+                    disabled={!!customerSaved.name}
                     fullWidth
                     type="number"
                   />
@@ -97,7 +97,7 @@ const AddCustomer = () => {
                     onBlur={handleBlur}
                     value={values.contactNumber}
                     fullWidth
-                    disabled={!!customerSaved}
+                    disabled={!!customerSaved.name}
                   />
                 </Stack>
               </Grid>
@@ -110,14 +110,14 @@ const AddCustomer = () => {
                 >
                   <Tooltip title="Save as new customer">
                     <Button
-                      disabled={!!customerSaved}
+                      disabled={!!customerSaved.name}
                       variant="contained"
                       endIcon={<SendOutlined />}
                       color="info"
                       sx={{ borderRadius: 20, height: 35 }}
                       type="submit"
                     >
-                      {!!customerSaved ? "SAVED" : "SAVE CUSTOMER"}
+                      {!!customerSaved.name ? "SAVED" : "SAVE CUSTOMER"}
                     </Button>
                   </Tooltip>
                 </Stack>
