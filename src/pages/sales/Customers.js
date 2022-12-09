@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { Box } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { Box, Stack } from "@mui/material";
+import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import DeleteCustomer from "./DeleteCustomer";
 import NoRowIcon from "../../components/NoRowIcon";
 import moment from "moment/moment";
+import CustomPagination from "../../components/Pagination";
 
 const Customers = () => {
   const dispatch = useDispatch();
@@ -20,14 +21,12 @@ const Customers = () => {
   } = useSelector(selectApi);
   useEffect(() => {
     setTimeout(
-      () =>
-        dispatch(
-          callApi({
-            operationId: `api/orders`,
-            output: "orders",
-          })
-        ),
-      1000
+      dispatch(
+        callApi({
+          operationId: `api/orders`,
+          output: "orders",
+        })
+      )
     );
   }, [orderDeleted.id, customerSaved]);
   const columns = [
@@ -148,6 +147,14 @@ const Customers = () => {
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
   ];
+
+  function Toolbar() {
+    return (
+      <Stack direction="row" sx={{ justifyContent: "space-between", pt: 2 }}>
+        <GridToolbarQuickFilter sx={{ py: 1, px: 1, mr: 2 }} />
+      </Stack>
+    );
+  }
   return (
     <Box sx={{ height: 475, mt: 2, width: "100%" }}>
       <DataGrid
@@ -159,9 +166,18 @@ const Customers = () => {
         disableColumnSelector
         components={{
           NoRowsOverlay: NoRowIcon,
+          Pagination: CustomPagination,
+          Toolbar: Toolbar,
+        }}
+        componentsProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
         }}
         headerHeight={55}
         // hideFooterPagination
+        pageSize={10}
         disableColumnMenu
         density="compact"
         showCellRightBorder={true}
