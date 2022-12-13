@@ -47,47 +47,53 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <Header {...props} />
-              <Paper outlined sx={{ p: 2 , bgcolor: "#e2ffff"}} square>
-                <Grid container spacing={2} alignItems="center">
+              <Paper outlined sx={{ p: 2, bgcolor: "#e2ffff" }} square>
+                <Grid container spacing={2}>
                   <Grid item md={9}>
+                    <Header {...props} />
                     <Body />
                   </Grid>
-                  <Grid item md={3} sx={{ mt: 2 }}>
-                    <Final {...props} />
-                    <ButtonGroup
-                      variant="outlined"
-                      aria-label="outlined button group"
-                      disableElevation
-                    >
-                      <Button
-                        color="info"
-                        variant="contained"
-                        startIcon={<PrinterOutlined style={{ fontSize: 16 }} />}
-                        onClick={() => props.handleSubmit()}
-                        type="submit"
-                        sx={{ mt: 2, borderRadius: 10 }}
-                      >
-                        SAVE
-                      </Button>
-                      <Button
-                        startIcon={<ReloadOutlined style={{ fontSize: 16 }} />}
-                        color="primary"
+                  <Grid item md={3} sx={{ height: "100%" }}>
+                    <Paper sx={{ p: 2, bgcolor: "#f5f9f0" }}>
+                      <Final {...props} />
+                      <ButtonGroup
                         variant="outlined"
-                        sx={{ mt: 2 }}
+                        aria-label="outlined button group"
+                        disableElevation
                       >
-                        CANCEL
-                      </Button>
-                      <Button
-                        startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
-                        color="info"
-                        onClick={() => props.handleSubmit()}
-                        type="submit"
-                        sx={{ mt: 2, borderRadius: 10 }}
-                      >
-                        DRAFT
-                      </Button>
-                    </ButtonGroup>
+                        <Button
+                          color="info"
+                          variant="contained"
+                          startIcon={
+                            <PrinterOutlined style={{ fontSize: 16 }} />
+                          }
+                          onClick={() => props.handleSubmit()}
+                          type="submit"
+                          sx={{ mt: 2, borderRadius: 10 }}
+                        >
+                          SAVE
+                        </Button>
+                        <Button
+                          startIcon={
+                            <ReloadOutlined style={{ fontSize: 16 }} />
+                          }
+                          color="primary"
+                          variant="outlined"
+                          sx={{ mt: 2 }}
+                        >
+                          CANCEL
+                        </Button>
+                        <Button
+                          startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
+                          color="info"
+                          onClick={() => props.handleSubmit()}
+                          type="submit"
+                          sx={{ mt: 2, borderRadius: 10 }}
+                        >
+                          DRAFT
+                        </Button>
+                      </ButtonGroup>
+                    </Paper>
                   </Grid>
                 </Grid>
               </Paper>

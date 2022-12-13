@@ -50,10 +50,10 @@ const AddItem = () => {
     setTimeout(() => addItemRef.current.focus(), 100);
   };
   return (
-    <Box>
+    <Box maxWidth="100%">
       <Stack direction="row" alignItems="flex-end">
         <Stack>
-          <InputLabel sx={{ mb: 0.5 }}>SEARCH ITEM</InputLabel>
+          <InputLabel sx={{ mb: 0.5, pt: 2 }}>SEARCH ITEM</InputLabel>
           <Autocomplete
             autoFocus
             key={state}

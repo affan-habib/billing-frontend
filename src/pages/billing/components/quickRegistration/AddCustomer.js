@@ -40,7 +40,7 @@ const AddCustomer = () => {
         {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
-              <Grid item lg={3}>
+              <Grid item md={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Full Name</InputLabel>
                   <TextField
@@ -53,6 +53,21 @@ const AddCustomer = () => {
                     value={values.name}
                     disabled={!!customerSaved.name}
                     fullWidth
+                  />
+                </Stack>
+              </Grid>
+              <Grid item lg={3}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Mobile Number</InputLabel>
+                  <TextField
+                    id="contactNumber"
+                    name="contactNumber"
+                    placeholder="MOBILE NUMBER"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.contactNumber}
+                    fullWidth
+                    disabled={!!customerSaved.name}
                   />
                 </Stack>
               </Grid>
@@ -87,21 +102,7 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={2}>
-                <Stack spacing={0.5}>
-                  <InputLabel>Mobile Number</InputLabel>
-                  <TextField
-                    id="contactNumber"
-                    name="contactNumber"
-                    placeholder="MOBILE NUMBER"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.contactNumber}
-                    fullWidth
-                    disabled={!!customerSaved.name}
-                  />
-                </Stack>
-              </Grid>
+
               <Grid item lg={3}>
                 <Stack
                   direction="row"

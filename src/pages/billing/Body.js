@@ -6,6 +6,7 @@ import NoRowIcon from "../../components/NoRowIcon";
 import { useSelector } from "react-redux";
 import AddItem from "./actions/AddItem";
 import { Warning } from "@mui/icons-material";
+import { Paper } from "@mui/material";
 export default function Body() {
   const rows = useSelector((state) => state.cart.orderDetailList);
   const columns = [
@@ -89,24 +90,25 @@ export default function Body() {
   return (
     <Box>
       <AddItem />
-      <DataGrid
-        className="top-header-2"
-        sx={{ height: 250, Width: "100%", mt: 2 }}
-        rows={rows}
-        columns={columns}
-        disableSelectionOnClick
-        disableColumnSelector
-        components={{
-          NoRowsOverlay: NoRowIcon,
-        }}
-        headerHeight={55}
-        hideFooterPagination
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
-        hideFooter
-      />
+      <Paper elevation={1}>
+        <DataGrid
+          sx={{ bgcolor: "#f5f9f0", height: 250, Width: "100%", mt: 2 }}
+          rows={rows}
+          columns={columns}
+          disableSelectionOnClick
+          disableColumnSelector
+          components={{
+            NoRowsOverlay: NoRowIcon,
+          }}
+          headerHeight={55}
+          hideFooterPagination
+          disableColumnMenu
+          density="compact"
+          showCellRightBorder={true}
+          showColumnRightBorder={true}
+          hideFooter
+        />
+      </Paper>
     </Box>
   );
 }
