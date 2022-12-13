@@ -48,7 +48,7 @@ const Billing = () => {
           return (
             <Box>
               <Header {...props} />
-              <Paper elevation={2} sx={{ p: 2, mt: 2 }} square>
+              <Paper outlined sx={{ p: 2 , bgcolor: "#e2ffff"}} square>
                 <Grid container spacing={2} alignItems="center">
                   <Grid item md={9}>
                     <Body />
@@ -63,7 +63,7 @@ const Billing = () => {
                       <Button
                         color="info"
                         variant="contained"
-                        startIcon={<PrinterOutlined />}
+                        startIcon={<PrinterOutlined style={{ fontSize: 16 }} />}
                         onClick={() => props.handleSubmit()}
                         type="submit"
                         sx={{ mt: 2, borderRadius: 10 }}
@@ -71,7 +71,7 @@ const Billing = () => {
                         SAVE
                       </Button>
                       <Button
-                        startIcon={<ReloadOutlined />}
+                        startIcon={<ReloadOutlined style={{ fontSize: 16 }} />}
                         color="primary"
                         variant="outlined"
                         sx={{ mt: 2 }}
@@ -79,7 +79,7 @@ const Billing = () => {
                         CANCEL
                       </Button>
                       <Button
-                        startIcon={<SaveOutlined />}
+                        startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
                         color="info"
                         onClick={() => props.handleSubmit()}
                         type="submit"

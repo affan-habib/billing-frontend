@@ -12,6 +12,7 @@ import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../../reducers/apiSlice";
 import { SendOutlined } from "@ant-design/icons";
+import { BookOutlined, SaveAsOutlined } from "@mui/icons-material";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
@@ -41,12 +42,12 @@ const AddCustomer = () => {
             <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
               <Grid item lg={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Customer name</InputLabel>
+                  <InputLabel>Full Name</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="name"
                     name="name"
-                    placeholder="CUSTOMER NAME"
+                    placeholder="eg : John Doe"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
@@ -112,12 +113,12 @@ const AddCustomer = () => {
                     <Button
                       disabled={!!customerSaved.name}
                       variant="contained"
-                      endIcon={<SendOutlined />}
+                      endIcon={<BookOutlined style={{ fontSize: 16 }} />}
                       color="info"
-                      sx={{ borderRadius: 20, height: 35 }}
+                      sx={{ height: 35 }}
                       type="submit"
                     >
-                      {!!customerSaved.name ? "SAVED" : "SAVE CUSTOMER"}
+                      {!!customerSaved.name ? "SAVED" : "SAVE CLIENT"}
                     </Button>
                   </Tooltip>
                 </Stack>

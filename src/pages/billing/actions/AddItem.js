@@ -1,5 +1,13 @@
 import { InfoCircleOutlined } from "@ant-design/icons";
-import { Box, Button, Dialog, Stack, TextField, Tooltip } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  InputLabel,
+  Stack,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
 import { useEffect, useRef, useState } from "react";
@@ -43,63 +51,66 @@ const AddItem = () => {
   };
   return (
     <Box>
-      <Stack direction="row">
-        <Autocomplete
-          autoFocus
-          key={state}
-          size="medium"
-          disablePortal
-          noOptionsText="No Match Found"
-          filterOptions={filterOptions}
-          clearOnEscape
-          id="id"
-          sx={{ width: 300 }}
-          options={filterSelectedOptions}
-          autoHighlight
-          getOptionLabel={(option) => option.serviceName}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              inputProps={{
-                ...params.inputProps,
-              }}
-              placeholder="Add Service by Id/Name"
-              inputRef={addItemRef}
-            />
-          )}
-          renderOption={(props, option) => (
-            <Box component="li" {...props}>
-              {option.serviceName} ({option.id})
-            </Box>
-          )}
-          onChange={(e, value) => {
-            dispatch(
-              addToCart({
-                id: value.id,
-                basePrice: value.basePrice,
-                serviceName: value.serviceName,
-                ...{
-                  expiryDate: 0,
-                  vatPerUnit: 0,
-                  discountPerUnit: 0,
-                  quantityOrdered: 1,
-                  quantityReturned: 0,
-                  discountTotal: 0,
-                  discountReturned: 0,
-                  vatTotal: 0,
-                  vatReturned: 0,
-                  subtotalOrdered: 0,
-                  subtotalReturned: 0,
-                  rowTotal: 0,
-                  returnedBy: "string",
-                  returnDate: "2022-11-13T11:35:33.765Z",
-                },
-              })
-            );
-            setState(!state);
-            focusAgain();
-          }}
-        />
+      <Stack direction="row" alignItems="flex-end">
+        <Stack>
+          <InputLabel sx={{ mb: 0.5 }}>SEARCH ITEM</InputLabel>
+          <Autocomplete
+            autoFocus
+            key={state}
+            size="medium"
+            disablePortal
+            noOptionsText="No Match Found"
+            filterOptions={filterOptions}
+            clearOnEscape
+            id="id"
+            sx={{ width: 300 }}
+            options={filterSelectedOptions}
+            autoHighlight
+            getOptionLabel={(option) => option.serviceName}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                inputProps={{
+                  ...params.inputProps,
+                }}
+                placeholder="Add Service by Id/Name"
+                inputRef={addItemRef}
+              />
+            )}
+            renderOption={(props, option) => (
+              <Box component="li" {...props}>
+                {option.serviceName} ({option.id})
+              </Box>
+            )}
+            onChange={(e, value) => {
+              dispatch(
+                addToCart({
+                  id: value.id,
+                  basePrice: value.basePrice,
+                  serviceName: value.serviceName,
+                  ...{
+                    expiryDate: 0,
+                    vatPerUnit: 0,
+                    discountPerUnit: 0,
+                    quantityOrdered: 1,
+                    quantityReturned: 0,
+                    discountTotal: 0,
+                    discountReturned: 0,
+                    vatTotal: 0,
+                    vatReturned: 0,
+                    subtotalOrdered: 0,
+                    subtotalReturned: 0,
+                    rowTotal: 0,
+                    returnedBy: "string",
+                    returnDate: "2022-11-13T11:35:33.765Z",
+                  },
+                })
+              );
+              setState(!state);
+              focusAgain();
+            }}
+          />
+        </Stack>
         <Tooltip title="Click to see Service Details" arrow>
           <Button
             sx={{ ml: 2, height: 35, mt: 0.5, width: 200 }}

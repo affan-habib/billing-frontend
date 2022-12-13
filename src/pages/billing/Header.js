@@ -30,7 +30,7 @@ const Header = ({ setFieldValue, values }) => {
   };
   return (
     <>
-      <Paper elevation={2} sx={{ background: "##f5f9f0", pt: 0 }} square>
+      <Paper sx={{ background: "#f5f9f0", pt: 0 }} square>
         <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
           <Grid item lg={1.5} md={3} m={2}>
             <Stack spacing={0.5}>
@@ -47,8 +47,8 @@ const Header = ({ setFieldValue, values }) => {
             </Stack>
           </Grid>
           <Button
-            sx={{ mb: 2, borderRadius: 20 }}
-            startIcon={<SearchOutlined />}
+            sx={{ mb: 2, borderRadius: 20, bgcolor: "white" }}
+            startIcon={<SearchOutlined style={{ fontSize: 16 }} />}
             variant="outlined"
             onClick={handleSearch}
           >

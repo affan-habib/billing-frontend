@@ -64,7 +64,7 @@ const AddCustomer = ({ setOpen }) => {
               </Grid>
               <Grid item lg={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Customer name</InputLabel>
+                  <InputLabel>Name</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="name"

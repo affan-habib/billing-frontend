@@ -90,7 +90,8 @@ export default function Body() {
     <Box>
       <AddItem />
       <DataGrid
-        sx={{ height: 250, Width: "100%", mt: 2, bgcolor: "white" }}
+        className="top-header-2"
+        sx={{ height: 250, Width: "100%", mt: 2 }}
         rows={rows}
         columns={columns}
         disableSelectionOnClick

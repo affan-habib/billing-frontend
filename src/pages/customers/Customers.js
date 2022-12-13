@@ -47,7 +47,7 @@ const Customers = () => {
       field: "name",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      headerName: "CUSTOMER NAME",
+      headerName: "CLIENT NAME",
       flex: 1,
       headerAlign: "left",
       sortable: false,

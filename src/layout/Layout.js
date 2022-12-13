@@ -70,8 +70,8 @@ export default function Layout() {
             <Tab label="SALES" {...a11yProps(1)} />
             <Tab label="CUSTOMERS" {...a11yProps(2)} />
             <Tab label="PRODUCTS/SERVICES" {...a11yProps(3)} />
-            <Tab label="LOGIN" {...a11yProps(3)} />
-            <Tab label="REGISTER" {...a11yProps(3)} />
+            {/* <Tab label="LOGIN" {...a11yProps(3)} />
+            <Tab label="REGISTER" {...a11yProps(3)} /> */}
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -85,13 +85,13 @@ export default function Layout() {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <Products />
-        </TabPanel>
-        <TabPanel value={value} index={4}>
+        </TabPanel> 
+        {/* <TabPanel value={value} index={4}>
           <Login />
         </TabPanel>
         <TabPanel value={value} index={5}>
           <Register />
-        </TabPanel>
+        </TabPanel> */}
       </Box>
     </Box>
   );

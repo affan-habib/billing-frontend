@@ -69,7 +69,7 @@ const ServiceList = () => {
       type: "actions",
       renderCell: (params) => (
         <Button
-          startIcon={<PlusOutlined />}
+          startIcon={<PlusOutlined  style={{ fontSize: 16 }}/>}
           variant="outlined"
           sx={{ m: 1 }}
           size="small"
