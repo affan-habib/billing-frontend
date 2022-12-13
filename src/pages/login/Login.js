@@ -22,13 +22,14 @@ export default function Login() {
   const { loading, authData = { token: null } } = useSelector(selectApi);
   const navigate = useNavigate();
   useEffect(() => {
-    if (!auth) {
-      authData.token && localStorage.setItem("token", authData.token);
-      // navigate("/invoice");
-    } else {
+    if (auth) {
       navigate("/");
     }
-  }, [authData, auth]);
+    if (!auth && authData.token) {
+      authData.token && localStorage.setItem("token", authData.token);
+      navigate("/");
+    }
+  }, [authData.token, auth]);
   return (
     <Formik
       initialValues={getSchema({})}
