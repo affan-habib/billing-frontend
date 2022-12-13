@@ -11,7 +11,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/*" element={<PrivateOutlet />}>
-          <Route path="invoice" element={<Layout />} />
+          <Route path="" element={<Layout />} />
         </Route>
       </Routes>
     </div>

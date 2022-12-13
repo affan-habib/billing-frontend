@@ -2,7 +2,8 @@ import { Formik } from "formik";
 import React, { useEffect } from "react";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../reducers/apiSlice";
+import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
+
 import {
   Box,
   Button,
@@ -12,16 +13,22 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 export default function Login() {
   const dispatch = useDispatch();
+  const auth = useAuth();
   const { loading, authData = { token: null } } = useSelector(selectApi);
+  const navigate = useNavigate();
   useEffect(() => {
-    authData.token && localStorage.setItem("token", authData.token);
-    authData._id && localStorage.setItem("id", authData._id);
-    authData.name && localStorage.setItem("name", authData.name);
-    authData.email && localStorage.setItem("name", authData.email);
-  }, [authData]);
+    if (!auth) {
+      authData.token && localStorage.setItem("token", authData.token);
+      // navigate("/invoice");
+    } else {
+      navigate("/");
+    }
+  }, [authData, auth]);
   return (
     <Formik
       initialValues={getSchema({})}
