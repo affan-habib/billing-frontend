@@ -101,7 +101,7 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={2}>
+              <Grid item lg={3}>
                 <Stack
                   direction="row"
                   justifyContent="flex-start"

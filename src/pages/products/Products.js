@@ -7,6 +7,7 @@ import { addToCart } from "../../reducers/cartSlice";
 import AddProduct from "./AddProduct";
 import DeleteProduct from "./DeleteProduct";
 import NoRowIcon from "../../components/NoRowIcon";
+import CustomPagination from "../../components/Pagination";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -170,6 +171,7 @@ const Products = () => {
         disableColumnSelector
         components={{
           NoRowsOverlay: NoRowIcon,
+          Pagination: CustomPagination,
         }}
         headerHeight={55}
         hideFooterPagination

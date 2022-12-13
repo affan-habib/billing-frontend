@@ -7,6 +7,7 @@ import { callApi, selectApi } from "../../../reducers/apiSlice";
 import { addToCart } from "../../../reducers/cartSlice";
 import NoRowIcon from "../../../components/NoRowIcon";
 import AddProduct from "../../products/AddProduct";
+import CustomPagination from "../../../components/Pagination";
 
 const ServiceList = () => {
   const dispatch = useDispatch();
@@ -177,7 +178,7 @@ const ServiceList = () => {
         onSelectionModelChange={(selectedOptions) => {
           setSelectedOptions(selectedOptions);
         }}
-        components={{ Toolbar: Toolbar, NoRowsOverlay: NoRowIcon }}
+        components={{ Toolbar: Toolbar, NoRowsOverlay: NoRowIcon, Pagination: CustomPagination }}
         componentsProps={{
           toolbar: {
             showQuickFilter: true,

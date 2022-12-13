@@ -30,7 +30,7 @@ const Header = ({ setFieldValue, values }) => {
   };
   return (
     <>
-      <Paper elevation={2} sx={{ background: "##f5f9f0", pt: 0, mt: 4 }} square>
+      <Paper elevation={2} sx={{ background: "##f5f9f0", pt: 0 }} square>
         <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
           <Grid item lg={1.5} md={3} m={2}>
             <Stack spacing={0.5}>
