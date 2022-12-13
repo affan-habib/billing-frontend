@@ -48,7 +48,7 @@ const AddProduct = ({ setOpen }) => {
         onSubmit={(values) => {
           dispatch(
             callApi({
-              operationId: "api/v1/service-master/items",
+              operationId: "api/products",
               output: "itemSaved",
               parameters: {
                 method: "POST",

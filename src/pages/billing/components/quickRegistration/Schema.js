@@ -6,7 +6,6 @@ const getSchema = (model = {}) => {
     age = 21,
     contactNumber = "",
     gender = "MALE",
-   
   } = model;
 
   return {
@@ -14,11 +13,14 @@ const getSchema = (model = {}) => {
     name,
     gender,
     age,
-    contactNumber
+    contactNumber,
   };
 };
-
+const mobileRegEx = /^(?:\+88|0088)?(01[3-9]\d{8})$/;
 const validator = Yup.object().shape({
+  contactNumber: Yup.string()
+    .required("Required")
+    .matches(mobileRegEx, "Invalid mobile number"),
   // firstName: Yup.string().required("First Name is required"),
   // patientAge: Yup.number().required("Age is required"),
   // patientContactNo: Yup.number().required("Mobile Number is required"),

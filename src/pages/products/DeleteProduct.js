@@ -11,7 +11,7 @@ const DeleteProduct = ({ shouldDelete }) => {
       onClick={() =>
         dispatch(
           callApi({
-            operationId: `api/v1/service-master/items/${shouldDelete}`,
+            operationId: `api/products/${shouldDelete}`,
             output: "itemDeleted",
             parameters: {
               method: "DELETE",

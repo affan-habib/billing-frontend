@@ -24,7 +24,7 @@ const AddItem = () => {
   useEffect(() => {
     dispatch(
       callApi({
-        operationId: "api/v1/service-master/items",
+        operationId: "api/products",
         output: "items",
       })
     );
