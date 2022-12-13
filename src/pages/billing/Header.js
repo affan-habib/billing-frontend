@@ -18,7 +18,7 @@ const Header = ({ setFieldValue, values }) => {
   const inputRef = useRef();
   const dispatch = useDispatch();
   useEffect(() => {
-    setFieldValue("customerId", customerSaved?._id);
+    setFieldValue("customerId", customerSaved?.data?._id);
   }, [customerSaved]);
   const handleSearch = () => {
     dispatch(

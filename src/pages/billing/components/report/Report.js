@@ -91,7 +91,7 @@ const Report = ({ setOpen }) => {
                 pb={0}
               >
                 <Typography>Name :</Typography>
-                <Text>{orderSaved?.customer?.name || "Not found"}</Text>
+                <Text>{orderSaved?.data?.name || "Not found"}</Text>
               </Stack>
               <Stack
                 direction="row"
@@ -101,7 +101,7 @@ const Report = ({ setOpen }) => {
                 pb={0}
               >
                 <Typography>Age :</Typography>
-                <Text>{orderSaved?.customer?.age || "Not found"}</Text>
+                <Text>{orderSaved?.data?.age || "Not found"}</Text>
               </Stack>
               <Stack
                 direction="row"
@@ -114,7 +114,7 @@ const Report = ({ setOpen }) => {
               >
                 <Typography>Contact :</Typography>
                 <Text>
-                  {orderSaved?.customer?.contactNumber || "Not found"}
+                  {orderSaved?.data?.contactNumber || "Not found"}
                 </Text>
               </Stack>
             </Stack>
