@@ -1,0 +1,66 @@
+import { SearchOutlined } from "@ant-design/icons";
+import {
+  Button,
+  Grid,
+  InputLabel,
+  Paper,
+  Stack,
+  TextField,
+} from "@mui/material";
+
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { callApi, selectApi } from "../../reducers/apiSlice";
+import AddCustomer from "./components/quickRegistration/AddCustomer";
+
+const Header = ({ setFieldValue, values }) => {
+  const { customerSaved } = useSelector(selectApi);
+  const inputRef = useRef();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setFieldValue("customerId", customerSaved?.data?._id);
+  }, [customerSaved]);
+  const handleSearch = () => {
+    dispatch(
+      callApi({
+        operationId: `/${inputRef.current.value}`,
+        output: "searchedCustomer",
+      })
+    );
+  };
+  return (
+    <>
+      <Paper sx={{ background: "#f5f9f0", pt: 0 }} square>
+        <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
+          <Grid item md={2} m={2}>
+            <Stack spacing={0.5}>
+              <InputLabel>SEARCH CUSTOMER</InputLabel>
+              <TextField
+                autoFocus={true}
+                id="id"
+                name="id"
+                placeholder="ID/MOBILE"
+                value={values.customerId}
+                fullWidth
+                inputRef={inputRef}
+              />
+            </Stack>
+          </Grid>
+          <Button
+            sx={{ mb: 2, borderRadius: 20, bgcolor: "white" }}
+            startIcon={<SearchOutlined style={{ fontSize: 16 }} />}
+            variant="outlined"
+            onClick={handleSearch}
+          >
+            SEARCH
+          </Button>
+          <Grid item md={8}>
+            <AddCustomer />
+          </Grid>
+        </Grid>
+      </Paper>
+    </>
+  );
+};
+
+export default Header;
