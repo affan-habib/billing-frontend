@@ -8,9 +8,13 @@ import { addToCart } from "../../../reducers/cartSlice";
 import NoRowIcon from "../../../components/NoRowIcon";
 import AddProduct from "../../products/AddProduct";
 import CustomPagination from "../../../components/Pagination";
+import { AddBoxOutlined } from "@mui/icons-material";
 
 const ServiceList = () => {
   const dispatch = useDispatch();
+  const { orderDetailList } = useSelector((state) => state.cart);
+  let alreadySelectedOptions = orderDetailList.map((el) => el.id);
+
   const [open, setOpen] = useState(false);
   const {
     items = {
@@ -69,11 +73,12 @@ const ServiceList = () => {
       type: "actions",
       renderCell: (params) => (
         <Button
-          startIcon={<PlusOutlined  style={{ fontSize: 16 }}/>}
-          variant="outlined"
-          sx={{ m: 1 }}
+          startIcon={<AddBoxOutlined style={{ fontSize: 16 }} />}
+          variant="contained"
+          sx={{ height: 20, width: 70 }}
           size="small"
-          color="success"
+          disabled={alreadySelectedOptions.includes(params.row.id)}
+          color="info"
           onClick={() =>
             dispatch(
               addToCart({
@@ -97,7 +102,7 @@ const ServiceList = () => {
             )
           }
         >
-          Add
+          {alreadySelectedOptions.includes(params.row.id) ? "Added" : "Add"}
         </Button>
       ),
     },
@@ -105,7 +110,10 @@ const ServiceList = () => {
 
   function Toolbar() {
     return (
-      <Stack direction="row" sx={{ justifyContent: "space-between", pt: 2, bgcolor: "#e2ffff" }}>
+      <Stack
+        direction="row"
+        sx={{ justifyContent: "space-between", pt: 2, bgcolor: "#e2ffff" }}
+      >
         <GridToolbarQuickFilter sx={{ py: 1, px: 1, mr: 2 }} />
         <Stack justifyContent="space-between" direction="row">
           <Button
@@ -178,7 +186,11 @@ const ServiceList = () => {
         onSelectionModelChange={(selectedOptions) => {
           setSelectedOptions(selectedOptions);
         }}
-        components={{ Toolbar: Toolbar, NoRowsOverlay: NoRowIcon, Pagination: CustomPagination }}
+        components={{
+          Toolbar: Toolbar,
+          NoRowsOverlay: NoRowIcon,
+          Pagination: CustomPagination,
+        }}
         componentsProps={{
           toolbar: {
             showQuickFilter: true,

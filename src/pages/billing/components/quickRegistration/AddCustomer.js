@@ -10,13 +10,21 @@ import {
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../../../reducers/apiSlice";
+import { callApi, clearState, selectApi } from "../../../../reducers/apiSlice";
 import { RestartAlt, SaveAltOutlined } from "@mui/icons-material";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
   const { customerSaved = { data: { name: "" } } } = useSelector(selectApi);
-
+  const handleReset = (param) => {
+    if (param) {
+      dispatch(
+        clearState({
+          output: "customerSaved",
+        })
+      );
+    }
+  };
   return (
     <div>
       <Formik
@@ -36,7 +44,7 @@ const AddCustomer = () => {
           );
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit }) => (
+        {({ values, handleChange, handleBlur, handleSubmit, handleReset }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
               <Grid item md={3}>
@@ -50,7 +58,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
-                    disabled={!!customerSaved.name}
+                    disabled={!!customerSaved.data?._id}
                     fullWidth
                   />
                 </Stack>
@@ -66,7 +74,7 @@ const AddCustomer = () => {
                     onBlur={handleBlur}
                     value={values.contactNumber}
                     fullWidth
-                    disabled={!!customerSaved.name}
+                    disabled={!!customerSaved.data?._id}
                   />
                 </Stack>
               </Grid>
@@ -80,7 +88,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.gender}
-                    disabled={!!customerSaved.name}
+                    disabled={!!customerSaved.data?._id}
                     fullWidth
                   />
                 </Stack>
@@ -95,7 +103,7 @@ const AddCustomer = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.age}
-                    disabled={!!customerSaved.name}
+                    disabled={!!customerSaved.data?._id}
                     fullWidth
                     type="number"
                   />
@@ -113,7 +121,7 @@ const AddCustomer = () => {
                     <Button
                       variant="contained"
                       endIcon={
-                        !!customerSaved.data.name ? (
+                        !!customerSaved.data?._id ? (
                           <RestartAlt style={{ fontSize: 16 }} />
                         ) : (
                           <SaveAltOutlined style={{ fontSize: 16 }} />
@@ -121,9 +129,10 @@ const AddCustomer = () => {
                       }
                       color="info"
                       sx={{ height: 35, borderRadius: 10 }}
-                      type="submit"
+                      type={!!customerSaved.data?._id ? "submit" : "reset"}
+                      onClick={() => handleReset()}
                     >
-                      {!!customerSaved.data.name ? "RESET" : "CLIENT"}
+                      {!!customerSaved.data?._id ? "RESET" : "SAVE"}
                     </Button>
                   </Tooltip>
                 </Stack>
