@@ -70,3 +70,7 @@ body{
   height: 100%;
   background-color: red;
 }
+.App{
+  background-color:  #ffb10a36;
+  height: 100vh;
+}
