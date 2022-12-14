@@ -115,7 +115,7 @@ export default function Login() {
                 <Button variant="contained" type="submit">
                   LOGIN
                 </Button>
-                <Button variant="outlined" type="submit">
+                <Button variant="outlined" onClick={()=> navigate("/register")}>
                   REGISTER
                 </Button>
               </Stack>

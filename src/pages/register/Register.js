@@ -12,16 +12,12 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { loading, authData = { token: null } } = useSelector(selectApi);
-  useEffect(() => {
-    authData.token && localStorage.setItem("token", authData.token);
-    authData._id && localStorage.setItem("id", authData._id);
-    authData.name && localStorage.setItem("name", authData.name);
-    authData.email && localStorage.setItem("name", authData.email);
-  }, [authData]);
   return (
     <Formik
       initialValues={getSchema({})}
@@ -113,7 +109,7 @@ export default function Register() {
                 <Button variant="contained" type="submit">
                   REGISTER
                 </Button>
-                <Button variant="outlined" type="submit">
+                <Button variant="outlined" onClick={() => navigate("/login")}>
                   LOGIN
                 </Button>
               </Stack>

@@ -59,7 +59,7 @@ export default function Layout() {
           sx={{
             borderBottom: 1,
             borderColor: "divider",
-            background: "rgba(243, 241, 189, 0.24)",
+            background: "#f5f9f0",
           }}
         >
           <Tabs
@@ -76,20 +76,22 @@ export default function Layout() {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-          <Billing />
+          <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
+            <Billing />
+          </Paper>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Paper sx={{ padding: 2, bgcolor: "#e2ffff" }}>
+          <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
             <Sales />
           </Paper>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Paper sx={{ padding: 2, bgcolor: "#e2ffff" }}>
+          <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
             <Customers />
           </Paper>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <Paper sx={{ padding: 2, bgcolor: "#e2ffff" }}>
+          <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
             <Products />
           </Paper>
         </TabPanel>
