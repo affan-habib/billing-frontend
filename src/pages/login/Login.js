@@ -57,18 +57,11 @@ export default function Login() {
           >
             <Stack
               spacing={2}
-              width={500}
-              p={2}
-              pb={6}
+              width={400}
+              p={4}
               component={Paper}
               variant="outlined"
             >
-              <Box sx={{ alignSelf: "center" }} elevation={4}>
-                <img
-                  className="imgStyle"
-                  src="https://img.icons8.com/officel/512/withdrawal.png"
-                />
-              </Box>
               <Stack>
                 <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
                 <TextField
@@ -115,7 +108,10 @@ export default function Login() {
                 <Button variant="contained" type="submit">
                   LOGIN
                 </Button>
-                <Button variant="outlined" onClick={()=> navigate("/register")}>
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate("/register")}
+                >
                   REGISTER
                 </Button>
               </Stack>
