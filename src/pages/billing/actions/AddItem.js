@@ -112,9 +112,9 @@ const AddItem = () => {
             }}
           />
         </Stack>
-        <Tooltip title="Click to see Service Details" arrow>
+        <Tooltip title="SEE ALL SERVICES" arrow>
           <Button
-            sx={{ ml: 2, height: 35, mt: 0.5, width: 150 }}
+            sx={{ ml: 2, height: 35, mt: 0.5, width: 100 }}
             variant="contained"
             color="primary"
             size="small"
@@ -122,7 +122,7 @@ const AddItem = () => {
             onClick={() => setOpen(!open)}
             startIcon={<TocOutlined style={{ fontSize: "20px" }} />}
           >
-            SERVICE LIST
+            LIST
           </Button>
         </Tooltip>
       </Stack>

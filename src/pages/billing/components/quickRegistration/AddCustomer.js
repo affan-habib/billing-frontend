@@ -129,8 +129,7 @@ const AddCustomer = () => {
                       }
                       color="info"
                       sx={{ height: 35, borderRadius: 10 }}
-                      type={!!customerSaved.data?._id ? "submit" : "reset"}
-                      onClick={() => handleReset()}
+                      type="submit"
                     >
                       {!!customerSaved.data?._id ? "RESET" : "SAVE"}
                     </Button>

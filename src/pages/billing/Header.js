@@ -34,12 +34,12 @@ const Header = ({ setFieldValue, values }) => {
         <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
           <Grid item md={2} m={2}>
             <Stack spacing={0.5}>
-              <InputLabel>Customer Id</InputLabel>
+              <InputLabel>SEARCH CUSTOMER</InputLabel>
               <TextField
                 autoFocus={true}
                 id="id"
                 name="id"
-                placeholder="ID"
+                placeholder="ID/MOBILE"
                 value={values.customerId}
                 fullWidth
                 inputRef={inputRef}

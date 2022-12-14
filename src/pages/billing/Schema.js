@@ -5,7 +5,7 @@ const getSchema = (model = {}) => {
     total = 0,
     discount = 0,
     advance = 0,
-    customerId = "639826cc554afd0007dd0ba5",
+    customerId = "",
   } = model;
 
   return {

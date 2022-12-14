@@ -7,7 +7,7 @@ import { addToCart } from "../../../reducers/cartSlice";
 import NoRowIcon from "../../../components/NoRowIcon";
 import AddProduct from "../../products/AddProduct";
 import CustomPagination from "../../../components/Pagination";
-import { AddBoxOutlined } from "@mui/icons-material";
+import { AddCircle } from "@mui/icons-material";
 
 const ServiceList = () => {
   const dispatch = useDispatch();
@@ -72,7 +72,11 @@ const ServiceList = () => {
       type: "actions",
       renderCell: (params) => (
         <Button
-          startIcon={alreadySelectedOptions.includes(params.row.id) || <AddBoxOutlined style={{ fontSize: 16 }} />}
+          startIcon={
+            alreadySelectedOptions.includes(params.row.id) || (
+              <AddCircle style={{ fontSize: 16 }} />
+            )
+          }
           variant="contained"
           sx={{ height: 20, width: 70, borderRadius: 10 }}
           size="small"
@@ -174,6 +178,9 @@ const ServiceList = () => {
         // checkboxSelection={true}
         rows={items.data}
         columns={columns}
+        isRowSelectable={(id) =>
+          alreadySelectedOptions.includes(id)
+        }
         disableSelectionOnClick
         disableColumnSelector
         headerHeight={55}
