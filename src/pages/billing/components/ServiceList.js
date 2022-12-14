@@ -1,5 +1,4 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Box, Button, Dialog, IconButton, Stack } from "@mui/material";
+import { Box, Button, Dialog, Stack } from "@mui/material";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -117,9 +116,10 @@ const ServiceList = () => {
         <GridToolbarQuickFilter sx={{ py: 1, px: 1, mr: 2 }} />
         <Stack justifyContent="space-between" direction="row">
           <Button
-            sx={{ mb: 2, mr: 2, bgcolor: "#dfebf7" }}
+            sx={{ mb: 2, mr: 2 }}
             disabled={selectedOptions.length == 0}
             variant="contained"
+            color = "info"
             onClick={() => handleAddToCart()}
           >
             {selectedOptions.length ? "Add services" : "Select services"}
@@ -180,6 +180,7 @@ const ServiceList = () => {
         hideFooterPagination
         hideFooter
         disableColumnMenu
+        checkboxSelection={true}
         density="compact"
         showCellRightBorder={true}
         showColumnRightBorder={true}
