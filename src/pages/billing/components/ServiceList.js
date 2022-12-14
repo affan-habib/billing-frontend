@@ -80,7 +80,6 @@ const ServiceList = () => {
           variant="contained"
           sx={{ height: 20, width: 70, borderRadius: 10 }}
           size="small"
-          disabled={alreadySelectedOptions.includes(params.row.id)}
           color="info"
           onClick={() =>
             dispatch(
@@ -130,6 +129,7 @@ const ServiceList = () => {
           </Button>
           <Button
             sx={{ mb: 2, mr: 2 }}
+            color="info"
             variant="contained"
             onClick={() => setOpen(!open)}
           >
