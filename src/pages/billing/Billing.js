@@ -91,7 +91,7 @@ const Billing = () => {
                           startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
                           color="info"
                           onClick={() => props.handleSubmit()}
-                          disabled={!props.values.customerId}
+                          disabled={!cart.orderDetailList.length}
                           type="submit"
                           sx={{ mt: 2, borderRadius: 10 }}
                         >
