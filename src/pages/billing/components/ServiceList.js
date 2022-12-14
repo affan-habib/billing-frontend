@@ -72,9 +72,9 @@ const ServiceList = () => {
       type: "actions",
       renderCell: (params) => (
         <Button
-          startIcon={<AddBoxOutlined style={{ fontSize: 16 }} />}
+          startIcon={alreadySelectedOptions.includes(params.row.id) || <AddBoxOutlined style={{ fontSize: 16 }} />}
           variant="contained"
-          sx={{ height: 20, width: 70 }}
+          sx={{ height: 20, width: 70, borderRadius: 10 }}
           size="small"
           disabled={alreadySelectedOptions.includes(params.row.id)}
           color="info"
@@ -101,7 +101,7 @@ const ServiceList = () => {
             )
           }
         >
-          {alreadySelectedOptions.includes(params.row.id) ? "Added" : "Add"}
+          {alreadySelectedOptions.includes(params.row.id) ? "ADDED" : "ADD"}
         </Button>
       ),
     },
@@ -119,7 +119,7 @@ const ServiceList = () => {
             sx={{ mb: 2, mr: 2 }}
             disabled={selectedOptions.length == 0}
             variant="contained"
-            color = "info"
+            color="info"
             onClick={() => handleAddToCart()}
           >
             {selectedOptions.length ? "Add services" : "Select services"}
