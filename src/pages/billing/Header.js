@@ -32,7 +32,7 @@ const Header = ({ setFieldValue, values }) => {
     <>
       <Paper sx={{ background: "#f5f9f0", pt: 0 }} square>
         <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
-          <Grid item lg={1.5} md={2} m={2}>
+          <Grid item md={2} m={2}>
             <Stack spacing={0.5}>
               <InputLabel>Customer Id</InputLabel>
               <TextField
@@ -54,7 +54,7 @@ const Header = ({ setFieldValue, values }) => {
           >
             SEARCH
           </Button>
-          <Grid item md={9}>
+          <Grid item md={8}>
             <AddCustomer />
           </Grid>
         </Grid>

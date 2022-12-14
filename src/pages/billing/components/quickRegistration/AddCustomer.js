@@ -11,12 +11,11 @@ import {
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../../reducers/apiSlice";
-import { SendOutlined } from "@ant-design/icons";
-import { BookOutlined, SaveAsOutlined } from "@mui/icons-material";
+import { RestartAlt, SaveAltOutlined } from "@mui/icons-material";
 
 const AddCustomer = () => {
   const dispatch = useDispatch();
-  const { customerSaved = { name: "" } } = useSelector(selectApi);
+  const { customerSaved = { data: { name: "" } } } = useSelector(selectApi);
 
   return (
     <div>
@@ -56,13 +55,13 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={3}>
+              <Grid item md={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Mobile Number</InputLabel>
                   <TextField
                     id="contactNumber"
                     name="contactNumber"
-                    placeholder="MOBILE NUMBER"
+                    placeholder="eg: 01798980000"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.contactNumber}
@@ -71,7 +70,7 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={1}>
+              <Grid item md={1.5}>
                 <Stack spacing={0.5}>
                   <InputLabel>Gender</InputLabel>
                   <TextField
@@ -86,7 +85,7 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={1}>
+              <Grid item md={1.5}>
                 <Stack spacing={0.5}>
                   <InputLabel>AGe</InputLabel>
                   <TextField
@@ -103,23 +102,28 @@ const AddCustomer = () => {
                 </Stack>
               </Grid>
 
-              <Grid item lg={3}>
+              <Grid item md={3} mr={0}>
                 <Stack
                   direction="row"
                   justifyContent="flex-start"
                   alignItems="flex-end"
-                  sx={{ height: "100%" }}
+                  sx={{ height: "100%", width: "100%" }}
                 >
                   <Tooltip title="Save as new customer">
                     <Button
-                      disabled={!!customerSaved.name}
                       variant="contained"
-                      endIcon={<BookOutlined style={{ fontSize: 16 }} />}
+                      endIcon={
+                        !!customerSaved.data.name ? (
+                          <RestartAlt style={{ fontSize: 16 }} />
+                        ) : (
+                          <SaveAltOutlined style={{ fontSize: 16 }} />
+                        )
+                      }
                       color="info"
-                      sx={{ height: 35 }}
+                      sx={{ height: 35, borderRadius: 10 }}
                       type="submit"
                     >
-                      {!!customerSaved.name ? "SAVED" : "SAVE CLIENT"}
+                      {!!customerSaved.data.name ? "RESET" : "CLIENT"}
                     </Button>
                   </Tooltip>
                 </Stack>

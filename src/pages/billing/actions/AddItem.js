@@ -1,4 +1,5 @@
 import { InfoCircleOutlined } from "@ant-design/icons";
+import { TocOutlined } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -113,13 +114,13 @@ const AddItem = () => {
         </Stack>
         <Tooltip title="Click to see Service Details" arrow>
           <Button
-            sx={{ ml: 2, height: 35, mt: 0.5, width: 200 }}
-            variant="outlined"
-            color="info"
+            sx={{ ml: 2, height: 35, mt: 0.5, width: 150 }}
+            variant="contained"
+            color="primary"
             size="small"
             type="button"
             onClick={() => setOpen(!open)}
-            startIcon={<InfoCircleOutlined style={{ fontSize: "16px" }} />}
+            startIcon={<TocOutlined style={{ fontSize: "20px" }} />}
           >
             SERVICE LIST
           </Button>

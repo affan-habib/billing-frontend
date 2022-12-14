@@ -1,5 +1,13 @@
 import React, { useEffect } from "react";
-import { Box, Button, Stack, Dialog } from "@mui/material";
+import {
+  Box,
+  Button,
+  Stack,
+  Dialog,
+  Typography,
+  Badge,
+  Paper,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
@@ -58,7 +66,7 @@ const Customers = () => {
       field: "age",
       headerName: "AGE",
       type: "number",
-      minWidth: 120,
+      minWidth: 60,
       headerAlign: "center",
       sortable: false,
       align: "center",
@@ -72,7 +80,7 @@ const Customers = () => {
       minWidth: 120,
       headerAlign: "center",
       sortable: false,
-      align: "center",
+      align: "left",
     },
     {
       headerClassName: "top-header-1",
@@ -84,6 +92,21 @@ const Customers = () => {
       headerAlign: "center",
       sortable: false,
       align: "center",
+      renderCell: (params) => (
+        <Box
+          sx={{
+            m: 1,
+            pr: 1,
+            pl: 1,
+            bgcolor: "primary.main",
+            color: "white",
+            borderRadius: 5,
+            fontSize: 14,
+          }}
+        >
+          {params.value.toUpperCase()}
+        </Box>
+      ),
     },
 
     {
@@ -129,7 +152,10 @@ const Customers = () => {
   };
 
   return (
-    <Box sx={{ height: 475, mt: 2, width: "100%" }}>
+    <Paper
+      elevation={1}
+      sx={{ pt: 2, pb: 2, width: "100%", bgcolor: "#f5f9f0" }}
+    >
       <Stack direction="row">
         <Button
           sx={{ mb: 2, ml: 2, width: 200 }}
@@ -152,6 +178,7 @@ const Customers = () => {
         </Dialog>
       </Stack>
       <DataGrid
+        sx={{ mr: 2, ml: 2, height: 400 }}
         getRowId={(row) => row._id}
         checkboxSelection={true}
         rows={customers.data}
@@ -172,7 +199,7 @@ const Customers = () => {
           setSelectedOptions(newSelectionModel);
         }}
       />
-    </Box>
+    </Paper>
   );
 };
 

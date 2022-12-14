@@ -62,7 +62,7 @@ const Billing = () => {
                         disableElevation
                       >
                         <Button
-                          color="info"
+                          color="primary"
                           variant="contained"
                           startIcon={
                             <PrinterOutlined style={{ fontSize: 16 }} />

@@ -10,6 +10,7 @@ import Customers from "../pages/customers/Customers";
 import Sales from "../pages/sales/Customers";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
+import { Paper } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,7 +59,7 @@ export default function Layout() {
           sx={{
             borderBottom: 1,
             borderColor: "divider",
-            background: "#dfebf7",
+            background: "rgba(243, 241, 189, 0.24)",
           }}
         >
           <Tabs
@@ -78,14 +79,20 @@ export default function Layout() {
           <Billing />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Sales />
+          <Paper sx={{ padding: 2, bgcolor: "#e2ffff" }}>
+            <Sales />
+          </Paper>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Customers />
+          <Paper sx={{ padding: 2, bgcolor: "#e2ffff" }}>
+            <Customers />
+          </Paper>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <Products />
-        </TabPanel> 
+          <Paper sx={{ padding: 2, bgcolor: "#e2ffff" }}>
+            <Products />
+          </Paper>
+        </TabPanel>
         {/* <TabPanel value={value} index={4}>
           <Login />
         </TabPanel>

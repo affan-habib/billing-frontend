@@ -69,7 +69,7 @@ const AddCustomer = ({ setOpen }) => {
                     autoFocus={true}
                     id="name"
                     name="name"
-                    placeholder="CUSTOMER NAME"
+                    placeholder="FULL NAME"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
