@@ -16,7 +16,9 @@ const Products = () => {
       data: [],
     },
     itemDeleted = {
-      id: null,
+      data: {
+        id: null,
+      },
     },
     itemSaved,
   } = useSelector(selectApi);
@@ -31,7 +33,7 @@ const Products = () => {
         ),
       1000
     );
-  }, [itemDeleted.id, itemSaved]);
+  }, [itemDeleted.data.id, itemSaved]);
   const columns = [
     {
       field: "id",

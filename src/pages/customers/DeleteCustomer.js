@@ -1,12 +1,14 @@
 import { DeleteOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { callApi } from "../../reducers/apiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { callApi, selectApi } from "../../reducers/apiSlice";
 
 const DeleteProduct = ({ shouldDelete }) => {
   const dispatch = useDispatch();
+  const { loading } = useSelector(selectApi);
   return (
     <IconButton
+      disabled={loading}
       color="error"
       onClick={() =>
         dispatch(

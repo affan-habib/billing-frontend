@@ -20,11 +20,12 @@ import CustomPagination from "../../components/Pagination";
 const Customers = () => {
   const dispatch = useDispatch();
   const {
+    loading,
     customers = {
       data: [],
     },
     customerDeleted = {
-      id: null,
+      data: { id: null },
     },
     customerSaved,
   } = useSelector(selectApi);
@@ -39,7 +40,7 @@ const Customers = () => {
         ),
       1000
     );
-  }, [customerDeleted.id, customerSaved]);
+  }, [customerDeleted.data.id, customerSaved]);
   const columns = [
     {
       field: "id",

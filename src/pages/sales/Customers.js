@@ -15,7 +15,7 @@ const Customers = () => {
       data: [],
     },
     orderDeleted = {
-      id: null,
+      data: { id: null },
     },
     customerSaved,
   } = useSelector(selectApi);
@@ -28,7 +28,7 @@ const Customers = () => {
         })
       )
     );
-  }, [orderDeleted.id, customerSaved]);
+  }, [orderDeleted.data.id, customerSaved]);
   const columns = [
     {
       field: "id",
@@ -158,7 +158,10 @@ const Customers = () => {
     );
   }
   return (
-    <Paper elevation={1} sx={{ height: 475, width: "100%", bgcolor: "#f5f9f0", p: 2 }}>
+    <Paper
+      elevation={1}
+      sx={{ height: 475, width: "100%", bgcolor: "#f5f9f0", p: 2 }}
+    >
       <DataGrid
         getRowId={(row) => row._id}
         checkboxSelection={true}
