@@ -63,11 +63,11 @@ export default function Layout() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="NEW BILL" {...a11yProps(0)} />
-              <Tab label="SALES" {...a11yProps(1)} />
-              <Tab label="CUSTOMERS" {...a11yProps(2)} />
-              <Tab label="PRODUCTS/SERVICES" {...a11yProps(3)} />
-              <Tab label="ABOUT" {...a11yProps(4)} />
+              <Tab disableRipple disableFocusRipple disableTouchRipple label="NEW BILL" {...a11yProps(0)} />
+              <Tab disableRipple disableFocusRipple disableTouchRipple label="SALES" {...a11yProps(1)} />
+              <Tab disableRipple disableFocusRipple disableTouchRipple label="CUSTOMERS" {...a11yProps(2)} />
+              <Tab disableRipple disableFocusRipple disableTouchRipple label="PRODUCTS/SERVICES" {...a11yProps(3)} />
+              <Tab disableRipple disableFocusRipple disableTouchRipple label="ABOUT" {...a11yProps(4)} />
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
