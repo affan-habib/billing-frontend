@@ -11,6 +11,7 @@ import Sales from "../pages/sales/Customers";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
 import { Paper } from "@mui/material";
+import About from "../pages/about/About";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,8 +72,7 @@ export default function Layout() {
             <Tab label="SALES" {...a11yProps(1)} />
             <Tab label="CUSTOMERS" {...a11yProps(2)} />
             <Tab label="PRODUCTS/SERVICES" {...a11yProps(3)} />
-            {/* <Tab label="LOGIN" {...a11yProps(3)} />
-            <Tab label="REGISTER" {...a11yProps(3)} /> */}
+            <Tab label="ABOUT" {...a11yProps(4)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -95,12 +95,11 @@ export default function Layout() {
             <Products />
           </Paper>
         </TabPanel>
-        {/* <TabPanel value={value} index={4}>
-          <Login />
+        <TabPanel value={value} index={4}>
+          <Paper sx={{ p: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+            <About />
+          </Paper>
         </TabPanel>
-        <TabPanel value={value} index={5}>
-          <Register />
-        </TabPanel> */}
       </Box>
     </Box>
   );

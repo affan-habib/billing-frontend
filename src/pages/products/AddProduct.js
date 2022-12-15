@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Formik, Field } from "formik";
+import React from "react";
+import { Formik } from "formik";
 import {
   FormHelperText,
   Grid,
@@ -11,24 +11,13 @@ import {
   IconButton,
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
-import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
+import { useDispatch } from "react-redux";
+import { callApi } from "../../reducers/apiSlice";
 import { CloseCircleFilled } from "@ant-design/icons";
 
 const AddProduct = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const { quick_registration } = useSelector(selectApi);
 
-  useEffect(() => {
-    if (quick_registration?.status == "success") {
-      setOpen(false);
-      dispatch(
-        clearState({
-          output: "quick_registration",
-        })
-      );
-    }
-  }, [quick_registration]);
   const CloseButton = () => {
     return (
       <IconButton
@@ -67,21 +56,20 @@ const AddProduct = ({ setOpen }) => {
           handleSubmit,
         }) => (
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2} sx={{ maxWidth: 450, p: 2 }}>
+            <Grid container spacing={2} sx={{ maxWidth: 600, p: 2 }}>
               <CloseButton />
               <Grid item xs={12} sm={12}>
                 <Typography
-                  variant="h4"
-                  align="center"
+                  variant="h5"
                   color="primary"
                   sx={{ display: "block" }}
                 >
-                  Add New Product
+                  ADD PRODUCT / SERVICE
                 </Typography>
               </Grid>
               <Grid item xs={2} sm={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Id</InputLabel>
+                  <InputLabel>ID</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="id"
@@ -94,12 +82,7 @@ const AddProduct = ({ setOpen }) => {
                     autoComplete="first-name"
                   />
                   {touched.id && errors.id && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.id}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.id}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -118,12 +101,7 @@ const AddProduct = ({ setOpen }) => {
                     autoComplete="first-name"
                   />
                   {touched.serviceName && errors.serviceName && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.serviceName}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.serviceName}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -139,40 +117,48 @@ const AddProduct = ({ setOpen }) => {
                     value={values.basePrice}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
                   {touched.basePrice && errors.basePrice && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.basePrice}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.basePrice}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
 
               <Grid item xs={4} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Discount</InputLabel>
+                  <InputLabel>Discount Per Unit</InputLabel>
                   <TextField
                     id="discountPerUnit"
                     name="discountPerUnit"
-                    placeholder="Enter Age"
+                    placeholder="Discount Per Unit"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.discountPerUnit}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
                   {touched.discountPerUnit && errors.discountPerUnit && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
+                    <FormHelperText error>
                       {errors.discountPerUnit}
                     </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>AVAILABLE STOCKS</InputLabel>
+                  <TextField
+                    id="stock"
+                    name="stock"
+                    placeholder="Enter available Stock"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.stock}
+                    fullWidth
+                    type="number"
+                  />
+                  {touched.stock && errors.stock && (
+                    <FormHelperText error>{errors.stock}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -188,15 +174,9 @@ const AddProduct = ({ setOpen }) => {
                     value={values.expiryDate}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
                   {touched.expiryDate && errors.expiryDate && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.expiryDate}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.expiryDate}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -212,15 +192,9 @@ const AddProduct = ({ setOpen }) => {
                     value={values.vatPerUnit}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
                   {touched.vatPerUnit && errors.vatPerUnit && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.vatPerUnit}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.vatPerUnit}</FormHelperText>
                   )}
                 </Stack>
               </Grid>

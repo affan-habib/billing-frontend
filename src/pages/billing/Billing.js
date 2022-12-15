@@ -1,10 +1,8 @@
 import { Box, Button, ButtonGroup, Dialog, Grid, Paper } from "@mui/material";
 import { Formik } from "formik";
-
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Body from "./Body";
-
 import Final from "./Final";
 import Header from "./Header";
 import Report from "./components/report/Report";
@@ -15,6 +13,7 @@ import {
   ReloadOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
+import { clearCart } from "../../reducers/cartSlice";
 
 const Billing = () => {
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ const Billing = () => {
       <Formik
         initialValues={getSchema({})}
         validationSchema={validator}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { resetForm }) => {
           dispatch(
             callApi({
               operationId: "api/orders",
@@ -41,7 +40,9 @@ const Billing = () => {
               },
             })
           );
+          resetForm();
           setOpen(!open);
+          dispatch(clearCart());
         }}
       >
         {(props) => {
@@ -78,24 +79,28 @@ const Billing = () => {
                           SAVE
                         </Button>
                         <Button
-                          startIcon={
-                            <ReloadOutlined style={{ fontSize: 16 }} />
-                          }
-                          color="primary"
-                          variant="outlined"
-                          sx={{ mt: 2 }}
-                        >
-                          CANCEL
-                        </Button>
-                        <Button
                           startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
                           color="info"
                           onClick={() => props.handleSubmit()}
                           disabled={!cart.orderDetailList.length}
                           type="submit"
-                          sx={{ mt: 2, borderRadius: 10 }}
+                          sx={{ mt: 2 }}
                         >
                           DRAFT
+                        </Button>
+                        <Button
+                          startIcon={
+                            <ReloadOutlined style={{ fontSize: 16 }} />
+                          }
+                          color="error"
+                          variant="outlined"
+                          sx={{ mt: 2, borderRadius: 10 }}
+                          onClick={() => {
+                            props.handleReset();
+                            dispatch(clearCart());
+                          }}
+                        >
+                          RESET
                         </Button>
                       </ButtonGroup>
                     </Paper>

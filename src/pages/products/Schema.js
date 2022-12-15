@@ -1,13 +1,15 @@
 import * as Yup from "yup";
+let date = new Date();
+let components = [date.getMonth(), date.getYear().toString().substr(-1)];
 const getSchema = (model = {}) => {
   const {
-    id = 0,
+    id = components.join("") + Math.random().toString(36).slice(-2),
     serviceName = "",
     basePrice = null,
-
     expiryDate = 0,
     vatPerUnit = 0,
     discountPerUnit = 0,
+    stock = 12,
   } = model;
 
   return {
@@ -17,6 +19,7 @@ const getSchema = (model = {}) => {
     discountPerUnit,
     expiryDate,
     vatPerUnit,
+    stock,
   };
 };
 
