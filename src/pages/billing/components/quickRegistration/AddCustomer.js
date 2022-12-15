@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Formik } from "formik";
+import { FastField, Formik } from "formik";
 import {
   Grid,
   InputLabel,
@@ -7,6 +7,9 @@ import {
   TextField,
   Button,
   Tooltip,
+  Autocomplete,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +38,14 @@ const AddCustomer = () => {
           );
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit, handleReset }) => (
+        {({
+          values,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          handleReset,
+          setFieldValue,
+        }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
               <Grid item md={3}>
@@ -61,7 +71,6 @@ const AddCustomer = () => {
                     id="contactNumber"
                     name="contactNumber"
                     placeholder="eg: 01798980000"
-                    onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.contactNumber}
                     fullWidth
@@ -69,19 +78,26 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item md={1.5}>
+              <Grid item xs={12} md={1.5}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Gender</InputLabel>
-                  <TextField
-                    id="gender"
+                  <InputLabel
+                    sx={{ fontWeight: 500, textTransform: "uppercase" }}
+                    htmlFor="gender"
+                  >
+                    GENDER
+                  </InputLabel>
+                  <FastField
+                    // disabled
                     name="gender"
-                    placeholder="GENDER"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    component={Select}
                     value={values.gender}
-                    disabled={!!customerSaved.data?._id}
-                    fullWidth
-                  />
+                    onChange={(e) => {
+                      setFieldValue("gender", e.target.value);
+                    }}
+                  >
+                    <MenuItem value="MALE">MALE</MenuItem>
+                    <MenuItem value="FEMALE">FEMALE</MenuItem>
+                  </FastField>
                 </Stack>
               </Grid>
               <Grid item md={1.5}>
@@ -126,6 +142,7 @@ const AddCustomer = () => {
                       color="warning"
                       sx={{ height: 35, borderRadius: 10, ml: 1 }}
                       type="reset"
+                      onClick={handleReset}
                     >
                       RESET
                     </Button>
