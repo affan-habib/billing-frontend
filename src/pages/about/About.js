@@ -4,7 +4,7 @@ import Faq from "./Faq";
 
 const About = () => {
   return (
-    <Paper sx={{ my: 2, p: 2, pt: 0 }}>
+    <Paper sx={{ my: 2, p: 2, pt: 0 }} square>
       <Grid
         container
         spacing={2}
@@ -15,7 +15,12 @@ const About = () => {
         <Grid item md={6}>
           <Paper sx={{ minHeight: 400, bgcolor: "#f5f9f0" }} square>
             <Typography
-              sx={{ pt: 2, ml:2, textTransform: "uppercase" }}
+              sx={{
+                pt: 2,
+                ml: 2,
+                textTransform: "uppercase",
+                color: "primary",
+              }}
               variant="h5"
             >
               About this sofware
@@ -54,7 +59,12 @@ const About = () => {
         <Grid item md={6}>
           <Paper sx={{ minHeight: 400, bgcolor: "#f5f9f0" }} square>
             <Typography
-              sx={{ pt: 2, ml:2, textTransform: "uppercase" }}
+              sx={{
+                pt: 2,
+                ml: 2,
+                textTransform: "uppercase",
+                color: "primary",
+              }}
               variant="h5"
             >
               Frequently Asked Questions
