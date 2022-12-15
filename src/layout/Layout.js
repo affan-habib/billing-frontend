@@ -2,9 +2,10 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Paper, Tabs, Tab, Typography, Box } from "@mui/material";
 import Billing from "../pages/billing/Billing";
+import Loader from "../components/Loader";
 const Products = React.lazy(() => import("../pages/products/Products"));
 const Customers = React.lazy(() => import("../pages/customers/Customers"));
-const Sales = React.lazy(() => import("../pages/sales/Customers"));
+const Sales = React.lazy(() => import("../pages/sales/Sales"));
 const About = React.lazy(() => import("../pages/about/About"));
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,7 +48,7 @@ export default function Layout() {
   };
 
   return (
-    <React.Suspense fallback={<div style={{background: "red", height: "100vh", width: "100vw"}}>Loading...</div>}>
+    <React.Suspense fallback={<Loader />}>
       <Box>
         <Box>
           <Box

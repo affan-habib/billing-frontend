@@ -3,12 +3,12 @@ import { Box, Paper, Stack } from "@mui/material";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
-import DeleteCustomer from "./DeleteCustomer";
+import DeleteSale from "./DeleteSale";
 import NoRowIcon from "../../components/NoRowIcon";
 import moment from "moment/moment";
 import CustomPagination from "../../components/Pagination";
 
-const Customers = () => {
+const Sales = () => {
   const dispatch = useDispatch();
   const {
     orders = {
@@ -42,7 +42,7 @@ const Customers = () => {
       field: "name",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      headerName: "CUSTOMER",
+      headerName: "Sale",
       flex: 1,
       headerAlign: "left",
       sortable: false,
@@ -144,7 +144,7 @@ const Customers = () => {
       type: "actions",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
+      renderCell: (params) => <DeleteSale shouldDelete={params.id} />,
     },
   ];
 
@@ -190,4 +190,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Sales;

@@ -3,7 +3,7 @@ import { IconButton } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { callApi } from "../../reducers/apiSlice";
 
-const DeleteProduct = ({ shouldDelete }) => {
+const DeleteSale = ({ shouldDelete }) => {
   const dispatch = useDispatch();
   return (
     <IconButton
@@ -25,4 +25,4 @@ const DeleteProduct = ({ shouldDelete }) => {
   );
 };
 
-export default DeleteProduct;
+export default DeleteSale;

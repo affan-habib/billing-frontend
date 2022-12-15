@@ -72,7 +72,7 @@ export default function Login() {
                   onBlur={props.handleBlur}
                   value={props.values.email}
                   fullWidth
-                  autoComplete="first-name"
+                  
                 />
                 {props.touched.email && props.errors.email && (
                   <FormHelperText

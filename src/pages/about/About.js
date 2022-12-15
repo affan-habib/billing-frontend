@@ -2,7 +2,7 @@ import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 import Faq from "./Faq";
 import File from "./File";
-
+import Loader from "../../components/Loader";
 const About = () => {
   return (
     <Paper sx={{ my: 2, p: 2, pt: 0 }} square>

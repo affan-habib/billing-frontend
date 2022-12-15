@@ -79,7 +79,6 @@ const AddProduct = ({ setOpen }) => {
                     onBlur={handleBlur}
                     value={values.id}
                     fullWidth
-                    autoComplete="first-name"
                   />
                   {touched.id && errors.id && (
                     <FormHelperText error>{errors.id}</FormHelperText>
@@ -98,7 +97,6 @@ const AddProduct = ({ setOpen }) => {
                     onBlur={handleBlur}
                     value={values.serviceName}
                     fullWidth
-                    autoComplete="first-name"
                   />
                   {touched.serviceName && errors.serviceName && (
                     <FormHelperText error>{errors.serviceName}</FormHelperText>

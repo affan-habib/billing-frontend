@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React, { useEffect } from "react";
+import React from "react";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, authData = { token: null } } = useSelector(selectApi);
+  const { signUp } = useSelector(selectApi);
   return (
     <Formik
       initialValues={getSchema({})}
@@ -30,7 +30,7 @@ export default function Register() {
               method: "POST",
               body: JSON.stringify(getSchema(values)),
             },
-            output: "authData",
+            output: "signUp",
           })
         );
       }}
@@ -60,7 +60,6 @@ export default function Register() {
                   onBlur={props.handleBlur}
                   value={props.values.name}
                   fullWidth
-                  autoComplete="first-name"
                 />
                 {props.touched.name && props.errors.name && (
                   <FormHelperText error>{props.errors.name}</FormHelperText>
@@ -76,7 +75,6 @@ export default function Register() {
                   onBlur={props.handleBlur}
                   value={props.values.email}
                   fullWidth
-                  autoComplete="first-name"
                 />
                 {props.touched.email && props.errors.email && (
                   <FormHelperText error>{props.errors.email}</FormHelperText>
