@@ -4,10 +4,10 @@ const getSchema = (model = {}) => {
     id = 0,
     serviceName = "",
     basePrice = null,
-
     expiryDate = 0,
     vatPerUnit = 0,
     discountPerUnit = 0,
+    stock = 12,
   } = model;
 
   return {
@@ -17,6 +17,7 @@ const getSchema = (model = {}) => {
     discountPerUnit,
     expiryDate,
     vatPerUnit,
+    stock,
   };
 };
 

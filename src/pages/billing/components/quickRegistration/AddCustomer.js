@@ -117,7 +117,7 @@ const AddCustomer = () => {
                   alignItems="flex-end"
                   sx={{ height: "100%", width: "100%" }}
                 >
-                  <Tooltip title="Save as new customer">
+                  <Tooltip title="SAVE CUSTOMER">
                     <Button
                       variant="contained"
                       endIcon={
