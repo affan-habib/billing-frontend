@@ -121,7 +121,7 @@ const AddCustomer = () => {
               <Grid item md={3} mr={0}>
                 <Stack
                   direction="row"
-                  justifyContent="flex-start"
+                  justifyContent="space-between"
                   alignItems="flex-end"
                   sx={{ height: "100%", width: "100%" }}
                 >
@@ -130,7 +130,7 @@ const AddCustomer = () => {
                       variant="contained"
                       endIcon={<SaveAltOutlined style={{ fontSize: 16 }} />}
                       color="info"
-                      sx={{ height: 35, borderRadius: 10 }}
+                      sx={{ height: 35, borderRadius: 10, flexGrow: 1 }}
                       type="submit"
                     >
                       {!!customerSaved.data?._id ? "SAVED" : "SAVE"}

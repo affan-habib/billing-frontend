@@ -17,18 +17,16 @@ const Customers = () => {
     orderDeleted = {
       data: { id: null },
     },
-    customerSaved,
+    orderSaved,
   } = useSelector(selectApi);
   useEffect(() => {
-    setTimeout(
-      dispatch(
-        callApi({
-          operationId: `api/orders`,
-          output: "orders",
-        })
-      )
+    dispatch(
+      callApi({
+        operationId: `api/orders`,
+        output: "orders",
+      })
     );
-  }, [orderDeleted.data.id, customerSaved]);
+  }, [orderDeleted.data.id, orderSaved]);
   const columns = [
     {
       field: "id",

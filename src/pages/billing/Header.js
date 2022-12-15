@@ -54,7 +54,7 @@ const Header = ({ setFieldValue, values }) => {
           >
             SEARCH
           </Button>
-          <Grid item md={8}>
+          <Grid item md={8} sx={{ mr: 0, pr: 0 }}>
             <AddCustomer />
           </Grid>
         </Grid>

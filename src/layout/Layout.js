@@ -1,18 +1,11 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Paper, Tabs, Tab, Typography, Box } from "@mui/material";
 import Billing from "../pages/billing/Billing";
-import Products from "../pages/products/Products";
-import Customers from "../pages/customers/Customers";
-import Sales from "../pages/sales/Customers";
-import Register from "../pages/register/Register";
-import Login from "../pages/login/Login";
-import { Paper } from "@mui/material";
-import About from "../pages/about/About";
-
+const Products = React.lazy(() => import("../pages/products/Products"));
+const Customers = React.lazy(() => import("../pages/customers/Customers"));
+const Sales = React.lazy(() => import("../pages/sales/Customers"));
+const About = React.lazy(() => import("../pages/about/About"));
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -54,53 +47,55 @@ export default function Layout() {
   };
 
   return (
-    <Box>
+    <React.Suspense fallback={<div style={{background: "red", height: "100vh", width: "100vw"}}>Loading...</div>}>
       <Box>
-        <Box
-          sx={{
-            borderBottom: 1,
-            borderColor: "divider",
-            background: "#f5f9f0",
-          }}
-        >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
+        <Box>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: "divider",
+              background: "#f5f9f0",
+            }}
           >
-            <Tab label="NEW BILL" {...a11yProps(0)} />
-            <Tab label="SALES" {...a11yProps(1)} />
-            <Tab label="CUSTOMERS" {...a11yProps(2)} />
-            <Tab label="PRODUCTS/SERVICES" {...a11yProps(3)} />
-            <Tab label="ABOUT" {...a11yProps(4)} />
-          </Tabs>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="NEW BILL" {...a11yProps(0)} />
+              <Tab label="SALES" {...a11yProps(1)} />
+              <Tab label="CUSTOMERS" {...a11yProps(2)} />
+              <Tab label="PRODUCTS/SERVICES" {...a11yProps(3)} />
+              <Tab label="ABOUT" {...a11yProps(4)} />
+            </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
+              <Billing />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <Sales />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <Customers />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <Products />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={4}>
+            <Paper sx={{ p: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <About />
+            </Paper>
+          </TabPanel>
         </Box>
-        <TabPanel value={value} index={0}>
-          <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
-            <Billing />
-          </Paper>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
-            <Sales />
-          </Paper>
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
-            <Customers />
-          </Paper>
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
-            <Products />
-          </Paper>
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-          <Paper sx={{ p: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
-            <About />
-          </Paper>
-        </TabPanel>
       </Box>
-    </Box>
+    </React.Suspense>
   );
 }
