@@ -73,6 +73,7 @@ const AddCustomer = () => {
                     placeholder="eg: 01798980000"
                     onBlur={handleBlur}
                     value={values.contactNumber}
+                    onChange={handleChange}
                     fullWidth
                     disabled={!!customerSaved.data?._id}
                   />
