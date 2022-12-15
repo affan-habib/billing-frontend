@@ -16,15 +16,6 @@ import { RestartAlt, SaveAltOutlined } from "@mui/icons-material";
 const AddCustomer = () => {
   const dispatch = useDispatch();
   const { customerSaved = { data: { name: "" } } } = useSelector(selectApi);
-  const handleReset = (param) => {
-    if (param) {
-      dispatch(
-        clearState({
-          output: "customerSaved",
-        })
-      );
-    }
-  };
   return (
     <div>
       <Formik
@@ -120,18 +111,23 @@ const AddCustomer = () => {
                   <Tooltip title="SAVE CUSTOMER">
                     <Button
                       variant="contained"
-                      endIcon={
-                        !!customerSaved.data?._id ? (
-                          <RestartAlt style={{ fontSize: 16 }} />
-                        ) : (
-                          <SaveAltOutlined style={{ fontSize: 16 }} />
-                        )
-                      }
+                      endIcon={<SaveAltOutlined style={{ fontSize: 16 }} />}
                       color="info"
                       sx={{ height: 35, borderRadius: 10 }}
                       type="submit"
                     >
-                      {!!customerSaved.data?._id ? "RESET" : "SAVE"}
+                      {!!customerSaved.data?._id ? "SAVED" : "SAVE"}
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title="RESET CUSTOMER INFO">
+                    <Button
+                      variant="contained"
+                      endIcon={<RestartAlt style={{ fontSize: 16 }} />}
+                      color="warning"
+                      sx={{ height: 35, borderRadius: 10, ml: 1 }}
+                      type="reset"
+                    >
+                      RESET
                     </Button>
                   </Tooltip>
                 </Stack>
