@@ -1,7 +1,9 @@
 import * as Yup from "yup";
+let date = new Date();
+let components = [date.getHours(), date.getMinutes().toString()];
 const getSchema = (model = {}) => {
   const {
-    id = 0,
+    id = components.join("") + Math.random().toString(36).slice(-2),
     name = "",
     age = 21,
     contactNumber = "",
