@@ -13,9 +13,9 @@ const About = () => {
         alignItems="stretch"
       >
         <Grid item md={6}>
-          <Paper sx={{ height: 400, bgcolor: "#f5f9f0" }} square>
+          <Paper sx={{ minHeight: 400, bgcolor: "#f5f9f0" }} square>
             <Typography
-              sx={{ pt: 2, textAlign: "center", textTransform: "uppercase" }}
+              sx={{ pt: 2, ml:2, textTransform: "uppercase" }}
               variant="h5"
             >
               About this sofware
@@ -52,9 +52,9 @@ const About = () => {
           </Paper>
         </Grid>
         <Grid item md={6}>
-          <Paper sx={{ height: 400, bgcolor: "#f5f9f0" }} square>
+          <Paper sx={{ minHeight: 400, bgcolor: "#f5f9f0" }} square>
             <Typography
-              sx={{ pt: 2, textAlign: "center", textTransform: "uppercase" }}
+              sx={{ pt: 2, ml:2, textTransform: "uppercase" }}
               variant="h5"
             >
               Frequently Asked Questions
