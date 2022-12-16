@@ -1,54 +1,28 @@
-import React, { useEffect } from "react";
-import { Formik, Field } from "formik";
+import React from "react";
+import { Formik } from "formik";
 import {
   FormHelperText,
   Grid,
   InputLabel,
-  OutlinedInput,
   Stack,
-  Select,
   TextField,
-  MenuItem,
   Button,
   Typography,
   IconButton,
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
-import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
+import { useDispatch } from "react-redux";
+import { callApi } from "../../reducers/apiSlice";
 import { CloseCircleFilled } from "@ant-design/icons";
 
 const AddProduct = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const {
-    gender = {
-      data: [],
-    },
-    quick_registration,
-  } = useSelector(selectApi);
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: `api/v1/p-code/all?codeType=Gender`,
-        output: "gender",
-      })
-    );
-  }, []);
-  useEffect(() => {
-    if (quick_registration?.status == "success") {
-      setOpen(false);
-      dispatch(
-        clearState({
-          output: "quick_registration",
-        })
-      );
-    }
-  }, [quick_registration]);
+
   const CloseButton = () => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
+        sx={{ position: "absolute", right: 15, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -63,7 +37,7 @@ const AddProduct = ({ setOpen }) => {
         onSubmit={(values) => {
           dispatch(
             callApi({
-              operationId: "api/v1/service-master/items",
+              operationId: "api/products",
               output: "itemSaved",
               parameters: {
                 method: "POST",
@@ -80,26 +54,22 @@ const AddProduct = ({ setOpen }) => {
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting,
-          setFieldValue,
-          /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2} sx={{ maxWidth: 450, p: 2 }}>
+            <Grid container spacing={2} sx={{ maxWidth: 600, p: 2 }}>
               <CloseButton />
               <Grid item xs={12} sm={12}>
                 <Typography
-                  variant="h4"
-                  align="center"
+                  variant="h5"
+                  color="primary"
                   sx={{ display: "block" }}
-                  color="#216b8b"
                 >
-                  Add New Product
+                  ADD PRODUCT / SERVICE
                 </Typography>
               </Grid>
               <Grid item xs={2} sm={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Id</InputLabel>
+                  <InputLabel>ID</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="id"
@@ -109,15 +79,9 @@ const AddProduct = ({ setOpen }) => {
                     onBlur={handleBlur}
                     value={values.id}
                     fullWidth
-                    autoComplete="first-name"
                   />
                   {touched.id && errors.id && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.id}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.id}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -126,22 +90,16 @@ const AddProduct = ({ setOpen }) => {
                   <InputLabel>Product/service name</InputLabel>
                   <TextField
                     autoFocus={true}
-                    id="masterServiceName"
-                    name="masterServiceName"
+                    id="serviceName"
+                    name="serviceName"
                     placeholder="Enter name"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.masterServiceName}
+                    value={values.serviceName}
                     fullWidth
-                    autoComplete="first-name"
                   />
-                  {touched.masterServiceName && errors.masterServiceName && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.masterServiceName}
-                    </FormHelperText>
+                  {touched.serviceName && errors.serviceName && (
+                    <FormHelperText error>{errors.serviceName}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -149,48 +107,56 @@ const AddProduct = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>BASE PRICE</InputLabel>
                   <TextField
-                    id="tariffBaseAmount"
-                    name="tariffBaseAmount"
+                    id="basePrice"
+                    name="basePrice"
                     placeholder="Enter Age"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.tariffBaseAmount}
+                    value={values.basePrice}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
-                  {touched.tariffBaseAmount && errors.tariffBaseAmount && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.tariffBaseAmount}
-                    </FormHelperText>
+                  {touched.basePrice && errors.basePrice && (
+                    <FormHelperText error>{errors.basePrice}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
 
               <Grid item xs={4} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Discount</InputLabel>
+                  <InputLabel>Discount Per Unit</InputLabel>
                   <TextField
-                    id="discountAmount"
-                    name="discountAmount"
-                    placeholder="Enter Age"
+                    id="discountPerUnit"
+                    name="discountPerUnit"
+                    placeholder="Discount Per Unit"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.discountAmount}
+                    value={values.discountPerUnit}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
-                  {touched.discountAmount && errors.discountAmount && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.discountAmount}
+                  {touched.discountPerUnit && errors.discountPerUnit && (
+                    <FormHelperText error>
+                      {errors.discountPerUnit}
                     </FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={4} md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>AVAILABLE STOCKS</InputLabel>
+                  <TextField
+                    id="stock"
+                    name="stock"
+                    placeholder="Enter available Stock"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.stock}
+                    fullWidth
+                    type="number"
+                  />
+                  {touched.stock && errors.stock && (
+                    <FormHelperText error>{errors.stock}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -206,15 +172,9 @@ const AddProduct = ({ setOpen }) => {
                     value={values.expiryDate}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
                   {touched.expiryDate && errors.expiryDate && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.expiryDate}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.expiryDate}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -230,15 +190,9 @@ const AddProduct = ({ setOpen }) => {
                     value={values.vatPerUnit}
                     fullWidth
                     type="number"
-                    autoComplete="age"
                   />
                   {touched.vatPerUnit && errors.vatPerUnit && (
-                    <FormHelperText
-                      error
-                      id="standard-weight-helper-text-password-login"
-                    >
-                      {errors.vatPerUnit}
-                    </FormHelperText>
+                    <FormHelperText error>{errors.vatPerUnit}</FormHelperText>
                   )}
                 </Stack>
               </Grid>
@@ -246,7 +200,6 @@ const AddProduct = ({ setOpen }) => {
                 <Button
                   variant="contained"
                   color="info"
-                  sx={{ bgcolor: "#216b8b" }}
                   fullWidth
                   type="submit"
                 >

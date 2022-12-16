@@ -3,8 +3,8 @@ import { Box, IconButton, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectApi } from "../../../../reducers/apiSlice";
-import Header from "./Header";
-import Items from "./Items";
+import Header from "./components/Header";
+import Items from "./components/Items";
 import ReactToPrint from "react-to-print";
 import moment from "moment";
 
@@ -17,11 +17,15 @@ const Report = ({ setOpen }) => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 45, top: 15, color: "#029889" }}
+        sx={{ position: "absolute", right: 45, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
     );
+  };
+
+  const Text = ({ children }) => {
+    return <Typography sx={{ ml: 1, fontWeight: 500 }}>{children}</Typography>;
   };
 
   return (
@@ -30,11 +34,11 @@ const Report = ({ setOpen }) => {
         <ReactToPrint
           trigger={() => (
             <IconButton
+              color="info"
               sx={{
                 position: "absolute",
                 right: 15,
                 top: 15,
-                color: "#029889",
               }}
             >
               <PrinterFilled style={{ fontSize: "20px" }} />
@@ -43,74 +47,82 @@ const Report = ({ setOpen }) => {
           content={() => componentRef}
         />
         <CloseButton />
-        <Box sx={{ m: 4 }} ref={(el) => (componentRef = el)}>
+        <Box sx={{ m: 2 }} ref={(el) => (componentRef = el)}>
           <Header />
           <Box m={2}>
-            <Stack direction="row" justifyContent="space-between">
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
-                    Bill From :
-                  </Typography>
-
-                  <Typography>{orderSaved.data?.billFrom}</Typography>
-                </Paper>
+            <Stack direction="row">
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Bill No :</Typography>
+                <Text>1234</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
-                    Order Id :
-                  </Typography>
-
-                  <Typography>{orderSaved.data?.orderMasterId}</Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Term : </Typography>
+                <Text>Cash</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
-                    Date :
-                  </Typography>
-                  <Typography>{moment(new Date()).format("DD/MM/YYYY")}</Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Date :</Typography>
+                <Text>{moment(new Date()).format("DD/MM/YYYY")}</Text>
               </Stack>
             </Stack>
-            <Stack direction="row" justifyContent="space-between">
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
-                    Patient Name :
-                  </Typography>
-                  <Typography>
-                    {orderSaved.customer?.name || "Not found"}
-                  </Typography>
-                </Paper>
+            <Stack direction="row">
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Name :</Typography>
+                <Text>{orderSaved?.data?.name || "Not found"}</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
-                    Age :
-                  </Typography>
-                  <Typography>
-                    {orderSaved.customer?.age || "Not found"}
-                  </Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+              >
+                <Typography>Age :</Typography>
+                <Text>{orderSaved?.data?.age || "Not found"}</Text>
               </Stack>
-              <Stack sx={{ flex: 1 }}>
-                <Paper variant="outlined" square sx={{ p: 0.5 }}>
-                  <Typography variant="subtitle1" color="#029889">
-                    Mobile Number :
-                  </Typography>
-                  <Typography>
-                    {orderSaved.customer?.contactNumber || "Not found"}
-                  </Typography>
-                </Paper>
+              <Stack
+                direction="row"
+                alignItems="flex-start"
+                flex={1}
+                p={1}
+                pb={0}
+                p={1}
+                pb={0}
+              >
+                <Typography>Contact :</Typography>
+                <Text>
+                  {orderSaved?.data?.contactNumber || "Not found"}
+                </Text>
               </Stack>
             </Stack>
           </Box>
           <Box sx={{ p: 2, pt: 0 }}>
             <Items />
           </Box>
-          <Box p={2}>
+          <Box p={2} pt={0}>
             <Stack
               sx={{
                 flex: 1,
@@ -118,7 +130,7 @@ const Report = ({ setOpen }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography variant="subtitle1" color="#029889">
+              <Typography color="info">
                 Billing manager :
                 <span
                   style={{
@@ -131,7 +143,7 @@ const Report = ({ setOpen }) => {
                 </span>
               </Typography>
 
-              <Typography variant="subtitle1" color="#029889">
+              <Typography color="info">
                 Bill Status :
                 <span
                   style={{

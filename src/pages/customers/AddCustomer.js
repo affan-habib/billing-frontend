@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import {
   Grid,
   InputLabel,
@@ -15,30 +15,11 @@ import { CloseCircleFilled } from "@ant-design/icons";
 
 const AddCustomer = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const { quick_registration } = useSelector(selectApi);
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: `api/v1/p-code/all?codeType=Gender`,
-        output: "gender",
-      })
-    );
-  }, []);
-  useEffect(() => {
-    if (quick_registration?.status == "success") {
-      setOpen(false);
-      dispatch(
-        clearState({
-          output: "quick_registration",
-        })
-      );
-    }
-  }, [quick_registration]);
   const CloseButton = () => {
     return (
       <IconButton
         onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
+        sx={{ position: "absolute", right: 15, top: 15 }}
       >
         <CloseCircleFilled style={{ fontSize: "20px" }} />
       </IconButton>
@@ -63,17 +44,7 @@ const AddCustomer = ({ setOpen }) => {
           );
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          setFieldValue,
-          /* and other goodies */
-        }) => (
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2 }}>
               <CloseButton />
@@ -81,7 +52,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Id</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="id"
                     name="id"
                     placeholder="ID"
@@ -94,12 +64,12 @@ const AddCustomer = ({ setOpen }) => {
               </Grid>
               <Grid item lg={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Customer name</InputLabel>
+                  <InputLabel>Name</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="name"
                     name="name"
-                    placeholder="CUSTOMER NAME"
+                    placeholder="FULL NAME"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
@@ -111,7 +81,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Gender</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="gender"
                     name="gender"
                     placeholder="GENDER"
@@ -141,7 +110,6 @@ const AddCustomer = ({ setOpen }) => {
                 <Stack spacing={0.5}>
                   <InputLabel>Contact Number</InputLabel>
                   <TextField
-                    autoFocus={true}
                     id="contactNumber"
                     name="contactNumber"
                     placeholder="MOBILE NUMBER"
@@ -159,12 +127,7 @@ const AddCustomer = ({ setOpen }) => {
                   alignItems="flex-end"
                   sx={{ height: "100%" }}
                 >
-                  <Button
-                    variant="contained"
-                    color="info"
-                    sx={{ bgcolor: "#216b8b" }}
-                    type="submit"
-                  >
+                  <Button variant="contained" color="info" type="submit">
                     SAVE
                   </Button>
                 </Stack>

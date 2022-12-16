@@ -1,9 +1,8 @@
 import { Formik } from "formik";
-import React, { useEffect } from "react";
+import React from "react";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
-
+import { callApi, selectApi } from "../../reducers/apiSlice";
 import {
   Box,
   Button,
@@ -14,22 +13,11 @@ import {
   TextField,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 
-export default function Login() {
+export default function Register() {
   const dispatch = useDispatch();
-  const auth = useAuth();
-  const { loading, authData = { token: null } } = useSelector(selectApi);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (auth) {
-      navigate("/");
-    }
-    if (!auth && authData.token) {
-      authData.token && localStorage.setItem("token", authData.token);
-      navigate("/");
-    }
-  }, [authData.token, auth]);
+  const { signUp } = useSelector(selectApi);
   return (
     <Formik
       initialValues={getSchema({})}
@@ -37,12 +25,12 @@ export default function Login() {
       onSubmit={(values, actions) => {
         dispatch(
           callApi({
-            operationId: "signin",
+            operationId: "signup",
             parameters: {
               method: "POST",
               body: JSON.stringify(getSchema(values)),
             },
-            output: "authData",
+            output: "signUp",
           })
         );
       }}
@@ -63,6 +51,21 @@ export default function Login() {
               variant="outlined"
             >
               <Stack>
+                <InputLabel sx={{ mb: 0.5 }}>ENTER NAME</InputLabel>
+                <TextField
+                  autoFocus={true}
+                  name="name"
+                  placeholder="EMAIL NAME"
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur}
+                  value={props.values.name}
+                  fullWidth
+                />
+                {props.touched.name && props.errors.name && (
+                  <FormHelperText error>{props.errors.name}</FormHelperText>
+                )}
+              </Stack>
+              <Stack>
                 <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
                 <TextField
                   autoFocus={true}
@@ -72,15 +75,9 @@ export default function Login() {
                   onBlur={props.handleBlur}
                   value={props.values.email}
                   fullWidth
-                  
                 />
                 {props.touched.email && props.errors.email && (
-                  <FormHelperText
-                    error
-                    email="standard-weight-helper-text-password-login"
-                  >
-                    {props.errors.email}
-                  </FormHelperText>
+                  <FormHelperText error>{props.errors.email}</FormHelperText>
                 )}
               </Stack>
               <Stack>
@@ -96,23 +93,15 @@ export default function Login() {
                   fullWidth
                 />
                 {props.touched.password && props.errors.password && (
-                  <FormHelperText
-                    error
-                    password="standard-weight-helper-text-password-login"
-                  >
-                    {props.errors.password}
-                  </FormHelperText>
+                  <FormHelperText error>{props.errors.password}</FormHelperText>
                 )}
               </Stack>
               <Stack direction="row" spacing={2}>
                 <Button variant="contained" type="submit">
-                  LOGIN
-                </Button>
-                <Button
-                  variant="outlined"
-                  onClick={() => navigate("/register")}
-                >
                   REGISTER
+                </Button>
+                <Button variant="outlined" onClick={() => navigate("/login")}>
+                  LOGIN
                 </Button>
               </Stack>
             </Stack>

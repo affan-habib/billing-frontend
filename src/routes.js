@@ -6,19 +6,14 @@ import LoginPage from './views/site/login/LoginPage';
 
 const authRouter = (isLoggedIn) => [
   {
-    path: '/app',
+    path: "/app",
     element: isLoggedIn ? <Outlet /> : <Navigate to="/login" />,
     children: [
       { path: 'dashboard', element: <Billing /> },
       { path: 'contact', element: <Contact /> },
-    ],
-  },
-  {
-    path: '/',
     element: isLoggedIn ? <LoginPage /> : <Navigate to="app/dashboard" />,
     children: [
-      { path: 'login', element: <LoginPage /> },
-      { path: '/', element: <Navigate to="/login" /> },
+      { path: "/", element: <Navigate to="/login" /> },
     ],
   },
 ];

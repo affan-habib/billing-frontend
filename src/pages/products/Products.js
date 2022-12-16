@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Button, Stack, Dialog } from "@mui/material";
+import { Box, Button, Stack, Dialog, Paper } from "@mui/material";
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
@@ -7,6 +7,7 @@ import { addToCart } from "../../reducers/cartSlice";
 import AddProduct from "./AddProduct";
 import DeleteProduct from "./DeleteProduct";
 import NoRowIcon from "../../components/NoRowIcon";
+import CustomPagination from "../../components/Pagination";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,9 @@ const Products = () => {
       data: [],
     },
     itemDeleted = {
-      id: null,
+      data: {
+        id: null,
+      },
     },
     itemSaved,
   } = useSelector(selectApi);
@@ -24,13 +27,13 @@ const Products = () => {
       () =>
         dispatch(
           callApi({
-            operationId: `api/v1/service-master/items`,
+            operationId: `api/products`,
             output: "items",
           })
         ),
       1000
     );
-  }, [itemDeleted.id, itemSaved]);
+  }, [itemDeleted.data.id, itemSaved]);
   const columns = [
     {
       field: "id",
@@ -43,7 +46,7 @@ const Products = () => {
       headerAlign: "center",
     },
     {
-      field: "masterServiceName",
+      field: "serviceName",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
       headerName: "SERVICE NAME",
@@ -54,8 +57,7 @@ const Products = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "tariffBaseAmount",
-      headerClassName: "top-header-1",
+      field: "basePrice",
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
@@ -65,9 +67,8 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
-      field: "discountAmount",
-      headerClassName: "top-header-1",
+      cellClassName: "top-header-3",
+      field: "discountPerUnit",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
@@ -79,7 +80,6 @@ const Products = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "vatPerUnit",
-      headerClassName: "top-header-1",
       headerName: "VAT PER UNIT",
       type: "number",
       minWidth: 120,
@@ -89,9 +89,8 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       field: "expiryDate",
-      headerClassName: "top-header-1",
       headerName: "EXPIRY DATE",
       type: "number",
       minWidth: 120,
@@ -121,7 +120,7 @@ const Products = () => {
       dispatch(
         addToCart({
           ...el,
-          discountAmount: 0,
+          discountPerUnit: 0,
           expiryDate: 0,
           vatPerUnit: 0,
           discountPerUnit: 0,
@@ -142,17 +141,17 @@ const Products = () => {
   };
 
   return (
-    <Box sx={{ height: 400, mt: 2, width: "100%" }}>
+    <Paper elevation={1} sx={{ width: "100%", bgcolor: "#f5f9f0" }}>
       <Stack direction="row">
         <Button
-          sx={{ mb: 2, ml: 2, width: 200 }}
+          sx={{ m: 2, width: 200 }}
           variant="contained"
           onClick={() => setOpen(true)}
         >
           Add New service
         </Button>
         <Button
-          sx={{ mb: 2, ml: 2, width: 200 }}
+          sx={{ m: 2, ml: 0, width: 200 }}
           disabled={selectedOptions.length == 0}
           variant="contained"
           color="warning"
@@ -165,13 +164,8 @@ const Products = () => {
         </Dialog>
       </Stack>
       <DataGrid
+        sx={{ height: 400 }}
         getRowId={(row) => row._id}
-        sx={{
-          [`& .${gridClasses.row}`]: {
-            bgcolor: (theme) =>
-              theme.palette.mode === "light" ? "EEFFEB" : "yellow",
-          },
-        }}
         checkboxSelection={true}
         rows={items.data}
         columns={columns}
@@ -180,8 +174,8 @@ const Products = () => {
         disableColumnSelector
         components={{
           NoRowsOverlay: NoRowIcon,
+          Pagination: CustomPagination,
         }}
-        // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
         hideFooterPagination
         disableColumnMenu
@@ -192,7 +186,7 @@ const Products = () => {
           setSelectedOptions(newSelectionModel);
         }}
       />
-    </Box>
+    </Paper>
   );
 };
 

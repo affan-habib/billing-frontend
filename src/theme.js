@@ -1,13 +1,8 @@
 import { createTheme } from "@mui/material/styles";
 import {
   grey,
-  green,
-  deepOrange,
   red,
   teal,
-  orange,
-  yellow,
-  blue,
   deepPurple,
   cyan,
   purple,
@@ -16,9 +11,9 @@ import {
 const rawTheme = createTheme({
   palette: {
     primary: {
-      light: teal[400],
-      main: teal[600],
-      dark: teal[700],
+      light: cyan[400],
+      main: cyan[800],
+      dark: cyan[700],
     },
     secondary: {
       light: teal[200],
@@ -31,9 +26,9 @@ const rawTheme = createTheme({
       dark: deepPurple[700],
     },
     error: {
-      light: orange[300],
-      main: orange[300],
-      dark: orange[400],
+      light: red[300],
+      main: red[300],
+      dark: red[400],
     },
     success: {
       light: purple[400],
@@ -44,7 +39,7 @@ const rawTheme = createTheme({
   components: {
     MuiButton: {
       defaultProps: {
-        disableRipple: true,
+        // disableRipple: true,
         disableElevation: true,
       },
       styleOverrides: {
@@ -73,7 +68,7 @@ const rawTheme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        root: { borderRadius: "2px" },
+        root: { borderRadius: "2px", background: 'white' },
         input: {
           padding: "10px 12px 10px 12px",
           borderRadious: 0,
@@ -96,7 +91,7 @@ const rawTheme = createTheme({
         root: {
           fontSize: "0.9rem",
           textTransform: "uppercase",
-          fontWeight: 500
+          fontWeight: 500,
         },
         outlined: {
           lineHeight: "0.8em",

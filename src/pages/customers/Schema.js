@@ -1,12 +1,13 @@
 import * as Yup from "yup";
 const getSchema = (model = {}) => {
+  let date = new Date();
+  let components = [date.getHours(), date.getMinutes().toString()];
   const {
-    id = 0,
+    id = Math.random().toString(36).slice(-2) + components.join(""),
     name = "",
     age = 21,
     contactNumber = "",
     gender = "MALE",
-   
   } = model;
 
   return {
@@ -14,50 +15,16 @@ const getSchema = (model = {}) => {
     name,
     gender,
     age,
-    contactNumber
+    contactNumber,
   };
 };
 
 const validator = Yup.object().shape({
-  // firstName: Yup.string().required("First Name is required"),
-  // patientAge: Yup.number().required("Age is required"),
-  // patientContactNo: Yup.number().required("Mobile Number is required"),
-  // gender: Yup.string().required("Gender is required"),
-  //middleName: Yup.string().required('Middle Name is required'),
-  //lastName: Yup.string().required('Last Name is required'),
-  //patientAge: Yup.string().required('Age is required'),
-  // customerId : Yup.string(),
-  //   active : Yup.string(),
-  //   userIp : Yup.string(),
-  //   userId : Yup.string(),
-  //   orgImage : Yup.string(),
-  //   city : Yup.string(),
-  //   patientContactNo : Yup.string(),
-  //   country : Yup.string(),
-  //   currency : Yup.string(),
-  //   email : Yup.string(),
-  //   fax : Yup.string(),
-  //   orgAdd : Yup.string(),
-  //   phone : Yup.string(),
-  //   signatory : Yup.string(),
-  //   state : Yup.string(),
-  //   tin : Yup.string(),
-  //   url : Yup.string(),
-  //   vatRegNo : Yup.string(),
-  //   orgName : Yup.string(),
-  //   orgDsep : Yup.string(),
-  //   centralZId : Yup.string(),
-  //   musakno : Yup.string(),
-  //   branch : Yup.string(),
-  //   central : Yup.string(),
-  //   curr : Yup.string(),
-  //   madd : Yup.string(),
-  //   file : Yup.string(),
-  //   zutime : Yup.string(),
-  //   xcountry : Yup.string(),
-  //   xresource : Yup.string(),
-  //   dformat : Yup.string(),
-  //   zemail : Yup.string(),
+  id: Yup.string().required("Required"),
+  name: Yup.string().required("Required"),
+  gender: Yup.string().required("Required"),
+  age: Yup.number().required("Required"),
+  contactNumber: Yup.string().required("Required"),
 });
 
 export { getSchema, validator };

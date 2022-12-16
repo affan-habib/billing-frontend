@@ -1,49 +1,24 @@
 import React, { useEffect } from "react";
-import { Formik, Field } from "formik";
+import { FastField, Formik } from "formik";
 import {
   Grid,
   InputLabel,
   Stack,
   TextField,
   Button,
-  IconButton,
+  Tooltip,
+  Autocomplete,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, clearState, selectApi } from "../../../../reducers/apiSlice";
-import { CloseCircleFilled } from "@ant-design/icons";
+import { RestartAlt, SaveAltOutlined } from "@mui/icons-material";
 
-const AddCustomer = ({ setOpen }) => {
+const AddCustomer = () => {
   const dispatch = useDispatch();
-  const { quick_registration } = useSelector(selectApi);
-  useEffect(() => {
-    dispatch(
-      callApi({
-        operationId: `api/v1/p-code/all?codeType=Gender`,
-        output: "gender",
-      })
-    );
-  }, []);
-  useEffect(() => {
-    if (quick_registration?.status == "success") {
-      setOpen(false);
-      dispatch(
-        clearState({
-          output: "quick_registration",
-        })
-      );
-    }
-  }, [quick_registration]);
-  const CloseButton = () => {
-    return (
-      <IconButton
-        onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15, color: "#216b8b" }}
-      >
-        <CloseCircleFilled style={{ fontSize: "20px" }} />
-      </IconButton>
-    );
-  };
+  const { customerSaved = { data: { name: "" } } } = useSelector(selectApi);
   return (
     <div>
       <Formik
@@ -65,64 +40,68 @@ const AddCustomer = ({ setOpen }) => {
       >
         {({
           values,
-          errors,
-          touched,
           handleChange,
           handleBlur,
           handleSubmit,
-          isSubmitting,
+          handleReset,
           setFieldValue,
-          /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2} sx={{ p: 2 }}>
-              <CloseButton />
-              <Grid item lg={2}>
+            <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
+              <Grid item md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Id</InputLabel>
-                  <TextField
-                    autoFocus={true}
-                    id="id"
-                    name="id"
-                    placeholder="ID"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.id}
-                    fullWidth
-                  />
-                </Stack>
-              </Grid>
-              <Grid item lg={3}>
-                <Stack spacing={0.5}>
-                  <InputLabel>Customer name</InputLabel>
+                  <InputLabel>Full Name</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="name"
                     name="name"
-                    placeholder="CUSTOMER NAME"
+                    placeholder="eg : John Doe"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
+                    disabled={!!customerSaved.data?._id}
                     fullWidth
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={1}>
+              <Grid item md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Gender</InputLabel>
+                  <InputLabel>Mobile Number</InputLabel>
                   <TextField
-                    autoFocus={true}
-                    id="gender"
-                    name="gender"
-                    placeholder="GENDER"
-                    onChange={handleChange}
+                    id="contactNumber"
+                    name="contactNumber"
+                    placeholder="eg: 01798980000"
                     onBlur={handleBlur}
-                    value={values.gender}
+                    value={values.contactNumber}
+                    onChange={handleChange}
                     fullWidth
+                    disabled={!!customerSaved.data?._id}
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={1}>
+              <Grid item xs={12} md={1.5}>
+                <Stack spacing={0.5}>
+                  <InputLabel
+                    sx={{ fontWeight: 500, textTransform: "uppercase" }}
+                    htmlFor="gender"
+                  >
+                    GENDER
+                  </InputLabel>
+                  <FastField
+                    // disabled
+                    name="gender"
+                    component={Select}
+                    value={values.gender}
+                    onChange={(e) => {
+                      setFieldValue("gender", e.target.value);
+                    }}
+                  >
+                    <MenuItem value="MALE">MALE</MenuItem>
+                    <MenuItem value="FEMALE">FEMALE</MenuItem>
+                  </FastField>
+                </Stack>
+              </Grid>
+              <Grid item md={1.5}>
                 <Stack spacing={0.5}>
                   <InputLabel>AGe</InputLabel>
                   <TextField
@@ -132,41 +111,43 @@ const AddCustomer = ({ setOpen }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.age}
+                    disabled={!!customerSaved.data?._id}
                     fullWidth
                     type="number"
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={2}>
-                <Stack spacing={0.5}>
-                  <InputLabel>Contact Number</InputLabel>
-                  <TextField
-                    autoFocus={true}
-                    id="contactNumber"
-                    name="contactNumber"
-                    placeholder="MOBILE NUMBER"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.contactNumber}
-                    fullWidth
-                  />
-                </Stack>
-              </Grid>
-              <Grid item lg={2}>
+
+              <Grid item md={3} mr={0}>
                 <Stack
                   direction="row"
-                  justifyContent="flex-start"
+                  justifyContent="space-between"
                   alignItems="flex-end"
-                  sx={{ height: "100%" }}
+                  sx={{ height: "100%", width: "100%" }}
                 >
-                  <Button
-                    variant="contained"
-                    color="info"
-                    sx={{ bgcolor: "#216b8b" }}
-                    type="submit"
-                  >
-                    SAVE
-                  </Button>
+                  <Tooltip title="SAVE CUSTOMER">
+                    <Button
+                      variant="contained"
+                      endIcon={<SaveAltOutlined style={{ fontSize: 16 }} />}
+                      color="info"
+                      sx={{ height: 35, borderRadius: 10, flexGrow: 1 }}
+                      type="submit"
+                    >
+                      {!!customerSaved.data?._id ? "SAVED" : "SAVE"}
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title="RESET CUSTOMER INFO">
+                    <Button
+                      variant="contained"
+                      endIcon={<RestartAlt style={{ fontSize: 16 }} />}
+                      color="warning"
+                      sx={{ height: 35, borderRadius: 10, ml: 1 }}
+                      type="reset"
+                      onClick={handleReset}
+                    >
+                      RESET
+                    </Button>
+                  </Tooltip>
                 </Stack>
               </Grid>
             </Grid>

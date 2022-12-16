@@ -39,7 +39,7 @@ const LoginForm = () => {
                     <InputField
                       className="input-text"
                       label="User Name"
-                      name="username"
+                      name="email"
                       type="text"
                       placeholder="Enter Your Username"
                     />

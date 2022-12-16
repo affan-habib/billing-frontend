@@ -1,21 +1,31 @@
 import React, { useEffect } from "react";
-import { Box, Button, Stack, Dialog } from "@mui/material";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import {
+  Box,
+  Button,
+  Stack,
+  Dialog,
+  Typography,
+  Badge,
+  Paper,
+} from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import { addToCart } from "../../reducers/cartSlice";
 import AddCustomer from "./AddCustomer";
 import DeleteCustomer from "./DeleteCustomer";
 import NoRowIcon from "../../components/NoRowIcon";
+import CustomPagination from "../../components/Pagination";
 
 const Customers = () => {
   const dispatch = useDispatch();
   const {
+    loading,
     customers = {
       data: [],
     },
     customerDeleted = {
-      id: null,
+      data: { id: null },
     },
     customerSaved,
   } = useSelector(selectApi);
@@ -30,7 +40,7 @@ const Customers = () => {
         ),
       1000
     );
-  }, [customerDeleted.id, customerSaved]);
+  }, [customerDeleted.data.id, customerSaved]);
   const columns = [
     {
       field: "id",
@@ -46,7 +56,7 @@ const Customers = () => {
       field: "name",
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      headerName: "CUSTOMER NAME",
+      headerName: "CLIENT NAME",
       flex: 1,
       headerAlign: "left",
       sortable: false,
@@ -55,39 +65,51 @@ const Customers = () => {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "age",
-      headerClassName: "top-header-1",
       headerName: "AGE",
       type: "number",
-      minWidth: 120,
+      minWidth: 60,
       headerAlign: "center",
       sortable: false,
       align: "center",
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       field: "contactNumber",
-      headerClassName: "top-header-1",
       headerName: "CONTACT",
       type: "text",
       minWidth: 120,
       headerAlign: "center",
       sortable: false,
-      align: "center",
+      align: "left",
     },
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       field: "gender",
-      headerClassName: "top-header-1",
       headerName: "GENDER",
       type: "text",
       minWidth: 120,
       headerAlign: "center",
       sortable: false,
       align: "center",
+      renderCell: (params) => (
+        <Box
+          sx={{
+            m: 1,
+            pr: 1,
+            pl: 1,
+            bgcolor: "primary.main",
+            color: "white",
+            borderRadius: 5,
+            fontSize: 14,
+          }}
+        >
+          {params.value.toUpperCase()}
+        </Box>
+      ),
     },
-    
+
     {
       minWidth: 120,
       align: "center",
@@ -95,7 +117,7 @@ const Customers = () => {
       headerName: "ACTION",
       type: "actions",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      cellClassName: "top-header-3",
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
   ];
@@ -131,7 +153,10 @@ const Customers = () => {
   };
 
   return (
-    <Box sx={{ height: 400, mt: 2, width: "100%" }}>
+    <Paper
+      elevation={1}
+      sx={{ pt: 2, pb: 2, width: "100%", bgcolor: "#f5f9f0" }}
+    >
       <Stack direction="row">
         <Button
           sx={{ mb: 2, ml: 2, width: 200 }}
@@ -154,25 +179,19 @@ const Customers = () => {
         </Dialog>
       </Stack>
       <DataGrid
+        sx={{ mr: 2, ml: 2, height: 400 }}
         getRowId={(row) => row._id}
-        sx={{
-          [`& .${gridClasses.row}`]: {
-            bgcolor: (theme) =>
-              theme.palette.mode === "light" ? "EEFFEB" : "yellow",
-          },
-        }}
         checkboxSelection={true}
         rows={customers.data}
         columns={columns}
-        // pageSize={5}
+        pageSize={10}
         disableSelectionOnClick
         disableColumnSelector
         components={{
           NoRowsOverlay: NoRowIcon,
+          Pagination: CustomPagination,
         }}
-        // experimentalFeatures={{ newEditingApi: true }}
         headerHeight={55}
-        hideFooterPagination
         disableColumnMenu
         density="compact"
         showCellRightBorder={true}
@@ -181,7 +200,7 @@ const Customers = () => {
           setSelectedOptions(newSelectionModel);
         }}
       />
-    </Box>
+    </Paper>
   );
 };
 

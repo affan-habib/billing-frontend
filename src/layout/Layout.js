@@ -1,13 +1,15 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Billing from "../pages/billing/Billing";
-import Products from "../pages/products/Products";
-import Customers from "../pages/customers/Customers";
-
+import { Paper, Tabs, Tab, Typography, Box, Button, Fade } from "@mui/material";
+import Loader from "../components/Loader";
+import { LogoutOutlined } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import { selectApi } from "../reducers/apiSlice";
+const Billing = React.lazy(() => import("../pages/billing/Billing"));
+const Products = React.lazy(() => import("../pages/products/Products"));
+const Customers = React.lazy(() => import("../pages/customers/Customers"));
+const Sales = React.lazy(() => import("../pages/sales/Sales"));
+const About = React.lazy(() => import("../pages/about/About"));
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -42,6 +44,7 @@ function a11yProps(index) {
 }
 
 export default function Layout() {
+  const { loading } = useSelector(selectApi);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -49,35 +52,107 @@ export default function Layout() {
   };
 
   return (
-    <Box>
+    <React.Suspense fallback={<Loader />}>
+      {loading && <Loader />}
       <Box>
-        <Box
-          sx={{
-            borderBottom: 1,
-            borderColor: "divider",
-            background: "#dfebf7",
-          }}
-        >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
+        <Box>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: "divider",
+              background: "#f5f9f0",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "space-between",
+            }}
           >
-            <Tab label="NEW BILL" {...a11yProps(0)} />
-            <Tab label="CUSTOMERS" {...a11yProps(1)} />
-            <Tab label="OUR PRODUCTS/SERVICES" {...a11yProps(2)} />
-          </Tabs>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="NEW BILL"
+                {...a11yProps(0)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="SALES"
+                {...a11yProps(1)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="CUSTOMERS"
+                {...a11yProps(2)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="ITEMS"
+                {...a11yProps(3)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="ABOUT"
+                {...a11yProps(4)}
+              />
+              <Button
+                startIcon={<LogoutOutlined />}
+                variant="outlined"
+                color="error"
+                sx={{
+                  ml: "auto",
+                  mr: 2,
+                  height: 30,
+                  my: "auto",
+                  borderRadius: 10,
+                }}
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  window.location.reload();
+                }}
+              >
+                LOGOUT
+              </Button>
+            </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
+              <Billing />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <Sales />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <Customers />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <Products />
+            </Paper>
+          </TabPanel>
+          <TabPanel value={value} index={4}>
+            <Paper sx={{ p: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+              <About />
+            </Paper>
+          </TabPanel>
         </Box>
-        <TabPanel value={value} index={0}>
-          <Billing />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Customers />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <Products />
-        </TabPanel>
       </Box>
-    </Box>
+    </React.Suspense>
   );
 }

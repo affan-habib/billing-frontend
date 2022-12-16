@@ -1,25 +1,20 @@
 import * as Yup from "yup";
-let date = new Date();
-let components = [date.getMonth(), date.getYear().toString().substr(-1)];
 const getSchema = (model = {}) => {
   const {
-    id = components.join("") + Math.random().toString(36).slice(-2),
-    serviceName = "",
-    basePrice = null,
-    expiryDate = 0,
-    vatPerUnit = 0,
-    discountPerUnit = 0,
-    stock = 12,
+    id = 0,
+    name = "",
+    age = 21,
+    contactNumber = "",
+    gender = "MALE",
+   
   } = model;
 
   return {
     id,
-    serviceName,
-    basePrice,
-    discountPerUnit,
-    expiryDate,
-    vatPerUnit,
-    stock,
+    name,
+    gender,
+    age,
+    contactNumber
   };
 };
 

@@ -1,6 +1,5 @@
+import { SearchOutlined } from "@ant-design/icons";
 import {
-  Autocomplete,
-  Box,
   Button,
   Grid,
   InputLabel,
@@ -11,66 +10,54 @@ import {
 
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectApi } from "../../reducers/apiSlice";
+import { callApi, selectApi } from "../../reducers/apiSlice";
 import AddCustomer from "./components/quickRegistration/AddCustomer";
 
-const Header = ({ handleChange, handleBlur, values, setFieldValue }) => {
-  // console.log(props);
+const Header = ({ setFieldValue, values }) => {
+  const { customerSaved } = useSelector(selectApi);
+  const inputRef = useRef();
   const dispatch = useDispatch();
-
-  const {
-    customerSaved = {
-      data: [],
-    },
-    customers = {
-      data: [],
-    },
-  } = useSelector(selectApi);
-
-  //dialog
-
-  const addItemRef = useRef(null);
-
-  // useEffect(() => {
-  //   !!customerSaved.data &&
-  //     props.setFieldValue("patientId", customerSaved.data[0]?._id);
-  // }, [customerSaved.data]);
+  useEffect(() => {
+    setFieldValue("customerId", customerSaved?.data?._id);
+  }, [customerSaved]);
+  const handleSearch = () => {
+    dispatch(
+      callApi({
+        operationId: `/${inputRef.current.value}`,
+        output: "searchedCustomer",
+      })
+    );
+  };
   return (
     <>
-      <Paper elevation={1} sx={{ background: "#F5FFFA", pt: 0, mt: 4 }} square>
-        <Stack direction="row">
-          <Autocomplete
-            autoFocus
-            size="medium"
-            disablePortal
-            noOptionsText="No Match Found"
-            clearOnEscape
-            id="id"
-            sx={{ width: 300 }}
-            options={customers.data}
-            autoHighlight
-            getOptionLabel={(option) => option.name}
-            renderInput={(params) => (
+      <Paper sx={{ background: "#f5f9f0", pt: 0 }} square>
+        <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
+          <Grid item md={2} m={2}>
+            <Stack spacing={0.5}>
+              <InputLabel>SEARCH CUSTOMER</InputLabel>
               <TextField
-                {...params}
-                inputProps={{
-                  ...params.inputProps,
-                }}
-                placeholder="Add Service by Id/Name"
-                inputRef={addItemRef}
+                autoFocus={true}
+                id="id"
+                name="id"
+                placeholder="ID/MOBILE"
+                value={values.customerId}
+                fullWidth
+                inputRef={inputRef}
               />
-            )}
-            renderOption={(props, option) => (
-              <Box component="li" {...props}>
-                {option.name} ({option._id})
-              </Box>
-            )}
-            onChange={(e, value) => {
-              setFieldValue("patientId", value._id)
-            }}
-          />
-        </Stack>
-        {/* <AddCustomer /> */}
+            </Stack>
+          </Grid>
+          <Button
+            sx={{ mb: 2, borderRadius: 20, bgcolor: "white" }}
+            startIcon={<SearchOutlined style={{ fontSize: 16 }} />}
+            variant="outlined"
+            onClick={handleSearch}
+          >
+            SEARCH
+          </Button>
+          <Grid item md={8} sx={{ mr: 0, pr: 0 }}>
+            <AddCustomer />
+          </Grid>
+        </Grid>
       </Paper>
     </>
   );
