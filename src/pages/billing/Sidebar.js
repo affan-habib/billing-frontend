@@ -51,7 +51,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         disabled
         fullWidth
         sx={{ mb: 1, bgcolor: "white", color: "blue" }}
-        variant="filled"
+        variant="standard"
         size="small"
         hiddenLabel
         type="number"
@@ -65,7 +65,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
+        variant="standard"
         size="small"
         hiddenLabel
         type="number"
@@ -84,7 +84,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
+        variant="standard"
         size="small"
         hiddenLabel
         type="number"
@@ -98,7 +98,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
+        variant="standard"
         color="error"
         size="small"
         hiddenLabel
@@ -114,7 +114,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
+        variant="standard"
         size="small"
         hiddenLabel
         type="number"
