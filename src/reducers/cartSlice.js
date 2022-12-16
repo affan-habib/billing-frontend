@@ -42,7 +42,7 @@ const cartSlice = createSlice({
       );
       state.orderDetailList = removeItem;
     },
-    calculateTotal: (state, action) => {
+    setField: (state, action) => {
       state[`${action.payload.field}`] = action.payload.value;
     },
     clearCart: (state) => {
@@ -57,6 +57,6 @@ export const {
   incrementQuantity,
   decrementQuantity,
   removeItem,
-  calculateTotal,
+  setField,
   clearCart,
 } = cartSlice.actions;
