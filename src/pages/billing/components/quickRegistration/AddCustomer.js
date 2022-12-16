@@ -7,13 +7,12 @@ import {
   TextField,
   Button,
   Tooltip,
-  Autocomplete,
   Select,
   MenuItem,
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../../../reducers/apiSlice";
+import { callApi, selectApi } from "../../../../reducers/apiSlice";
 import { RestartAlt, SaveAltOutlined } from "@mui/icons-material";
 
 const AddCustomer = () => {
@@ -66,7 +65,7 @@ const AddCustomer = () => {
               </Grid>
               <Grid item sm={6} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Mobile Number</InputLabel>
+                  <InputLabel>Contact</InputLabel>
                   <TextField
                     id="contactNumber"
                     name="contactNumber"

@@ -3,9 +3,9 @@ import Loader from "./components/Loader";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/login/Login";
 import PrivateOutlet from "./components/PrivateOutlet";
+import Layout from "./layout/Layout";
 import "./App.css";
 const Register = React.lazy(() => import("./pages/register/Register"));
-const Layout = React.lazy(() => import("./layout/Layout"));
 function App() {
   return (
     <div className="App">
@@ -14,7 +14,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/*" element={<PrivateOutlet />}>
-            <Route path="" element={<Layout />} />
+            <Route path="" element={<Layout/>} />
           </Route>
         </Routes>
       </Suspense>
