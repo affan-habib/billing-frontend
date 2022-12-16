@@ -22,28 +22,27 @@ const Products = () => {
     },
     itemSaved,
   } = useSelector(selectApi);
-  useEffect(() => {
-    setTimeout(
-      () =>
-        dispatch(
-          callApi({
-            operationId: `api/products`,
-            output: "items",
-          })
-        ),
-      1000
-    );
-  }, [itemDeleted.data.id, itemSaved]);
+  
+  useEffect(
+    () =>
+      dispatch(
+        callApi({
+          operationId: `api/products`,
+          output: "items",
+        })
+      ),
+    [itemDeleted.data.id, itemSaved]
+  );
   const columns = [
     {
       field: "id",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      headerName: "ID",
-      width: 50,
-      align: "center",
+      headerName: "CODE",
+      width: 70,
+      align: "left",
       sortable: false,
-      headerAlign: "center",
+      headerAlign: "left",
     },
     {
       field: "serviceName",

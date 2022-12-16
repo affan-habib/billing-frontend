@@ -68,7 +68,7 @@ const rawTheme = createTheme({
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        root: { borderRadius: "2px", background: 'white' },
+        root: { borderRadius: "2px", background: "white" },
         input: {
           padding: "10px 12px 10px 12px",
           borderRadious: 0,
@@ -103,6 +103,13 @@ const rawTheme = createTheme({
             marginLeft: -6,
             lineHeight: "1.4375em",
           },
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: 0,
         },
       },
     },

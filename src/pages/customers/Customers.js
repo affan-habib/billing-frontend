@@ -29,28 +29,27 @@ const Customers = () => {
     },
     customerSaved,
   } = useSelector(selectApi);
-  useEffect(() => {
-    setTimeout(
-      () =>
-        dispatch(
-          callApi({
-            operationId: `api/customers`,
-            output: "customers",
-          })
-        ),
-      1000
-    );
-  }, [customerDeleted.data.id, customerSaved]);
+  useEffect(
+    () =>
+      dispatch(
+        callApi({
+          operationId: `api/customers`,
+          output: "customers",
+        })
+      ),
+
+    [customerDeleted.data.id, customerSaved]
+  );
   const columns = [
     {
       field: "id",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      headerName: "ID",
-      width: 50,
-      align: "center",
+      headerName: "CODE",
+      width: 70,
+      align: "left",
       sortable: false,
-      headerAlign: "center",
+      headerAlign: "left",
     },
     {
       field: "name",
@@ -179,7 +178,7 @@ const Customers = () => {
         </Dialog>
       </Stack>
       <DataGrid
-        sx={{ mr: 2, ml: 2, height: 400 }}
+        sx={{ mr: 2, ml: 2, height: 400, borderRadius: 0, border: 0 }}
         getRowId={(row) => row._id}
         checkboxSelection={true}
         rows={customers.data}

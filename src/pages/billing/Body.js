@@ -14,11 +14,11 @@ export default function Body() {
       field: "id",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      headerName: "ID",
-      width: 50,
-      align: "center",
+      headerName: "CODE",
+      width: 70,
+      align: "left",
       sortable: false,
-      headerAlign: "center",
+      headerAlign: "left",
     },
     {
       field: "serviceName",
@@ -90,9 +90,16 @@ export default function Body() {
   return (
     <Box>
       <AddItem />
-      <Paper elevation={1}>
+      <Paper square elevation={1}>
         <DataGrid
-          sx={{ bgcolor: "#f5f9f0", height: 250, Width: "100%", mt: 2 }}
+          sx={{
+            bgcolor: "#f5f9f0",
+            height: 250,
+            Width: "100%",
+            mt: 2,
+            borderRadius: 0,
+            border: 0,
+          }}
           rows={rows}
           columns={columns}
           disableSelectionOnClick
