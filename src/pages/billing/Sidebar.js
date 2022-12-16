@@ -8,10 +8,9 @@ import {
   ButtonGroup,
   InputAdornment,
   InputLabel,
-  Stack,
   TextField,
 } from "@mui/material";
-import { AccountCircle, SaveOutlined } from "@mui/icons-material";
+import { SaveOutlined } from "@mui/icons-material";
 
 export default function Sidebar({ handleSubmit, values, handleReset }) {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
   return (
     <Box sx={{ Width: "100%" }}>
       <p>
-        Customer Name: <span> Affan Habib </span>
+        Customer Name: <span> {values.customerId} </span>
       </p>
       <p>
         Payment Status : <span> Paid </span>
@@ -49,8 +48,9 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
+        disabled
         fullWidth
-        sx={{ mb: 1 }}
+        sx={{ mb: 1, bgcolor: "white", color: "blue" }}
         variant="filled"
         size="small"
         hiddenLabel
@@ -60,14 +60,11 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
 
       <InputLabel>Discount</InputLabel>
       <TextField
-        inputProps={{ min: 0, style: { textAlign: "right", padding: 4 } }}
         fullWidth
         InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">Discount</InputAdornment>
-          ),
+          startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1 }}
+        sx={{ mb: 1, bgcolor: "white" }}
         variant="filled"
         size="small"
         hiddenLabel
@@ -86,7 +83,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1 }}
+        sx={{ mb: 1, bgcolor: "white" }}
         variant="filled"
         size="small"
         hiddenLabel
@@ -100,8 +97,9 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1 }}
+        sx={{ mb: 1, bgcolor: "white" }}
         variant="filled"
+        color="error"
         size="small"
         hiddenLabel
         type="number"
@@ -115,7 +113,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1 }}
+        sx={{ mb: 1, bgcolor: "white" }}
         variant="filled"
         size="small"
         hiddenLabel
@@ -157,6 +155,8 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           onClick={() => {
             handleReset();
             dispatch(clearCart());
+            setDiscountVal(0);
+            setGivenAmount(0);
           }}
         >
           RESET
