@@ -90,9 +90,16 @@ export default function Body() {
   return (
     <Box>
       <AddItem />
-      <Paper elevation={1}>
+      <Paper square elevation={1}>
         <DataGrid
-          sx={{ bgcolor: "#f5f9f0", height: 250, Width: "100%", mt: 2 }}
+          sx={{
+            bgcolor: "#f5f9f0",
+            height: 250,
+            Width: "100%",
+            mt: 2,
+            borderRadius: 0,
+            border: 0,
+          }}
           rows={rows}
           columns={columns}
           disableSelectionOnClick
