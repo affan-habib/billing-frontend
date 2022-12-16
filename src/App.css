@@ -83,6 +83,6 @@ body::-webkit-scrollbar-track {
 }
  
 body::-webkit-scrollbar-thumb {
-  background-color: #e2ffff;
+  background-color: #fc923b;
   outline: 1px solid #f5f9f0;
 }

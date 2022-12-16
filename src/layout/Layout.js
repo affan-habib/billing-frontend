@@ -1,9 +1,9 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Paper, Tabs, Tab, Typography, Box, Button } from "@mui/material";
-import Billing from "../pages/billing/Billing";
+import { Paper, Tabs, Tab, Typography, Box, Button, Fade } from "@mui/material";
 import Loader from "../components/Loader";
 import { LogoutOutlined } from "@mui/icons-material";
+const Billing = React.lazy(() => import("../pages/billing/Billing"));
 const Products = React.lazy(() => import("../pages/products/Products"));
 const Customers = React.lazy(() => import("../pages/customers/Customers"));
 const Sales = React.lazy(() => import("../pages/sales/Sales"));
@@ -92,7 +92,7 @@ export default function Layout() {
                 disableRipple
                 disableFocusRipple
                 disableTouchRipple
-                label="PRODUCTS/SERVICES"
+                label="ITEMS"
                 {...a11yProps(3)}
               />
               <Tab

@@ -12,6 +12,7 @@ export default function File() {
     previewFile(file);
     setSelectedFile(file);
     setFileInputState(e.target.value);
+    console.log(file)
   };
 
   const previewFile = (file) => {
