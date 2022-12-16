@@ -1,7 +1,9 @@
 import { SearchOutlined } from "@ant-design/icons";
 import {
   Button,
+  Fab,
   Grid,
+  IconButton,
   InputLabel,
   Paper,
   Stack,
@@ -30,11 +32,11 @@ const Header = ({ setFieldValue, values }) => {
   };
   return (
     <>
-      <Paper sx={{ background: "#f5f9f0", pt: 0 }} square>
-        <Grid container spacing={2} alignItems="flex-end" sx={{ mt: 0 }}>
-          <Grid item md={2} m={2}>
+      <Paper sx={{ background: "#f5f9f0", p: 2, pt: 0 }} square>
+        <Grid container spacing={2} sx={{ mt: 0 }}>
+          <Grid item sm={6} md={2}>
             <Stack spacing={0.5}>
-              <InputLabel>SEARCH CUSTOMER</InputLabel>
+              <InputLabel>FIND</InputLabel>
               <TextField
                 autoFocus={true}
                 id="id"
@@ -46,15 +48,18 @@ const Header = ({ setFieldValue, values }) => {
               />
             </Stack>
           </Grid>
-          <Button
-            sx={{ mb: 2, borderRadius: 20, bgcolor: "white" }}
-            startIcon={<SearchOutlined style={{ fontSize: 16 }} />}
-            variant="outlined"
-            onClick={handleSearch}
-          >
-            SEARCH
-          </Button>
-          <Grid item md={8} sx={{ mr: 0, pr: 0 }}>
+          <Grid item sm={6} md={0.75} sx={{ alignSelf: "flex-end" }}>
+            <Fab
+              color="primary"
+              aria-label="search"
+              size="small"
+              onClick={handleSearch}
+              sx={{ my: "auto" }}
+            >
+              <SearchOutlined style={{ fontSize: 20 }} />
+            </Fab>
+          </Grid>
+          <Grid item sm={6} md={9.25}>
             <AddCustomer />
           </Grid>
         </Grid>

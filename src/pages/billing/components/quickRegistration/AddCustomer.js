@@ -47,8 +47,8 @@ const AddCustomer = () => {
           setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2} sx={{ p: 2, pl: 0 }}>
-              <Grid item md={3}>
+            <Grid container spacing={2}>
+              <Grid item sm={6} md={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Full Name</InputLabel>
                   <TextField
@@ -64,7 +64,7 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item md={3}>
+              <Grid item sm={6} md={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Mobile Number</InputLabel>
                   <TextField
@@ -79,7 +79,7 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-              <Grid item xs={12} md={1.5}>
+              <Grid item sm={6} md={1.75}>
                 <Stack spacing={0.5}>
                   <InputLabel
                     sx={{ fontWeight: 500, textTransform: "uppercase" }}
@@ -101,7 +101,7 @@ const AddCustomer = () => {
                   </FastField>
                 </Stack>
               </Grid>
-              <Grid item md={1.5}>
+              <Grid item sm={6} md={1.25}>
                 <Stack spacing={0.5}>
                   <InputLabel>AGe</InputLabel>
                   <TextField
@@ -117,10 +117,10 @@ const AddCustomer = () => {
                   />
                 </Stack>
               </Grid>
-
-              <Grid item md={3} mr={0}>
+              <Grid item sm={6} md={3} mr={0}>
                 <Stack
                   direction="row"
+                  spacing={1}
                   justifyContent="space-between"
                   alignItems="flex-end"
                   sx={{ height: "100%", width: "100%" }}
@@ -130,7 +130,7 @@ const AddCustomer = () => {
                       variant="contained"
                       endIcon={<SaveAltOutlined style={{ fontSize: 16 }} />}
                       color="info"
-                      sx={{ height: 35, borderRadius: 10, flexGrow: 1 }}
+                      sx={{ borderRadius: 1, flexGrow: 1 }}
                       type="submit"
                     >
                       {!!customerSaved.data?._id ? "SAVED" : "SAVE"}
@@ -138,10 +138,10 @@ const AddCustomer = () => {
                   </Tooltip>
                   <Tooltip title="RESET CUSTOMER INFO">
                     <Button
-                      variant="contained"
+                      variant="outlined"
                       endIcon={<RestartAlt style={{ fontSize: 16 }} />}
-                      color="warning"
-                      sx={{ height: 35, borderRadius: 10, ml: 1 }}
+                      color="error"
+                      sx={{ borderRadius: 1, flexGrow: 1 }}
                       type="reset"
                       onClick={handleReset}
                     >

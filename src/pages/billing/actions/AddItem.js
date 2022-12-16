@@ -114,10 +114,9 @@ const AddItem = () => {
         </Stack>
         <Tooltip title="SEE ALL SERVICES" arrow>
           <Button
-            sx={{ ml: 2, height: 35, mt: 0.5, width: 100 }}
+            sx={{ ml: 2, mt: 0.5, width: 100, borderRadius: 1 }}
             variant="contained"
             color="primary"
-            size="small"
             type="button"
             onClick={() => setOpen(!open)}
             startIcon={<TocOutlined style={{ fontSize: "20px" }} />}
