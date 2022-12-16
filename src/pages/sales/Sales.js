@@ -14,7 +14,7 @@ const Sales = () => {
     orders = {
       data: [],
     },
-    orderDeleted = {
+    saleDeleted = {
       data: { id: null },
     },
     orderSaved,
@@ -26,7 +26,7 @@ const Sales = () => {
         output: "orders",
       })
     );
-  }, [orderDeleted.data.id, orderSaved]);
+  }, [saleDeleted.data.id, orderSaved]);
   const columns = [
     {
       field: "id",

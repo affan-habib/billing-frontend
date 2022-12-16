@@ -1,8 +1,9 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Paper, Tabs, Tab, Typography, Box } from "@mui/material";
+import { Paper, Tabs, Tab, Typography, Box, Button } from "@mui/material";
 import Billing from "../pages/billing/Billing";
 import Loader from "../components/Loader";
+import { LogoutOutlined } from "@mui/icons-material";
 const Products = React.lazy(() => import("../pages/products/Products"));
 const Customers = React.lazy(() => import("../pages/customers/Customers"));
 const Sales = React.lazy(() => import("../pages/sales/Sales"));
@@ -56,6 +57,9 @@ export default function Layout() {
               borderBottom: 1,
               borderColor: "divider",
               background: "#f5f9f0",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "space-between",
             }}
           >
             <Tabs
@@ -63,11 +67,59 @@ export default function Layout() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab disableRipple disableFocusRipple disableTouchRipple label="NEW BILL" {...a11yProps(0)} />
-              <Tab disableRipple disableFocusRipple disableTouchRipple label="SALES" {...a11yProps(1)} />
-              <Tab disableRipple disableFocusRipple disableTouchRipple label="CUSTOMERS" {...a11yProps(2)} />
-              <Tab disableRipple disableFocusRipple disableTouchRipple label="PRODUCTS/SERVICES" {...a11yProps(3)} />
-              <Tab disableRipple disableFocusRipple disableTouchRipple label="ABOUT" {...a11yProps(4)} />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="NEW BILL"
+                {...a11yProps(0)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="SALES"
+                {...a11yProps(1)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="CUSTOMERS"
+                {...a11yProps(2)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="PRODUCTS/SERVICES"
+                {...a11yProps(3)}
+              />
+              <Tab
+                disableRipple
+                disableFocusRipple
+                disableTouchRipple
+                label="ABOUT"
+                {...a11yProps(4)}
+              />
+              <Button
+                startIcon={<LogoutOutlined />}
+                variant="outlined"
+                color="error"
+                sx={{
+                  ml: "auto",
+                  mr: 2,
+                  height: 30,
+                  my: "auto",
+                  borderRadius: 10,
+                }}
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  window.location.reload();
+                }}
+              >
+                LOGOUT
+              </Button>
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>

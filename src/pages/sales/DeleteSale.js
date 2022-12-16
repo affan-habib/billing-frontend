@@ -12,7 +12,7 @@ const DeleteSale = ({ shouldDelete }) => {
         dispatch(
           callApi({
             operationId: `api/orders/${shouldDelete}`,
-            output: "customerDeleted",
+            output: "saleDeleted",
             parameters: {
               method: "DELETE",
             },
