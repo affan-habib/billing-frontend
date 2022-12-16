@@ -22,18 +22,17 @@ const Products = () => {
     },
     itemSaved,
   } = useSelector(selectApi);
-  useEffect(() => {
-    setTimeout(
-      () =>
-        dispatch(
-          callApi({
-            operationId: `api/products`,
-            output: "items",
-          })
-        ),
-      1000
-    );
-  }, [itemDeleted.data.id, itemSaved]);
+  
+  useEffect(
+    () =>
+      dispatch(
+        callApi({
+          operationId: `api/products`,
+          output: "items",
+        })
+      ),
+    [itemDeleted.data.id, itemSaved]
+  );
   const columns = [
     {
       field: "id",
