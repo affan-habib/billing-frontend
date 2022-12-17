@@ -123,9 +123,11 @@ export default function Layout() {
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
-              <Billing />
-            </Paper>
+            <React.Suspense fallback={<Loader />}>
+              <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
+                <Billing />
+              </Paper>
+            </React.Suspense>
           </TabPanel>
           <TabPanel value={value} index={1}>
             <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
