@@ -101,7 +101,7 @@ const Sales = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      field: "due",
+      field: "dueAmount",
       headerName: "DUE",
       type: "text",
       minWidth: 120,

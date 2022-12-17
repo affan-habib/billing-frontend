@@ -29,7 +29,7 @@ const AddItem = () => {
       data: [],
     },
   } = useSelector(selectApi);
-  const orderDetailList = useSelector((state) => state.cart.orderDetailList);
+  const itemList = useSelector((state) => state.cart.itemList);
   useEffect(() => {
     dispatch(
       callApi({
@@ -39,7 +39,7 @@ const AddItem = () => {
     );
   }, [dispatch]);
 
-  let alreadySelectedOptions = orderDetailList.map((el) => el.id);
+  let alreadySelectedOptions = itemList.map((el) => el.id);
   let filterSelectedOptions = items.data.filter(
     (el) => alreadySelectedOptions.indexOf(el.id) == -1
   );

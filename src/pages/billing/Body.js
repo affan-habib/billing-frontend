@@ -8,7 +8,7 @@ import AddItem from "./actions/AddItem";
 import { Warning } from "@mui/icons-material";
 import { Paper } from "@mui/material";
 export default function Body() {
-  const rows = useSelector((state) => state.cart.orderDetailList);
+  const rows = useSelector((state) => state.cart.itemList);
   const columns = [
     {
       field: "id",

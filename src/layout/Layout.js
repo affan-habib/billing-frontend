@@ -57,12 +57,13 @@ export default function Layout() {
               borderBottom: 1,
               borderColor: "divider",
               background: "#f5f9f0",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              alignItems: "space-between",
+              // flexDirection: "column",
+              // justifyContent: "space-between",
+              // alignItems: "space-between",
             }}
           >
             <Tabs
+              centered
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"

@@ -11,13 +11,15 @@ import {
   TextField,
 } from "@mui/material";
 import { SaveOutlined } from "@mui/icons-material";
+import { selectApi } from "../../reducers/apiSlice";
 
 export default function Sidebar({ handleSubmit, values, handleReset }) {
   const dispatch = useDispatch();
   const [discountVal, setDiscountVal] = React.useState(null);
   const [givenAmount, setGivenAmount] = React.useState(null);
-  const { orderDetailList, discount } = useSelector((state) => state.cart);
-  let itemTotal = orderDetailList.reduce(
+  const { itemList, discount } = useSelector((state) => state.cart);
+  const { customerSaved = { data: {} } } = useSelector(selectApi);
+  let itemTotal = itemList.reduce(
     (a, b) => a + b.basePrice * b.quantityOrdered,
     0
   );
@@ -34,7 +36,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
   return (
     <Box sx={{ Width: "100%" }}>
       <p>
-        Customer Name: <span> {values.customerId} </span>
+        Customer Name: <span> {customerSaved.data?.name || "not found"} </span>
       </p>
       <p>
         Payment Status : <span> Paid </span>
@@ -51,7 +53,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         disabled
         fullWidth
         sx={{ mb: 1, bgcolor: "white", color: "blue" }}
-        variant="standard"
+        variant="filled"
         size="small"
         hiddenLabel
         type="number"
@@ -65,7 +67,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="standard"
+        variant="filled"
         size="small"
         hiddenLabel
         type="number"
@@ -73,7 +75,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         value={discountVal}
         onChange={(e) => setDiscountVal(e.target.value)}
         obBlur={(e) =>
-          dispatch(setField({ field: "discount", value: e.target.value }))
+          dispatch(setField({ field: "discountAmount", value: e.target.value }))
         }
       />
 
@@ -84,7 +86,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="standard"
+        variant="filled"
         size="small"
         hiddenLabel
         type="number"
@@ -98,7 +100,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="standard"
+        variant="filled"
         color="error"
         size="small"
         hiddenLabel
@@ -114,7 +116,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
         sx={{ mb: 1, bgcolor: "white" }}
-        variant="standard"
+        variant="filled"
         size="small"
         hiddenLabel
         type="number"
@@ -133,7 +135,6 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           onClick={() => handleSubmit()}
           type="submit"
           sx={{ mt: 2, borderRadius: 10 }}
-          disabled={!values.customerId || !orderDetailList.length}
         >
           SAVE
         </Button>
@@ -141,7 +142,7 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
           startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
           color="info"
           onClick={() => handleSubmit()}
-          // disabled={!orderDetailList.length}
+          // disabled={!itemList.length}
           type="submit"
           sx={{ mt: 2 }}
         >

@@ -153,10 +153,10 @@ const Report = ({ setOpen }) => {
                   }}
                 >
                   {orderSaved?.data?.advance > 0 &&
-                  orderSaved?.data?.due < orderSaved?.data?.total
+                  orderSaved?.data?.dueAmount < orderSaved?.data?.total
                     ? "PARTIALLY PAID"
                     : orderSaved?.data?.advance > 0 &&
-                      orderSaved?.data?.due <= 0
+                      orderSaved?.data?.dueAmount <= 0
                     ? "PAID"
                     : "DUE"}
                 </span>

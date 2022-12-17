@@ -8,14 +8,20 @@ const getSchema = (model = {}) => {
     age = 21,
     contactNumber = "",
     gender = "MALE",
+    email = "",
+    address = "",
+    clientType = "Corporate",
   } = model;
 
   return {
     id,
     name,
     gender,
-    age,
     contactNumber,
+    age,
+    email,
+    address,
+    clientType,
   };
 };
 const mobileRegEx = /^(?:\+88|0088)?(01[3-9]\d{8})$/;

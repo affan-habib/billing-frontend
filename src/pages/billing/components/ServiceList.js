@@ -11,8 +11,8 @@ import { AddCircle } from "@mui/icons-material";
 
 const ServiceList = () => {
   const dispatch = useDispatch();
-  const { orderDetailList } = useSelector((state) => state.cart);
-  let alreadySelectedOptions = orderDetailList.map((el) => el.id);
+  const { itemList } = useSelector((state) => state.cart);
+  let alreadySelectedOptions = itemList.map((el) => el.id);
 
   const [open, setOpen] = useState(false);
   const {
