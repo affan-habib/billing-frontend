@@ -2,23 +2,14 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { clearCart, setField } from "../../reducers/cartSlice";
-import {
-  Button,
-  ButtonGroup,
-  InputAdornment,
-  InputLabel,
-  TextField,
-} from "@mui/material";
-import { SaveOutlined } from "@mui/icons-material";
-import { selectApi } from "../../reducers/apiSlice";
+import { setField } from "../../reducers/cartSlice";
+import { InputAdornment, InputLabel, TextField } from "@mui/material";
 
-export default function Sidebar({ handleSubmit, values, handleReset }) {
+export default function Sidebar() {
   const dispatch = useDispatch();
-  const [discountVal, setDiscountVal] = React.useState(null);
-  const [givenAmount, setGivenAmount] = React.useState(null);
-  const { itemList, discount } = useSelector((state) => state.cart);
-  const { customerSaved = { data: {} } } = useSelector(selectApi);
+  const { itemList } = useSelector((state) => state.cart);
+  const [discountVal, setDiscountVal] = React.useState(0);
+  const [givenAmount, setGivenAmount] = React.useState(0);
   let itemTotal = itemList.reduce(
     (a, b) => a + b.basePrice * b.quantityOrdered,
     0
@@ -27,24 +18,14 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
   useEffect(() => {
     dispatch(
       setField({
-        field: "total",
-        value: itemTotal - discountVal - givenAmount,
+        field: "itemTotal",
+        value: itemTotal,
       })
     );
-  }, [itemTotal, discount, givenAmount]);
+  }, [itemTotal]);
 
   return (
     <Box sx={{ Width: "100%" }}>
-      <p>
-        Customer Name: <span> {customerSaved.data?.name || "not found"} </span>
-      </p>
-      <p>
-        Payment Status : <span> Paid </span>
-      </p>
-      <p>
-        Bill No : <span> 134555411 </span>
-      </p>
-
       <InputLabel>ITEM TOTAL</InputLabel>
       <TextField
         InputProps={{
@@ -74,12 +55,17 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         disabled={!itemTotal}
         value={discountVal}
         onChange={(e) => setDiscountVal(e.target.value)}
-        obBlur={(e) =>
-          dispatch(setField({ field: "discountAmount", value: e.target.value }))
+        onBlur={(e) =>
+          dispatch(
+            setField({
+              field: "discountAmount",
+              value: parseInt(e.target.value),
+            })
+          )
         }
       />
 
-      <InputLabel>DUE AMOUNT</InputLabel>
+      <InputLabel>PAYABLE AMOUNT</InputLabel>
       <TextField
         fullWidth
         InputProps={{
@@ -122,47 +108,6 @@ export default function Sidebar({ handleSubmit, values, handleReset }) {
         type="number"
         value={itemTotal - discountVal - givenAmount}
       />
-
-      <ButtonGroup
-        variant="outlined"
-        aria-label="outlined button group"
-        disableElevation
-      >
-        <Button
-          color="primary"
-          variant="contained"
-          // startIcon={<PrinterOutlined style={{ fontSize: 16 }} />}
-          onClick={() => handleSubmit()}
-          type="submit"
-          sx={{ mt: 2, borderRadius: 10 }}
-        >
-          SAVE
-        </Button>
-        <Button
-          startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
-          color="info"
-          onClick={() => handleSubmit()}
-          // disabled={!itemList.length}
-          type="submit"
-          sx={{ mt: 2 }}
-        >
-          DRAFT
-        </Button>
-        <Button
-          // startIcon={<ReloadOutlined style={{ fontSize: 16 }} />}
-          color="error"
-          variant="outlined"
-          sx={{ mt: 2, borderRadius: 10 }}
-          onClick={() => {
-            handleReset();
-            dispatch(clearCart());
-            setDiscountVal(0);
-            setGivenAmount(0);
-          }}
-        >
-          RESET
-        </Button>
-      </ButtonGroup>
     </Box>
   );
 }

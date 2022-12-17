@@ -107,7 +107,7 @@ export default function Items() {
                 {orderSaved?.data?.discount || 0}
               </TableCell>
               <TableCell align="center" className="print-2">
-                {orderSaved?.data?.advance || 0}
+                {orderSaved?.data?.paidAmount || 0}
               </TableCell>
               <TableCell align="center" className="print-3">{orderSaved?.data?.dueAmount || 0}</TableCell>
             </TableRow>

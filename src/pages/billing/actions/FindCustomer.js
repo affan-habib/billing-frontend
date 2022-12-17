@@ -2,7 +2,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Fab, Grid, InputLabel, Paper, Stack, TextField } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../reducers/apiSlice";
+import { callApi, selectApi } from "../../../reducers/apiSlice";
 
 const FindCustomer = ({ setFieldValue, values }) => {
   const { customerSaved } = useSelector(selectApi);

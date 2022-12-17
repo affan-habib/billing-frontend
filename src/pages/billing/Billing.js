@@ -1,14 +1,16 @@
 import { Box, Dialog, Grid, Paper } from "@mui/material";
 import { Formik } from "formik";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "../../components/Loader";
 import Body from "./Body";
 import Sidebar from "./Sidebar";
-import Header from "./Header";
+import Customer from "./Customer";
 import Report from "./components/report/Report";
 import { getSchema, validator } from "./Schema";
 import { callApi } from "../../reducers/apiSlice";
 import { clearCart } from "../../reducers/cartSlice";
+import SubmitBill from "./actions/SubmitBill";
 
 const Billing = () => {
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ const Billing = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <Suspense fallback={Loader}>
       <Dialog open={open} onClose={() => setOpen(!open)}>
         <Report setOpen={setOpen} />
       </Dialog>
@@ -31,7 +33,7 @@ const Billing = () => {
               output: "orderSaved",
               parameters: {
                 method: "POST",
-                body: JSON.stringify(getSchema(values)),
+                body: JSON.stringify(getSchema({ values, ...cart })),
               },
             })
           );
@@ -43,15 +45,16 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <Paper outlined sx={{ p: 2, bgcolor: "#e2ffff" }} square>
+              <Paper sx={{ p: 2, bgcolor: "#e2ffff" }} square>
                 <Grid container spacing={2}>
                   <Grid item md={9}>
-                    <Header {...props} />
+                    <Customer {...props} />
                     <Body />
                   </Grid>
                   <Grid item md={3}>
                     <Paper sx={{ p: 2, bgcolor: "#f5f9f0" }}>
-                      <Sidebar {...props} />
+                      <Sidebar />
+                      <SubmitBill {...props} />
                     </Paper>
                   </Grid>
                 </Grid>
@@ -60,7 +63,7 @@ const Billing = () => {
           );
         }}
       </Formik>
-    </>
+    </Suspense>
   );
 };
 
