@@ -3,11 +3,15 @@ const getSchema = (model = {}) => {
   const {
     invoiceId = "4154",
     customerId = "null",
-    name = "AFfan",
-    contactNumber = "44444444",
-    age = 10,
+    name = "MUBIN KHAN",
+    contactNumber = "0166666666",
+    age = 45,
     gender = "MALE",
-    itemList = [1, 3],
+    itemTotal = 0,
+    discountAmount = 0,
+    paidAmount = 0,
+    dueAmount = 0,
+    itemList = [],
   } = model;
 
   return {
@@ -17,6 +21,10 @@ const getSchema = (model = {}) => {
     contactNumber,
     age,
     gender,
+    itemTotal,
+    discountAmount,
+    paidAmount,
+    dueAmount,
     itemList,
   };
 };

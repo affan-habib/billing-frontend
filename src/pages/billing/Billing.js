@@ -33,7 +33,7 @@ const Billing = () => {
               output: "orderSaved",
               parameters: {
                 method: "POST",
-                body: JSON.stringify(getSchema({ values, ...cart })),
+                body: JSON.stringify(getSchema({ ...values, ...cart })),
               },
             })
           );

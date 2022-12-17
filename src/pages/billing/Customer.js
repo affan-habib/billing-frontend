@@ -12,7 +12,7 @@ import { FastField } from "formik";
 const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
   return (
     <>
-      <Paper sx={{ background: "#f5f9f0", p: 2, pt: 0 }} square>
+      <Paper sx={{ background: "#f5f9f0", p: 2, pt: 0, mt: 2 }} square>
         <Grid container spacing={2}>
           <Grid item sm={6} md={3}>
             <Stack spacing={0.5}>

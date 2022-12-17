@@ -79,7 +79,7 @@ const Sales = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      field: "total",
+      field: "itemTotal",
       headerName: "TOTAL",
       type: "text",
       minWidth: 120,
@@ -90,7 +90,7 @@ const Sales = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "discount",
+      field: "discountAmount",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
@@ -101,8 +101,8 @@ const Sales = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      field: "dueAmount",
-      headerName: "DUE",
+      field: "paidAmount",
+      headerName: "PAID",
       type: "text",
       minWidth: 120,
       headerAlign: "right",
