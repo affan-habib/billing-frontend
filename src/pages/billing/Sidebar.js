@@ -2,11 +2,11 @@ import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { setField } from "../../reducers/cartSlice";
-import { InputAdornment, InputLabel, TextField } from "@mui/material";
+import { InputAdornment, InputLabel, TextField, Switch } from "@mui/material";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
-  const { itemList } = useSelector((state) => state.cart);
+  const { itemList, paid } = useSelector((state) => state.cart);
   const [discountVal, setDiscountVal] = useState(0);
   const [givenAmount, setGivenAmount] = useState(0);
   const givenAmountRef = useRef();
@@ -32,19 +32,29 @@ export default function Sidebar() {
           value: givenAmount,
         })
       );
+      dispatch(setField({ field: "paid", value: false }));
     }
-    if (givenAmountRef.current.value > payableAmountRef.current.value) {
+    if (
+      givenAmountRef.current.value >= payableAmountRef.current.value &&
+      !!itemList.length
+    ) {
       dispatch(
         setField({
           field: "paidAmount",
           value: payableAmountRef.current.value,
         })
       );
+      dispatch(setField({ field: "paid", value: true }));
     }
   }, [givenAmount]);
 
   return (
     <Box sx={{ Width: "100%" }}>
+      <InputLabel>Is Paid? </InputLabel>
+      <Switch
+        checked={paid}
+        onChange={() => dispatch(setField({ field: "paid", value: !paid }))}
+      />
       <InputLabel>ITEM TOTAL</InputLabel>
       <TextField
         InputProps={{

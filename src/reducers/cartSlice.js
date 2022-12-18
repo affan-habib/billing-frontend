@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
+    paid: false,
     itemList: [],
   },
 
@@ -19,15 +20,11 @@ const cartSlice = createSlice({
       }
     },
     incrementQuantity: (state, action) => {
-      const item = state.itemList.find(
-        (item) => item.id === action.payload
-      );
+      const item = state.itemList.find((item) => item.id === action.payload);
       item.quantityOrdered++;
     },
     decrementQuantity: (state, action) => {
-      const item = state.itemList.find(
-        (item) => item.id === action.payload
-      );
+      const item = state.itemList.find((item) => item.id === action.payload);
       if (item.quantityOrdered === 1) {
         item.quantityOrdered = 1;
       } else {
