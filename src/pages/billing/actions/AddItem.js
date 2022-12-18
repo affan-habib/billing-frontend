@@ -18,9 +18,9 @@ import { addToCart } from "../../../reducers/cartSlice";
 // import { addToCart } from "store/reducers/cartSlice";
 import ServiceList from "../components/ServiceList";
 
-const AddItem = () => {
+const AddItem = ({addItemRef}) => {
   const dispatch = useDispatch();
-  const addItemRef = useRef();
+  
   const [open, setOpen] = useState(false);
   const [state, setState] = useState(true);
 

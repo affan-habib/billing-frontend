@@ -5,11 +5,11 @@ import RemoveItem from "./actions/RemoveItem";
 import NoRowIcon from "../../components/NoRowIcon";
 import { useSelector } from "react-redux";
 import AddItem from "./actions/AddItem";
-import { Warning } from "@mui/icons-material";
 import { Paper, Stack } from "@mui/material";
 import FindCustomer from "./actions/FindCustomer";
 export default function Body() {
   const rows = useSelector((state) => state.cart.itemList);
+  const addItemRef = React.useRef();
   const columns = [
     {
       field: "id",
@@ -91,8 +91,8 @@ export default function Body() {
   return (
     <Box>
       <Stack direction="row">
-        <FindCustomer />
-        <AddItem />
+        <FindCustomer addItemRef={addItemRef}/>
+        <AddItem addItemRef={addItemRef}/>
       </Stack>
 
       <Paper square elevation={1}>

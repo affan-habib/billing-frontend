@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
 import { setField } from "../../../reducers/cartSlice";
 
-const FindCustomer = () => {
+const FindCustomer = ({ addItemRef }) => {
   const dispatch = useDispatch();
   const customerRef = useRef();
   const [state, setState] = useState(true);
@@ -29,8 +29,8 @@ const FindCustomer = () => {
     stringify: ({ name, id }) => `${name} ${id}`,
   });
 
-  const focusAgain = () => {
-    setTimeout(() => customerRef.current.focus(), 100);
+  const focusItem = () => {
+    setTimeout(() => addItemRef.current.focus(), 100);
   };
   return (
     <Stack sx={{ mr: 2 }}>
@@ -63,7 +63,12 @@ const FindCustomer = () => {
         onChange={(e, value) => {
           dispatch(setField({ field: "customerId", value: value?.id }));
           setState(!state);
-          focusAgain();
+        }}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            focusItem();
+            e.preventDefault();
+          }
         }}
       />
     </Stack>
