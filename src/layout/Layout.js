@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Paper, Tabs, Tab, Typography, Box, Button, Fade } from "@mui/material";
 import Loader from "../components/Loader";
 import { LogoutOutlined } from "@mui/icons-material";
+import Cookies from "js-cookie";
 const Billing = React.lazy(() => import("../pages/billing/Billing"));
 const Products = React.lazy(() => import("../pages/products/Products"));
 const Customers = React.lazy(() => import("../pages/customers/Customers"));
@@ -115,7 +116,7 @@ export default function Layout() {
                   borderRadius: 10,
                 }}
                 onClick={() => {
-                  localStorage.removeItem("token");
+                  Cookies.remove("accessToken");
                   window.location.reload();
                 }}
               >
