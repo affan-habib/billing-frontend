@@ -125,7 +125,7 @@ const ServiceList = () => {
             color="info"
             onClick={() => handleAddToCart()}
           >
-            {selectedOptions.length ? "Add services" : "Select services"}
+            {selectedOptions.length ? "Add services" : "Select Items"}
           </Button>
           <Button
             sx={{ mb: 2, mr: 2 }}
@@ -133,7 +133,7 @@ const ServiceList = () => {
             variant="contained"
             onClick={() => setOpen(!open)}
           >
-            Add New Service
+            Add Item
           </Button>
         </Stack>
       </Stack>
