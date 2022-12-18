@@ -6,7 +6,8 @@ import NoRowIcon from "../../components/NoRowIcon";
 import { useSelector } from "react-redux";
 import AddItem from "./actions/AddItem";
 import { Warning } from "@mui/icons-material";
-import { Paper } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
+import FindCustomer from "./actions/FindCustomer";
 export default function Body() {
   const rows = useSelector((state) => state.cart.itemList);
   const columns = [
@@ -89,7 +90,11 @@ export default function Body() {
 
   return (
     <Box>
-      <AddItem />
+      <Stack direction="row">
+        <FindCustomer />
+        <AddItem />
+      </Stack>
+
       <Paper square elevation={1}>
         <DataGrid
           sx={{

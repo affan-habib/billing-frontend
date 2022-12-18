@@ -1,56 +1,72 @@
-import { SearchOutlined } from "@ant-design/icons";
-import { Fab, Grid, InputLabel, Paper, Stack, TextField } from "@mui/material";
-import { useEffect, useRef } from "react";
+import { Box, InputLabel, Stack, TextField } from "@mui/material";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
+import { setField } from "../../../reducers/cartSlice";
 
-const FindCustomer = ({ setFieldValue, values }) => {
-  const { customerSaved } = useSelector(selectApi);
-  const inputRef = useRef();
+const FindCustomer = () => {
   const dispatch = useDispatch();
+  const customerRef = useRef();
+  const [state, setState] = useState(true);
+
+  const {
+    customers = {
+      data: [],
+    },
+  } = useSelector(selectApi);
+
   useEffect(() => {
-    setFieldValue("customerId", customerSaved?.data?._id);
-  }, [customerSaved]);
-  const handleSearch = () => {
     dispatch(
       callApi({
-        operationId: `/${inputRef.current.value}`,
-        output: "searchedCustomer",
+        operationId: "api/customers",
+        output: "customers",
       })
     );
+  }, [dispatch]);
+
+  const filterOptions = createFilterOptions({
+    stringify: ({ name, id }) => `${name} ${id}`,
+  });
+
+  const focusAgain = () => {
+    setTimeout(() => customerRef.current.focus(), 100);
   };
   return (
-    <>
-      <Paper sx={{ background: "#f5f9f0", p: 2, pt: 0 }} square>
-        <Grid container spacing={2} sx={{ mt: 0 }}>
-          <Grid item sm={6} md={2}>
-            <Stack spacing={0.5}>
-              <InputLabel>FIND</InputLabel>
-              <TextField
-                autoFocus={true}
-                id="id"
-                name="id"
-                placeholder="ID/MOBILE"
-                value={values.customerId}
-                fullWidth
-                inputRef={inputRef}
-              />
-            </Stack>
-          </Grid>
-          <Grid item sm={6} md={0.75} sx={{ alignSelf: "flex-end" }}>
-            <Fab
-              color="primary"
-              aria-label="search"
-              size="small"
-              onClick={handleSearch}
-              sx={{ my: "auto" }}
-            >
-              <SearchOutlined style={{ fontSize: 20 }} />
-            </Fab>
-          </Grid>
-        </Grid>
-      </Paper>
-    </>
+    <Stack sx={{ mr: 2 }}>
+      <InputLabel sx={{ mb: 0.5, pt: 2 }}>SEARCH CUSTOMER</InputLabel>
+      <Autocomplete
+        autoFocus
+        size="medium"
+        disablePortal
+        filterOptions={filterOptions}
+        id="id"
+        sx={{ width: 200 }}
+        options={customers.data}
+        autoHighlight
+        getOptionLabel={(option) => option.name}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            inputProps={{
+              ...params.inputProps,
+            }}
+            placeholder="SEARCH CUSTOMER"
+            inputRef={customerRef}
+          />
+        )}
+        renderOption={(props, option) => (
+          <Box component="li" {...props}>
+            {option.name} ({option.id})
+          </Box>
+        )}
+        onChange={(e, value) => {
+          dispatch(setField({ field: "customerId", value: value?.id }));
+          setState(!state);
+          focusAgain();
+        }}
+      />
+    </Stack>
   );
 };
 
