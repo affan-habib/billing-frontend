@@ -110,6 +110,7 @@ const AddItem = () => {
               setState(!state);
               focusAgain();
             }}
+            onDoubleClick={() => console.log('double click')}
           />
         </Stack>
         <Tooltip title="SEE ALL SERVICES" arrow>

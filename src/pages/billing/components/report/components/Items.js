@@ -11,8 +11,7 @@ import { useSelector } from "react-redux";
 
 export default function Items() {
   console.log("rendering report");
-  const { orderSaved = { data: { itemList: [] } } } =
-    useSelector(selectApi);
+  const { orderSaved = { data: { itemList: [] } } } = useSelector(selectApi);
   return (
     <>
       <TableContainer
@@ -101,15 +100,19 @@ export default function Items() {
           <TableBody>
             <TableRow>
               <TableCell align="center" className="print-2">
-                {orderSaved?.data?.total || 0}
+                {orderSaved?.data?.itemTotal || 0}
               </TableCell>
               <TableCell align="center" className="print-3 ">
-                {orderSaved?.data?.discount || 0}
+                {orderSaved?.data?.discountAmount || 0}
               </TableCell>
               <TableCell align="center" className="print-2">
                 {orderSaved?.data?.paidAmount || 0}
               </TableCell>
-              <TableCell align="center" className="print-3">{orderSaved?.data?.dueAmount || 0}</TableCell>
+              <TableCell align="center" className="print-3">
+                {orderSaved?.data?.itemTotal -
+                  orderSaved?.data?.discountAmount -
+                  orderSaved?.data?.paidAmount || 0}
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>

@@ -1,15 +1,16 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { setField } from "../../reducers/cartSlice";
 import { InputAdornment, InputLabel, TextField } from "@mui/material";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
   const { itemList } = useSelector((state) => state.cart);
-  const [discountVal, setDiscountVal] = React.useState(0);
-  const [givenAmount, setGivenAmount] = React.useState(0);
+  const [discountVal, setDiscountVal] = useState(0);
+  const [givenAmount, setGivenAmount] = useState(0);
+  const givenAmountRef = useRef();
+  const payableAmountRef = useRef();
   let itemTotal = itemList.reduce(
     (a, b) => a + b.basePrice * b.quantityOrdered,
     0
@@ -23,6 +24,24 @@ export default function Sidebar() {
       })
     );
   }, [itemTotal]);
+  useEffect(() => {
+    if (givenAmountRef.current.value < payableAmountRef.current.value) {
+      dispatch(
+        setField({
+          field: "paidAmount",
+          value: givenAmount,
+        })
+      );
+    }
+    if (givenAmountRef.current.value > payableAmountRef.current.value) {
+      dispatch(
+        setField({
+          field: "paidAmount",
+          value: payableAmountRef.current.value,
+        })
+      );
+    }
+  }, [givenAmount]);
 
   return (
     <Box sx={{ Width: "100%" }}>
@@ -63,6 +82,12 @@ export default function Sidebar() {
             })
           )
         }
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            givenAmountRef.current.focus();
+            e.preventDefault();
+          }
+        }}
       />
 
       <InputLabel>PAYABLE AMOUNT</InputLabel>
@@ -77,6 +102,7 @@ export default function Sidebar() {
         hiddenLabel
         type="number"
         value={itemTotal - discountVal}
+        inputRef={payableAmountRef}
       />
 
       <InputLabel>GIVEN AMOUNT</InputLabel>
@@ -93,6 +119,7 @@ export default function Sidebar() {
         type="number"
         value={givenAmount}
         onChange={(e) => setGivenAmount(e.target.value)}
+        inputRef={givenAmountRef}
       />
 
       <InputLabel>RETURN AMOUNT</InputLabel>
