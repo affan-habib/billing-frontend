@@ -47,7 +47,11 @@ export default function Sidebar() {
       dispatch(setField({ field: "paid", value: true }));
     }
   }, [givenAmount]);
-
+  useEffect(() => {
+    if (paid) {
+      setGivenAmount(payableAmountRef.current.value);
+    }
+  }, [paid]);
   return (
     <Box sx={{ Width: "100%" }}>
       <InputLabel>Is Paid? </InputLabel>
