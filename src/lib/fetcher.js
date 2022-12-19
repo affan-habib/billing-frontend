@@ -2,13 +2,12 @@ const localUrl = "localhost:5000";
 
 // Local computer
 
-// const baseUrl = localUrl || process.env.REACT_APP_BASE_API_URL;
-// const protocol = "http" || process.env.REACT_APP_API_PROTOCOL;
-
+const baseUrl = localUrl || process.env.REACT_APP_BASE_API_URL;
+const protocol = "http" || process.env.REACT_APP_API_PROTOCOL;
 
 // Virtual computer
-const baseUrl = process.env.REACT_APP_BASE_API_URL || localUrl;
-const protocol = process.env.REACT_APP_API_PROTOCOL || "http" ;
+// const baseUrl = process.env.REACT_APP_BASE_API_URL || localUrl;
+// const protocol = process.env.REACT_APP_API_PROTOCOL || "http" ;
 
 const fetcher = async (route, options = {}) => {
   let url = new URL(`${protocol}://${baseUrl}/${route}`);
