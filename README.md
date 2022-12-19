@@ -15,7 +15,7 @@ Just like : To buy 10 pens we can hire a person. We are getting service from tha
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [![React][React.js]][React-url]
-* [![Material UI][mui.com]][Mui-url]
+* [![Material UI][MUI]][Mui-url]
 
 
 [Live](https://affan-habib.netlify.app/)

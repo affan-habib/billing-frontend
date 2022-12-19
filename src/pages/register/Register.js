@@ -25,7 +25,7 @@ export default function Register() {
       onSubmit={(values, actions) => {
         dispatch(
           callApi({
-            operationId: "signup",
+            operationId: "auth/register",
             parameters: {
               method: "POST",
               body: JSON.stringify(getSchema(values)),
