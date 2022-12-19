@@ -1,4 +1,4 @@
-_BIller
+_BIller_
 
 Biller is an app for small businesses. There are people who want to focus only on the important stuff. Nothing less or nothing more. It's a single page application, where users can save a track record of their business. By using biller users can add their products/ services data and store those data to the server. 
 Products can be a single unit or bundle of units. 
