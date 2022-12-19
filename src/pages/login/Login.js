@@ -39,7 +39,7 @@ export default function Login() {
       onSubmit={(values, actions) => {
         dispatch(
           callApi({
-            operationId: "signin",
+            operationId: "auth/signin",
             parameters: {
               method: "POST",
               body: JSON.stringify(getSchema(values)),

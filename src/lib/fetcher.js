@@ -1,6 +1,6 @@
-const baseUrl = "mern-dusky.vercel.app";
+const baseUrl = "localhost:5000";
 // const baseUrl = process.env.REACT_APP_BASE_API_URL;
-const protocol = process.env.REACT_APP_API_PROTOCOL || 'https';
+const protocol = process.env.REACT_APP_API_PROTOCOL || 'http';
 
 const fetcher = async (route, options = {}) => {
 
