@@ -147,7 +147,7 @@ const Products = () => {
           variant="contained"
           onClick={() => setOpen(true)}
         >
-          Add New service
+          Add Item
         </Button>
         <Button
           sx={{ m: 2, ml: 0, width: 200 }}
@@ -156,7 +156,7 @@ const Products = () => {
           color="warning"
           onClick={() => handleadd()}
         >
-          {selectedOptions.length ? "Add to New bill" : "Select services"}
+          {selectedOptions.length ? "Add to New bill" : "Select Items"}
         </Button>
         <Dialog open={open} onClose={() => setOpen(!open)}>
           <AddProduct setOpen={setOpen} />

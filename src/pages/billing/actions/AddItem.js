@@ -18,9 +18,9 @@ import { addToCart } from "../../../reducers/cartSlice";
 // import { addToCart } from "store/reducers/cartSlice";
 import ServiceList from "../components/ServiceList";
 
-const AddItem = () => {
+const AddItem = ({addItemRef}) => {
   const dispatch = useDispatch();
-  const addItemRef = useRef();
+  
   const [open, setOpen] = useState(false);
   const [state, setState] = useState(true);
 
@@ -29,7 +29,7 @@ const AddItem = () => {
       data: [],
     },
   } = useSelector(selectApi);
-  const orderDetailList = useSelector((state) => state.cart.orderDetailList);
+  const itemList = useSelector((state) => state.cart.itemList);
   useEffect(() => {
     dispatch(
       callApi({
@@ -39,8 +39,8 @@ const AddItem = () => {
     );
   }, [dispatch]);
 
-  let alreadySelectedOptions = orderDetailList.map((el) => el.id);
-  let filterSelectedOptions = items.data.filter(
+  let alreadySelectedOptions = itemList.map((el) => el.id);
+  let filterSelectedOptions = items?.data?.filter(
     (el) => alreadySelectedOptions.indexOf(el.id) == -1
   );
   const filterOptions = createFilterOptions({
@@ -110,6 +110,7 @@ const AddItem = () => {
               setState(!state);
               focusAgain();
             }}
+            onDoubleClick={() => console.log('double click')}
           />
         </Stack>
         <Tooltip title="SEE ALL SERVICES" arrow>

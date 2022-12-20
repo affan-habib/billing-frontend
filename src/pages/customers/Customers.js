@@ -158,14 +158,14 @@ const Customers = () => {
     >
       <Stack direction="row">
         <Button
-          sx={{ mb: 2, ml: 2, width: 200 }}
+          sx={{ mb: 2, ml: 2, flex: 0.0625, minWidth: "140px" }}
           variant="contained"
           onClick={() => setOpen(true)}
         >
-          Add New Customer
+          New Customer
         </Button>
         <Button
-          sx={{ mb: 2, ml: 2, width: 200 }}
+          sx={{ mb: 2, ml: 2, flex: 0.0625, minWidth: "160px" }}
           disabled={selectedOptions.length !== 1}
           variant="contained"
           color="warning"

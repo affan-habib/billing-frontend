@@ -1,5 +1,8 @@
+import React from "react";
+import Cookies from "js-cookie";
+
 const useAuth = () => {
-  const context = localStorage.getItem("token") ? true : false;
+  const context = Cookies.get("accessToken") ? true : false;
   return context;
 };
 

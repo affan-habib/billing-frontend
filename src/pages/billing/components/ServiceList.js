@@ -11,8 +11,8 @@ import { AddCircle } from "@mui/icons-material";
 
 const ServiceList = () => {
   const dispatch = useDispatch();
-  const { orderDetailList } = useSelector((state) => state.cart);
-  let alreadySelectedOptions = orderDetailList.map((el) => el.id);
+  const { itemList } = useSelector((state) => state.cart);
+  let alreadySelectedOptions = itemList.map((el) => el.id);
 
   const [open, setOpen] = useState(false);
   const {
@@ -126,7 +126,7 @@ const ServiceList = () => {
             color="info"
             onClick={() => handleAddToCart()}
           >
-            {selectedOptions.length ? "Add services" : "Select services"}
+            {selectedOptions.length ? "Add services" : "Select Items"}
           </Button>
           <Button
             sx={{ mb: 2, mr: 2 }}
@@ -134,7 +134,7 @@ const ServiceList = () => {
             variant="contained"
             onClick={() => setOpen(!open)}
           >
-            Add New Service
+            Add Item
           </Button>
         </Stack>
       </Stack>

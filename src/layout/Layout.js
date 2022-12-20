@@ -5,8 +5,15 @@ import TabsListUnstyled from "@mui/base/TabsListUnstyled";
 import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 import { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled";
 import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
-import { Box } from "@mui/material";
+import { Box, Button, Paper } from "@mui/material";
 import Billing from "../pages/billing/Billing";
+import Sales from "../pages/sales/Sales";
+import Customers from "../pages/customers/Customers";
+import Products from "../pages/products/Products";
+import Loader from "../components/Loader";
+import { LogoutOutlined } from "@mui/icons-material";
+import Cookies from "js-cookie";
+
 const Tab = styled(TabUnstyled)`
   font-family: IBM Plex Sans, sans-serif;
   color: #fff;
@@ -47,7 +54,7 @@ const TabPanel = styled(TabPanelUnstyled)(
   font-family: IBM Plex Sans, sans-serif;
   font-size: 0.875rem;
   padding: 20px 12px;
-  background:  #fff;
+  background:  #e2ffff;
   border: 1px solid black;
   `
 );
@@ -55,7 +62,7 @@ const TabPanel = styled(TabPanelUnstyled)(
 const TabsList = styled(TabsListUnstyled)(
   ({ theme }) => `
   min-width: 400px;
-  background-color: tomato;
+  background-color: #ccf8f8;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -68,7 +75,7 @@ const TabsList = styled(TabsListUnstyled)(
 export default function UnstyledTabsIntroduction() {
   return (
     <TabsUnstyled defaultValue={0}>
-      <Box sx={{ mx: "auto", width: "100%", py: 1, bgcolor: "green" }}>
+      <Box sx={{ mx: "auto", width: "100%", py: 1, bgcolor: "#e2ffff" }}>
         <TabsList sx={{ mx: "auto" }}>
           <Tab>Billing</Tab>
           <Tab>Sales</Tab>
@@ -76,12 +83,47 @@ export default function UnstyledTabsIntroduction() {
           <Tab>Items</Tab>
           <Tab>About</Tab>
         </TabsList>
+        <Button
+          startIcon={<LogoutOutlined />}
+          variant="outlined"
+          color="error"
+          sx={{
+            ml: "auto",
+            mr: 2,
+            height: 30,
+            my: "auto",
+            borderRadius: 10,
+          }}
+          onClick={() => {
+            Cookies.remove("accessToken");
+            window.location.reload();
+          }}
+        >
+          LOGOUT
+        </Button>
       </Box>
-      <TabPanel value={0}>
-        <Billing />
+      <TabPanel value={0} index={0}>
+        <React.Suspense fallback={<Loader />}>
+          <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
+            <Billing />
+          </Paper>
+        </React.Suspense>
       </TabPanel>
-      <TabPanel value={1}>Profile page</TabPanel>
-      <TabPanel value={2}>Language page</TabPanel>
+      <TabPanel value={1} index={1}>
+        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+          <Sales />
+        </Paper>
+      </TabPanel>
+      <TabPanel value={2} index={2}>
+        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+          <Customers />
+        </Paper>
+      </TabPanel>
+      <TabPanel value={3} index={3}>
+        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+          <Products />
+        </Paper>
+      </TabPanel>
     </TabsUnstyled>
   );
 }

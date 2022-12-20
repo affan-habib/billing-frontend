@@ -5,10 +5,11 @@ import RemoveItem from "./actions/RemoveItem";
 import NoRowIcon from "../../components/NoRowIcon";
 import { useSelector } from "react-redux";
 import AddItem from "./actions/AddItem";
-import { Warning } from "@mui/icons-material";
-import { Paper } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
+import FindCustomer from "./actions/FindCustomer";
 export default function Body() {
-  const rows = useSelector((state) => state.cart.orderDetailList);
+  const rows = useSelector((state) => state.cart.itemList);
+  const addItemRef = React.useRef();
   const columns = [
     {
       field: "id",
@@ -36,9 +37,9 @@ export default function Body() {
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
-      headerAlign: "center",
+      headerAlign: "right",
       sortable: false,
-      align: "center",
+      align: "right",
     },
     {
       field: "quantityOrdered",
@@ -47,9 +48,9 @@ export default function Body() {
       headerName: "UNIT",
       type: "number",
       minWidth: 120,
-      headerAlign: "center",
+      headerAlign: "right",
       sortable: false,
-      align: "center",
+      align: "right",
     },
     {
       field: "discountPerUnit",
@@ -58,9 +59,9 @@ export default function Body() {
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
-      headerAlign: "center",
+      headerAlign: "right",
       sortable: false,
-      align: "center",
+      align: "right",
     },
     {
       headerClassName: "top-header-1",
@@ -68,11 +69,11 @@ export default function Body() {
       field: "finalPrice",
       headerName: "AMOUNT",
       sortable: false,
-      align: "center",
+      align: "right",
       minWidth: 120,
       valueGetter: (params) =>
         params.row.quantityOrdered * params.row.basePrice,
-      headerAlign: "center",
+      headerAlign: "right",
       type: "number",
     },
     {
@@ -89,7 +90,11 @@ export default function Body() {
 
   return (
     <Box>
-      <AddItem />
+      <Stack direction="row">
+        <FindCustomer addItemRef={addItemRef}/>
+        <AddItem addItemRef={addItemRef}/>
+      </Stack>
+
       <Paper square elevation={1}>
         <DataGrid
           sx={{

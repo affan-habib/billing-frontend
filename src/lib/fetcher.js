@@ -1,27 +1,37 @@
-const baseUrl = "mern-dusky.vercel.app";
-// const baseUrl = process.env.REACT_APP_BASE_API_URL;
-const protocol = process.env.REACT_APP_API_PROTOCOL || 'https';
+import Cookies from "js-cookie";
 
+const localUrl = "localhost:5000";
+
+// Local computer
+
+const baseUrl = localUrl || process.env.REACT_APP_BASE_API_URL;
+const protocol = "http" || process.env.REACT_APP_API_PROTOCOL;
+
+// Virtual computer
+// const baseUrl = process.env.REACT_APP_BASE_API_URL || localUrl;
+// const protocol = process.env.REACT_APP_API_PROTOCOL || "http" ;
+let accessToken = Cookies.get("accessToken");
 const fetcher = async (route, options = {}) => {
+  let url = new URL(`${protocol}://${baseUrl}/${route}`);
+  const method = options.method || "get";
 
-  let url = new URL(`${protocol}://${baseUrl}/${route}`)
-  const method = options.method || 'get'
-
-  if(method === 'get') {
-    Object.keys(options).forEach(key => url.searchParams.append(key, options[key]))
+  if (method === "get") {
+    Object.keys(options).forEach((key) =>
+      url.searchParams.append(key, options[key])
+    );
   }
 
-  console.log('fetching ....', url)
+  console.log("fetching ....", url);
 
   const response = await fetch(url, {
     headers: {
-      'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzg3Yzk5MDhiMTYzNzRiYzI1NWRjYSIsImlhdCI6MTY2ODg0NDQzOCwiZXhwIjoxNjcxNDM2NDM4fQ.oADm3vr11rce0TkOcgRZ4DEQpTJys8J8Ce_7U5cD0To`,
-      'Content-Type': 'application/json; charset=utf-8',
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json; charset=utf-8",
     },
-    ...options
+    ...options,
   });
 
-  return await response.json()
-}
+  return await response.json();
+};
 
 export default fetcher;

@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -25,11 +26,14 @@ export default function Login() {
     if (auth) {
       navigate("/");
     }
-    if (!auth && authData.token) {
-      authData.token && localStorage.setItem("token", authData.token);
-      navigate("/");
+  }, [auth]);
+  useEffect(() => {
+    if (authData.token) {
+      authData.token &&
+        Cookies.set("accessToken", authData.token, { expires: 1, path: "" });
+      Cookies.get("accessToken") && navigate("/");
     }
-  }, [authData.token, auth]);
+  }, [authData]);
   return (
     <Formik
       initialValues={getSchema({})}
@@ -37,7 +41,7 @@ export default function Login() {
       onSubmit={(values, actions) => {
         dispatch(
           callApi({
-            operationId: "signin",
+            operationId: "auth/signin",
             parameters: {
               method: "POST",
               body: JSON.stringify(getSchema(values)),
@@ -72,7 +76,6 @@ export default function Login() {
                   onBlur={props.handleBlur}
                   value={props.values.email}
                   fullWidth
-                  
                 />
                 {props.touched.email && props.errors.email && (
                   <FormHelperText

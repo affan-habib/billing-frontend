@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Paper, Stack } from "@mui/material";
+import { Box, Paper, Skeleton, Stack } from "@mui/material";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
@@ -79,7 +79,7 @@ const Sales = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      field: "total",
+      field: "itemTotal",
       headerName: "TOTAL",
       type: "text",
       minWidth: 120,
@@ -90,7 +90,7 @@ const Sales = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
-      field: "discount",
+      field: "discountAmount",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
@@ -101,8 +101,8 @@ const Sales = () => {
     {
       headerClassName: "top-header-1",
       cellClassName: "top-header-3",
-      field: "due",
-      headerName: "DUE",
+      field: "paidAmount",
+      headerName: "PAID",
       type: "text",
       minWidth: 120,
       headerAlign: "right",
@@ -160,32 +160,36 @@ const Sales = () => {
       elevation={1}
       sx={{ height: 475, width: "100%", bgcolor: "#f5f9f0", p: 2 }}
     >
-      <DataGrid
-        getRowId={(row) => row._id}
-        checkboxSelection={true}
-        rows={orders.data}
-        columns={columns}
-        disableSelectionOnClick
-        disableColumnSelector
-        components={{
-          NoRowsOverlay: NoRowIcon,
-          Pagination: CustomPagination,
-          Toolbar: Toolbar,
-        }}
-        componentsProps={{
-          toolbar: {
-            showQuickFilter: true,
-            quickFilterProps: { debounceMs: 500 },
-          },
-        }}
-        headerHeight={55}
-        // hideFooterPagination
-        pageSize={10}
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
-      />
+      {orders.data.length ? (
+        <DataGrid
+          getRowId={(row) => row._id}
+          checkboxSelection={true}
+          rows={orders.data}
+          columns={columns}
+          disableSelectionOnClick
+          disableColumnSelector
+          components={{
+            NoRowsOverlay: NoRowIcon,
+            Pagination: CustomPagination,
+            Toolbar: Toolbar,
+          }}
+          componentsProps={{
+            toolbar: {
+              showQuickFilter: true,
+              quickFilterProps: { debounceMs: 500 },
+            },
+          }}
+          headerHeight={55}
+          // hideFooterPagination
+          pageSize={10}
+          disableColumnMenu
+          density="compact"
+          showCellRightBorder={true}
+          showColumnRightBorder={true}
+        />
+      ) : (
+        <Skeleton variant="rectangular" width={1400} height={1018} />
+      )}
     </Paper>
   );
 };
