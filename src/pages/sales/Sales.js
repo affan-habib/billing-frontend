@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Box, Paper, Stack } from "@mui/material";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import DeleteSale from "./DeleteSale";
 import NoRowIcon from "../../components/NoRowIcon";
 import moment from "moment/moment";
 import CustomPagination from "../../components/Pagination";
+import Loader from "../../components/Loader";
 
 const Sales = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Sales = () => {
         output: "orders",
       })
     );
-  }, [saleDeleted.data.id, orderSaved]);
+  }, [saleDeleted?.data?.id, orderSaved]);
   const columns = [
     {
       field: "id",
@@ -160,32 +161,34 @@ const Sales = () => {
       elevation={1}
       sx={{ height: 475, width: "100%", bgcolor: "#f5f9f0", p: 2 }}
     >
-      <DataGrid
-        getRowId={(row) => row._id}
-        checkboxSelection={true}
-        rows={orders.data}
-        columns={columns}
-        disableSelectionOnClick
-        disableColumnSelector
-        components={{
-          NoRowsOverlay: NoRowIcon,
-          Pagination: CustomPagination,
-          Toolbar: Toolbar,
-        }}
-        componentsProps={{
-          toolbar: {
-            showQuickFilter: true,
-            quickFilterProps: { debounceMs: 500 },
-          },
-        }}
-        headerHeight={55}
-        // hideFooterPagination
-        pageSize={10}
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
-      />
+      <Suspense fallback={<Loader />}>
+        <DataGrid
+          getRowId={(row) => row?._id}
+          checkboxSelection={true}
+          rows={orders?.data}
+          columns={columns}
+          disableSelectionOnClick
+          disableColumnSelector
+          components={{
+            NoRowsOverlay: NoRowIcon,
+            Pagination: CustomPagination,
+            Toolbar: Toolbar,
+          }}
+          componentsProps={{
+            toolbar: {
+              showQuickFilter: true,
+              quickFilterProps: { debounceMs: 500 },
+            },
+          }}
+          headerHeight={55}
+          // hideFooterPagination
+          pageSize={10}
+          disableColumnMenu
+          density="compact"
+          showCellRightBorder={true}
+          showColumnRightBorder={true}
+        />
+      </Suspense>
     </Paper>
   );
 };
