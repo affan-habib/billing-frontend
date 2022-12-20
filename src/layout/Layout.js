@@ -75,32 +75,49 @@ const TabsList = styled(TabsListUnstyled)(
 export default function UnstyledTabsIntroduction() {
   return (
     <TabsUnstyled defaultValue={0}>
-      <Box sx={{ mx: "auto", width: "100%", py: 1, bgcolor: "#e2ffff" }}>
-        <TabsList sx={{ mx: "auto" }}>
+      <Box
+        sx={{
+          mx: "auto",
+          width: "100%",
+          py: 1,
+          px: 2,
+          bgcolor: "#e2ffff",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Box sx={{ flex: 1 }}>
+          <img
+            className="logo"
+            src="https://cdn.pixabay.com/photo/2016/01/21/21/23/rose-1154830__340.png"
+          />
+        </Box>
+        <TabsList sx={{ flex: 8 }}>
           <Tab>Billing</Tab>
           <Tab>Sales</Tab>
           <Tab>Customers</Tab>
           <Tab>Items</Tab>
           <Tab>About</Tab>
         </TabsList>
-        <Button
-          startIcon={<LogoutOutlined />}
-          variant="outlined"
-          color="error"
-          sx={{
-            ml: "auto",
-            mr: 2,
-            height: 30,
-            my: "auto",
-            borderRadius: 10,
-          }}
-          onClick={() => {
-            Cookies.remove("accessToken");
-            window.location.reload();
-          }}
-        >
-          LOGOUT
-        </Button>
+        <Box sx={{ flex: 1 }}>
+          <Button
+            startIcon={<LogoutOutlined />}
+            variant="outlined"
+            color="error"
+            sx={{
+              height: 30,
+              my: "auto",
+              borderRadius: 10,
+              float: "right",
+            }}
+            onClick={() => {
+              Cookies.remove("accessToken");
+              window.location.reload();
+            }}
+          >
+            LOGOUT
+          </Button>
+        </Box>
       </Box>
       <TabPanel value={0} index={0}>
         <React.Suspense fallback={<Loader />}>

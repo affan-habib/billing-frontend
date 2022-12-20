@@ -86,3 +86,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #fc923b;
   outline: 1px solid #f5f9f0;
 }
+.logo{
+  height: 50px;
+  width: auto;
+}
