@@ -26,12 +26,14 @@ export default function Login() {
     if (auth) {
       navigate("/");
     }
-    if (!auth && authData.token) {
+  }, [auth]);
+  useEffect(() => {
+    if (authData.token) {
       authData.token &&
         Cookies.set("accessToken", authData.token, { expires: 1, path: "" });
-      navigate("/");
+      Cookies.get("accessToken") && navigate("/");
     }
-  }, [authData.token, auth]);
+  }, [authData]);
   return (
     <Formik
       initialValues={getSchema({})}

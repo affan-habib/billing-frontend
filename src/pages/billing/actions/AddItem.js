@@ -40,7 +40,7 @@ const AddItem = ({addItemRef}) => {
   }, [dispatch]);
 
   let alreadySelectedOptions = itemList.map((el) => el.id);
-  let filterSelectedOptions = items.data.filter(
+  let filterSelectedOptions = items?.data?.filter(
     (el) => alreadySelectedOptions.indexOf(el.id) == -1
   );
   const filterOptions = createFilterOptions({

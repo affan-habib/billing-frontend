@@ -3,7 +3,7 @@ const getSchema = (model = {}) => {
   const {
     invoiceId = "4154",
     customerId = "null",
-    name = "MUBIN KHAN",
+    name = "John Doe",
     contactNumber = "0166666666",
     age = 45,
     gender = "MALE",
