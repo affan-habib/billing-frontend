@@ -16,11 +16,11 @@ import Cookies from "js-cookie";
 
 const Tab = styled(TabUnstyled)`
   font-family: IBM Plex Sans, sans-serif;
-  color: #fff;
+  color: #00838f;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  background-color: transparent;
+  background-color: "white";
   width: 100%;
   padding: 10px 12px;
   margin: 6px 6px;
@@ -31,6 +31,7 @@ const Tab = styled(TabUnstyled)`
 
   &:hover {
     background-color: gray;
+    color: #fff;
   }
 
   &:focus {
@@ -38,8 +39,8 @@ const Tab = styled(TabUnstyled)`
   }
 
   &.${tabUnstyledClasses.selected} {
-    background-color: #fff;
-    color: red;
+    background-color: #00838f;
+    color: white;
   }
 
   &.${buttonUnstyledClasses.disabled} {
@@ -53,16 +54,14 @@ const TabPanel = styled(TabPanelUnstyled)(
   width: 100%;
   font-family: IBM Plex Sans, sans-serif;
   font-size: 0.875rem;
-  padding: 20px 12px;
-  background:  #e2ffff;
-  border: 1px solid black;
+  background:  #D9D9D9;
   `
 );
 
 const TabsList = styled(TabsListUnstyled)(
   ({ theme }) => `
   min-width: 400px;
-  background-color: #ccf8f8;
+  background-color: #f5f9f0;
   border-radius: 4px;
   display: flex;
   align-items: center;
