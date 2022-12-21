@@ -82,29 +82,7 @@ const AddItem = ({ addItemRef }) => {
               </Box>
             )}
             onChange={(e, value) => {
-              dispatch(
-                addToCart({
-                  id: value.id,
-                  basePrice: value.basePrice,
-                  serviceName: value.serviceName,
-                  ...{
-                    expiryDate: 0,
-                    vatPerUnit: 0,
-                    discountPerUnit: 0,
-                    quantityOrdered: 1,
-                    quantityReturned: 0,
-                    discountTotal: 0,
-                    discountReturned: 0,
-                    vatTotal: 0,
-                    vatReturned: 0,
-                    subtotalOrdered: 0,
-                    subtotalReturned: 0,
-                    rowTotal: 0,
-                    returnedBy: "string",
-                    returnDate: "2022-11-13T11:35:33.765Z",
-                  },
-                })
-              );
+              dispatch(addToCart(value));
               setState(!state);
               focusAgain();
             }}

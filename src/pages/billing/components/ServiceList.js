@@ -82,28 +82,7 @@ const ServiceList = () => {
           sx={{ height: 20, width: 70, borderRadius: 10 }}
           size="small"
           color="info"
-          onClick={() =>
-            dispatch(
-              addToCart({
-                ...params.row,
-                discountPerUnit: 0,
-                expiryDate: 0,
-                vatPerUnit: 0,
-                discountPerUnit: 0,
-                quantityOrdered: 1,
-                quantityReturned: 0,
-                discountTotal: 0,
-                discountReturned: 0,
-                vatTotal: 0,
-                vatReturned: 0,
-                subtotalOrdered: 0,
-                subtotalReturned: 0,
-                rowTotal: 0,
-                returnedBy: "string",
-                returnDate: "2022-11-13T11:35:33.765Z",
-              })
-            )
-          }
+          onClick={() => dispatch(addToCart(params.row))}
         >
           {alreadySelectedOptions.includes(params.row.id) ? "ADDED" : "ADD"}
         </Button>
@@ -146,28 +125,7 @@ const ServiceList = () => {
       (el) => selectedOptions.indexOf(el.id) + 1
     );
 
-    return SelectedOptions.forEach((el) =>
-      dispatch(
-        addToCart({
-          ...el,
-          discountPerUnit: 0,
-          expiryDate: 0,
-          vatPerUnit: 0,
-          discountPerUnit: 0,
-          quantityOrdered: 1,
-          quantityReturned: 0,
-          discountTotal: 0,
-          discountReturned: 0,
-          vatTotal: 0,
-          vatReturned: 0,
-          subtotalOrdered: 0,
-          subtotalReturned: 0,
-          rowTotal: 0,
-          returnedBy: "string",
-          returnDate: "2022-11-13T11:35:33.765Z",
-        })
-      )
-    );
+    return SelectedOptions.forEach((el) => dispatch(addToCart(el)));
   };
 
   return (

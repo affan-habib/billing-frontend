@@ -9,6 +9,7 @@ import {
   Button,
   Typography,
   IconButton,
+  ButtonGroup,
 } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch } from "react-redux";
@@ -67,7 +68,7 @@ const AddProduct = ({ setOpen }) => {
                   ADD PRODUCT / SERVICE
                 </Typography>
               </Grid>
-              <Grid item xs={2} sm={2}>
+              <Grid item xs={2} sm={2} md={2}>
                 <Stack spacing={0.5}>
                   <InputLabel>ID</InputLabel>
                   <TextField
@@ -85,9 +86,9 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={8} sm={6}>
+              <Grid item xs={8} sm={6} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Product/service name</InputLabel>
+                  <InputLabel>Item Name</InputLabel>
                   <TextField
                     autoFocus={true}
                     id="serviceName"
@@ -103,9 +104,9 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={4} md={4}>
+              <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>BASE PRICE</InputLabel>
+                  <InputLabel>PRICE</InputLabel>
                   <TextField
                     id="basePrice"
                     name="basePrice"
@@ -122,9 +123,9 @@ const AddProduct = ({ setOpen }) => {
                 </Stack>
               </Grid>
 
-              <Grid item xs={4} md={4}>
+              <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Discount Per Unit</InputLabel>
+                  <InputLabel>Discount</InputLabel>
                   <TextField
                     id="discountPerUnit"
                     name="discountPerUnit"
@@ -142,7 +143,7 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={4} md={4}>
+              <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>AVAILABLE STOCKS</InputLabel>
                   <TextField
@@ -160,7 +161,7 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={4} md={4}>
+              <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Expiry Date</InputLabel>
                   <TextField
@@ -178,7 +179,7 @@ const AddProduct = ({ setOpen }) => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={4} md={4}>
+              <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
                   <InputLabel>Vat Per Unit</InputLabel>
                   <TextField
@@ -197,14 +198,14 @@ const AddProduct = ({ setOpen }) => {
                 </Stack>
               </Grid>
               <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  color="info"
-                  fullWidth
-                  type="submit"
-                >
-                  Submit
-                </Button>
+                <ButtonGroup>
+                  <Button variant="contained" color="info" type="submit">
+                    Submit
+                  </Button>
+                  <Button variant="outlined" color="error" type="reset">
+                    Reset
+                  </Button>
+                </ButtonGroup>
               </Grid>
             </Grid>
           </form>
