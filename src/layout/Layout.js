@@ -17,7 +17,7 @@ import Cookies from "js-cookie";
 
 const Tab = styled(TabUnstyled)`
   font-family: IBM Plex Sans, sans-serif;
-  color: #00838f;
+  color: gray;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
@@ -29,6 +29,7 @@ const Tab = styled(TabUnstyled)`
   border-radius: 4px;
   display: flex;
   justify-content: center;
+  text-transform: uppercase;
 
   &:hover {
     background-color: gray;
@@ -74,7 +75,7 @@ const TabsList = styled(TabsListUnstyled)(
 
 export default function UnstyledTabsIntroduction() {
   return (
-    <TabsUnstyled defaultValue={4}>
+    <TabsUnstyled defaultValue={3}>
       <Box
         sx={{
           mx: "auto",

@@ -82,7 +82,7 @@ const Sales = () => {
       cellClassName: "top-header-3",
       field: "itemTotal",
       headerName: "TOTAL",
-      type: "text",
+
       minWidth: 120,
       headerAlign: "right",
       sortable: false,
@@ -104,7 +104,7 @@ const Sales = () => {
       cellClassName: "top-header-3",
       field: "paidAmount",
       headerName: "PAID",
-      type: "text",
+
       minWidth: 120,
       headerAlign: "right",
       sortable: false,
@@ -116,7 +116,7 @@ const Sales = () => {
       cellClassName: "top-header-2",
       field: "createdAt",
       headerName: "ORDER CREATED",
-      type: "text",
+
       flex: 1,
       headerAlign: "left",
       sortable: false,
@@ -129,7 +129,6 @@ const Sales = () => {
       cellClassName: "top-header-3",
       field: "updatedAt",
       headerName: "ORDER UPDATED",
-      type: "text",
       flex: 1,
       headerAlign: "left",
       sortable: false,

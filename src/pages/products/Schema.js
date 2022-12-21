@@ -5,7 +5,7 @@ const getSchema = (model = {}) => {
   const {
     id = components.join("") + Math.random().toString(36).slice(-2),
     serviceName = "",
-    basePrice = null,
+    basePrice = 0,
     expiryDate = 0,
     vatPerUnit = 0,
     discountPerUnit = 0,
