@@ -21,7 +21,7 @@ const Tab = styled(TabUnstyled)`
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  background-color: white;
+  background-color: #f5f9f0;
   width: 100%;
   padding: 10px 12px;
   margin: 6px 6px;
@@ -63,7 +63,7 @@ const TabPanel = styled(TabPanelUnstyled)(
 const TabsList = styled(TabsListUnstyled)(
   ({ theme }) => `
   min-width: 400px;
-  background-color: #f5f9f0;
+  background-color: #ccf8f8;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ export default function UnstyledTabsIntroduction() {
           width: "100%",
           py: 1,
           px: 2,
-          bgcolor: "#e2ffff",
+          bgcolor: "#f5f9f0",
           display: "flex",
           alignItems: "center",
         }}
@@ -122,28 +122,28 @@ export default function UnstyledTabsIntroduction() {
       </Box>
       <TabPanel value={0} index={0}>
         <React.Suspense fallback={<Loader />}>
-          <Paper sx={{ minHeight: "93vh", bgcolor: "#e2ffff" }}>
+          <Paper sx={{ minHeight: "93vh", bgcolor: "antiquewhite" }}>
             <Billing />
           </Paper>
         </React.Suspense>
       </TabPanel>
       <TabPanel value={1} index={1}>
-        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
           <Sales />
         </Paper>
       </TabPanel>
       <TabPanel value={2} index={2}>
-        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
           <Customers />
         </Paper>
       </TabPanel>
       <TabPanel value={3} index={3}>
-        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
           <Products />
         </Paper>
       </TabPanel>
       <TabPanel value={4} index={4}>
-        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
           <About />
         </Paper>
       </TabPanel>

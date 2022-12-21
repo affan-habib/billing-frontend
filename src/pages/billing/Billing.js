@@ -45,7 +45,7 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <Paper sx={{ p: 2, bgcolor: "#e2ffff" }} square>
+              <Box sx={{ p: 2 }} square>
                 <Grid container spacing={2}>
                   <Grid item md={9}>
                     <Customer {...props} />
@@ -58,7 +58,7 @@ const Billing = () => {
                     </Paper>
                   </Grid>
                 </Grid>
-              </Paper>
+              </Box>
             </Box>
           );
         }}
