@@ -1,16 +1,16 @@
-import { Box, Dialog, Grid, Paper } from "@mui/material";
-import { Formik } from "formik";
-import { Suspense, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { Suspense, useState } from "react";
 import Loader from "../../components/Loader";
+import { Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { Box, Dialog, Grid, Paper } from "@mui/material";
+import Customer from "./Customer";
 import Body from "./Body";
 import Sidebar from "./Sidebar";
-import Customer from "./Customer";
-import Report from "./components/report/Report";
+import SubmitBill from "./actions/SubmitBill";
 import { getSchema, validator } from "./Schema";
 import { callApi } from "../../reducers/apiSlice";
 import { clearCart } from "../../reducers/cartSlice";
-import SubmitBill from "./actions/SubmitBill";
+const Report = React.lazy(() => import("./components/report/Report"));
 
 const Billing = () => {
   const dispatch = useDispatch();
@@ -18,9 +18,11 @@ const Billing = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Suspense fallback={Loader}>
+    <Suspense fallback={<Loader />}>
       <Dialog open={open} onClose={() => setOpen(!open)}>
-        <Report setOpen={setOpen} />
+        <Suspense fallback={<Loader />}>
+          <Report setOpen={setOpen} />
+        </Suspense>
       </Dialog>
 
       <Formik
@@ -45,7 +47,7 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <Box sx={{ p: 2 }} square>
+              <Box sx={{ p: 2 }}>
                 <Grid container spacing={2}>
                   <Grid item md={9}>
                     <Customer {...props} />
