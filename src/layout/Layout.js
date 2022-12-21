@@ -10,6 +10,7 @@ import Billing from "../pages/billing/Billing";
 import Sales from "../pages/sales/Sales";
 import Customers from "../pages/customers/Customers";
 import Products from "../pages/products/Products";
+import About from "../pages/about/About";
 import Loader from "../components/Loader";
 import { LogoutOutlined } from "@mui/icons-material";
 import Cookies from "js-cookie";
@@ -20,7 +21,7 @@ const Tab = styled(TabUnstyled)`
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  background-color: "white";
+  background-color: white;
   width: 100%;
   padding: 10px 12px;
   margin: 6px 6px;
@@ -73,7 +74,7 @@ const TabsList = styled(TabsListUnstyled)(
 
 export default function UnstyledTabsIntroduction() {
   return (
-    <TabsUnstyled defaultValue={0}>
+    <TabsUnstyled defaultValue={4}>
       <Box
         sx={{
           mx: "auto",
@@ -138,6 +139,11 @@ export default function UnstyledTabsIntroduction() {
       <TabPanel value={3} index={3}>
         <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
           <Products />
+        </Paper>
+      </TabPanel>
+      <TabPanel value={4} index={4}>
+        <Paper sx={{ padding: 2, bgcolor: "#e2ffff", minHeight: "93vh" }}>
+          <About />
         </Paper>
       </TabPanel>
     </TabsUnstyled>
