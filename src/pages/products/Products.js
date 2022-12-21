@@ -22,7 +22,7 @@ const Products = () => {
     },
     itemSaved,
   } = useSelector(selectApi);
-  
+
   useEffect(
     () =>
       dispatch(
@@ -140,7 +140,7 @@ const Products = () => {
   };
 
   return (
-    <Paper elevation={1} sx={{ width: "100%", bgcolor: "#f5f9f0" }}>
+    <Paper elevation={1} sx={{ width: "100%", bgcolor: "#f5f9f0", pb: 2 }}>
       <Stack direction="row">
         <Button
           sx={{ m: 2, width: 200 }}
@@ -163,7 +163,7 @@ const Products = () => {
         </Dialog>
       </Stack>
       <DataGrid
-        sx={{ height: 400 }}
+        sx={{ height: 400, m: 2, mt: 0 }}
         getRowId={(row) => row._id}
         checkboxSelection={true}
         rows={items.data}
