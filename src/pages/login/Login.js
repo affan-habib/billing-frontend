@@ -51,7 +51,7 @@ export default function Login() {
     >
       {(props) => (
         <form onSubmit={props.handleSubmit}>
-          {loading && auth ? (
+          {loading ? (
             <div>
               <Loader />
             </div>

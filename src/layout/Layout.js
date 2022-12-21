@@ -21,7 +21,7 @@ const Tab = styled(TabUnstyled)`
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  background-color: #f5f9f0;
+  background-color: #rgb(255, 248, 238);
   width: 100%;
   padding: 10px 12px;
   margin: 6px 6px;
