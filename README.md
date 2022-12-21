@@ -18,4 +18,5 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![Material UI][MUI]][Mui-url]
 
 
-[Live](https://affan-habib.netlify.app/)
+[NETLIFY Live](https://affan-habib.netlify.app/)
+[VERCEL Live](https://billing-frontend-ten.vercel.app/)
