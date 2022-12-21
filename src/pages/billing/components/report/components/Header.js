@@ -13,7 +13,7 @@ const Customer = () => {
         </Grid>
         <Grid item md={9}>
           <Typography variant="caption" sx={{ fontWeight: 600, mt: 2 }}>
-            ABC GENERAL HOSPITAL
+            BILLER INC.
           </Typography>
           <Stack
             direction="row"

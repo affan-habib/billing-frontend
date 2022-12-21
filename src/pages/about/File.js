@@ -12,7 +12,7 @@ export default function File() {
     previewFile(file);
     setSelectedFile(file);
     setFileInputState(e.target.value);
-    console.log(file)
+    console.log(file);
   };
 
   const previewFile = (file) => {
@@ -39,7 +39,7 @@ export default function File() {
 
   const uploadImage = async (base64EncodedImage) => {
     try {
-      await fetch("/api/upload", {
+      await fetch("http://localhost:5000/api/upload", {
         method: "POST",
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-Type": "application/json" },

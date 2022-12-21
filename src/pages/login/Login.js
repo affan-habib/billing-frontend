@@ -16,6 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Cookies from "js-cookie";
+import Loader from "../../components/Loader";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -50,73 +51,79 @@ export default function Login() {
     >
       {(props) => (
         <form onSubmit={props.handleSubmit}>
-          <Stack
-            height="100vh"
-            width="100vw"
-            justifyContent="center"
-            alignItems="center"
-          >
+          {loading && auth ? (
+            <div>
+              <Loader />
+            </div>
+          ) : (
             <Stack
-              spacing={2}
-              width={400}
-              p={4}
-              component={Paper}
-              variant="outlined"
+              height="100vh"
+              width="100vw"
+              justifyContent="center"
+              alignItems="center"
             >
-              <Stack>
-                <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
-                <TextField
-                  autoFocus={true}
-                  name="email"
-                  placeholder="EMAIL ADDRESS"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.email}
-                  fullWidth
-                />
-                {props.touched.email && props.errors.email && (
-                  <FormHelperText
-                    error
-                    email="standard-weight-helper-text-password-login"
+              <Stack
+                spacing={2}
+                width={400}
+                p={4}
+                component={Paper}
+                variant="outlined"
+              >
+                <Stack>
+                  <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
+                  <TextField
+                    autoFocus={true}
+                    name="email"
+                    placeholder="EMAIL ADDRESS"
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}
+                    value={props.values.email}
+                    fullWidth
+                  />
+                  {props.touched.email && props.errors.email && (
+                    <FormHelperText
+                      error
+                      email="standard-weight-helper-text-password-login"
+                    >
+                      {props.errors.email}
+                    </FormHelperText>
+                  )}
+                </Stack>
+                <Stack>
+                  <InputLabel sx={{ mb: 0.5 }}>PASSWORD</InputLabel>
+                  <TextField
+                    autoFocus={true}
+                    name="password"
+                    type="password"
+                    placeholder="ENTER PASSWORD"
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}
+                    value={props.values.password}
+                    fullWidth
+                  />
+                  {props.touched.password && props.errors.password && (
+                    <FormHelperText
+                      error
+                      password="standard-weight-helper-text-password-login"
+                    >
+                      {props.errors.password}
+                    </FormHelperText>
+                  )}
+                </Stack>
+                <Stack direction="row" spacing={2}>
+                  <Button variant="contained" type="submit">
+                    LOGIN
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    onClick={() => navigate("/register")}
                   >
-                    {props.errors.email}
-                  </FormHelperText>
-                )}
-              </Stack>
-              <Stack>
-                <InputLabel sx={{ mb: 0.5 }}>PASSWORD</InputLabel>
-                <TextField
-                  autoFocus={true}
-                  name="password"
-                  type="password"
-                  placeholder="ENTER PASSWORD"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.password}
-                  fullWidth
-                />
-                {props.touched.password && props.errors.password && (
-                  <FormHelperText
-                    error
-                    password="standard-weight-helper-text-password-login"
-                  >
-                    {props.errors.password}
-                  </FormHelperText>
-                )}
-              </Stack>
-              <Stack direction="row" spacing={2}>
-                <Button variant="contained" type="submit">
-                  LOGIN
-                </Button>
-                <Button
-                  variant="outlined"
-                  onClick={() => navigate("/register")}
-                >
-                  REGISTER
-                </Button>
+                    REGISTER
+                  </Button>
+                </Stack>
               </Stack>
             </Stack>
-          </Stack>
+          )}
         </form>
       )}
     </Formik>
