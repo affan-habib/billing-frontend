@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Box, Paper, Skeleton, Stack } from "@mui/material";
+import React, { Suspense, useEffect } from "react";
+import { Box, Paper, Stack } from "@mui/material";
 import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
@@ -7,6 +7,7 @@ import DeleteSale from "./DeleteSale";
 import NoRowIcon from "../../components/NoRowIcon";
 import moment from "moment/moment";
 import CustomPagination from "../../components/Pagination";
+import Loader from "../../components/Loader";
 
 const Sales = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Sales = () => {
         output: "orders",
       })
     );
-  }, [saleDeleted.data.id, orderSaved]);
+  }, [saleDeleted?.data?.id, orderSaved]);
   const columns = [
     {
       field: "id",
@@ -160,11 +161,11 @@ const Sales = () => {
       elevation={1}
       sx={{ height: 475, width: "100%", bgcolor: "#f5f9f0", p: 2 }}
     >
-      {orders.data.length ? (
+      <Suspense fallback={<Loader />}>
         <DataGrid
-          getRowId={(row) => row._id}
+          getRowId={(row) => row?._id}
           checkboxSelection={true}
-          rows={orders.data}
+          rows={orders?.data}
           columns={columns}
           disableSelectionOnClick
           disableColumnSelector
@@ -187,9 +188,7 @@ const Sales = () => {
           showCellRightBorder={true}
           showColumnRightBorder={true}
         />
-      ) : (
-        <Skeleton variant="rectangular" width={1400} height={1018} />
-      )}
+      </Suspense>
     </Paper>
   );
 };

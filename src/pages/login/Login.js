@@ -20,20 +20,17 @@ import Cookies from "js-cookie";
 export default function Login() {
   const dispatch = useDispatch();
   const auth = useAuth();
-  const { loading, authData = { token: null } } = useSelector(selectApi);
+  const { loading, authData } = useSelector(selectApi);
   const navigate = useNavigate();
   useEffect(() => {
     if (auth) {
       navigate("/");
     }
-  }, [auth]);
-  useEffect(() => {
-    if (authData.token) {
-      authData.token &&
-        Cookies.set("accessToken", authData.token, { expires: 1, path: "" });
-      Cookies.get("accessToken") && navigate("/");
+    if (!auth && !!authData?.token?.length) {
+      Cookies.set("accessToken", authData?.token);
+      window.location.reload();
     }
-  }, [authData]);
+  }, [authData?.token, auth]);
   return (
     <Formik
       initialValues={getSchema({})}
