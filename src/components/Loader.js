@@ -17,7 +17,7 @@ export default function Loader() {
       <Backdrop
         sx={{
           color: "red",
-          bgcolor: "#e2ffff",
+          bgcolor: "antiquewhite",
           zIndex: (theme) => theme.zIndex.drawer + 1,
           opacity: 1,
         }}

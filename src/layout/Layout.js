@@ -30,6 +30,8 @@ const Tab = styled(TabUnstyled)`
   display: flex;
   justify-content: center;
   text-transform: uppercase;
+  // border: 1px solid lightgray;
+  box-shadow: 0px 0px 5px 1px rgba(240,117,36,0.36);
 
   &:hover {
     background-color: gray;
@@ -63,7 +65,7 @@ const TabPanel = styled(TabPanelUnstyled)(
 const TabsList = styled(TabsListUnstyled)(
   ({ theme }) => `
   min-width: 400px;
-  background-color: #ccf8f8;
+  background-color: antiquewhite;
   border-radius: 4px;
   display: flex;
   align-items: center;
