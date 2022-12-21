@@ -1,15 +1,8 @@
 import Cookies from "js-cookie";
 
-const localUrl = "localhost:5000";
-
-// Local computer
-
-const baseUrl = localUrl || process.env.REACT_APP_BASE_API_URL;
-const protocol = "http" || process.env.REACT_APP_API_PROTOCOL;
-
-// Virtual computer
-// const baseUrl = process.env.REACT_APP_BASE_API_URL || localUrl;
-// const protocol = process.env.REACT_APP_API_PROTOCOL || "http" ;
+const localUrl = "billing-server.vercel.app";
+const baseUrl = process.env.REACT_APP_BASE_API_URL || localUrl;
+const protocol = process.env.REACT_APP_API_PROTOCOL || "https";
 let accessToken = Cookies.get("accessToken");
 const fetcher = async (route, options = {}) => {
   let url = new URL(`${protocol}://${baseUrl}/${route}`);
