@@ -39,7 +39,7 @@ export default function File() {
 
   const uploadImage = async (base64EncodedImage) => {
     try {
-      await fetch("http://localhost:5000/api/upload", {
+      await fetch("https://billing-server.vercel.app/api/upload", {
         method: "POST",
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-Type": "application/json" },
