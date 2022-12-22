@@ -88,6 +88,24 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={8} sm={6} md={4}>
                 <Stack spacing={0.5}>
+                  <InputLabel>CATEGORY</InputLabel>
+                  <TextField
+                    autoFocus={true}
+                    id="category"
+                    name="category"
+                    placeholder="Enter name"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.category}
+                    fullWidth
+                  />
+                  {touched.category && errors.category && (
+                    <FormHelperText error>{errors.category}</FormHelperText>
+                  )}
+                </Stack>
+              </Grid>
+              <Grid item xs={8} sm={6} md={4}>
+                <Stack spacing={0.5}>
                   <InputLabel>Item Name</InputLabel>
                   <TextField
                     autoFocus={true}

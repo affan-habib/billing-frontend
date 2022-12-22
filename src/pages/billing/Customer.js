@@ -67,6 +67,21 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
           </Grid>
           <Grid item sm={6} md={1.25}>
             <Stack spacing={0.5}>
+              <InputLabel>Address</InputLabel>
+              <TextField
+                id="address"
+                name="address"
+                placeholder="address"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.address}
+                fullWidth
+                type="text"
+              />
+            </Stack>
+          </Grid>
+          <Grid item sm={6} md={1.25}>
+            <Stack spacing={0.5}>
               <InputLabel>AGe</InputLabel>
               <TextField
                 id="age"
@@ -84,7 +99,6 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
                     e.preventDefault();
                   }
                 }}
-              
               />
             </Stack>
           </Grid>

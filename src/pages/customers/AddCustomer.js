@@ -47,8 +47,7 @@ const AddCustomer = ({ setOpen }) => {
         {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2} sx={{ p: 2 }}>
-              <CloseButton />
-              <Grid item lg={2}>
+              <Grid item md={4}>
                 <Stack spacing={0.5}>
                   <InputLabel>Id</InputLabel>
                   <TextField
@@ -62,7 +61,7 @@ const AddCustomer = ({ setOpen }) => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={3}>
+              <Grid item md={4}>
                 <Stack spacing={0.5}>
                   <InputLabel>Name</InputLabel>
                   <TextField
@@ -77,7 +76,7 @@ const AddCustomer = ({ setOpen }) => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={1}>
+              <Grid item md={2}>
                 <Stack spacing={0.5}>
                   <InputLabel>Gender</InputLabel>
                   <TextField
@@ -91,7 +90,7 @@ const AddCustomer = ({ setOpen }) => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={1}>
+              <Grid item md={2}>
                 <Stack spacing={0.5}>
                   <InputLabel>AGe</InputLabel>
                   <TextField
@@ -106,7 +105,7 @@ const AddCustomer = ({ setOpen }) => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={2}>
+              <Grid item md={4}>
                 <Stack spacing={0.5}>
                   <InputLabel>Contact Number</InputLabel>
                   <TextField
@@ -120,7 +119,21 @@ const AddCustomer = ({ setOpen }) => {
                   />
                 </Stack>
               </Grid>
-              <Grid item lg={2}>
+              <Grid item md={4}>
+                <Stack spacing={0.5}>
+                  <InputLabel>Address</InputLabel>
+                  <TextField
+                    id="address"
+                    name="address"
+                    placeholder="MOBILE NUMBER"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.address}
+                    fullWidth
+                  />
+                </Stack>
+              </Grid>
+              <Grid item md={4}>
                 <Stack
                   direction="row"
                   justifyContent="flex-start"
