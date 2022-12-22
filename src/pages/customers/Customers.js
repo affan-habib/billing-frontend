@@ -82,8 +82,16 @@ const Customers = () => {
       align: "left",
     },
     {
+      field: "address",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
+      headerName: "ADDRESS",
+      flex: .5,
+      headerAlign: "left",
+    },
+    {
+      headerClassName: "top-header-1",
+      cellClassName: "top-header-3",
       field: "gender",
       headerName: "GENDER",
       minWidth: 120,
@@ -114,7 +122,7 @@ const Customers = () => {
       headerName: "ACTION",
       type: "actions",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      cellClassName: "top-header-2",
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
   ];
