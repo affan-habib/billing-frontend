@@ -99,7 +99,7 @@ export default function Body() {
         <DataGrid
           sx={{
             bgcolor: "#f5f9f0",
-            height: 250,
+            height: 350,
             Width: "100%",
             mt: 2,
             borderRadius: 0,
