@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-const localUrl = "billing-server.vercel.app";
+const localUrl = "localhost:5000";
 const baseUrl = process.env.REACT_APP_BASE_API_URL || localUrl;
 const protocol = process.env.REACT_APP_API_PROTOCOL || "https";
 let accessToken = Cookies.get("accessToken");

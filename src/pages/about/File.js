@@ -12,7 +12,17 @@ export default function File() {
     previewFile(file);
     setSelectedFile(file);
     setFileInputState(e.target.value);
-    console.log(file);
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+      reader.onloadend = () => {
+        uploadImage(reader.result);
+      };
+      reader.onerror = () => {
+        console.error("AHHHHHHHH!!");
+        setErrMsg("something went wrong!");
+      };
+    }
   };
 
   const previewFile = (file) => {
@@ -55,19 +65,15 @@ export default function File() {
   return (
     <div>
       <h1 className="title">Upload an Image</h1>
-      <form onSubmit={handleSubmitFile} className="form">
-        <Input
-          id="fileInput"
-          type="file"
-          name="image"
-          onChange={handleFileInputChange}
-          value={fileInputState}
-          className="form-input"
-        />
-        <button className="btn" type="submit">
-          Submit
-        </button>
-      </form>
+      <Input
+        id="fileInput"
+        type="file"
+        name="image"
+        onChange={handleFileInputChange}
+        value={fileInputState}
+        className="form-input"
+      />
+
       {previewSource && (
         <img src={previewSource} alt="chosen" style={{ height: "100px" }} />
       )}

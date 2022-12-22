@@ -12,6 +12,7 @@ import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
 import { CloseCircleFilled } from "@ant-design/icons";
+import File from "../about/File";
 
 const AddCustomer = ({ setOpen }) => {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ const AddCustomer = ({ setOpen }) => {
                   />
                 </Stack>
               </Grid>
+              <File />
               <Grid item md={4}>
                 <Stack spacing={0.5}>
                   <InputLabel>Name</InputLabel>

@@ -32,24 +32,9 @@ const About = () => {
       >
         <Grid item md={6}>
           <File />
-          <Bugs data={images}/>
         </Grid>
         <Grid item md={6}>
-          <Paper sx={{ minHeight: 400, bgcolor: "#f5f9f0" }} square>
-            <Typography
-              sx={{
-                pt: 2,
-                ml: 2,
-                textTransform: "uppercase",
-                color: "primary",
-              }}
-              variant="h5"
-            >
-              Frequently Asked Questions
-            </Typography>
-            <Divider sx={{ mt: 2 }} />
-            <Faq />
-          </Paper>
+          <Bugs data={images} />
         </Grid>
       </Grid>
     </Paper>
