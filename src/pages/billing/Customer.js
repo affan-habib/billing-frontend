@@ -17,7 +17,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
   const genderRef = useRef();
   return (
     <>
-      <Paper sx={{ background: "#f5f9f0", p: 2, pt: 0, mt: 2 }} square>
+      <>
         <Grid container spacing={2}>
           <Grid item sm={6} md={3} flexDirection="column">
             <TextField
@@ -102,7 +102,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
             </FastField>
           </Grid>
         </Grid>
-      </Paper>
+      </>
     </>
   );
 };

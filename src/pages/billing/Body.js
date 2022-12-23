@@ -47,6 +47,7 @@ export default function Body() {
       cellClassName: "top-header-3",
       headerName: "UNIT",
       type: "number",
+      editable: true,
       minWidth: 120,
       headerAlign: "right",
       sortable: false,
@@ -72,7 +73,7 @@ export default function Body() {
       align: "right",
       minWidth: 120,
       valueGetter: (params) =>
-        params.row.quantityOrdered * params.row.basePrice,
+        params.row.quantityOrdered * params.row.basePrice - params.row.discountPerUnit,
       headerAlign: "right",
       type: "number",
     },

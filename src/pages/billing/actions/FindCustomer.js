@@ -33,8 +33,7 @@ const FindCustomer = ({ addItemRef }) => {
     setTimeout(() => addItemRef.current.focus(), 100);
   };
   return (
-    <Stack sx={{ mr: 2 }}>
-      <InputLabel sx={{ mb: 0.5, pt: 2 }}>SEARCH CUSTOMER</InputLabel>
+    <Stack sx={{ mr: 2, mt: 2 }}>
       <Autocomplete
         autoFocus
         size="medium"
@@ -52,6 +51,8 @@ const FindCustomer = ({ addItemRef }) => {
               ...params.inputProps,
             }}
             placeholder="SEARCH CUSTOMER"
+            label="FIND"
+            variant="filled"
             inputRef={customerRef}
           />
         )}
