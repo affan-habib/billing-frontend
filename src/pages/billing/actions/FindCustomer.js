@@ -52,7 +52,9 @@ const FindCustomer = ({ addItemRef }) => {
             }}
             placeholder="SEARCH CUSTOMER"
             label="FIND"
-            variant="filled"
+            InputLabelProps={{
+              shrink: true,
+            }}
             inputRef={customerRef}
           />
         )}

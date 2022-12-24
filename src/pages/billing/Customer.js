@@ -21,7 +21,6 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
         <Grid container spacing={2}>
           <Grid item sm={6} md={3} flexDirection="column">
             <TextField
-              variant="filled"
               label="FULL NAME"
               autoFocus={true}
               id="name"
@@ -42,7 +41,6 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
           </Grid>
           <Grid item sm={6} md={3}>
             <TextField
-              variant="filled"
               label="Contact"
               id="contactNumber"
               name="contactNumber"
@@ -63,9 +61,8 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
               }}
             />
           </Grid>
-          <Grid item sm={6} md={1.25}>
+          <Grid item sm={6} md={2}>
             <TextField
-              variant="filled"
               label="AGE"
               id="age"
               name="age"
@@ -84,11 +81,11 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
               }}
             />
           </Grid>
-          <Grid item sm={6} md={1.75}>
-            <FastField
+          <Grid item sm={6} md={2}>
+            <Select
               // disabled
+              fullWidth
               name="gender"
-              component={Select}
               variant="filled"
               label="AGE"
               value={values.gender}
@@ -99,7 +96,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
             >
               <MenuItem value="MALE">MALE</MenuItem>
               <MenuItem value="FEMALE">FEMALE</MenuItem>
-            </FastField>
+            </Select>
           </Grid>
         </Grid>
       </>

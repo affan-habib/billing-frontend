@@ -71,10 +71,12 @@ const AddItem = ({ addItemRef }) => {
                 inputProps={{
                   ...params.inputProps,
                 }}
+                InputLabelProps={{
+                  shrink: true
+                }}
                 placeholder="Add Service by Id/Name"
                 inputRef={addItemRef}
                 label="SEARCH ITEM"
-                variant="filled"
               />
             )}
             renderOption={(props, option) => (

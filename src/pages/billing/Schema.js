@@ -1,7 +1,9 @@
 import * as Yup from "yup";
+let date = new Date();
+let components = [date.getMonth(), date.getYear().toString().substr(-1)];
 const getSchema = (model = {}) => {
   const {
-    invoiceId = "4154",
+    invoiceId = components.join("") + Math.random().toString(36).slice(-2),
     customerId = "null",
     name = "John Doe",
     contactNumber = "0166666666",
