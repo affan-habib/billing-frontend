@@ -15,9 +15,7 @@ const Sales = () => {
     orders = {
       data: [],
     },
-    saleDeleted = {
-      data: { id: null },
-    },
+    saleDeleted,
     orderSaved,
   } = useSelector(selectApi);
   useEffect(() => {
@@ -27,7 +25,10 @@ const Sales = () => {
         output: "orders",
       })
     );
-  }, [saleDeleted?.data?.id, orderSaved]);
+  }, [saleDeleted, orderSaved]);
+
+  const filtered = orders?.data?.filter((el) => el.invoiceId != saleDeleted?.data?.invoiceId);
+
   const columns = [
     {
       field: "id",
@@ -164,7 +165,7 @@ const Sales = () => {
         <DataGrid
           getRowId={(row) => row?._id}
           checkboxSelection={true}
-          rows={orders?.data}
+          rows={orders.data}
           columns={columns}
           disableSelectionOnClick
           disableColumnSelector

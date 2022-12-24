@@ -21,7 +21,7 @@ const Tab = styled(TabUnstyled)`
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  background-color: #f5f9f0;
+  background-color: #rgb(255, 248, 238);
   width: 100%;
   padding: 10px 12px;
   margin: 6px 6px;
@@ -31,7 +31,7 @@ const Tab = styled(TabUnstyled)`
   justify-content: center;
   text-transform: uppercase;
   // border: 1px solid lightgray;
-  box-shadow: 0px 0px 5px 1px rgba(240,117,36,0.36);
+  box-shadow: 0px 0px 5px 1px rgba(240, 117, 36, 0.36);
 
   &:hover {
     background-color: gray;
@@ -77,7 +77,7 @@ const TabsList = styled(TabsListUnstyled)(
 
 export default function UnstyledTabsIntroduction() {
   return (
-    <TabsUnstyled defaultValue={3}>
+    <TabsUnstyled defaultValue={0}>
       <Box
         sx={{
           mx: "auto",
@@ -124,28 +124,28 @@ export default function UnstyledTabsIntroduction() {
       </Box>
       <TabPanel value={0} index={0}>
         <React.Suspense fallback={<Loader />}>
-          <Paper sx={{ minHeight: "93vh", bgcolor: "antiquewhite" }}>
+          <Paper>
             <Billing />
           </Paper>
         </React.Suspense>
       </TabPanel>
       <TabPanel value={1} index={1}>
-        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2 }}>
           <Sales />
         </Paper>
       </TabPanel>
       <TabPanel value={2} index={2}>
-        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2 }}>
           <Customers />
         </Paper>
       </TabPanel>
       <TabPanel value={3} index={3}>
-        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2 }}>
           <Products />
         </Paper>
       </TabPanel>
       <TabPanel value={4} index={4}>
-        <Paper sx={{ padding: 2, bgcolor: "antiquewhite", minHeight: "93vh" }}>
+        <Paper sx={{ padding: 2 }}>
           <About />
         </Paper>
       </TabPanel>

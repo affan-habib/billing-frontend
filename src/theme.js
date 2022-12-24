@@ -86,6 +86,14 @@ const rawTheme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      defaultProps: {
+        variant: "filled",
+        InputLabelProps: {
+          shrink: true,
+        },
+      },
+    },
     MuiInputLabel: {
       styleOverrides: {
         root: {
