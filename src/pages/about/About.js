@@ -1,28 +1,29 @@
-import { Box, Divider, Grid, Paper, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import {
+  Box,
+  Dialog,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+  Button,
+} from "@mui/material";
+import React, { Suspense, useEffect, useState } from "react";
 import Faq from "./Faq";
 import File from "./File";
 import Loader from "../../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
-import Bugs from "./Bugs";
-const About = () => {
-  const dispatch = useDispatch();
-  const { loading, images } = useSelector(selectApi);
-  useEffect(
-    () =>
-      dispatch(
-        callApi({
-          operationId: `api/images`,
-          output: "images",
-        })
-      ),
-    []
-  );
+const Bugs = React.lazy(() => import("./Bugs"));
 
-  console.log(images, loading);
+const About = () => {
+  const [open, setOpen] = useState(false);
   return (
     <Paper sx={{ my: 2, p: 2, pt: 0 }} className="animated" square>
+      <Dialog open={open} onClose={() => setOpen(!open)}>
+        <Suspense fallback={<Loader/>}>
+          <Bugs />
+        </Suspense>
+      </Dialog>
       <Grid
         container
         spacing={2}
@@ -32,10 +33,10 @@ const About = () => {
       >
         <Grid item md={6}>
           <File />
-          <Bugs data={images}/>
+          <Button onClick={() => setOpen(!open)}>See Bugs</Button>
         </Grid>
         <Grid item md={6}>
-          <Paper sx={{ minHeight: 400, }} square>
+          <Paper sx={{ minHeight: 400 }} square>
             <Typography
               sx={{
                 pt: 2,

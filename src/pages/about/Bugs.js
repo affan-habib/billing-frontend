@@ -20,10 +20,10 @@ export default function Bugs() {
     []
   );
   return (
-    <Grid container spacing={2}>
+    <Grid container>
       {images?.map((item, index) => (
-        <Grid item md={4}>
-          <img style={{ width: "100%", height: 200 }} src={item} />
+        <Grid item md={2} sx={{ border: 1, m: 1 }}>
+          <img style={{ width: "100%", height: "auto" }} src={item} />
         </Grid>
       ))}
     </Grid>
