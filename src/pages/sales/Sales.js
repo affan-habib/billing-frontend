@@ -31,7 +31,7 @@ const Sales = () => {
 
   const columns = [
     {
-      field: "id",
+      field: "invoiceId",
       headerClassName: "top-header-1",
       cellClassName: "top-header-2",
       headerName: "CODE",
