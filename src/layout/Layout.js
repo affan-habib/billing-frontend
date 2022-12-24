@@ -14,14 +14,14 @@ import About from "../pages/about/About";
 import Loader from "../components/Loader";
 import { LogoutOutlined } from "@mui/icons-material";
 import Cookies from "js-cookie";
+import { blueGrey } from "@mui/material/colors";
 
 const Tab = styled(TabUnstyled)`
   font-family: IBM Plex Sans, sans-serif;
-  color: gray;
+  color: ${blueGrey[600]};
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  background-color: #rgb(255, 248, 238);
   width: 100%;
   padding: 10px 12px;
   margin: 6px 6px;
@@ -30,11 +30,9 @@ const Tab = styled(TabUnstyled)`
   display: flex;
   justify-content: center;
   text-transform: uppercase;
-  // border: 1px solid lightgray;
-  box-shadow: 0px 0px 5px 1px rgba(240, 117, 36, 0.36);
 
   &:hover {
-    background-color: gray;
+    background-color: ${blueGrey[300]};
     color: #fff;
   }
 
@@ -43,7 +41,7 @@ const Tab = styled(TabUnstyled)`
   }
 
   &.${tabUnstyledClasses.selected} {
-    background-color: gray;
+    background-color: ${blueGrey[600]};
     color: white;
   }
 
@@ -58,14 +56,12 @@ const TabPanel = styled(TabPanelUnstyled)(
   width: 100%;
   font-family: IBM Plex Sans, sans-serif;
   font-size: 0.875rem;
-  background:  #D9D9D9;
   `
 );
 
 const TabsList = styled(TabsListUnstyled)(
   ({ theme }) => `
   min-width: 400px;
-  background-color: antiquewhite;
   border-radius: 4px;
   display: flex;
   align-items: center;

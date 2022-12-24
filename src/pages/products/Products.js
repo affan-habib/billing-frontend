@@ -37,7 +37,7 @@ const Products = () => {
     {
       field: "id",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       headerName: "CODE",
       width: 70,
       align: "left",
@@ -47,7 +47,7 @@ const Products = () => {
     {
       field: "serviceName",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
@@ -55,7 +55,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       field: "basePrice",
       headerName: "PRICE",
       type: "number",
@@ -66,7 +66,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       field: "discountPerUnit",
       headerName: "DISCOUNT",
       type: "number",
@@ -77,7 +77,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       field: "vatPerUnit",
       headerName: "VAT PER UNIT",
       type: "number",
@@ -88,7 +88,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       field: "expiryDate",
       headerName: "EXPIRY DATE",
       type: "number",
@@ -104,7 +104,7 @@ const Products = () => {
       headerName: "ACTION",
       type: "actions",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       renderCell: (params) => <DeleteProduct shouldDelete={params.id} />,
     },
   ];
@@ -140,7 +140,7 @@ const Products = () => {
   };
 
   return (
-    <Paper elevation={1} sx={{ width: "100%", bgcolor: "#f5f9f0", pb: 2 }}>
+    <Paper elevation={1} sx={{ width: "100%",  pb: 2 }}>
       <Stack direction="row">
         <Button
           sx={{ m: 2, width: 200 }}

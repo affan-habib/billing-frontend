@@ -35,7 +35,7 @@ const About = () => {
           <Bugs data={images}/>
         </Grid>
         <Grid item md={6}>
-          <Paper sx={{ minHeight: 400, bgcolor: "#f5f9f0" }} square>
+          <Paper sx={{ minHeight: 400, }} square>
             <Typography
               sx={{
                 pt: 2,

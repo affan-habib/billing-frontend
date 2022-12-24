@@ -16,7 +16,6 @@ export default function Body() {
     {
       field: "id",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
       headerName: "CODE",
       width: 70,
       align: "left",
@@ -26,7 +25,6 @@ export default function Body() {
     {
       field: "serviceName",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
@@ -35,7 +33,6 @@ export default function Body() {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
       field: "basePrice",
       headerName: "PRICE",
       type: "number",
@@ -48,7 +45,6 @@ export default function Body() {
     {
       field: "quantityOrdered",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
       headerName: "UNIT",
       type: "number",
       editable: true,
@@ -60,7 +56,6 @@ export default function Body() {
     {
       field: "discountPerUnit",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
@@ -71,7 +66,6 @@ export default function Body() {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
       field: "finalPrice",
       headerName: "AMOUNT",
       sortable: false,
@@ -85,7 +79,6 @@ export default function Body() {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
       minWidth: 70,
       align: "center",
       field: "actions",
@@ -105,7 +98,6 @@ export default function Body() {
       <Paper square elevation={1}>
         <DataGrid
           sx={{
-            bgcolor: "#f5f9f0",
             height: 250,
             Width: "100%",
             mt: 2,

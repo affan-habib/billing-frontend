@@ -50,8 +50,8 @@ const FindCustomer = ({ addItemRef }) => {
             inputProps={{
               ...params.inputProps,
             }}
-            placeholder="SEARCH CUSTOMER"
-            label="FIND"
+            placeholder="type..."
+            label="Find Customer"
             InputLabelProps={{
               shrink: true,
             }}

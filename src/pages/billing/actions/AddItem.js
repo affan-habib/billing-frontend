@@ -73,7 +73,7 @@ const AddItem = ({ addItemRef }) => {
                 InputLabelProps={{
                   shrink: true
                 }}
-                placeholder="Add Service by Id/Name"
+                placeholder="type..."
                 inputRef={addItemRef}
                 label="SEARCH ITEM"
               />

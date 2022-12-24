@@ -44,7 +44,7 @@ const Customers = () => {
     {
       field: "id",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       headerName: "CODE",
       width: 70,
       align: "left",
@@ -54,7 +54,7 @@ const Customers = () => {
     {
       field: "name",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       headerName: "CLIENT NAME",
       flex: 1,
       headerAlign: "left",
@@ -62,7 +62,7 @@ const Customers = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       field: "age",
       headerName: "AGE",
       type: "number",
@@ -73,7 +73,7 @@ const Customers = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       field: "contactNumber",
       headerName: "CONTACT",
       minWidth: 120,
@@ -84,14 +84,14 @@ const Customers = () => {
     {
       field: "address",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       headerName: "ADDRESS",
       flex: .5,
       headerAlign: "left",
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       field: "gender",
       headerName: "GENDER",
       minWidth: 120,
@@ -122,7 +122,7 @@ const Customers = () => {
       headerName: "ACTION",
       type: "actions",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
   ];
@@ -160,7 +160,7 @@ const Customers = () => {
   return (
     <Paper
       elevation={1}
-      sx={{ pt: 2, pb: 2, width: "100%", bgcolor: "#f5f9f0" }}
+      sx={{ pt: 2, pb: 2, width: "100%", }}
     >
       <Stack direction="row">
         <Button
