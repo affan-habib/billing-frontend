@@ -62,7 +62,6 @@ export default function Sidebar() {
       <TextField
         label="ITEM TOTAL"
         fullWidth
-        
         type="number"
         value={itemTotal}
         InputProps={{
@@ -78,8 +77,7 @@ export default function Sidebar() {
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
           readOnly: !itemTotal,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        
+        sx={{ mb: 1 }}
         type="number"
         // disabled={!itemTotal}
         value={discountVal}
@@ -106,8 +104,7 @@ export default function Sidebar() {
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        
+        sx={{ mb: 1 }}
         type="number"
         value={itemTotal - discountVal}
         inputRef={payableAmountRef}
@@ -119,8 +116,7 @@ export default function Sidebar() {
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        
+        sx={{ mb: 1 }}
         color="error"
         type="number"
         value={givenAmount}
@@ -134,8 +130,7 @@ export default function Sidebar() {
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        
+        sx={{ mb: 1 }}
         type="number"
         value={itemTotal - discountVal - givenAmount}
       />

@@ -1,13 +1,4 @@
-import {
-  Grid,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-  Stack,
-  TextField,
-} from "@mui/material";
-import { FastField } from "formik";
+import { Grid, MenuItem, Select, TextField } from "@mui/material";
 import { useRef } from "react";
 
 const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
@@ -62,6 +53,23 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
             />
           </Grid>
           <Grid item sm={6} md={2}>
+            <Select
+              // disabled
+              fullWidth
+              name="gender"
+              variant="filled"
+              label="AGE"
+              value={values.gender}
+              onChange={(e) => {
+                setFieldValue("gender", e.target.value);
+              }}
+              inputRef={genderRef}
+            >
+              <MenuItem value="MALE">MALE</MenuItem>
+              <MenuItem value="FEMALE">FEMALE</MenuItem>
+            </Select>
+          </Grid>
+          <Grid item sm={6} md={2}>
             <TextField
               label="AGE"
               id="age"
@@ -80,23 +88,6 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
                 }
               }}
             />
-          </Grid>
-          <Grid item sm={6} md={2}>
-            <Select
-              // disabled
-              fullWidth
-              name="gender"
-              variant="filled"
-              label="AGE"
-              value={values.gender}
-              onChange={(e) => {
-                setFieldValue("gender", e.target.value);
-              }}
-              inputRef={genderRef}
-            >
-              <MenuItem value="MALE">MALE</MenuItem>
-              <MenuItem value="FEMALE">FEMALE</MenuItem>
-            </Select>
           </Grid>
         </Grid>
       </>

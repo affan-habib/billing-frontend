@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Dialog,
-  InputLabel,
   Stack,
   TextField,
   Tooltip,

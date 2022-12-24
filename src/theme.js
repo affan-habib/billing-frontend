@@ -92,6 +92,7 @@ const rawTheme = createTheme({
         InputLabelProps: {
           shrink: true,
         },
+        bgcolor: "white"
       },
     },
     MuiInputLabel: {

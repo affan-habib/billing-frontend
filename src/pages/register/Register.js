@@ -51,8 +51,8 @@ export default function Register() {
               variant="outlined"
             >
               <Stack>
-                <InputLabel sx={{ mb: 0.5 }}>ENTER NAME</InputLabel>
                 <TextField
+                  label="ENTER NAME"
                   autoFocus={true}
                   name="name"
                   placeholder="EMAIL NAME"
@@ -66,8 +66,8 @@ export default function Register() {
                 )}
               </Stack>
               <Stack>
-                <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
                 <TextField
+                  label="EMAIL ADDRESS"
                   autoFocus={true}
                   name="email"
                   placeholder="EMAIL ADDRESS"
@@ -81,8 +81,8 @@ export default function Register() {
                 )}
               </Stack>
               <Stack>
-                <InputLabel sx={{ mb: 0.5 }}>PASSWORD</InputLabel>
                 <TextField
+                  label="PASSWORD"
                   autoFocus={true}
                   name="password"
                   type="password"

@@ -70,8 +70,8 @@ export default function Login() {
                 variant="outlined"
               >
                 <Stack>
-                  <InputLabel sx={{ mb: 0.5 }}>EMAIL ADDRESS</InputLabel>
                   <TextField
+                    label="EMAIL ADDRESS"
                     autoFocus={true}
                     name="email"
                     placeholder="EMAIL ADDRESS"
@@ -90,8 +90,8 @@ export default function Login() {
                   )}
                 </Stack>
                 <Stack>
-                  <InputLabel sx={{ mb: 0.5 }}>PASSWORD</InputLabel>
                   <TextField
+                    label="PASSWORD"
                     autoFocus={true}
                     name="password"
                     type="password"
