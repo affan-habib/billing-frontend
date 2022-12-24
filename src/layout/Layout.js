@@ -84,7 +84,6 @@ export default function UnstyledTabsIntroduction() {
           width: "100%",
           py: 1,
           px: 2,
-          bgcolor: "#f5f9f0",
           display: "flex",
           alignItems: "center",
         }}
