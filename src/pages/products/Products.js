@@ -161,7 +161,6 @@ const Products = () => {
         </Dialog>
       </Stack>
       <DataGrid
-        sx={{ height: 400, m: 2, mt: 0 }}
         getRowId={(row) => row._id}
         checkboxSelection={true}
         rows={items.data}
