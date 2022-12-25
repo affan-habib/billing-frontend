@@ -216,7 +216,7 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={12}>
                 <ButtonGroup>
-                  <Button variant="contained" color="info" type="submit">
+                  <Button variant="contained"  type="submit">
                     Submit
                   </Button>
                   <Button variant="outlined" color="error" type="reset">

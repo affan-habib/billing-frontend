@@ -133,7 +133,7 @@ const AddCustomer = ({ setOpen }) => {
                   alignItems="flex-end"
                   sx={{ height: "100%" }}
                 >
-                  <Button variant="contained" color="info" type="submit">
+                  <Button variant="contained"  type="submit">
                     SAVE
                   </Button>
                 </Stack>

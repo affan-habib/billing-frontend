@@ -81,7 +81,7 @@ const ServiceList = () => {
           variant="contained"
           sx={{ height: 20, width: 70, borderRadius: 10 }}
           size="small"
-          color="info"
+          
           onClick={() => dispatch(addToCart(params.row))}
         >
           {alreadySelectedOptions.includes(params.row.id) ? "ADDED" : "ADD"}
@@ -102,14 +102,14 @@ const ServiceList = () => {
             sx={{ mb: 2, mr: 2 }}
             disabled={selectedOptions.length == 0}
             variant="contained"
-            color="info"
+            
             onClick={() => handleAddToCart()}
           >
             {selectedOptions.length ? "Add services" : "Select Items"}
           </Button>
           <Button
             sx={{ mb: 2, mr: 2 }}
-            color="info"
+            
             variant="contained"
             onClick={() => setOpen(!open)}
           >
