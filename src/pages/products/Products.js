@@ -34,65 +34,52 @@ const Products = () => {
   const columns = [
     {
       field: "id",
-      headerClassName: "top-header-1",
-
       headerName: "CODE",
       width: 70,
       align: "left",
-      sortable: false,
+
       headerAlign: "left",
     },
     {
       field: "serviceName",
-      headerClassName: "top-header-1",
-
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
-      sortable: false,
     },
     {
-      headerClassName: "top-header-1",
-
       field: "basePrice",
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+
       align: "center",
     },
     {
-      headerClassName: "top-header-1",
-
       field: "discountPerUnit",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+
       align: "center",
     },
     {
-      headerClassName: "top-header-1",
-
       field: "vatPerUnit",
       headerName: "VAT PER UNIT",
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+
       align: "center",
     },
     {
-      headerClassName: "top-header-1",
-
       field: "expiryDate",
       headerName: "EXPIRY DATE",
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+
       align: "center",
     },
     {
@@ -101,7 +88,6 @@ const Products = () => {
       field: "actions",
       headerName: "ACTION",
       type: "actions",
-      headerClassName: "top-header-1",
 
       renderCell: (params) => <DeleteProduct shouldDelete={params.id} />,
     },

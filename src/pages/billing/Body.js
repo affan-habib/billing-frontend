@@ -14,60 +14,54 @@ export default function Body() {
   const columns = [
     {
       field: "id",
-      headerClassName: "top-header-1",
       headerName: "CODE",
       width: 70,
       align: "left",
-      sortable: false,
+      
       headerAlign: "left",
     },
     {
       field: "serviceName",
-      headerClassName: "top-header-1",
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
-      sortable: false,
+      
       editable: true,
     },
     {
-      headerClassName: "top-header-1",
       field: "basePrice",
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
       headerAlign: "right",
-      sortable: false,
+      
       align: "right",
       editable: true,
     },
     {
       field: "quantityOrdered",
-      headerClassName: "top-header-1",
       headerName: "UNIT",
       type: "number",
       editable: true,
       minWidth: 120,
       headerAlign: "right",
-      sortable: false,
+      
       align: "right",
     },
     {
       field: "discountPerUnit",
-      headerClassName: "top-header-1",
       headerName: "DISCOUNT",
       type: "number",
       minWidth: 120,
       headerAlign: "right",
-      sortable: false,
+      
       align: "right",
       editable: true,
     },
     {
-      headerClassName: "top-header-1",
       field: "finalPrice",
       headerName: "AMOUNT",
-      sortable: false,
+      
       align: "right",
       minWidth: 120,
       valueGetter: (params) =>
@@ -77,7 +71,6 @@ export default function Body() {
       type: "number",
     },
     {
-      headerClassName: "top-header-1",
       minWidth: 70,
       align: "center",
       field: "actions",
@@ -93,7 +86,6 @@ export default function Body() {
         <FindCustomer addItemRef={addItemRef} />
         <AddItem addItemRef={addItemRef} />
       </Stack>
-
       <Paper square elevation={1}>
         <DataGrid
           rows={rows}

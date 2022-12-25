@@ -61,10 +61,17 @@ function CustomToolbar() {
   );
 }
 
-//INFO default table rowId is id, for custom row id, set rowId from component as a props.
-
-function DataGridTableCustom(props) {
-  console.log(props);
+function DataGridTableCustom({
+  rows,
+  columns,
+  isToolbarAvailable = true,
+  sx,
+  getRowId,
+  onCellEditCommit,
+  hideFooter,
+  components,
+  checkboxSelection,
+}) {
   const [pageSize, setPageSize] = useState(10);
   return (
     <DataGrid
@@ -79,9 +86,15 @@ function DataGridTableCustom(props) {
         borderRadius: 0,
         border: 0,
         "& .MuiDataGrid-cell:hover": {
-          color: "primary.main",
+          color: "error.main",
+        },
+        "& .MuiDataGrid-columnHeader": {
+          color: "white",
+          bgcolor: "primary.main",
+          fontSize: "0.9rem",
         },
         "& .MuiDataGrid-row": {
+          fontSize: "0.9rem",
           "&:nth-of-type(2n)": {
             backgroundColor: " #EBF0F4 ", //even tealcolor
             "&:hover": {
@@ -89,15 +102,29 @@ function DataGridTableCustom(props) {
             },
           },
         },
+        ...sx,
       }}
       components={{
         NoRowsOverlay: NoRowIcon,
         Pagination: CustomPagination,
+        ...components,
       }}
+      componentsProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps: { debounceMs: 100 },
+        },
+      }}
+      checkboxSelection={checkboxSelection}
       headerHeight={55}
       disableSelectionOnClick
       disableColumnSelector
-      {...props}
+      rows={rows}
+      columns={columns}
+      getRowId={getRowId}
+      onCellEditCommit={onCellEditCommit}
+      hideFooter={hideFooter}
+      pageSize={10}
     />
   );
 }

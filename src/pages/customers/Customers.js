@@ -33,60 +33,60 @@ const Customers = () => {
   const columns = [
     {
       field: "id",
-      headerClassName: "top-header-1",
+      
 
       headerName: "CODE",
       width: 70,
       align: "left",
-      sortable: false,
+      
       headerAlign: "left",
     },
     {
       field: "name",
-      headerClassName: "top-header-1",
+      
 
       headerName: "CLIENT NAME",
       flex: 1,
       headerAlign: "left",
-      sortable: false,
+      
     },
     {
-      headerClassName: "top-header-1",
+      
 
       field: "age",
       headerName: "AGE",
       type: "number",
       minWidth: 60,
       headerAlign: "center",
-      sortable: false,
+      
       align: "center",
     },
     {
-      headerClassName: "top-header-1",
+      
 
       field: "contactNumber",
       headerName: "CONTACT",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+      
       align: "left",
     },
     {
       field: "address",
-      headerClassName: "top-header-1",
+      
 
       headerName: "ADDRESS",
       flex: 0.5,
       headerAlign: "left",
     },
     {
-      headerClassName: "top-header-1",
+      
 
       field: "gender",
       headerName: "GENDER",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+      
       align: "center",
       renderCell: (params) => (
         <Box
@@ -111,7 +111,7 @@ const Customers = () => {
       field: "actions",
       headerName: "ACTION",
       type: "actions",
-      headerClassName: "top-header-1",
+      
 
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
