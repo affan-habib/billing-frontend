@@ -36,7 +36,7 @@ const ServiceList = () => {
     {
       field: "id",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       headerName: "CODE",
       width: 70,
       align: "left",
@@ -46,7 +46,7 @@ const ServiceList = () => {
     {
       field: "serviceName",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
@@ -54,7 +54,7 @@ const ServiceList = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       field: "basePrice",
       headerName: "PRICE",
       type: "number",
@@ -65,7 +65,7 @@ const ServiceList = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       minWidth: 120,
       align: "center",
       field: "actions",

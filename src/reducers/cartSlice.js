@@ -40,6 +40,11 @@ const cartSlice = createSlice({
     setField: (state, action) => {
       state[`${action.payload.field}`] = action.payload.value;
     },
+    editCellValue: (state, action) => {
+      const item = state.itemList.find((item) => item.id === action.payload.id);
+      item[`${action.payload.field}`] = action.payload.value;
+      // console.log(item)
+    },
     clearCart: (state) => {
       state.itemList = [];
     },
@@ -53,5 +58,6 @@ export const {
   decrementQuantity,
   removeItem,
   setField,
+  editCellValue,
   clearCart,
 } = cartSlice.actions;

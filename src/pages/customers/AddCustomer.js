@@ -1,13 +1,6 @@
 import React, { useEffect } from "react";
 import { Formik } from "formik";
-import {
-  Grid,
-  InputLabel,
-  Stack,
-  TextField,
-  Button,
-  IconButton,
-} from "@mui/material";
+import { Grid, Stack, TextField, Button, IconButton } from "@mui/material";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
@@ -50,8 +43,8 @@ const AddCustomer = ({ setOpen }) => {
             <Grid container spacing={2} sx={{ p: 2 }}>
               <Grid item md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Id</InputLabel>
                   <TextField
+                    label="Id"
                     id="id"
                     name="id"
                     placeholder="ID"
@@ -65,8 +58,8 @@ const AddCustomer = ({ setOpen }) => {
               <File />
               <Grid item md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Name</InputLabel>
                   <TextField
+                    label="Name"
                     autoFocus={true}
                     id="name"
                     name="name"
@@ -80,8 +73,8 @@ const AddCustomer = ({ setOpen }) => {
               </Grid>
               <Grid item md={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Gender</InputLabel>
                   <TextField
+                    label="Gender"
                     id="gender"
                     name="gender"
                     placeholder="GENDER"
@@ -94,8 +87,8 @@ const AddCustomer = ({ setOpen }) => {
               </Grid>
               <Grid item md={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>AGe</InputLabel>
                   <TextField
+                    label="AGe"
                     id="age"
                     name="age"
                     placeholder="AGE"
@@ -109,8 +102,8 @@ const AddCustomer = ({ setOpen }) => {
               </Grid>
               <Grid item md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Contact Number</InputLabel>
                   <TextField
+                    label="Contact Number"
                     id="contactNumber"
                     name="contactNumber"
                     placeholder="MOBILE NUMBER"
@@ -123,8 +116,8 @@ const AddCustomer = ({ setOpen }) => {
               </Grid>
               <Grid item md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Address</InputLabel>
                   <TextField
+                    label="Address"
                     id="address"
                     name="address"
                     placeholder="MOBILE NUMBER"

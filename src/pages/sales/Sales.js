@@ -15,9 +15,7 @@ const Sales = () => {
     orders = {
       data: [],
     },
-    saleDeleted = {
-      data: { id: null },
-    },
+    saleDeleted,
     orderSaved,
   } = useSelector(selectApi);
   useEffect(() => {
@@ -27,12 +25,15 @@ const Sales = () => {
         output: "orders",
       })
     );
-  }, [saleDeleted?.data?.id, orderSaved]);
+  }, [saleDeleted, orderSaved]);
+
+  const filtered = orders?.data?.filter((el) => el.invoiceId != saleDeleted?.data?.invoiceId);
+
   const columns = [
     {
-      field: "id",
+      field: "invoiceId",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       headerName: "CODE",
       width: 70,
       align: "left",
@@ -42,7 +43,7 @@ const Sales = () => {
     {
       field: "name",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       headerName: "SALE",
       flex: 1,
       headerAlign: "left",
@@ -51,7 +52,7 @@ const Sales = () => {
     {
       field: "gender",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       headerName: "GENDER",
       flex: 0.5,
       headerAlign: "left",
@@ -60,7 +61,7 @@ const Sales = () => {
     {
       field: "age",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       headerName: "AGE",
       flex: 0.5,
       headerAlign: "left",
@@ -71,7 +72,7 @@ const Sales = () => {
     {
       field: "contactNumber",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       headerName: "CONTACT",
       flex: 1,
       headerAlign: "left",
@@ -79,7 +80,7 @@ const Sales = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       field: "itemTotal",
       headerName: "TOTAL",
 
@@ -90,7 +91,7 @@ const Sales = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       field: "discountAmount",
       headerName: "DISCOUNT",
       type: "number",
@@ -101,7 +102,7 @@ const Sales = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       field: "paidAmount",
       headerName: "PAID",
 
@@ -113,7 +114,7 @@ const Sales = () => {
 
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       field: "createdAt",
       headerName: "ORDER CREATED",
 
@@ -126,7 +127,7 @@ const Sales = () => {
     },
     {
       headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
       field: "updatedAt",
       headerName: "ORDER UPDATED",
       flex: 1,
@@ -143,7 +144,7 @@ const Sales = () => {
       headerName: "ACTION",
       type: "actions",
       headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
       renderCell: (params) => <DeleteSale shouldDelete={params.id} />,
     },
   ];
@@ -158,13 +159,13 @@ const Sales = () => {
   return (
     <Paper
       elevation={1}
-      sx={{ height: 475, width: "100%", bgcolor: "#f5f9f0", p: 2 }}
+      sx={{ height: 475, width: "100%",  p: 2 }}
     >
       <Suspense fallback={<Loader />}>
         <DataGrid
           getRowId={(row) => row?._id}
           checkboxSelection={true}
-          rows={orders?.data}
+          rows={orders.data}
           columns={columns}
           disableSelectionOnClick
           disableColumnSelector

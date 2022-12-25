@@ -54,7 +54,7 @@ const Billing = () => {
                     <Body />
                   </Grid>
                   <Grid item md={3}>
-                    <Paper sx={{ p: 2, bgcolor: "#f5f9f0" }}>
+                    <Paper sx={{ p: 2 }}>
                       <Sidebar />
                       <SubmitBill {...props} />
                     </Paper>

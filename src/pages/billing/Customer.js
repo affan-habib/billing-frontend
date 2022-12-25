@@ -1,13 +1,4 @@
-import {
-  Grid,
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-  Stack,
-  TextField,
-} from "@mui/material";
-import { FastField } from "formik";
+import { Grid, MenuItem, Select, TextField } from "@mui/material";
 import { useRef } from "react";
 
 const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
@@ -17,116 +8,89 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
   const genderRef = useRef();
   return (
     <>
-      <Paper sx={{ background: "#f5f9f0", p: 2, pt: 0, mt: 2 }} square>
+      <>
         <Grid container spacing={2}>
-          <Grid item sm={6} md={3}>
-            <Stack spacing={0.5}>
-              <InputLabel>Full Name</InputLabel>
-              <TextField
-                autoFocus={true}
-                id="name"
-                name="name"
-                placeholder="eg : John Doe"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.name}
-                fullWidth
-                inputRef={nameRef}
-                onKeyPress={(e) => {
-                  if (e.key === "Enter" && !!nameRef.current.value.length) {
-                    contactNumberRef.current.focus();
-                    e.preventDefault();
-                  }
-                }}
-              />
-            </Stack>
+          <Grid item sm={6} md={3} flexDirection="column">
+            <TextField
+              label="FULL NAME"
+              autoFocus={true}
+              id="name"
+              name="name"
+              placeholder="eg : John Doe"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.name}
+              fullWidth
+              inputRef={nameRef}
+              onKeyPress={(e) => {
+                if (e.key === "Enter" && !!nameRef.current.value.length) {
+                  contactNumberRef.current.focus();
+                  e.preventDefault();
+                }
+              }}
+            />
           </Grid>
           <Grid item sm={6} md={3}>
-            <Stack spacing={0.5}>
-              <InputLabel>Contact</InputLabel>
-              <TextField
-                id="contactNumber"
-                name="contactNumber"
-                placeholder="eg: 01798980000"
-                onBlur={handleBlur}
-                value={values.contactNumber}
-                onChange={handleChange}
-                fullWidth
-                inputRef={contactNumberRef}
-                onKeyPress={(e) => {
-                  if (
-                    e.key === "Enter" &&
-                    !!contactNumberRef.current.value.length
-                  ) {
-                    genderRef.current.focus();
-                    e.preventDefault();
-                  }
-                }}
-              />
-            </Stack>
+            <TextField
+              label="Contact"
+              id="contactNumber"
+              name="contactNumber"
+              placeholder="eg: 01798980000"
+              onBlur={handleBlur}
+              value={values.contactNumber}
+              onChange={handleChange}
+              fullWidth
+              inputRef={contactNumberRef}
+              onKeyPress={(e) => {
+                if (
+                  e.key === "Enter" &&
+                  !!contactNumberRef.current.value.length
+                ) {
+                  genderRef.current.focus();
+                  e.preventDefault();
+                }
+              }}
+            />
           </Grid>
-          <Grid item sm={6} md={3}>
-            <Stack spacing={0.5}>
-              <InputLabel>Address</InputLabel>
-              <TextField
-                id="address"
-                name="address"
-                placeholder="address"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.address}
-                fullWidth
-                type="text"
-              />
-            </Stack>
+          <Grid item sm={6} md={2}>
+            <Select
+              // disabled
+              fullWidth
+              name="gender"
+              variant="filled"
+              label="AGE"
+              value={values.gender}
+              onChange={(e) => {
+                setFieldValue("gender", e.target.value);
+              }}
+              inputRef={genderRef}
+            >
+              <MenuItem value="MALE">MALE</MenuItem>
+              <MenuItem value="FEMALE">FEMALE</MenuItem>
+            </Select>
           </Grid>
-          <Grid item sm={6} md={1.25}>
-            <Stack spacing={0.5}>
-              <InputLabel>AGe</InputLabel>
-              <TextField
-                id="age"
-                name="age"
-                placeholder="AGE"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.age}
-                fullWidth
-                type="number"
-                inputRef={ageRef}
-                onKeyPress={(e) => {
-                  if (e.key === "Enter") {
-                    genderRef.current.focus();
-                    e.preventDefault();
-                  }
-                }}
-              />
-            </Stack>
-          </Grid>
-          <Grid item sm={6} md={1.75}>
-            <Stack spacing={0.5}>
-              <InputLabel
-                sx={{ fontWeight: 500, textTransform: "uppercase" }}
-                htmlFor="gender"
-              >
-                GENDER
-              </InputLabel>
-              <FastField
-                // disabled
-                name="gender"
-                component={Select}
-                value={values.gender}
-                onChange={(e) => {
-                  setFieldValue("gender", e.target.value);
-                }}
-                inputRef={genderRef}
-              >
-                <MenuItem value="MALE">MALE</MenuItem>
-                <MenuItem value="FEMALE">FEMALE</MenuItem>
-              </FastField>
-            </Stack>
+          <Grid item sm={6} md={2}>
+            <TextField
+              label="AGE"
+              id="age"
+              name="age"
+              placeholder="AGE"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.age}
+              fullWidth
+              type="number"
+              inputRef={ageRef}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  genderRef.current.focus();
+                  e.preventDefault();
+                }
+              }}
+            />
           </Grid>
         </Grid>
-      </Paper>
+      </>
     </>
   );
 };

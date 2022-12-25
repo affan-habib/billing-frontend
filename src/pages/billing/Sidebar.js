@@ -54,38 +54,32 @@ export default function Sidebar() {
   }, [paid]);
   return (
     <Box sx={{ Width: "100%" }}>
-      <InputLabel>Is Paid? </InputLabel>
+      {/* label ="Is Paid? " */}
       <Switch
         checked={paid}
         onChange={() => dispatch(setField({ field: "paid", value: !paid }))}
       />
-      <InputLabel>ITEM TOTAL</InputLabel>
       <TextField
-        InputProps={{
-          startAdornment: <InputAdornment position="start">৳</InputAdornment>,
-        }}
-        disabled
+        label="ITEM TOTAL"
         fullWidth
-        sx={{ mb: 1, bgcolor: "white", color: "blue" }}
-        variant="filled"
-        size="small"
-        hiddenLabel
         type="number"
         value={itemTotal}
+        InputProps={{
+          readOnly: true,
+        }}
+        sx={{ mb: 1 }}
       />
 
-      <InputLabel>Discount</InputLabel>
       <TextField
+        label="Discount"
         fullWidth
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
+          readOnly: !itemTotal,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
-        size="small"
-        hiddenLabel
+        sx={{ mb: 1 }}
         type="number"
-        disabled={!itemTotal}
+        // disabled={!itemTotal}
         value={discountVal}
         onChange={(e) => setDiscountVal(e.target.value)}
         onBlur={(e) =>
@@ -104,48 +98,39 @@ export default function Sidebar() {
         }}
       />
 
-      <InputLabel>PAYABLE AMOUNT</InputLabel>
       <TextField
+        label="PAYABLE AMOUNT"
         fullWidth
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
-        size="small"
-        hiddenLabel
+        sx={{ mb: 1 }}
         type="number"
         value={itemTotal - discountVal}
         inputRef={payableAmountRef}
       />
 
-      <InputLabel>GIVEN AMOUNT</InputLabel>
       <TextField
+        label="GIVEN AMOUNT"
         fullWidth
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
+        sx={{ mb: 1 }}
         color="error"
-        size="small"
-        hiddenLabel
         type="number"
         value={givenAmount}
         onChange={(e) => setGivenAmount(e.target.value)}
         inputRef={givenAmountRef}
       />
 
-      <InputLabel>RETURN AMOUNT</InputLabel>
       <TextField
+        label="RETURN AMOUNT"
         fullWidth
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
         }}
-        sx={{ mb: 1, bgcolor: "white" }}
-        variant="filled"
-        size="small"
-        hiddenLabel
+        sx={{ mb: 1 }}
         type="number"
         value={itemTotal - discountVal - givenAmount}
       />

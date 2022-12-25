@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   Dialog,
-  InputLabel,
   Stack,
   TextField,
   Tooltip,
@@ -49,10 +48,9 @@ const AddItem = ({ addItemRef }) => {
     setTimeout(() => addItemRef.current.focus(), 100);
   };
   return (
-    <Box maxWidth="100%">
+    <Box maxWidth="100%" mt={2}>
       <Stack direction="row" alignItems="flex-end">
         <Stack>
-          <InputLabel sx={{ mb: 0.5, pt: 2 }}>SEARCH ITEM</InputLabel>
           <Autocomplete
             autoFocus
             key={state}
@@ -72,8 +70,12 @@ const AddItem = ({ addItemRef }) => {
                 inputProps={{
                   ...params.inputProps,
                 }}
-                placeholder="Add Service by Id/Name"
+                InputLabelProps={{
+                  shrink: true
+                }}
+                placeholder="type..."
                 inputRef={addItemRef}
+                label="SEARCH ITEM"
               />
             )}
             renderOption={(props, option) => (
