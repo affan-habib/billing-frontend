@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import { Box, Button, Stack, Dialog, Paper } from "@mui/material";
-import { DataGrid, gridClasses } from "@mui/x-data-grid";
+import { Button, Stack, Dialog, Paper } from "@mui/material";
+import DataGrid from "../../components/DataGrid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import { addToCart } from "../../reducers/cartSlice";
 import AddProduct from "./AddProduct";
 import DeleteProduct from "./DeleteProduct";
-import NoRowIcon from "../../components/NoRowIcon";
-import CustomPagination from "../../components/Pagination";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -37,7 +35,7 @@ const Products = () => {
     {
       field: "id",
       headerClassName: "top-header-1",
-      
+
       headerName: "CODE",
       width: 70,
       align: "left",
@@ -47,7 +45,7 @@ const Products = () => {
     {
       field: "serviceName",
       headerClassName: "top-header-1",
-      
+
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
@@ -55,7 +53,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      
+
       field: "basePrice",
       headerName: "PRICE",
       type: "number",
@@ -66,7 +64,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      
+
       field: "discountPerUnit",
       headerName: "DISCOUNT",
       type: "number",
@@ -77,7 +75,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      
+
       field: "vatPerUnit",
       headerName: "VAT PER UNIT",
       type: "number",
@@ -88,7 +86,7 @@ const Products = () => {
     },
     {
       headerClassName: "top-header-1",
-      
+
       field: "expiryDate",
       headerName: "EXPIRY DATE",
       type: "number",
@@ -104,7 +102,7 @@ const Products = () => {
       headerName: "ACTION",
       type: "actions",
       headerClassName: "top-header-1",
-      
+
       renderCell: (params) => <DeleteProduct shouldDelete={params.id} />,
     },
   ];
@@ -140,7 +138,7 @@ const Products = () => {
   };
 
   return (
-    <Paper elevation={1} sx={{ width: "100%",  pb: 2 }}>
+    <Paper elevation={1} sx={{ width: "100%", pb: 2 }}>
       <Stack direction="row">
         <Button
           sx={{ m: 2, width: 200 }}
@@ -168,19 +166,6 @@ const Products = () => {
         checkboxSelection={true}
         rows={items.data}
         columns={columns}
-        // pageSize={5}
-        disableSelectionOnClick
-        disableColumnSelector
-        components={{
-          NoRowsOverlay: NoRowIcon,
-          Pagination: CustomPagination,
-        }}
-        headerHeight={55}
-        hideFooterPagination
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
         onSelectionModelChange={(newSelectionModel) => {
           setSelectedOptions(newSelectionModel);
         }}

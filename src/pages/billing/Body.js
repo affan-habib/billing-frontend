@@ -1,8 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import DataGrid from "../../components/DataGrid";
 import RemoveItem from "./actions/RemoveItem";
-import NoRowIcon from "../../components/NoRowIcon";
 import { useDispatch, useSelector } from "react-redux";
 import AddItem from "./actions/AddItem";
 import { Paper, Stack } from "@mui/material";
@@ -97,26 +96,8 @@ export default function Body() {
 
       <Paper square elevation={1}>
         <DataGrid
-          sx={{
-            height: 250,
-            Width: "100%",
-            mt: 2,
-            borderRadius: 0,
-            border: 0,
-          }}
           rows={rows}
           columns={columns}
-          disableSelectionOnClick
-          disableColumnSelector
-          components={{
-            NoRowsOverlay: NoRowIcon,
-          }}
-          headerHeight={55}
-          hideFooterPagination
-          disableColumnMenu
-          density="compact"
-          showCellRightBorder={true}
-          showColumnRightBorder={true}
           hideFooter
           onCellEditCommit={(params) => dispatch(editCellValue(params))}
         />
