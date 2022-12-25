@@ -102,6 +102,9 @@ function DataGridTableCustom({
             },
           },
         },
+        "& .MuiDataGrid-sortIcon": {
+          color: "white",
+        },
         ...sx,
       }}
       components={{
