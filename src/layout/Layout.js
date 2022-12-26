@@ -87,7 +87,7 @@ export default function UnstyledTabsIntroduction() {
         <Box sx={{ flex: 1 }}>
           <img
             className="logo"
-            src="https://cdn.pixabay.com/photo/2016/01/21/21/23/rose-1154830__340.png"
+            src="https://res.cloudinary.com/dhijllt3x/image/upload/v1672038338/gjqpp8bfqtzlh2ydnvlb.png"
           />
         </Box>
         <TabsList sx={{ flex: 8 }}>
