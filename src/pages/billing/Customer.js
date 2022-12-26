@@ -20,6 +20,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
           <Grid item sm={6} md={3} flexDirection="column">
             <TextField
               label="FULL NAME"
+              required
               autoFocus={true}
               id="name"
               name="name"
@@ -39,6 +40,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
           </Grid>
           <Grid item sm={6} md={3}>
             <TextField
+              required
               label="Contact"
               id="contactNumber"
               name="contactNumber"

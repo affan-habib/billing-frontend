@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name: "cart",
+  discountType: "",
   initialState: {
     paid: false,
     itemList: [],

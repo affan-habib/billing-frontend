@@ -14,16 +14,21 @@ import {
 
 export default function Sidebar() {
   const dispatch = useDispatch();
-  const { itemList, paid } = useSelector((state) => state.cart);
+  const { itemList, paid, discountType } = useSelector((state) => state.cart);
   const [discountVal, setDiscountVal] = useState(0);
   const [givenAmount, setGivenAmount] = useState(0);
   const givenAmountRef = useRef();
   const payableAmountRef = useRef();
+  const discountRef = useRef(0);
   let itemTotal = itemList.reduce(
     (a, b) => a + b.basePrice * b.quantityOrdered,
     0
   );
-
+  let itemWiseTotalDiscount = itemList.reduce(
+    (a, b) => a + b.discountPerUnit,
+    0
+  );
+  console.log(itemWiseTotalDiscount);
   useEffect(() => {
     dispatch(
       setField({
@@ -84,32 +89,34 @@ export default function Sidebar() {
           name="discountType"
           variant="filled"
           onChange={(e) => {
-            setField({
-              field: "discountType",
-              value: e.target.value,
-            });
+            dispatch(
+              setField({
+                field: "discountType",
+                value: e.target.value,
+              })
+            );
           }}
           sx={{ mb: 1 }}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value="item">Item Wise</MenuItem>
+          <MenuItem value="item">Item Wise Maximum</MenuItem>
           <MenuItem value="flat">Flat</MenuItem>
           <MenuItem value="percentage">Percentage</MenuItem>
         </Select>
       </FormControl>
       <TextField
         label="Discount"
+        ref={discountRef}
         fullWidth
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
-          readOnly: !itemTotal,
+          readOnly: !itemTotal || discountType === "item",
         }}
         sx={{ mb: 1 }}
         type="number"
-        // disabled={!itemTotal}
-        value={discountVal}
+        value={discountType === "item" ? itemWiseTotalDiscount : discountVal}
         onChange={(e) => setDiscountVal(e.target.value)}
         onBlur={(e) =>
           dispatch(
@@ -135,7 +142,10 @@ export default function Sidebar() {
         }}
         sx={{ mb: 1 }}
         type="number"
-        value={itemTotal - discountVal}
+        value={
+          itemTotal -
+          (discountType === "item" ? itemWiseTotalDiscount : discountVal)
+        }
         inputRef={payableAmountRef}
       />
 
