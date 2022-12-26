@@ -2,20 +2,32 @@ import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { setField } from "../../reducers/cartSlice";
-import { InputAdornment, TextField, Switch } from "@mui/material";
+import {
+  InputAdornment,
+  InputLabel,
+  TextField,
+  Switch,
+  FormControl,
+  MenuItem,
+  Select,
+} from "@mui/material";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
-  const { itemList, paid } = useSelector((state) => state.cart);
+  const { itemList, paid, discountType } = useSelector((state) => state.cart);
   const [discountVal, setDiscountVal] = useState(0);
   const [givenAmount, setGivenAmount] = useState(0);
   const givenAmountRef = useRef();
   const payableAmountRef = useRef();
+  const discountRef = useRef(0);
   let itemTotal = itemList.reduce(
     (a, b) => a + b.basePrice * b.quantityOrdered,
     0
   );
-
+  let itemWiseTotalDiscount = itemList.reduce(
+    (a, b) => a + b.discountPerUnit,
+    0
+  );
   useEffect(() => {
     dispatch(
       setField({
@@ -69,18 +81,42 @@ export default function Sidebar() {
         }}
         sx={{ mb: 1 }}
       />
-
+      <FormControl variant="filled" fullWidth>
+        <InputLabel shrink>Discount Type</InputLabel>
+        <Select
+          fullWidth
+          name="discountType"
+          variant="filled"
+          defaultValue="flat"
+          onChange={(e) => {
+            dispatch(
+              setField({
+                field: "discountType",
+                value: e.target.value,
+              })
+            );
+          }}
+          sx={{ mb: 1 }}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value="item">Item Wise Maximum</MenuItem>
+          <MenuItem value="flat">Flat</MenuItem>
+          <MenuItem value="percentage">Percentage</MenuItem>
+        </Select>
+      </FormControl>
       <TextField
         label="Discount"
+        ref={discountRef}
         fullWidth
         InputProps={{
           startAdornment: <InputAdornment position="start">৳</InputAdornment>,
-          readOnly: !itemTotal,
+          readOnly: !itemTotal || discountType === "item",
         }}
         sx={{ mb: 1 }}
         type="number"
-        // disabled={!itemTotal}
-        value={discountVal}
+        value={discountType === "item" ? itemWiseTotalDiscount : discountVal}
         onChange={(e) => setDiscountVal(e.target.value)}
         onBlur={(e) =>
           dispatch(
@@ -106,7 +142,10 @@ export default function Sidebar() {
         }}
         sx={{ mb: 1 }}
         type="number"
-        value={itemTotal - discountVal}
+        value={
+          itemTotal -
+          (discountType === "item" ? itemWiseTotalDiscount : discountVal)
+        }
         inputRef={payableAmountRef}
       />
 

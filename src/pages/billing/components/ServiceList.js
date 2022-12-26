@@ -1,5 +1,6 @@
 import { Box, Button, Dialog, Stack } from "@mui/material";
-import { DataGrid, GridToolbarQuickFilter } from "@mui/x-data-grid";
+import DataGrid from "../../../components/DataGrid";
+import { GridToolbarQuickFilter } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../../reducers/apiSlice";
@@ -35,36 +36,32 @@ const ServiceList = () => {
   const columns = [
     {
       field: "id",
-      headerClassName: "top-header-1",
       
       headerName: "CODE",
       width: 70,
       align: "left",
-      sortable: false,
+      
       headerAlign: "left",
     },
     {
       field: "serviceName",
-      headerClassName: "top-header-1",
       
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
-      sortable: false,
+      
     },
     {
-      headerClassName: "top-header-1",
       
       field: "basePrice",
       headerName: "PRICE",
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+      
       align: "center",
     },
     {
-      headerClassName: "top-header-1",
       
       minWidth: 120,
       align: "center",
@@ -81,7 +78,6 @@ const ServiceList = () => {
           variant="contained"
           sx={{ height: 20, width: 70, borderRadius: 10 }}
           size="small"
-          color="info"
           onClick={() => dispatch(addToCart(params.row))}
         >
           {alreadySelectedOptions.includes(params.row.id) ? "ADDED" : "ADD"}
@@ -102,14 +98,12 @@ const ServiceList = () => {
             sx={{ mb: 2, mr: 2 }}
             disabled={selectedOptions.length == 0}
             variant="contained"
-            color="info"
             onClick={() => handleAddToCart()}
           >
             {selectedOptions.length ? "Add services" : "Select Items"}
           </Button>
           <Button
             sx={{ mb: 2, mr: 2 }}
-            color="info"
             variant="contained"
             onClick={() => setOpen(!open)}
           >
@@ -138,29 +132,13 @@ const ServiceList = () => {
         rows={items.data}
         columns={columns}
         isRowSelectable={(id) => alreadySelectedOptions.includes(id)}
-        disableSelectionOnClick
-        disableColumnSelector
-        headerHeight={55}
-        hideFooterPagination
         hideFooter
-        disableColumnMenu
         checkboxSelection={true}
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
         onSelectionModelChange={(selectedOptions) => {
           setSelectedOptions(selectedOptions);
         }}
         components={{
           Toolbar: Toolbar,
-          NoRowsOverlay: NoRowIcon,
-          Pagination: CustomPagination,
-        }}
-        componentsProps={{
-          toolbar: {
-            showQuickFilter: true,
-            quickFilterProps: { debounceMs: 500 },
-          },
         }}
       />
     </Box>

@@ -1,4 +1,11 @@
-import { Grid, MenuItem, Select, TextField } from "@mui/material";
+import {
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import { useRef } from "react";
 
 const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
@@ -13,6 +20,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
           <Grid item sm={6} md={3} flexDirection="column">
             <TextField
               label="FULL NAME"
+              required
               autoFocus={true}
               id="name"
               name="name"
@@ -32,6 +40,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
           </Grid>
           <Grid item sm={6} md={3}>
             <TextField
+              required
               label="Contact"
               id="contactNumber"
               name="contactNumber"
@@ -52,22 +61,23 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
               }}
             />
           </Grid>
-          <Grid item sm={6} md={2}>
-            <Select
-              // disabled
-              fullWidth
-              name="gender"
-              variant="filled"
-              label="AGE"
-              value={values.gender}
-              onChange={(e) => {
-                setFieldValue("gender", e.target.value);
-              }}
-              inputRef={genderRef}
-            >
-              <MenuItem value="MALE">MALE</MenuItem>
-              <MenuItem value="FEMALE">FEMALE</MenuItem>
-            </Select>
+          <Grid item sm={6} md={2} lg={1.5}>
+            <FormControl variant="filled" fullWidth>
+              <InputLabel>Gender</InputLabel>
+              <Select
+                name="gender"
+                variant="filled"
+                label="AGE"
+                value={values.gender}
+                onChange={(e) => {
+                  setFieldValue("gender", e.target.value);
+                }}
+                inputRef={genderRef}
+              >
+                <MenuItem value="MALE">MALE</MenuItem>
+                <MenuItem value="FEMALE">FEMALE</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item sm={6} md={2}>
             <TextField

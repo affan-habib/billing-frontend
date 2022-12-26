@@ -56,7 +56,7 @@ export default function Items() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {orderSaved.data.itemList.map((row) => (
+            {orderSaved?.data?.itemList.map((row) => (
               <TableRow key={row.id}>
                 <TableCell component="th" scope="row" className="print-2">
                   {row.serviceName}

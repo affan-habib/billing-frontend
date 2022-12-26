@@ -34,7 +34,7 @@ const Report = ({ setOpen }) => {
         <ReactToPrint
           trigger={() => (
             <IconButton
-              color="info"
+              
               sx={{
                 position: "absolute",
                 right: 15,
@@ -128,7 +128,7 @@ const Report = ({ setOpen }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography color="info">
+              <Typography >
                 Billing manager :
                 <span
                   style={{
@@ -141,7 +141,7 @@ const Report = ({ setOpen }) => {
                 </span>
               </Typography>
 
-              <Typography color="info">
+              <Typography >
                 Bill Status :
                 <span
                   style={{
