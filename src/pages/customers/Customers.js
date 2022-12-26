@@ -6,6 +6,7 @@ import { callApi, selectApi } from "../../reducers/apiSlice";
 import { addToCart } from "../../reducers/cartSlice";
 import AddCustomer from "./AddCustomer";
 import DeleteCustomer from "./DeleteCustomer";
+import EditCustomer from "./EditCustomer";
 
 const Customers = () => {
   const dispatch = useDispatch();
@@ -33,68 +34,54 @@ const Customers = () => {
   const columns = [
     {
       field: "id",
-      
-
       headerName: "CODE",
       width: 70,
       align: "left",
-      
       headerAlign: "left",
     },
     {
       field: "name",
-      
-
       headerName: "CLIENT NAME",
       flex: 1,
       headerAlign: "left",
-      
+      editable: true,
     },
     {
-      
-
       field: "age",
       headerName: "AGE",
       type: "number",
       minWidth: 60,
       headerAlign: "center",
-      
       align: "center",
+      editable: true,
     },
     {
-      
-
       field: "contactNumber",
       headerName: "CONTACT",
       minWidth: 120,
       headerAlign: "center",
-      
       align: "left",
+      editable: true,
     },
     {
       field: "address",
-      
-
       headerName: "ADDRESS",
       flex: 0.5,
       headerAlign: "left",
+      editable: true,
     },
     {
-      
-
       field: "gender",
       headerName: "GENDER",
       minWidth: 120,
       headerAlign: "center",
-      
       align: "center",
       renderCell: (params) => (
         <Box
           sx={{
             m: 1,
-            pr: 1,
-            pl: 1,
-            bgcolor: "primary.main",
+            px: 1,
+            bgcolor: params.value == "MALE" ? "primary.main" : "secondary.main",
             color: "white",
             borderRadius: 5,
             fontSize: 14,
@@ -111,9 +98,12 @@ const Customers = () => {
       field: "actions",
       headerName: "ACTION",
       type: "actions",
-      
-
-      renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
+      renderCell: (params) => (
+        <Stack direction="row">
+          <EditCustomer shouldUpdate={params.row} />
+          <DeleteCustomer shouldDelete={params.id} />
+        </Stack>
+      ),
     },
   ];
   const [selectedOptions, setSelectedOptions] = React.useState([]);

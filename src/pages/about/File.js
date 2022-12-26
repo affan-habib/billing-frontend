@@ -68,7 +68,7 @@ export default function File() {
       <Dialog>
         <Bugs />
       </Dialog>
-      <h1 className="title">Upload an Image</h1>
+      <h1 className="title">Upload Bugs</h1>
       <Input
         id="fileInput"
         type="file"

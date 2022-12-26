@@ -6,6 +6,7 @@ import { callApi, selectApi } from "../../reducers/apiSlice";
 import { addToCart } from "../../reducers/cartSlice";
 import AddProduct from "./AddProduct";
 import DeleteProduct from "./DeleteProduct";
+import EditProduct from "./EditProduct";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,6 @@ const Products = () => {
       headerName: "CODE",
       width: 70,
       align: "left",
-
       headerAlign: "left",
     },
     {
@@ -45,6 +45,7 @@ const Products = () => {
       headerName: "SERVICE NAME",
       flex: 1,
       headerAlign: "left",
+      editable: true,
     },
     {
       field: "basePrice",
@@ -52,8 +53,8 @@ const Products = () => {
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-
       align: "center",
+      editable: true,
     },
     {
       field: "discountPerUnit",
@@ -61,8 +62,8 @@ const Products = () => {
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-
       align: "center",
+      editable: true,
     },
     {
       field: "vatPerUnit",
@@ -70,8 +71,8 @@ const Products = () => {
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-
       align: "center",
+      editable: true,
     },
     {
       field: "expiryDate",
@@ -79,8 +80,8 @@ const Products = () => {
       type: "number",
       minWidth: 120,
       headerAlign: "center",
-
       align: "center",
+      editable: true,
     },
     {
       minWidth: 120,
@@ -89,7 +90,12 @@ const Products = () => {
       headerName: "ACTION",
       type: "actions",
 
-      renderCell: (params) => <DeleteProduct shouldDelete={params.id} />,
+      renderCell: (params) => (
+        <Stack direction="row">
+          <EditProduct shouldUpdate={params.row} />
+          <DeleteProduct shouldDelete={params.id} />
+        </Stack>
+      ),
     },
   ];
   const [selectedOptions, setSelectedOptions] = React.useState([]);

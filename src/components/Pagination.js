@@ -15,6 +15,7 @@ export default function CustomPagination() {
 
   return (
     <Pagination
+      sx={{ mr: 0 }}
       color="primary"
       variant="outlined"
       shape="rounded"

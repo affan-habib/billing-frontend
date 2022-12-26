@@ -79,7 +79,7 @@ function DataGridTableCustom({
       showCellRightBorder={true}
       showColumnRightBorder={true}
       sx={{
-        height: 400,
+        minHeight: 400,
         Width: "100%",
         mt: 2,
         borderRadius: 0,
@@ -95,7 +95,7 @@ function DataGridTableCustom({
         "& .MuiDataGrid-row": {
           fontSize: "0.9rem",
           "&:nth-of-type(2n)": {
-            backgroundColor: " #EBF0F4 ", //even tealcolor
+            backgroundColor: "#f2f2f2",
             "&:hover": {
               background: " #EBF0F4 !important",
             },
