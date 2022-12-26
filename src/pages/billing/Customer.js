@@ -1,4 +1,11 @@
-import { Grid, MenuItem, Select, TextField } from "@mui/material";
+import {
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import { useRef } from "react";
 
 const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
@@ -53,21 +60,24 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
             />
           </Grid>
           <Grid item sm={6} md={2}>
-            <Select
-              // disabled
-              fullWidth
-              name="gender"
-              variant="filled"
-              label="AGE"
-              value={values.gender}
-              onChange={(e) => {
-                setFieldValue("gender", e.target.value);
-              }}
-              inputRef={genderRef}
-            >
-              <MenuItem value="MALE">MALE</MenuItem>
-              <MenuItem value="FEMALE">FEMALE</MenuItem>
-            </Select>
+            <FormControl variant="filled">
+              <InputLabel>Gender</InputLabel>
+              <Select
+                // disabled
+                fullWidth
+                name="gender"
+                variant="filled"
+                label="AGE"
+                value={values.gender}
+                onChange={(e) => {
+                  setFieldValue("gender", e.target.value);
+                }}
+                inputRef={genderRef}
+              >
+                <MenuItem value="MALE">MALE</MenuItem>
+                <MenuItem value="FEMALE">FEMALE</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item sm={6} md={2}>
             <TextField

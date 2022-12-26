@@ -11,6 +11,7 @@ const getSchema = (model = {}) => {
     age = 45,
     gender = "MALE",
     itemTotal = 0,
+    discountType = "",
     discountAmount = 0,
     paidAmount = 0,
     dueAmount = 0,

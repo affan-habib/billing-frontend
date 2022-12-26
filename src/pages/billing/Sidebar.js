@@ -2,7 +2,15 @@ import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { setField } from "../../reducers/cartSlice";
-import { InputAdornment, InputLabel, TextField, Switch } from "@mui/material";
+import {
+  InputAdornment,
+  InputLabel,
+  TextField,
+  Switch,
+  FormControl,
+  MenuItem,
+  Select,
+} from "@mui/material";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
@@ -69,7 +77,27 @@ export default function Sidebar() {
         }}
         sx={{ mb: 1 }}
       />
-
+      <FormControl variant="filled" fullWidth>
+        <InputLabel shrink>Discount Type</InputLabel>
+        <Select
+          fullWidth
+          name="discountType"
+          variant="filled"
+          onChange={(e) => {
+            setField({
+              field: "discountType",
+              value: e.target.value,
+            });
+          }}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value="item">Item Wise</MenuItem>
+          <MenuItem value="flat">Flat</MenuItem>
+          <MenuItem value="percentage">Percentage</MenuItem>
+        </Select>
+      </FormControl>
       <TextField
         label="Discount"
         fullWidth
