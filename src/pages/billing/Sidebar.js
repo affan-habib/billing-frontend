@@ -28,7 +28,6 @@ export default function Sidebar() {
     (a, b) => a + b.discountPerUnit,
     0
   );
-  console.log(itemWiseTotalDiscount);
   useEffect(() => {
     dispatch(
       setField({
@@ -88,6 +87,7 @@ export default function Sidebar() {
           fullWidth
           name="discountType"
           variant="filled"
+          defaultValue="flat"
           onChange={(e) => {
             dispatch(
               setField({
