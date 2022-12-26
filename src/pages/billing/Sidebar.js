@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { setField } from "../../reducers/cartSlice";
-import { InputAdornment, InputLabel, TextField, Switch } from "@mui/material";
+import { InputAdornment, TextField, Switch } from "@mui/material";
 
 export default function Sidebar() {
   const dispatch = useDispatch();
