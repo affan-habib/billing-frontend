@@ -89,6 +89,7 @@ export default function Sidebar() {
               value: e.target.value,
             });
           }}
+          sx={{ mb: 1 }}
         >
           <MenuItem value="">
             <em>None</em>

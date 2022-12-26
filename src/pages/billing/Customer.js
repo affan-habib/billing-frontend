@@ -59,12 +59,10 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
               }}
             />
           </Grid>
-          <Grid item sm={6} md={2}>
-            <FormControl variant="filled">
+          <Grid item sm={6} md={2} lg={1.5}>
+            <FormControl variant="filled" fullWidth>
               <InputLabel>Gender</InputLabel>
               <Select
-                // disabled
-                fullWidth
                 name="gender"
                 variant="filled"
                 label="AGE"

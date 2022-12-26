@@ -1,4 +1,3 @@
-// material-ui
 import { Box } from "@mui/material";
 import {
   DataGrid,
