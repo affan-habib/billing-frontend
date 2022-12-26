@@ -2,23 +2,13 @@ import React, { useEffect } from "react";
 import { Formik } from "formik";
 import { Grid, Stack, TextField, Button, IconButton } from "@mui/material";
 import { getSchema, validator } from "./Schema";
-import { useDispatch, useSelector } from "react-redux";
-import { callApi, clearState, selectApi } from "../../reducers/apiSlice";
+import { useDispatch } from "react-redux";
+import { callApi } from "../../reducers/apiSlice";
 import { CloseCircleFilled } from "@ant-design/icons";
 import File from "../about/File";
 
 const AddCustomer = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const CloseButton = () => {
-    return (
-      <IconButton
-        onClick={() => setOpen(false)}
-        sx={{ position: "absolute", right: 15, top: 15 }}
-      >
-        <CloseCircleFilled style={{ fontSize: "20px" }} />
-      </IconButton>
-    );
-  };
   return (
     <div>
       <Formik
@@ -135,7 +125,7 @@ const AddCustomer = ({ setOpen }) => {
                   alignItems="flex-end"
                   sx={{ height: "100%" }}
                 >
-                  <Button variant="contained"  type="submit">
+                  <Button variant="contained" type="submit">
                     SAVE
                   </Button>
                 </Stack>

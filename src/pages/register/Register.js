@@ -3,15 +3,7 @@ import React from "react";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
-import {
-  Box,
-  Button,
-  FormHelperText,
-  InputLabel,
-  Paper,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Button, FormHelperText, Paper, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {

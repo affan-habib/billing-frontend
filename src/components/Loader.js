@@ -7,9 +7,6 @@ export default function Loader() {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleToggle = () => {
-    setOpen(!open);
-  };
 
   return (
     <div>

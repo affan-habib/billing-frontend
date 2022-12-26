@@ -7,12 +7,11 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useState } from "react";
 import Faq from "./Faq";
 import File from "./File";
 import Loader from "../../components/Loader";
-import { useDispatch, useSelector } from "react-redux";
-import { callApi, selectApi } from "../../reducers/apiSlice";
+
 const Bugs = React.lazy(() => import("./Bugs"));
 
 const About = () => {
@@ -20,7 +19,7 @@ const About = () => {
   return (
     <Paper sx={{ my: 2, p: 2, pt: 0 }} className="animated" square>
       <Dialog open={open} onClose={() => setOpen(!open)}>
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader />}>
           <Bugs />
         </Suspense>
       </Dialog>

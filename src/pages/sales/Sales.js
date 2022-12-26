@@ -1,13 +1,11 @@
 import React, { Suspense, useEffect } from "react";
-import { Box, Paper, Stack } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
 import DataGrid from "../../components/DataGrid";
 import { GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import DeleteSale from "./DeleteSale";
-import NoRowIcon from "../../components/NoRowIcon";
 import moment from "moment/moment";
-import CustomPagination from "../../components/Pagination";
 import Loader from "../../components/Loader";
 
 const Sales = () => {
