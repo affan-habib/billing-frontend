@@ -3,7 +3,6 @@ import { Formik } from "formik";
 import {
   FormHelperText,
   Grid,
-  InputLabel,
   Stack,
   TextField,
   Button,
@@ -70,8 +69,8 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={2} sm={2} md={2}>
                 <Stack spacing={0.5}>
-                  <InputLabel>ID</InputLabel>
                   <TextField
+                    label="ID"
                     autoFocus={true}
                     id="id"
                     name="id"
@@ -88,8 +87,8 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={8} sm={6} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>CATEGORY</InputLabel>
                   <TextField
+                    label="CATEGORY"
                     autoFocus={true}
                     id="category"
                     name="category"
@@ -106,8 +105,8 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={8} sm={6} md={4}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Item Name</InputLabel>
                   <TextField
+                    label="Item Name"
                     autoFocus={true}
                     id="serviceName"
                     name="serviceName"
@@ -124,8 +123,8 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>PRICE</InputLabel>
                   <TextField
+                    label="PRICE"
                     id="basePrice"
                     name="basePrice"
                     placeholder="Enter Age"
@@ -143,8 +142,8 @@ const AddProduct = ({ setOpen }) => {
 
               <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Discount</InputLabel>
                   <TextField
+                    label="Discount"
                     id="discountPerUnit"
                     name="discountPerUnit"
                     placeholder="Discount Per Unit"
@@ -163,8 +162,8 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>AVAILABLE STOCKS</InputLabel>
                   <TextField
+                    label="AVAILABLE STOCKS"
                     id="stock"
                     name="stock"
                     placeholder="Enter available Stock"
@@ -181,8 +180,8 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Expiry Date</InputLabel>
                   <TextField
+                    label="Expiry Date"
                     id="expiryDate"
                     name="expiryDate"
                     placeholder="Enter Age"
@@ -199,8 +198,8 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={4} md={3}>
                 <Stack spacing={0.5}>
-                  <InputLabel>Vat Per Unit</InputLabel>
                   <TextField
+                    label="Vat Per Unit"
                     id="vatPerUnit"
                     name="vatPerUnit"
                     placeholder="Enter Age"
@@ -217,7 +216,7 @@ const AddProduct = ({ setOpen }) => {
               </Grid>
               <Grid item xs={12}>
                 <ButtonGroup>
-                  <Button variant="contained" color="info" type="submit">
+                  <Button variant="contained"  type="submit">
                     Submit
                   </Button>
                   <Button variant="outlined" color="error" type="reset">

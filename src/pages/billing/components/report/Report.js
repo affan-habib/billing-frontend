@@ -34,7 +34,7 @@ const Report = ({ setOpen }) => {
         <ReactToPrint
           trigger={() => (
             <IconButton
-              color="info"
+              
               sx={{
                 position: "absolute",
                 right: 15,
@@ -58,8 +58,8 @@ const Report = ({ setOpen }) => {
                 p={1}
                 pb={0}
               >
-                <Typography>Bill No :</Typography>
-                <Text>1234</Text>
+                <Typography>Invoice id :</Typography>
+                <Text>{orderSaved?.data?.invoiceId}</Text>
               </Stack>
               <Stack
                 direction="row"
@@ -113,9 +113,7 @@ const Report = ({ setOpen }) => {
                 pb={0}
               >
                 <Typography>Contact :</Typography>
-                <Text>
-                  {orderSaved?.data?.contactNumber || "Not found"}
-                </Text>
+                <Text>{orderSaved?.data?.contactNumber || "Not found"}</Text>
               </Stack>
             </Stack>
           </Box>
@@ -130,7 +128,7 @@ const Report = ({ setOpen }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Typography color="info">
+              <Typography >
                 Billing manager :
                 <span
                   style={{
@@ -143,7 +141,7 @@ const Report = ({ setOpen }) => {
                 </span>
               </Typography>
 
-              <Typography color="info">
+              <Typography >
                 Bill Status :
                 <span
                   style={{

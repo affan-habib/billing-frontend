@@ -6,14 +6,16 @@ import {
   deepPurple,
   cyan,
   purple,
+  brown,
+  blueGrey,
 } from "@mui/material/colors";
 
 const rawTheme = createTheme({
   palette: {
     primary: {
-      light: cyan[400],
-      main: cyan[800],
-      dark: cyan[700],
+      light: blueGrey[200],
+      main: blueGrey[600],
+      dark: blueGrey[900],
     },
     secondary: {
       light: teal[200],
@@ -84,6 +86,15 @@ const rawTheme = createTheme({
         inputMultiline: {
           padding: 0,
         },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: "filled",
+        InputLabelProps: {
+          shrink: true,
+        },
+        bgcolor: "white"
       },
     },
     MuiInputLabel: {

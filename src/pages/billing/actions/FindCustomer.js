@@ -1,4 +1,4 @@
-import { Box, InputLabel, Stack, TextField } from "@mui/material";
+import { Box, Stack, TextField } from "@mui/material";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,15 +33,14 @@ const FindCustomer = ({ addItemRef }) => {
     setTimeout(() => addItemRef.current.focus(), 100);
   };
   return (
-    <Stack sx={{ mr: 2 }}>
-      <InputLabel sx={{ mb: 0.5, pt: 2 }}>SEARCH CUSTOMER</InputLabel>
+    <Stack sx={{ mr: 2, mt: 2 }}>
       <Autocomplete
         autoFocus
         size="medium"
         disablePortal
         filterOptions={filterOptions}
         id="id"
-        sx={{ width: 200 }}
+        sx={{ width: 230 }}
         options={customers.data}
         autoHighlight
         getOptionLabel={(option) => option.name}
@@ -51,7 +50,11 @@ const FindCustomer = ({ addItemRef }) => {
             inputProps={{
               ...params.inputProps,
             }}
-            placeholder="SEARCH CUSTOMER"
+            placeholder="type..."
+            label="Find Customer"
+            InputLabelProps={{
+              shrink: true,
+            }}
             inputRef={customerRef}
           />
         )}

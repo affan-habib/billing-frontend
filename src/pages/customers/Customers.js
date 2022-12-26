@@ -1,21 +1,11 @@
 import React, { useEffect } from "react";
-import {
-  Box,
-  Button,
-  Stack,
-  Dialog,
-  Typography,
-  Badge,
-  Paper,
-} from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { Box, Button, Stack, Dialog, Paper } from "@mui/material";
+import DataGrid from "../../components/DataGrid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import { addToCart } from "../../reducers/cartSlice";
 import AddCustomer from "./AddCustomer";
 import DeleteCustomer from "./DeleteCustomer";
-import NoRowIcon from "../../components/NoRowIcon";
-import CustomPagination from "../../components/Pagination";
 
 const Customers = () => {
   const dispatch = useDispatch();
@@ -43,60 +33,60 @@ const Customers = () => {
   const columns = [
     {
       field: "id",
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
+
       headerName: "CODE",
       width: 70,
       align: "left",
-      sortable: false,
+      
       headerAlign: "left",
     },
     {
       field: "name",
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
+
       headerName: "CLIENT NAME",
       flex: 1,
       headerAlign: "left",
-      sortable: false,
+      
     },
     {
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
+
       field: "age",
       headerName: "AGE",
       type: "number",
       minWidth: 60,
       headerAlign: "center",
-      sortable: false,
+      
       align: "center",
     },
     {
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
+
       field: "contactNumber",
       headerName: "CONTACT",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+      
       align: "left",
     },
     {
       field: "address",
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
+
       headerName: "ADDRESS",
-      flex: .5,
+      flex: 0.5,
       headerAlign: "left",
     },
     {
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-3",
+      
+
       field: "gender",
       headerName: "GENDER",
       minWidth: 120,
       headerAlign: "center",
-      sortable: false,
+      
       align: "center",
       renderCell: (params) => (
         <Box
@@ -121,8 +111,8 @@ const Customers = () => {
       field: "actions",
       headerName: "ACTION",
       type: "actions",
-      headerClassName: "top-header-1",
-      cellClassName: "top-header-2",
+      
+
       renderCell: (params) => <DeleteCustomer shouldDelete={params.id} />,
     },
   ];
@@ -158,10 +148,7 @@ const Customers = () => {
   };
 
   return (
-    <Paper
-      elevation={1}
-      sx={{ pt: 2, pb: 2, width: "100%", bgcolor: "#f5f9f0" }}
-    >
+    <Paper elevation={1} sx={{ pt: 2, pb: 2, width: "100%" }}>
       <Stack direction="row">
         <Button
           sx={{ mb: 2, ml: 2, flex: 0.0625, minWidth: "140px" }}
@@ -184,23 +171,11 @@ const Customers = () => {
         </Dialog>
       </Stack>
       <DataGrid
-        sx={{ mr: 2, ml: 2, height: 400, borderRadius: 0, border: 0 }}
         getRowId={(row) => row._id}
         checkboxSelection={true}
         rows={customers.data}
         columns={columns}
         pageSize={10}
-        disableSelectionOnClick
-        disableColumnSelector
-        components={{
-          NoRowsOverlay: NoRowIcon,
-          Pagination: CustomPagination,
-        }}
-        headerHeight={55}
-        disableColumnMenu
-        density="compact"
-        showCellRightBorder={true}
-        showColumnRightBorder={true}
         onSelectionModelChange={(newSelectionModel) => {
           setSelectedOptions(newSelectionModel);
         }}

@@ -1,5 +1,6 @@
-import { Input } from "@mui/material";
+import { Button, Dialog, Input } from "@mui/material";
 import React, { useState } from "react";
+import Bugs from "./Bugs";
 
 export default function File() {
   const [fileInputState, setFileInputState] = useState("");
@@ -54,6 +55,9 @@ export default function File() {
   };
   return (
     <div>
+      <Dialog>
+        <Bugs />
+      </Dialog>
       <h1 className="title">Upload an Image</h1>
       <form onSubmit={handleSubmitFile} className="form">
         <Input

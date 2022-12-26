@@ -45,7 +45,7 @@ export default function SubmitBill({ handleSubmit, handleReset }) {
         </Button>
         <Button
           startIcon={<SaveOutlined style={{ fontSize: 16 }} />}
-          color="info"
+          
           onClick={() => handleSubmit()}
           // disabled={!itemList.length}
           type="submit"

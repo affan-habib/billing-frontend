@@ -13,11 +13,10 @@ export default function Loader() {
 
   return (
     <div>
-      {/* <Button onClick={handleToggle}>Show backdrop</Button> */}
       <Backdrop
         sx={{
           color: "red",
-          bgcolor: "antiquewhite",
+          bgcolor: "white",
           zIndex: (theme) => theme.zIndex.drawer + 1,
           opacity: 1,
         }}
