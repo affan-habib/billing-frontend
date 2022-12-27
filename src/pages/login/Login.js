@@ -12,6 +12,7 @@ import {
   Paper,
   Stack,
   TextField,
+  Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -65,10 +66,13 @@ export default function Login() {
               <Stack
                 spacing={2}
                 width={400}
-                p={4}
+                p={2}
                 component={Paper}
                 variant="outlined"
               >
+                <Typography variant="h4" color="primary">
+                  Login Here
+                </Typography>
                 <Stack>
                   <TextField
                     label="EMAIL ADDRESS"
