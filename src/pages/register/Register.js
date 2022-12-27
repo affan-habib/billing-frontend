@@ -3,7 +3,14 @@ import React from "react";
 import { getSchema, validator } from "./Schema";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
-import { Button, FormHelperText, Paper, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  FormHelperText,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -37,17 +44,18 @@ export default function Register() {
           >
             <Stack
               spacing={2}
-              width={400}
-              p={4}
+              width={500}
+              p={2}
               component={Paper}
               variant="outlined"
             >
+              <Typography variant="h4" color="primary">Register Here</Typography>
               <Stack>
                 <TextField
                   label="ENTER NAME"
                   autoFocus={true}
                   name="name"
-                  placeholder="EMAIL NAME"
+                  placeholder="eg: Affan Habib"
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                   value={props.values.name}
@@ -60,9 +68,8 @@ export default function Register() {
               <Stack>
                 <TextField
                   label="EMAIL ADDRESS"
-                  autoFocus={true}
                   name="email"
-                  placeholder="EMAIL ADDRESS"
+                  placeholder="eg: e-mail@example.com"
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                   value={props.values.email}
@@ -75,14 +82,13 @@ export default function Register() {
               <Stack>
                 <TextField
                   label="PASSWORD"
-                  autoFocus={true}
                   name="password"
                   type="password"
-                  placeholder="ENTER PASSWORD"
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
                   value={props.values.password}
                   fullWidth
+                  placeholder="ENTER PASSWORD"
                 />
                 {props.touched.password && props.errors.password && (
                   <FormHelperText error>{props.errors.password}</FormHelperText>

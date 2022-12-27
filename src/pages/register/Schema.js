@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 const getSchema = (model = {}) => {
-  const { name = "", email = "", password = "123456" } = model;
+  const { name = "", email = "", password = "" } = model;
   return {
     name,
     email,
