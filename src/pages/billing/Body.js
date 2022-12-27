@@ -79,7 +79,6 @@ export default function Body() {
   return (
     <Box>
       <Stack direction="row">
-        <FindCustomer addItemRef={addItemRef} />
         <AddItem addItemRef={addItemRef} />
       </Stack>
       <Paper square elevation={1}>

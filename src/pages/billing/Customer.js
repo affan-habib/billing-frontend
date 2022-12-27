@@ -6,17 +6,33 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import FindCustomer from "./actions/FindCustomer";
 
 const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
+  const { customerId } = useSelector((state) => state.cart);
+  const { customers = { data: [] } } = useSelector((state) => state.api);
+  const customerInfo = customers?.data?.find((el) => el.id === customerId);
+  console.log(customerId, customerInfo);
   const nameRef = useRef();
   const contactNumberRef = useRef();
   const ageRef = useRef();
   const genderRef = useRef();
+  useEffect(() => {
+    if (customerInfo) {
+      setFieldValue("name", customerInfo.name);
+      setFieldValue("age", customerInfo.age);
+      setFieldValue("contactNumber", customerInfo.contactNumber);
+    }
+  }, [customerInfo]);
   return (
     <>
       <>
         <Grid container spacing={2}>
+          <Grid item sm={6} md={3} flexDirection="column">
+            <FindCustomer />
+          </Grid>
           <Grid item sm={6} md={3} flexDirection="column">
             <TextField
               label="FULL NAME"
@@ -79,7 +95,7 @@ const Customer = ({ setFieldValue, values, handleBlur, handleChange }) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6} md={2}>
+          <Grid item sm={6} md={1.5}>
             <TextField
               label="AGE"
               id="age"

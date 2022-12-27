@@ -33,48 +33,46 @@ const FindCustomer = ({ addItemRef }) => {
     setTimeout(() => addItemRef.current.focus(), 100);
   };
   return (
-    <Stack sx={{ mr: 2, mt: 2 }}>
-      <Autocomplete
-        autoFocus
-        size="medium"
-        disablePortal
-        filterOptions={filterOptions}
-        id="id"
-        sx={{ width: 230 }}
-        options={customers.data}
-        autoHighlight
-        getOptionLabel={(option) => option.name}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            inputProps={{
-              ...params.inputProps,
-            }}
-            placeholder="type..."
-            label="Find Customer"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            inputRef={customerRef}
-          />
-        )}
-        renderOption={(props, option) => (
-          <Box component="li" {...props}>
-            {option.name} ({option.id})
-          </Box>
-        )}
-        onChange={(e, value) => {
-          dispatch(setField({ field: "customerId", value: value?.id }));
-          setState(!state);
-        }}
-        onKeyPress={(e) => {
-          if (e.key === "Enter") {
-            focusItem();
-            e.preventDefault();
-          }
-        }}
-      />
-    </Stack>
+    <Autocomplete
+      fullWidth
+      autoFocus
+      size="medium"
+      disablePortal
+      filterOptions={filterOptions}
+      id="id"
+      options={customers.data}
+      autoHighlight
+      getOptionLabel={(option) => option.name}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          inputProps={{
+            ...params.inputProps,
+          }}
+          placeholder="type..."
+          label="Find Customer"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          inputRef={customerRef}
+        />
+      )}
+      renderOption={(props, option) => (
+        <Box component="li" {...props}>
+          {option.name} ({option.id})
+        </Box>
+      )}
+      onChange={(e, value) => {
+        dispatch(setField({ field: "customerId", value: value?.id }));
+        setState(!state);
+      }}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          focusItem();
+          e.preventDefault();
+        }
+      }}
+    />
   );
 };
 

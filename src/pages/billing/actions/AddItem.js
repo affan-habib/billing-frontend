@@ -60,7 +60,7 @@ const AddItem = ({ addItemRef }) => {
             filterOptions={filterOptions}
             clearOnEscape
             id="id"
-            sx={{ width: 200 }}
+            sx={{ width: 250 }}
             options={filterSelectedOptions || []}
             autoHighlight
             getOptionLabel={(option) => option.serviceName}
