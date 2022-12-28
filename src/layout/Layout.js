@@ -7,15 +7,14 @@ import { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled";
 import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
 import { Box, Button, Paper } from "@mui/material";
 import Billing from "../pages/billing/Billing";
-import Sales from "../pages/sales/Sales";
-import Customers from "../pages/customers/Customers";
-import Products from "../pages/products/Products";
-import About from "../pages/about/About";
 import Loader from "../components/Loader";
 import { LogoutOutlined } from "@mui/icons-material";
 import Cookies from "js-cookie";
 import { blueGrey } from "@mui/material/colors";
-
+const Sales = React.lazy(() => import("../pages/sales/Sales"));
+const Customers = React.lazy(() => import("../pages/customers/Customers"));
+const Products = React.lazy(() => import("../pages/products/Products"));
+const About = React.lazy(() => import("../pages/about/About"));
 const Tab = styled(TabUnstyled)`
   font-family: IBM Plex Sans, sans-serif;
   color: ${blueGrey[600]};
