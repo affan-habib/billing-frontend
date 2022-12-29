@@ -62,6 +62,7 @@ export default function Login() {
               width="100vw"
               justifyContent="center"
               alignItems="center"
+              className="animate__animated animate__zoomIn"
             >
               <Stack
                 spacing={2}
