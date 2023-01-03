@@ -5,8 +5,9 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "react-redux";
 import { selectToast } from "../reducers/toastSlice";
+import { Alert } from "@mui/material";
 export default function Toaster() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const { counter, type, message } = useSelector(selectToast);
   const a = Array.from(Array(counter), (v, i) => i + 1);
 
@@ -42,9 +43,16 @@ export default function Toaster() {
           open={open}
           autoHideDuration={6000}
           onClose={handleClose}
-          message={message}
-          action={action}
-        />
+          //   action={action}
+        >
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            {message}
+          </Alert>
+        </Snackbar>
       ))}
     </div>
   );
