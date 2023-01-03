@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
 
-const localUrl = "billing-server.vercel.app";
+const localUrl = "localhost:5000";
 const baseUrl = localUrl;
-const protocol =  "https";
+const protocol =  "http";
 let accessToken = Cookies.get("accessToken");
 const fetcher = async (route, options = {}) => {
   let url = new URL(`${protocol}://${baseUrl}/${route}`);
