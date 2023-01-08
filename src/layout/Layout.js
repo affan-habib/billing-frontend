@@ -18,10 +18,15 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Billing from "../pages/billing/Billing";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { LogoutOutlined } from "@mui/icons-material";
 import Cookies from "js-cookie";
 import { Button } from "@mui/material";
+import PrivateOutlet from "../components/PrivateOutlet";
+import Sales from "../pages/sales/Sales";
+import About from "../pages/about/About";
+import Products from "../pages/products/Products";
+import Customers from "../pages/customers/Customers";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -112,13 +117,12 @@ export default function PersistentDrawerLeft() {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
+          <Box sx={{ flex: 1, ml: 4 }}>
+            <img
+              className="logo"
+              src="https://res.cloudinary.com/dhijllt3x/image/upload/v1673153134/g5qlasljhnnj4ks8jmam.png"
+            />
+          </Box>
         </DrawerHeader>
         <Divider />
         <List>
@@ -136,10 +140,26 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Billing />
+        <Routes>
+          <Route path="/billing" element={<PrivateOutlet />}>
+            <Route path="" element={<Billing />} />
+          </Route>
+          <Route path="/sales" element={<PrivateOutlet />}>
+            <Route path="" element={<Sales />} />
+          </Route>
+          <Route path="/customers" element={<PrivateOutlet />}>
+            <Route path="" element={<Customers />} />
+          </Route>
+          <Route path="/products" element={<PrivateOutlet />}>
+            <Route path="" element={<Products />} />
+          </Route>
+          <Route path="/about" element={<PrivateOutlet />}>
+            <Route path="" element={<About />} />
+          </Route>
+        </Routes>
       </Main>
     </Box>
   );
 }
 
-var routes = ["billing", "sales", "products", "categories", "packages"];
+var routes = ["billing", "sales", "products", "customers", "about"];

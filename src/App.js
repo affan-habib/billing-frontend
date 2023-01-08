@@ -13,16 +13,7 @@ function App() {
     <div className="App">
       <Suspense fallback={<Loader />}>
         <Toaster />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/*" element={<PrivateOutlet />}>
-            <Route path="" element={<Layout />} />
-          </Route>
-          <Route path="/sales" element={<PrivateOutlet />}>
-            <Route path="" element={<Sales />} />
-          </Route>
-        </Routes>
+        <Layout />
       </Suspense>
     </div>
   );
