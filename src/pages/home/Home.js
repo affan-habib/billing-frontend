@@ -1,10 +1,16 @@
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React from "react";
 import Steps from "./Steps";
+import Contacts from "./Contacts";
+import Clues from "./Clues";
 const Home = () => {
   return (
     <Box>
-      <Steps />
+      <Stack flexDirection="row">
+        <Steps />
+        <Contacts />
+        <Clues />
+      </Stack>
     </Box>
   );
 };

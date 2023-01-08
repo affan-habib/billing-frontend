@@ -50,7 +50,7 @@ export default function TextMobileStepper() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 400, flexGrow: 1, mr: 2 }}>
       <Paper
         square
         elevation={0}
