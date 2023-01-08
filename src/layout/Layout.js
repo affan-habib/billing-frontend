@@ -27,7 +27,6 @@ const drawerWidth = 240;
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     flexGrow: 1,
-    padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -42,23 +41,6 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     }),
   })
 );
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -84,7 +66,7 @@ export default function PersistentDrawerLeft() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" open={open}>
+      <MuiAppBar position="fixed" open={open}>
         <Toolbar sx={{ flexDirection: "row" }}>
           <IconButton
             color="inherit"
@@ -115,7 +97,7 @@ export default function PersistentDrawerLeft() {
             </Button>
           </Box>
         </Toolbar>
-      </AppBar>
+      </MuiAppBar>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -142,7 +124,7 @@ export default function PersistentDrawerLeft() {
         <List>
           {routes.map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => navigate(`/& {text}`)}>
+              <ListItemButton onClick={() => navigate(text)}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>

@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import PrivateOutlet from "./components/PrivateOutlet";
 import "./App.css";
 const Register = React.lazy(() => import("./pages/register/Register"));
+const Sales = React.lazy(() => import("./pages/sales/Sales"));
 const Layout = React.lazy(() => import("./layout/Layout"));
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/*" element={<PrivateOutlet />}>
             <Route path="" element={<Layout />} />
+          </Route>
+          <Route path="/sales" element={<PrivateOutlet />}>
+            <Route path="" element={<Sales />} />
           </Route>
         </Routes>
       </Suspense>
