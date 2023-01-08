@@ -47,7 +47,7 @@ const Billing = () => {
         {(props) => {
           return (
             <Box>
-              <Box sx={{ p: 2 }}>
+              <Box>
                 <Grid container spacing={2}>
                   <Grid item md={9}>
                     <Customer {...props} />
