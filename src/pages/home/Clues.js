@@ -19,13 +19,13 @@ export default function MasonryImageList() {
     []
   );
   return (
-    <Box sx={{ width: "100%", height: "98vh", overflowY: "scroll", ml: 2 }}>
+    <Box sx={{ width: 500, height: "50vh", overflowY: "scroll", ml: 2 }}>
       <ImageList variant="masonry" cols={3} gap={8}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
+        {images?.map((item) => (
+          <ImageListItem key={item}>
             <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item}?w=248&fit=crop&auto=format`}
+              srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
             />
