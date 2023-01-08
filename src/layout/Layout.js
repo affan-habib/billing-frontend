@@ -116,14 +116,14 @@ export default function PersistentDrawerLeft() {
               <ChevronLeftIcon />
             ) : (
               <ChevronRightIcon />
-            )}  
+            )}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
           {routes.map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => navigate("/register")}>
+              <ListItemButton onClick={() => navigate(`/&{text}`)}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>

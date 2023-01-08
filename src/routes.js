@@ -1,17 +1,21 @@
-import Billing from "./pages/billing/Billing";
-import Sales from "./pages/sales/Sales";
+import { Navigate, Outlet } from 'react-router-dom';
+import Billing from './pages/billing/Billing';
+import Home from './pages/Home';
+import { Contact } from './views/site/home/Contact';
+import LoginPage from './views/site/login/LoginPage';
 
-const routes = () => [
+const authRouter = (isLoggedIn) => [
   {
-    route: "/billing",
-    title: "Billing",
-    element: <Billing />,
-  },
-  {
-    route: "/sales",
-    title: "SALES",
-    element: <Sales />,
+    path: "/app",
+    element: isLoggedIn ? <Outlet /> : <Navigate to="/login" />,
+    children: [
+      { path: 'dashboard', element: <Billing /> },
+      { path: 'contact', element: <Contact /> },
+    element: isLoggedIn ? <LoginPage /> : <Navigate to="app/dashboard" />,
+    children: [
+      { path: "/", element: <Navigate to="/login" /> },
+    ],
   },
 ];
 
-export default routes;
+export default authRouter;
