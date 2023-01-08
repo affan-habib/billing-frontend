@@ -19,6 +19,9 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Billing from "../pages/billing/Billing";
 import { useNavigate } from "react-router-dom";
+import { LogoutOutlined } from "@mui/icons-material";
+import Cookies from "js-cookie";
+import { Button } from "@mui/material";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -82,19 +85,35 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar sx={{ flexDirection: "row" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={() => setOpen(!open)}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
+            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
+          <Box sx={{ flex: 1, alignItem: "right" }}>
+            <Button
+              startIcon={<LogoutOutlined />}
+              variant="outlined"
+              sx={{
+                alignSelf: "flex-right",
+                height: 30,
+                borderRadius: 10,
+                color: "white",
+                float: "right",
+              }}
+              onClick={() => {
+                Cookies.remove("accessToken");
+                window.location.reload();
+              }}
+            >
+              LOGOUT
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -123,7 +142,7 @@ export default function PersistentDrawerLeft() {
         <List>
           {routes.map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => navigate(`/&{text}`)}>
+              <ListItemButton onClick={() => navigate(`/& {text}`)}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
