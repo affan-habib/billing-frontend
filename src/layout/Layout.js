@@ -135,7 +135,10 @@ export default function PersistentDrawerLeft() {
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText
+                  sx={{ textTransform: "uppercase", fontWeight: "bold" }}
+                  primary={text}
+                />
               </ListItemButton>
             </ListItem>
           ))}
