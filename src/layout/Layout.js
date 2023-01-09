@@ -29,6 +29,7 @@ import Products from "../pages/products/Products";
 import Customers from "../pages/customers/Customers";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
+import Settings from "../pages/settings/Settings";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -164,10 +165,13 @@ export default function PersistentDrawerLeft() {
           <Route path="/about" element={<PrivateOutlet />}>
             <Route path="" element={<About />} />
           </Route>
+          <Route path="/settings" element={<PrivateOutlet />}>
+            <Route path="" element={<Settings />} />
+          </Route>
         </Routes>
       </Main>
     </Box>
   );
 }
 
-var routes = ["billing", "sales", "products", "customers", "about"];
+var routes = ["billing", "sales", "products", "customers", "about", "settings"];
