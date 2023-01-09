@@ -16,9 +16,9 @@ const Settings = () => {
 };
 
 const cardData = [
-  { label: "DASHBOARD", icon: <Assessment /> },
-  { label: "GOAL", icon: <Business /> },
-  { label: "BUSINESS", icon: <Menu /> },
+  { label: "DASHBOARD SETTINGS", icon: <Assessment /> },
+  { label: "PERSONAL", icon: <Business /> },
+  { label: "GROWTH", icon: <Menu /> },
   { label: "STEPS", icon: <TrackChanges /> },
 ];
 

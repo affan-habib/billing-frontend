@@ -19,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Billing from "../pages/billing/Billing";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { LogoutOutlined } from "@mui/icons-material";
 import Cookies from "js-cookie";
 import { Button } from "@mui/material";
@@ -134,7 +134,7 @@ export default function PersistentDrawerLeft() {
         <List>
           {routes.map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => navigate(text)}>
+              <ListItemButton component={Link} to={text}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
