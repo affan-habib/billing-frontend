@@ -1,18 +1,25 @@
-import { Box, Stack } from "@mui/material";
+import { Assessment, Business, Menu, TrackChanges } from "@mui/icons-material";
+import { Box, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
-import Steps from "./Steps";
-import Contacts from "./Contacts";
-import Clues from "./Clues";
+import Card from "../../components/Card";
+
 const Home = () => {
   return (
-    <Box>
-      <Stack flexDirection="row">
-        <Steps />
-        <Contacts />
-        <Clues />
+    <Paper sx={{ p: 2 }}>
+      <Stack spacing={2} direction="row">
+        {cardData.map((el) => (
+          <Card label={el.label} icon={el.icon} />
+        ))}
       </Stack>
-    </Box>
+    </Paper>
   );
 };
+
+const cardData = [
+  { label: "DASHBOARD", icon: <Assessment /> },
+  { label: "GOAL", icon: <Business /> },
+  { label: "BUSINESS", icon: <Menu /> },
+  { label: "STEPS", icon: <TrackChanges /> },
+];
 
 export default Home;

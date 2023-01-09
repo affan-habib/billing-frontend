@@ -5,7 +5,7 @@ export default function Card({ label, icon }) {
   return (
     <Stack
       width={200}
-      height={100}
+      height={90}
       alignItems="center"
       component={Paper}
       justifyContent="center"

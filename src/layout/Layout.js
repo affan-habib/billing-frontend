@@ -77,15 +77,16 @@ export default function PersistentDrawerLeft() {
     <Box sx={{ display: "flex" }}>
       <MuiAppBar position="fixed" open={open}>
         <Toolbar sx={{ flexDirection: "row" }}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={() => setOpen(!open)}
-            edge="start"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Box sx={{ marginLeft: open ? `${drawerWidth}px` : 0, flex: 1 }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={() => setOpen(!open)}
+              edge="start"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
           <Box sx={{ flex: 1, alignItem: "right" }}>
             <Button
               startIcon={<LogoutOutlined />}
