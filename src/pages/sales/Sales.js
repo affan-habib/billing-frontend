@@ -5,6 +5,7 @@ import { GridToolbarQuickFilter } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import { callApi, selectApi } from "../../reducers/apiSlice";
 import DeleteSale from "./DeleteSale";
+import SaleItems from "./SaleItems";
 import moment from "moment/moment";
 import Loader from "../../components/Loader";
 
@@ -109,7 +110,12 @@ const Sales = () => {
       field: "actions",
       headerName: "ACTION",
       type: "actions",
-      renderCell: (params) => <DeleteSale shouldDelete={params.id} />,
+      renderCell: (params) => (
+        <Stack direction="row">
+          <SaleItems itemList={params.row.itemList} />
+          <DeleteSale shouldDelete={params.id} />
+        </Stack>
+      ),
     },
   ];
 
