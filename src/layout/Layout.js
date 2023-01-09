@@ -1,5 +1,6 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
+import Loader from "../components/Loader";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -23,13 +24,13 @@ import { LogoutOutlined } from "@mui/icons-material";
 import Cookies from "js-cookie";
 import { Button } from "@mui/material";
 import PrivateOutlet from "../components/PrivateOutlet";
-import Sales from "../pages/sales/Sales";
-import About from "../pages/about/About";
-import Products from "../pages/products/Products";
-import Customers from "../pages/customers/Customers";
-import Home from "../pages/home/Home";
-import Login from "../pages/login/Login";
-import Settings from "../pages/settings/Settings";
+const Home = React.lazy(() => import("../pages/home/Home"));
+const Settings = React.lazy(() => import("../pages/settings/Settings"));
+const Sales = React.lazy(() => import("../pages/sales/Sales"));
+const About = React.lazy(() => import("../pages/about/About"));
+const Products = React.lazy(() => import("../pages/products/Products"));
+const Customers = React.lazy(() => import("../pages/customers/Customers"));
+const Login = React.lazy(() => import("../pages/login/Login"));
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -146,31 +147,33 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-        <Routes>
-          <Route path="" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/billing" element={<PrivateOutlet />}>
-            <Route path="" element={<Billing />} />
-          </Route>
-          <Route path="/sales" element={<PrivateOutlet />}>
-            <Route path="" element={<Sales />} />
-          </Route>
-          <Route path="/customers" element={<PrivateOutlet />}>
-            <Route path="" element={<Customers />} />
-          </Route>
-          <Route path="/products" element={<PrivateOutlet />}>
-            <Route path="" element={<Products />} />
-          </Route>
-          <Route path="/about" element={<PrivateOutlet />}>
-            <Route path="" element={<About />} />
-          </Route>
-          <Route path="/settings" element={<PrivateOutlet />}>
-            <Route path="" element={<Settings />} />
-          </Route>
-        </Routes>
-      </Main>
+      <React.Suspense fallback={Loader}>
+        <Main open={open}>
+          <DrawerHeader />
+          <Routes>
+            <Route path="" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/billing" element={<PrivateOutlet />}>
+              <Route path="" element={<Billing />} />
+            </Route>
+            <Route path="/sales" element={<PrivateOutlet />}>
+              <Route path="" element={<Sales />} />
+            </Route>
+            <Route path="/customers" element={<PrivateOutlet />}>
+              <Route path="" element={<Customers />} />
+            </Route>
+            <Route path="/products" element={<PrivateOutlet />}>
+              <Route path="" element={<Products />} />
+            </Route>
+            <Route path="/about" element={<PrivateOutlet />}>
+              <Route path="" element={<About />} />
+            </Route>
+            <Route path="/settings" element={<PrivateOutlet />}>
+              <Route path="" element={<Settings />} />
+            </Route>
+          </Routes>
+        </Main>
+      </React.Suspense>
     </Box>
   );
 }
