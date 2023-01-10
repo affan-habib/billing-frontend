@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-const localUrl = "localhost:5000";
+const localUrl = "billing-server.vercel.app";
 const baseUrl = localUrl;
 const protocol =  "http";
 let accessToken = Cookies.get("accessToken");
