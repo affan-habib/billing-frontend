@@ -117,7 +117,7 @@ export default function PersistentDrawerLeft() {
         open={open}
       >
         <DrawerHeader>
-          <Box sx={{ flex: 1, ml: 4 }}>
+          <Box sx={{ flex: 1, ml: 4 }} component={Link} to="/">
             <img
               className="logo"
               src="https://res.cloudinary.com/dhijllt3x/image/upload/v1673153134/g5qlasljhnnj4ks8jmam.png"

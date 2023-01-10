@@ -1,5 +1,5 @@
 import { Assessment, Business, Menu, TrackChanges } from "@mui/icons-material";
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Paper, Stack } from "@mui/material";
 import React from "react";
 import Card from "../../components/Card";
 
