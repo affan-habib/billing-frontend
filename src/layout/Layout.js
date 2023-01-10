@@ -1,29 +1,30 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import Cookies from "js-cookie";
+import useAuth from "../hooks/useAuth";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
+import { styled, useTheme } from "@mui/material/styles";
+import {
+  Button,
+  Box,
+  Drawer,
+  AppBar,
+  Toolbar,
+  List,
+  ListItemText,
+  Divider,
+  ListItem,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import IconButton from "@mui/material/IconButton";
+import { LogoutOutlined } from "@mui/icons-material";
 import MailIcon from "@mui/icons-material/Mail";
 import Billing from "../pages/billing/Billing";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { LogoutOutlined } from "@mui/icons-material";
-import Cookies from "js-cookie";
-import { Button } from "@mui/material";
 import PrivateOutlet from "../components/PrivateOutlet";
+import Register from "../pages/register/Register";
 const Home = React.lazy(() => import("../pages/home/Home"));
 const Settings = React.lazy(() => import("../pages/settings/Settings"));
 const Sales = React.lazy(() => import("../pages/sales/Sales"));
@@ -62,21 +63,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-  const navigate = useNavigate();
-  const theme = useTheme();
+  const auth = useAuth();
   const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <Box sx={{ display: "flex" }}>
-      <MuiAppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open}>
         <Toolbar sx={{ flexDirection: "row" }}>
           <Box sx={{ marginLeft: open ? `${drawerWidth}px` : 0, flex: 1 }}>
             <IconButton
@@ -88,27 +80,29 @@ export default function PersistentDrawerLeft() {
               <MenuIcon />
             </IconButton>
           </Box>
-          <Box sx={{ flex: 1, alignItem: "right" }}>
-            <Button
-              startIcon={<LogoutOutlined />}
-              variant="outlined"
-              sx={{
-                alignSelf: "flex-right",
-                height: 30,
-                borderRadius: 10,
-                color: "white",
-                float: "right",
-              }}
-              onClick={() => {
-                Cookies.remove("accessToken");
-                window.location.reload();
-              }}
-            >
-              LOGOUT
-            </Button>
-          </Box>
+          {auth && (
+            <Box sx={{ flex: 1, alignItem: "right" }}>
+              <Button
+                startIcon={<LogoutOutlined />}
+                variant="outlined"
+                sx={{
+                  alignSelf: "flex-right",
+                  height: 30,
+                  borderRadius: 10,
+                  color: "white",
+                  float: "right",
+                }}
+                onClick={() => {
+                  Cookies.remove("accessToken");
+                  window.location.reload();
+                }}
+              >
+                LOGOUT
+              </Button>
+            </Box>
+          )}
         </Toolbar>
-      </MuiAppBar>
+      </AppBar>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -153,6 +147,7 @@ export default function PersistentDrawerLeft() {
           <Routes>
             <Route path="" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/billing" element={<PrivateOutlet />}>
               <Route path="" element={<Billing />} />
             </Route>

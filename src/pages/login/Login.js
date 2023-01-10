@@ -63,7 +63,7 @@ export default function Login() {
               width="100vw"
               justifyContent="center"
               alignItems="center"
-              className="animate__animated animate__zoomIn"
+              sx={{ position: "fixed", top: 0 , left: 0 }}
             >
               <Stack
                 spacing={2}

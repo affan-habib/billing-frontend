@@ -41,6 +41,7 @@ export default function Register() {
             width="100vw"
             justifyContent="center"
             alignItems="center"
+            sx={{ position: "fixed", top: 0, left: 0 }}
           >
             <Stack
               spacing={2}
@@ -49,7 +50,9 @@ export default function Register() {
               component={Paper}
               variant="outlined"
             >
-              <Typography variant="h4" color="primary">Register Here</Typography>
+              <Typography variant="h4" color="primary">
+                Register Here
+              </Typography>
               <Stack>
                 <TextField
                   label="ENTER NAME"
