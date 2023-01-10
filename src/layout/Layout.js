@@ -173,4 +173,4 @@ export default function PersistentDrawerLeft() {
   );
 }
 
-var routes = ["billing", "sales", "products", "customers", "about", "settings"];
+var routes = ["sales", "products", "customers", "about", "settings"];
