@@ -19,4 +19,4 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 
 [NETLIFY Live](https://affan-habib.netlify.app/)
-[VERCEL Live](https://billing-frontend-ten.vercel.app/)
+[VERCEL Live](https:/https://affan-habib.vercel.app/)
