@@ -145,10 +145,10 @@ export default function PersistentDrawerLeft() {
         <Main open={open}>
           <DrawerHeader />
           <Routes>
-            <Route path="" element={<Home />} />
+            <Route path="dashboard" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/billing" element={<PrivateOutlet />}>
+            <Route path="/" element={<PrivateOutlet />}>
               <Route path="" element={<Billing />} />
             </Route>
             <Route path="/sales" element={<PrivateOutlet />}>
