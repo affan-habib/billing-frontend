@@ -5,13 +5,11 @@ import Card from "../../components/Card";
 
 const Settings = () => {
   return (
-    <Paper sx={{ p: 2 }}>
-      <Stack spacing={2} direction="row">
-        {cardData.map((el) => (
-          <Card label={el.label} icon={el.icon} />
-        ))}
-      </Stack>
-    </Paper>
+    <Stack spacing={2} direction="row">
+      {cardData.map((el) => (
+        <Card label={el.label} icon={el.icon} />
+      ))}
+    </Stack>
   );
 };
 
